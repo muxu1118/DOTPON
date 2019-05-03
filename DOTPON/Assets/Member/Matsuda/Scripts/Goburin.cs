@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy_m : MonoBehaviour
+public class Goburin : Enemy
 {
     [SerializeField] GameObject player;
     Vector3 vector;
@@ -15,11 +15,13 @@ public class enemy_m : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DropDot(gameObject);
         transform.position += vector * 0.03f;
     }
+
     private void OnTriggerStay(Collider other)
     {
-        if(other == player.GetComponent<BoxCollider>())
+        if (other == player.GetComponent<BoxCollider>())
         {
             transform.LookAt(player.transform.position);
             vector = transform.forward;

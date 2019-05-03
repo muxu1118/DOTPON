@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy
+public class Enemy : MonoBehaviour
 {
-    int HP;
+    [SerializeField]int HP;
     int DropDotNumber;
 
     public void SpawnEnemy()
@@ -18,13 +18,33 @@ public class Enemy
         //enemyに対応した情報を持たせる
     }
 
-    public void DropDot()
+    public void DropDot(GameObject obj)
     {
+        if (HP > 0) return;
+        // managerからしゅとく
         /*
          * HP取得。0以外return
         */
         //ドロップするドット数取得
         //マップにドロップを生成する処理
         //enemyの消去
+        Destroy(obj);
+    }
+
+    public void Damage(int At)
+    {
+        HP -= At;
+        Debug.Log(HP);
+    }
+
+    public IEnumerator Rotating()
+    {
+        for(int i = 0;i < 60; i++)
+        {
+            transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime);
+            Debug.Log("Rotating");
+            yield return null;
+        }
+        yield break;
     }
 }

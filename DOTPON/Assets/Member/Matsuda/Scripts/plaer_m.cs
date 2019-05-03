@@ -33,6 +33,14 @@ public class plaer_m : MonoBehaviour
         {
             PlayerMove(new Vector3(5, 0, 0));
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+           GameObject.Find("enemy1").GetComponent<Goburin>().Damage(1);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            GameObject.Find("enemy2").GetComponent<Goburin>().Damage(1);
+        }
     }
     void PlayerMove(Vector3 vec)
     {
