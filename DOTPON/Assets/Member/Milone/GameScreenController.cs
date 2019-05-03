@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class GameScreenController : MonoBehaviour
 {
-    public GameObject MainCamera, singlePlayerCam, twoPlayerCam, fourPlayerCam, screenPanel;
-    public Camera cam1, cam2, cam3, cam4;
-    public bool twoPlayerDead=false;
+    public GameObject MainCamera, singlePlayerCam, twoPlayerCam, threeplayerCam, fourPlayerCam,  screenPanel;
+    public GameObject[] cameras;
 
     // Start is called before the first frame update
     void Start()
@@ -17,10 +16,7 @@ public class GameScreenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Z))
-        {
-            twoPlayerDead = true;
-        }
+       
         if (Input.GetButtonDown("Cancel"))
         {
             screenPanel.SetActive(true);
@@ -30,29 +26,36 @@ public class GameScreenController : MonoBehaviour
 
     public void singlePlayer()
     {
-        twoPlayerCam.SetActive(false);
-        fourPlayerCam.SetActive(false);
+        deactiveCamAndPanel();
         singlePlayerCam.SetActive(true);
         screenPanel.SetActive(false);
-        MainCamera.SetActive(false);
-        twoPlayerDead = false;
     }
     public void twoPlayer()
     {
+        deactiveCamAndPanel();
         twoPlayerCam.SetActive(true);
-        fourPlayerCam.SetActive(false);
-        singlePlayerCam.SetActive(false);
         screenPanel.SetActive(false);
-        MainCamera.SetActive(false);
-        twoPlayerDead = false;
+
+    }
+    public void threePlayer()
+    {
+        deactiveCamAndPanel();
+        threeplayerCam.SetActive(true);
+        screenPanel.SetActive(false);
     }
     public void fourPlayer()
     {
-        twoPlayerCam.SetActive(false);
+        deactiveCamAndPanel();
         fourPlayerCam.SetActive(true);
-        singlePlayerCam.SetActive(false);
         screenPanel.SetActive(false);
-        MainCamera.SetActive(false);
-        twoPlayerDead = false;
+
     }
+    public void deactiveCamAndPanel()
+    {
+        for(int i=0; i<cameras.Length; i++)
+        {
+            cameras[i].gameObject.SetActive(false);
+            
+        }
+  }
 }
