@@ -23,6 +23,10 @@ public class InputManager : MonoBehaviour
         return Input.GetButtonDown(Pl + "Y_Button");
     }
 
+    public Vector3 mainjoystick()
+    {
+        return new Vector3(MaintHorizontal(Pl), 0f, MaintVerticall(Pl));
+    }
 
     public float MaintHorizontal(string Pl)
     {
@@ -31,6 +35,13 @@ public class InputManager : MonoBehaviour
         h += Input.GetAxis(Pl + "K_Horizontal");
         return Mathf.Clamp(h, -1.0f, 1.0f);
 
+    }
+    public void Update()
+    {
+        if (Input.GetButtonDown(Pl + "Jump"))
+        {
+
+        }
     }
     public float MaintVerticall(string Pl)
     {

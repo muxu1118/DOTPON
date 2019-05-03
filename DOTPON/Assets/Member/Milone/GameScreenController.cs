@@ -6,21 +6,41 @@ public class GameScreenController : MonoBehaviour
 {
     public GameObject MainCamera, singlePlayerCam, twoPlayerCam, threeplayerCam, fourPlayerCam,  screenPanel;
     public GameObject[] cameras;
+    public bool isChanged;
+    private int playerNumbers;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.HasKey("PlayerNumbers"))
+        {playerNumbers =PlayerPrefs.GetInt("PlayerNumbers");
+
+            switch (playerNumbers)
+            {
+                case 2:twoPlayer();
+                    break;
+                case 3: threePlayer();
+                    break;
+                case 4: fourPlayer();
+                    break;
+                   
+            }
+        }
+        else
+        {
+            singlePlayer();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
        
-        if (Input.GetButtonDown("Cancel"))
+       /* if (Input.GetButtonDown("Cancel"))
         {
             screenPanel.SetActive(true);
         }
+        */
         
     }
 
