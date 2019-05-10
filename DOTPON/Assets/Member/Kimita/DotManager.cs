@@ -27,33 +27,78 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            CheckDot("Player1");
-            InstanceDot(2, 3, Vector3.zero);
+            InstanceDot(3, Vector3.zero);
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            EnemyDeadDotPop(3);
         }
     }
 
     /// <summary>
-    /// ドットを出現される (数と出現される時間と場所)
+    /// ドットを出現される (出現される時間と場所)
     /// </summary>
-    /// <param name="dotNum"></param>
     /// <param name="time"></param>
     /// <param name="vec3"></param>
-    public void InstanceDot(int dotNum,float time,Vector3 vec3)
+    public void InstanceDot(float time,Vector3 vec3)
+    {
+        // dotObjのスクリプトを読み込み出現に時間を加える
+        // DotScript Dot = dotObj.GetCompoment<DotScript>();
+        // Dot.Time = time;
+        int count = SendDot();
+        // 指定の数まで繰り返し
+        while (count > 0) {
+            // ドットの出現(位置はランダム)
+            Instantiate(dotObj, new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity);
+            count--;
+        }
+    }
+
+
+    /// <summary>
+    /// ドットの数を計算して値を返す
+    /// </summary>
+    /// <returns></returns>
+    public int SendDot()
+    {
+        int dot= 0,exAtk=1,exDef=0;
+        //攻撃力　防御力からドットの数を出す
+        dot = exAtk - exDef;
+        return dot;
+
+    }
+
+    /// <summary>
+    /// 敵が死んだらドットをドロップ
+    /// </summary>
+    /// <param name="rank"></param>
+    public void EnemyDeadDotPop(int rank)
     {
         // dotObjのスクリプトを読み込み出現に時間を加える
         // DotScript Dot = dotObj.GetCompoment<DotScript>();
         // Dot.Time = time;
 
+        // 敵によって落とす数の変更
+        int count = rank;
+        count = 3;// 仮の値
+        
         // 指定の数まで繰り返し
-        while (dotNum > 0) {
+        while (count > 0)
+        {
             // ドットの出現(位置はランダム)
             Instantiate(dotObj, new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity);
-            dotNum--;
+            count--;
         }
-
-
     }
 
+
+
+
+
+
+
+
+    /*
     private int PlayerCheck(string name)
     {
         switch (name)
@@ -79,5 +124,6 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         dotHave[playerNum] += 10;
 
     }
+    */
 
 }
