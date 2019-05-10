@@ -201,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &471176523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -286,9 +286,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05af17ae06a62f4aaea69feab23c5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: P2
+  PlayerNumber: 
   rb: {fileID: 471176528}
   movespeed: 5
+  playerImage: {fileID: 0}
+  knockBackActive: 0
+  knockbaklenght: 2
+  knockBackCounter: 0
+  material: []
 --- !u!54 &471176528
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -325,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &609267902
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -410,9 +415,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05af17ae06a62f4aaea69feab23c5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: P3
+  PlayerNumber: 
   rb: {fileID: 609267907}
   movespeed: 5
+  playerImage: {fileID: 0}
+  knockBackActive: 0
+  knockbaklenght: 2
+  knockBackCounter: 0
+  material: []
 --- !u!54 &609267907
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -541,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1215474511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -626,9 +636,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05af17ae06a62f4aaea69feab23c5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: P4
+  PlayerNumber: 
   rb: {fileID: 1215474516}
   movespeed: 5
+  playerImage: {fileID: 0}
+  knockBackActive: 0
+  knockbaklenght: 2
+  knockBackCounter: 0
+  material: []
 --- !u!54 &1215474516
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -766,9 +781,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05af17ae06a62f4aaea69feab23c5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: P1
+  PlayerNumber: 
   rb: {fileID: 2085741295}
   movespeed: 5
+  playerImage: {fileID: 2085741292}
+  knockBackActive: 0
+  knockbaklenght: 2
+  knockBackCounter: 0
+  material:
+  - {fileID: 2100000, guid: f3417dbe8b43c1c4c9d802dc6c2ae9fa, type: 2}
+  - {fileID: 2100000, guid: cd936ae306686004a952caf86a5d156a, type: 2}
+  - {fileID: 2100000, guid: 4cca1ec5153b2864f8253eaf01e91690, type: 2}
 --- !u!1001 &6612862616539596226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -841,11 +864,31 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2085741294}
+    - target: {fileID: 6612862616829423504, guid: 3f52718da9c30254fb167ad8fadb1222,
+        type: 3}
+      propertyPath: lookAtPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6612862615649810078, guid: 3f52718da9c30254fb167ad8fadb1222,
         type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 2085741294}
+    - target: {fileID: 6612862615649810078, guid: 3f52718da9c30254fb167ad8fadb1222,
+        type: 3}
+      propertyPath: RotateFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612862615649810078, guid: 3f52718da9c30254fb167ad8fadb1222,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612862615649810078, guid: 3f52718da9c30254fb167ad8fadb1222,
+        type: 3}
+      propertyPath: offset.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6612862616846431739, guid: 3f52718da9c30254fb167ad8fadb1222,
         type: 3}
       propertyPath: target
