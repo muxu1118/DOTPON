@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]int HP;
-    int DropDotNumber;
 
+    public EnemyParameter parameter;
+    [HideInInspector]public int HP;
+    [HideInInspector]public int DropDotNumber;
+    [HideInInspector]public bool isLooking = false;
     public void SpawnEnemy()
     {
+
         /*判定場所は後々
         現在のモンスター数を取得。一定数以上だったらreturn
         前回の生成からの時間を取得。
@@ -37,12 +40,17 @@ public class Enemy : MonoBehaviour
         Debug.Log(HP);
     }
 
-    public IEnumerator Rotating()
+    public void RotateChange()
     {
+        //アニメーションつかうかも
+        StartCoroutine(Rotating(90));
+    }
+    public IEnumerator Rotating(float rotate)
+    {
+        if (isLooking) yield break;
         for(int i = 0;i < 60; i++)
         {
-            transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime);
-            Debug.Log("Rotating");
+            transform.Rotate(new Vector3(0, rotate, 0) * Time.deltaTime);
             yield return null;
         }
         yield break;

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class plaer_m : MonoBehaviour
 {
+    [SerializeField] int hp;
+    [SerializeField] GameObject obj;
+    [SerializeField] GameObject obj2;
     // Start is called before the first frame update
     void Start()
     {
-        
+        hp = 10;
     }
 
     // Update is called once per frame
@@ -35,11 +38,11 @@ public class plaer_m : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           GameObject.Find("enemy1").GetComponent<Goburin>().Damage(1);
+           obj.GetComponent<Goburin>().Damage(1);
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            GameObject.Find("enemy2").GetComponent<Goburin>().Damage(1);
+            obj2.GetComponent<Slime>().Damage(1);
         }
     }
     void PlayerMove(Vector3 vec)

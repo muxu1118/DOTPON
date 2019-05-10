@@ -12,6 +12,8 @@ public class Slime : Enemy
     void Start()
     {
         vector = transform.forward;
+        HP = parameter.HP;
+        DropDotNumber = parameter.dropDot;
     }
 
     // Update is called once per frame
@@ -21,28 +23,28 @@ public class Slime : Enemy
         DropDot(gameObject);
         if (isRotate) return;
         transform.position += vector * 0.02f;
-        RotateChange();
+        if (time > 3 && !isLooking)
+        {
+            isRotate = true;
+            RotateChange();
+            StartCoroutine(WaitTime());
+            time = 0;
+        }
         vector = transform.forward;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other == player.GetComponent<BoxCollider>())
+        if (other.gameObject.tag == "player")
         {
             transform.LookAt(player.transform.position);
             vector = transform.forward;
+            isLooking = true;
         }
     }
-    private void RotateChange()
+    private void OnTriggerExit(Collider other)
     {
-        if(time > 3)
-        {
-            //アニメーションつかうかも
-            isRotate = true;
-            StartCoroutine(Rotating());
-            StartCoroutine(WaitTime());
-            time = 0;
-        }
+        isLooking = false;
     }
     IEnumerator WaitTime()
     {
@@ -51,3 +53,4 @@ public class Slime : Enemy
         yield break;
     }
 }
+
