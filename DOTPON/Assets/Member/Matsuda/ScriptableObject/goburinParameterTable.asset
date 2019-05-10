@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: goburinParameterTable
   m_EditorClassIdentifier: 
   HP: 2
-  dropDot: 0
-  rotateTime: 60
+  dropDot: 1
+  speed: 3
+  rotateTime: 1
   rotateAngle: 90
-  lookingAngle: 0
+  lookingAngle: 10
+  distance: 1

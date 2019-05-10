@@ -7,6 +7,7 @@ public class plaer_m : MonoBehaviour
     [SerializeField] int hp;
     [SerializeField] GameObject obj;
     [SerializeField] GameObject obj2;
+    bool isDamage = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,5 +49,22 @@ public class plaer_m : MonoBehaviour
     void PlayerMove(Vector3 vec)
     {
         GetComponent<Rigidbody>().velocity += vec;
+    }
+    public void Damage()
+    {
+        if (isDamage) return;
+        hp--;
+        Debug.Log(hp);
+        if(hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        isDamage = true;
+        StartCoroutine(DamegeWait());
+    }
+    IEnumerator DamegeWait()
+    {
+        yield return new WaitForSeconds(1);
+        isDamage = false;
     }
 }

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     public EnemyParameter parameter;
     [HideInInspector]public int HP;
     [HideInInspector]public int DropDotNumber;
+    [HideInInspector] public float speed;
+    [HideInInspector] public float rotateTime;
+    [HideInInspector] public int rotateAngle;
+    [HideInInspector] public float lookingAngle;
+    [HideInInspector] public float distance;
     [HideInInspector]public bool isLooking = false;
     public void SpawnEnemy()
     {
@@ -39,16 +43,11 @@ public class Enemy : MonoBehaviour
         HP -= At;
         Debug.Log(HP);
     }
-
-    public void RotateChange()
-    {
-        //アニメーションつかうかも
-        StartCoroutine(Rotating(90));
-    }
-    public IEnumerator Rotating(float rotate)
+    
+    public IEnumerator Rotating(float rotate,float time)
     {
         if (isLooking) yield break;
-        for(int i = 0;i < 60; i++)
+        for(int i = 0;i < time; i++)
         {
             transform.Rotate(new Vector3(0, rotate, 0) * Time.deltaTime);
             yield return null;

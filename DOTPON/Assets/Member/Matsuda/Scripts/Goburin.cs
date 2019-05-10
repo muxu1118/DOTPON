@@ -6,7 +6,7 @@ public class Goburin : Enemy
 {
     [SerializeField] GameObject player;
     Vector3 vector;
-    bool isRotate = false;
+    bool isAction = false;
     float time;
     // Start is called before the first frame update
     void Start()
@@ -14,6 +14,13 @@ public class Goburin : Enemy
         vector = transform.forward;
         HP = parameter.HP;
         DropDotNumber = parameter.dropDot;
+        speed = parameter.speed / 100;
+        rotateTime = parameter.rotateTime;
+        rotateAngle = parameter.rotateAngle;
+        lookingAngle = parameter.lookingAngle;
+        distance = parameter.distance;
+        var col = GetComponent<BoxCollider>();
+        col.size = new Vector3(lookingAngle,1,lookingAngle);
     }
 
     // Update is called once per frame
@@ -21,12 +28,12 @@ public class Goburin : Enemy
     {
         time += Time.deltaTime;
         DropDot(gameObject);
-        if (isRotate) return;
-        transform.position += vector * 0.02f;
+        if (isAction) return;
+        transform.position += vector * speed;
         if (time > 3 && !isLooking)
         {
-            isRotate = true;
-            RotateChange();
+            isAction = true;
+            StartCoroutine(Rotating(rotateAngle,rotateTime * 60));
             StartCoroutine(WaitTime());
             time = 0;
         }
@@ -40,7 +47,13 @@ public class Goburin : Enemy
             transform.LookAt(player.transform.position);
             vector = transform.forward;
             isLooking = true;
-            //if(other.gameObject)
+            float dis = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
+            if(dis <= distance)
+            {
+                isAction = true;
+                other.gameObject.GetComponent<plaer_m>().Damage();
+                StartCoroutine(WaitTime());
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -49,8 +62,8 @@ public class Goburin : Enemy
     }
     IEnumerator WaitTime()
     {
-        yield return new WaitForSeconds(1);
-        isRotate = false;
+        yield return new WaitForSeconds(rotateTime);
+        isAction = false;
         yield break;
     }
 }

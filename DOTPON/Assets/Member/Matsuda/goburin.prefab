@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5175814156300036578}
   - component: {fileID: 5175814156300036581}
   m_Layer: 0
-  m_Name: goburin1
+  m_Name: goburin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5175814156300036589}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.617, z: 2.53}
+  m_LocalPosition: {x: 0, y: 0.617, z: 3.01}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,7 +93,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 0.5, z: 10}
-  m_Center: {x: 0, y: 0, z: 8}
+  m_Center: {x: 0, y: 0, z: 5.5}
 --- !u!54 &5175814156300036576
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,4 +136,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameter: {fileID: 11400000, guid: 4a4b721abfb2f2d47a8641fc8ffa325f, type: 2}
+  HP: 0
+  DropDotNumber: 0
+  speed: 0
+  rotateTime: 0
+  rotateAngle: 0
+  lookingAngle: 0
+  distance: 0
+  isLooking: 0
   player: {fileID: 0}

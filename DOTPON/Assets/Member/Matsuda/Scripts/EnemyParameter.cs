@@ -12,8 +12,11 @@ public class EnemyParameter : ScriptableObject
     [HeaderAttribute("ドロップするドット数")]
     public int dropDot;//ドロップするドット数
     [SerializeField]
-    [HeaderAttribute("回転時間")]
-    public int rotateTime;//回転時間
+    [HeaderAttribute("移動速度(cubeのサンプルを目安に)")]
+    public float speed;
+    [SerializeField]
+    [HeaderAttribute("回転時間(秒)")]
+    public float rotateTime;//回転時間(秒)
     [SerializeField]
     [HeaderAttribute("回転角度")]
     public int rotateAngle;//回転角度
