@@ -11,8 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: ParameterTable
-  m_EditorClassIdentifier: Assembly-CSharp::Parametor/AttacSpeed
+  m_EditorClassIdentifier: Assembly-CSharp::Parametor/Status
   attackSpeed: 0
   attackDamage: 0
   necessaryDot: 0
   durableValue: 0
+  weapon: {fileID: 0}

@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class Parametor : MonoBehaviour
 {
-    public object weapon;
 
     [CreateAssetMenu(menuName = "MyGame/Create ParameterTable", fileName = "ParameterTable")]
-    public class AttacSpeed : ScriptableObject
+    public class Status : ScriptableObject
     {
         [SerializeField]
-        public int attackSpeed; //攻撃速度
+        private int attackSpeed; //攻撃速度
 
         [SerializeField]
-        public int attackDamage; //威力
+        private int attackDamage; //威力
 
         [SerializeField]
-        public int necessaryDot; //必要ドット数
+        private int necessaryDot; //必要ドット数
 
         [SerializeField]
-        public int durableValue; //耐久値
+        private int durableValue; //耐久値
 
         [SerializeField]
-        public GameObject weapon; //武器のオブジェクト
+        private GameObject weapon; //武器のオブジェクト
 
     }
     // Start is called before the first frame update
