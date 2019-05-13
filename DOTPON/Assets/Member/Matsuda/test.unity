@@ -203,6 +203,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93457271}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &141976385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6106944117231963176, guid: cae3628ef69cbca4aa9b01c353161d67,
+    type: 3}
+  m_PrefabInstance: {fileID: 163730383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &163730383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,6 +281,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 700022227}
+    - target: {fileID: 5175814156300036581, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: lookingCollider
+      value: 
+      objectReference: {fileID: 1870051506}
+    - target: {fileID: 5175814156300036581, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: cantLookingCollder
+      value: 
+      objectReference: {fileID: 141976385}
+    - target: {fileID: 4452139812022150749, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cae3628ef69cbca4aa9b01c353161d67, type: 3}
 --- !u!1 &168854629 stripped
@@ -388,6 +409,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!1 &305172541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6106944117231963176, guid: cae3628ef69cbca4aa9b01c353161d67,
+    type: 3}
+  m_PrefabInstance: {fileID: 5175814155144418265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &595618375 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1401203467189366019, guid: cae3628ef69cbca4aa9b01c353161d67,
+    type: 3}
+  m_PrefabInstance: {fileID: 5175814155144418265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &700022227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1071,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1870051506 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1401203467189366019, guid: cae3628ef69cbca4aa9b01c353161d67,
+    type: 3}
+  m_PrefabInstance: {fileID: 163730383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &753848811422313841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1190,5 +1229,20 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 700022227}
+    - target: {fileID: 5175814156300036581, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: lookingCollider
+      value: 
+      objectReference: {fileID: 595618375}
+    - target: {fileID: 5175814156300036581, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: cantLookingCollder
+      value: 
+      objectReference: {fileID: 305172541}
+    - target: {fileID: 4452139812022150749, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cae3628ef69cbca4aa9b01c353161d67, type: 3}

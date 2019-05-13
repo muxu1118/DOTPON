@@ -5,6 +5,8 @@ using UnityEngine;
 public class Goburin : Enemy
 {
     [SerializeField] GameObject player;
+    [SerializeField] BoxCollider lookingCollider;
+    [SerializeField] GameObject cantLookingCollder;
     Vector3 vector;
     bool isAction = false;
     float time;
@@ -19,8 +21,9 @@ public class Goburin : Enemy
         rotateAngle = parameter.rotateAngle;
         lookingAngle = parameter.lookingAngle;
         distance = parameter.distance;
-        var col = GetComponent<BoxCollider>();
-        col.size = new Vector3(lookingAngle,1,lookingAngle);
+        lookingCollider.size = new Vector3(lookingAngle,1,lookingAngle);
+        float pos = CantLookPos(lookingAngle);
+        cantLookingCollder.transform.position = new Vector3(0,0,pos);
     }
 
     // Update is called once per frame

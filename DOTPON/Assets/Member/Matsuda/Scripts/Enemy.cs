@@ -54,4 +54,14 @@ public class Enemy : MonoBehaviour
         }
         yield break;
     }
+    protected float CantLookPos(float lookingAngle)
+    {
+        float pos =  Mathf.Sqrt(Mathf.Pow(lookingAngle,2) * 2) / 4;
+        Debug.Log(pos);
+        return pos;
+    }
+
+    private void FixedUpdate()
+    {
+    }
 }

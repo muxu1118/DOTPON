@@ -5,6 +5,7 @@ using UnityEngine;
 public class Slime : Enemy
 {
     [SerializeField] GameObject player;
+    [SerializeField] BoxCollider childCollider;
     Vector3 vector;
     bool isAction = false;
     float time;
