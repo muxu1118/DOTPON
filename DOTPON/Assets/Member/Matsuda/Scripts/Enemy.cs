@@ -25,6 +25,10 @@ public class Enemy : MonoBehaviour
         //enemyに対応した情報を持たせる
     }
 
+    protected void Attack()
+    {
+        GameObject.Find("Player").GetComponent<plaer_m>().Damage();
+    }
     public void DropDot(GameObject obj)
     {
         if (HP > 0) return;
@@ -56,7 +60,7 @@ public class Enemy : MonoBehaviour
     }
     protected float CantLookPos(float lookingAngle)
     {
-        float pos =  Mathf.Sqrt(Mathf.Pow(lookingAngle,2) * 2) / 4;
+        float pos =  Mathf.Sqrt(Mathf.Pow(lookingAngle,2) * 2) / 2;
         Debug.Log(pos);
         return pos;
     }

@@ -5,9 +5,8 @@ using UnityEngine;
 public class Goburin : Enemy
 {
     [SerializeField] GameObject player;
-    [SerializeField] BoxCollider lookingCollider;
-    [SerializeField] GameObject cantLookingCollder;
     Vector3 vector;
+    [SerializeField]GameObject[] lookingCollider;
     bool isAction = false;
     float time;
     // Start is called before the first frame update
@@ -19,11 +18,24 @@ public class Goburin : Enemy
         speed = parameter.speed / 100;
         rotateTime = parameter.rotateTime;
         rotateAngle = parameter.rotateAngle;
-        lookingAngle = parameter.lookingAngle;
+        lookingAngle = parameter.lookingAngle / 2;
         distance = parameter.distance;
-        lookingCollider.size = new Vector3(lookingAngle,1,lookingAngle);
-        float pos = CantLookPos(lookingAngle);
-        cantLookingCollder.transform.position = new Vector3(0,0,pos);
+        for (int i = 0;i < 3;i++)
+        {
+            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, 1, lookingAngle);
+            switch (i)
+            { 
+                case 1:
+                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle));
+                    break;
+                case 2:
+                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle), 0, 0);
+                    break;
+                case 3:
+                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle), 0, 0);
+                    break;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -54,7 +66,7 @@ public class Goburin : Enemy
             if(dis <= distance)
             {
                 isAction = true;
-                other.gameObject.GetComponent<plaer_m>().Damage();
+                Attack();
                 StartCoroutine(WaitTime());
             }
         }
