@@ -31,7 +31,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            EnemyDeadDotPop(3);
+            EnemyDeadDotPop(5,Vector3.zero);
         }
     }
 
@@ -49,7 +49,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         // 指定の数まで繰り返し
         while (count > 0) {
             // ドットの出現(位置はランダム)
-            Instantiate(dotObj, new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity);
+            Instantiate(dotObj, new Vector3(Random.Range(-20f, 20f), 1, Random.Range(-20f, 20f)), Quaternion.identity);
             
             count--;
         }
@@ -73,28 +73,21 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     /// 敵が死んだらドットをドロップ
     /// </summary>
     /// <param name="rank"></param>
-    public void EnemyDeadDotPop(int rank)
+    public void EnemyDeadDotPop(int rank, Vector3 vec3)
     {
 
         // 敵によって落とす数の変更
         int count = rank;
-        count = 3;// 仮の値
         
         // 指定の数まで繰り返し
         while (count > 0)
         {
             // ドットの出現(位置はランダム)
-            Instantiate(dotObj, new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity);
+            Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
             count--;
         }
     }
-
-
-
-
-
-
-
+    
 
     /*
     private int PlayerCheck(string name)

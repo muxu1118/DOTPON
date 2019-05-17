@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 227017182040677645}
   - component: {fileID: 227017182040677644}
   - component: {fileID: 227017182040677647}
+  - component: {fileID: 3084894949085583463}
   m_Layer: 0
   m_Name: CubePrefab
   m_TagString: Untagged
@@ -87,7 +88,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227017182040677646}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -104,3 +105,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7496a37707d4cb43b695db9345507de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3084894949085583463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227017182040677646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad282de40601b44ba7b693395b896c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSpeed: 0.4
+  ratio: 1
+  angle: 90
+  Range: 2.5
