@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float lookingAngle;
     [HideInInspector] public float distance;
     [HideInInspector]public bool isLooking = false;
+    [HideInInspector] public float lookSpeed;
     public void SpawnEnemy()
     {
 
@@ -24,10 +25,10 @@ public class Enemy : MonoBehaviour
         //4か所にenemy生成
         //enemyに対応した情報を持たせる
     }
-
+    //プレイヤーを攻撃する関数
     protected void Attack()
     {
-        GameObject.Find("Player").GetComponent<plaer_m>().Damage();
+        GameObject.Find("player").GetComponent<plaer_m>().Damage();
     }
     public void DropDot(GameObject obj)
     {
@@ -41,13 +42,21 @@ public class Enemy : MonoBehaviour
         //enemyの消去
         Destroy(obj);
     }
-
+    /// <summary>
+    /// ダメージを受けたときに呼ばれる関数
+    /// </summary>
+    /// <param name="At">攻撃力</param>
     public void Damage(int At)
     {
         HP -= At;
         Debug.Log(HP);
     }
-    
+    /// <summary>
+    /// エネミーの回転をさせるコルーチン
+    /// </summary>
+    /// <param name="rotate">回る角度</param>
+    /// <param name="time">回る時間</param>
+    /// <returns></returns>
     public IEnumerator Rotating(float rotate,float time)
     {
         if (isLooking) yield break;
@@ -58,6 +67,11 @@ public class Enemy : MonoBehaviour
         }
         yield break;
     }
+    /// <summary>
+    /// 視野のcolliderの配置場所を定める関数
+    /// </summary>
+    /// <param name="lookingAngle">視野の広さ</param>
+    /// <returns></returns>
     protected float CantLookPos(float lookingAngle)
     {
         float pos =  Mathf.Sqrt(Mathf.Pow(lookingAngle,2) * 2) / 2;

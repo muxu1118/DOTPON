@@ -26,5 +26,8 @@ public class EnemyParameter : ScriptableObject
     [SerializeField]
     [HeaderAttribute("攻撃するプレイヤーとの距離")]
     public float distance;//攻撃するプレイヤーとの距離
+    [SerializeField]
+    [HeaderAttribute("プレイヤーの方向を向く速度")]
+    public float lookSpeed;
 }
 
