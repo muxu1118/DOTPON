@@ -32,7 +32,7 @@ public class ButtonControll : MonoBehaviour
                 PlayerNumber++;
             }
         }
-        Debug.Log(PlayerNumber);//Player(接続されてるコントローラー)の数
+        Debug.Log(PlayerNumber + "接続コントローラー数");//Player(接続されてるコントローラー)の数
     }
     private void Button()
     {
@@ -41,14 +41,34 @@ public class ButtonControll : MonoBehaviour
         //        switch ()
         //    }
 
-        //for (int PadNum = 1; PadNum <= PlayerNumber; PadNum++)
-        //{
-        //    Debug.Log("joystick" + PlayerNumber + "_1");
-        //    if (Input.GetButtonDown("joystick" + PlayerNumber + "_1"))
-        //    {
-        //        Debug.Log("1");
-        //    }
-        //}
+        for (int PadNum = 1; PadNum <= PlayerNumber; PadNum++)
+        {
+            Debug.Log("Joystick" + PlayerNumber + "_1");
+            if (Input.GetButtonDown("Joystick" + PlayerNumber + "_1"))
+            {
+                Debug.Log("1");
+            }
+            if (Input.GetButtonDown("Joystick" + PlayerNumber + "_2"))
+            {
+                Debug.Log("2");
+            }
+            if (Input.GetButtonDown("Joystick" + PlayerNumber + "_3"))
+            {
+                Debug.Log("3");
+            }
+            if (Input.GetButtonDown("Joystick" + PlayerNumber + "_4"))
+            {
+                Debug.Log("4");
+            }
+            if (Input.GetButtonDown("Joystick" + PlayerNumber + "_5"))
+            {
+                Debug.Log("5");
+            }
+            if (Input.GetButtonDown("Joystick" + PlayerNumber + "_6"))
+            {
+                Debug.Log("6");
+            }
+        }
 
 
 
