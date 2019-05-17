@@ -7,6 +7,7 @@ public class plaer_m : MonoBehaviour
     [SerializeField] int hp;
     [SerializeField] GameObject obj;
     [SerializeField] GameObject obj2;
+    [SerializeField] GameObject goburin;
     bool isDamage = false;
     // Start is called before the first frame update
     void Start()
@@ -45,15 +46,26 @@ public class plaer_m : MonoBehaviour
         {
             obj2.GetComponent<Slime>().Damage(1);
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            GameObject _object = new GameObject("GoburinFlock");
+            for(int i = 0;i < 2; i++)
+            {
+                for(int j = 0;j < 2; j++)
+                {
+                    Instantiate(obj, new Vector3(i, 1, j), Quaternion.identity).transform.parent = _object.transform;
+                }
+            }
+        }
     }
     void PlayerMove(Vector3 vec)
     {
         GetComponent<Rigidbody>().velocity += vec;
     }
-    public void Damage()
+    public void Damage(int damage)
     {
         if (isDamage) return;
-        hp--;
+        hp = hp - damage;
         Debug.Log(hp);
         if(hp <= 0)
         {

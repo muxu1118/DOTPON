@@ -14,9 +14,9 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float distance;
     [HideInInspector]public bool isLooking = false;
     [HideInInspector] public float lookSpeed;
+    [HideInInspector] public int attackPow;
     public void SpawnEnemy()
     {
-
         /*判定場所は後々
         現在のモンスター数を取得。一定数以上だったらreturn
         前回の生成からの時間を取得。
@@ -26,19 +26,17 @@ public class Enemy : MonoBehaviour
         //enemyに対応した情報を持たせる
     }
     //プレイヤーを攻撃する関数
-    protected void Attack()
+    protected void Attack(int attack)
     {
-        GameObject.Find("player").GetComponent<plaer_m>().Damage();
+        GameObject.Find("player").GetComponent<plaer_m>().Damage(attack);
+        //プレイヤーのスクリプトのダメージの関数に投げる
     }
+    //しんだとき
     public void DropDot(GameObject obj)
     {
         if (HP > 0) return;
-        // managerからしゅとく
-        /*
-         * HP取得。0以外return
-        */
-        //ドロップするドット数取得
-        //マップにドロップを生成する処理
+        // managerに投げる
+        //DotManager.instance.EnemyDeadDotPop(kazu,obj.transform.position);
         //enemyの消去
         Destroy(obj);
     }

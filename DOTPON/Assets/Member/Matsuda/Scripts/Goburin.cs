@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Goburin : Enemy
 {
-    [SerializeField] GameObject player;
     Vector3 vector;
     [SerializeField]GameObject[] lookingCollider;
     bool isAction = false;
@@ -22,6 +21,7 @@ public class Goburin : Enemy
         lookingAngle = parameter.lookingAngle / 2;
         distance = parameter.distance;
         lookSpeed = parameter.lookSpeed;
+        attackPow = parameter.attackPow;
         //視野のcollider3つを配置するループ
         for (int i = 0;i < 3;i++)
         {
@@ -82,7 +82,7 @@ public class Goburin : Enemy
             if(dis <= distance)
             {
                 isAction = true;
-                Attack();
+                Attack(attackPow);
                 StartCoroutine(WaitTime());
             }
         }
