@@ -20,11 +20,5 @@ public class weapon : MonoBehaviour
         _attackDamage = parametor.attackDamage;
         _necessaryDot = parametor.necessaryDot;
         _durableValue = parametor.durableValue;
-    }
-
-    void Update()
-    {
-        
-    }
-
+    }   
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571faecb276e2ca41a3a158b951de40a, type: 3}
+  m_Name: ax
+  m_EditorClassIdentifier: 
+  Name: ax
+  attackSpeed: 1
+  attackDamage: 1
+  necessaryDot: 6
+  durableValue: 6
+  weapon: {fileID: 6819009950764646929, guid: 8f15c20078cc63944a77a4f5ac8ecb26, type: 3}
