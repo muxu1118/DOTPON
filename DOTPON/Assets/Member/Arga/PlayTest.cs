@@ -27,4 +27,20 @@ public class PlayTest : MonoBehaviour
     {
         MultiPlayerManager.instance.TotalPlayer--;
     }
+
+
+    public void twoPlayer()
+    {
+        MultiPlayerManager.instance.TotalPlayer = 2;
+    } 
+
+    public void threePlayer()
+    {
+        MultiPlayerManager.instance.TotalPlayer = 3;
+    } 
+
+    public void fourPlayer()
+    {
+        MultiPlayerManager.instance.TotalPlayer = 4;
+    } 
 }
