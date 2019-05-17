@@ -50,6 +50,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         while (count > 0) {
             // ドットの出現(位置はランダム)
             Instantiate(dotObj, new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity);
+            
             count--;
         }
     }
@@ -74,9 +75,6 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     /// <param name="rank"></param>
     public void EnemyDeadDotPop(int rank)
     {
-        // dotObjのスクリプトを読み込み出現に時間を加える
-        // DotScript Dot = dotObj.GetCompoment<DotScript>();
-        // Dot.Time = time;
 
         // 敵によって落とす数の変更
         int count = rank;
