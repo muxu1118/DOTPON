@@ -9,22 +9,70 @@ public class WeaponCreate : MonoBehaviour
     [SerializeField]
     Transform point;
 
-    // Start is called before the first frame update
+    KeyCode _keyCode;
+    int p;
+    int weaponNumbur = 0;
+   
     void Start()
     {
-        
+        p = weapon.Length;
     }
-    // Update is called once per frame
+
     void Update()
-    {
-        //Create(0);
+    {        
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Create(weaponNumbur);
+            Debug.Log(weaponNumbur);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            weaponNumbur += 1;
+            if (weaponNumbur == p)
+            {
+                weaponNumbur = 0;
+            }
+            Debug.Log(weaponNumbur);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if(weaponNumbur > 0)
+            {
+                weaponNumbur -= 1;
+                Debug.Log(weaponNumbur);
+            }            
+            else if(weaponNumbur == 0)
+            {
+                weaponNumbur = p;
+                Debug.Log(weaponNumbur);
+            }        
+        }                
     }
 
     /// <summary>
     /// 指定のDOTPONを作成
     /// </summary>
-    public void Create(int x)
+    private void Create(int x)
     {        
         Instantiate(weapon[x], point.transform.position, Quaternion.identity);            
+    }
+
+    private void WeaponChoice()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            weaponNumbur += 1;            
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if(weaponNumbur > 0)
+            {
+                weaponNumbur -= 1;
+            }            
+        }
     }
 }

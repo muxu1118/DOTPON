@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class weapon : MonoBehaviour
 {
+    //各武器にステータスを参照させる
     public Parametor parametor;
+
     [HideInInspector]
     public int _attackSpeed;
     [HideInInspector]
@@ -21,4 +23,5 @@ public class weapon : MonoBehaviour
         _necessaryDot = parametor.necessaryDot;
         _durableValue = parametor.durableValue;
     }   
+
 }
