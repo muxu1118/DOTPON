@@ -6,7 +6,6 @@ public class Goburin : Enemy
 {
     Vector3 vector;
     [SerializeField]GameObject[] lookingCollider;
-    bool isAction = false;
     float time;
     float lookingAngle;
     // Start is called before the first frame update
@@ -70,6 +69,7 @@ public class Goburin : Enemy
             //進む方向を自分の前に変更
             vector = transform.forward;
             isLooking = true;
+            if (isAction) return;
             //自分とプレイヤーの距離の取得
             float dis = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
             //distanceより近かったら攻撃する関数を呼ぶ
@@ -84,12 +84,5 @@ public class Goburin : Enemy
     private void OnTriggerExit(Collider other)
     {
         isLooking = false;
-    }
-    //行動しない時間
-    IEnumerator WaitTime()
-    {
-        yield return new WaitForSeconds(parameter.rotateTime);
-        isAction = false;
-        yield break;
     }
 }

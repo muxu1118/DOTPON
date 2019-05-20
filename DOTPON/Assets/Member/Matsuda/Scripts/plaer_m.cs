@@ -7,7 +7,7 @@ public class plaer_m : MonoBehaviour
     [SerializeField] int hp;
     [SerializeField] GameObject obj;
     [SerializeField] GameObject obj2;
-    bool isDamage = false;
+    [HideInInspector]public bool isDamage = false;
 
     public bool isAttack;
     [SerializeField] GameObject ax;
@@ -78,14 +78,26 @@ public class plaer_m : MonoBehaviour
     }
     IEnumerator DamegeWait()
     {
-        yield return new WaitForSeconds(1);
+        for (int i = 0; i < 4; i++)
+        {
+            yield return new WaitForSeconds(0.25f);
+            this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1);
+            yield return new WaitForSeconds(0.25f);
+            this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
+        }
         isDamage = false;
         ax.GetComponent<BoxCollider>().enabled = false;
+    }
+    IEnumerator AttackWait()
+    {
+        yield return new WaitForSeconds(0.8f);
+        ax.GetComponent<BoxCollider>().enabled = false;
+        yield break;
     }
     void AttackColliderOn()
     {
         ax.GetComponent<Animator>().SetTrigger("Trigger");
         ax.GetComponent<BoxCollider>().enabled = true;
-        DamegeWait();
+       StartCoroutine(AttackWait());
     }
 }

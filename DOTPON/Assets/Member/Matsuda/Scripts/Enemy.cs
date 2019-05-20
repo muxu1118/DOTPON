@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector]public int HP;
     [HideInInspector]public bool isLooking = false;
     [SerializeField] private GameObject buki;
+
+    public bool isAction = false;
     public void SpawnEnemy()
     {
         /*判定場所は後々
@@ -41,7 +43,9 @@ public class Enemy : MonoBehaviour
     public void Damage(int At)
     {
         HP -= At;
-        Debug.Log(HP);
+        isAction = true;
+        StartCoroutine(WaitTime());
+        Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
     }
     /// <summary>
     /// エネミーの回転をさせるコルーチン
@@ -67,10 +71,17 @@ public class Enemy : MonoBehaviour
     protected float CantLookPos(float lookingAngle)
     {
         float pos =  Mathf.Sqrt(Mathf.Pow(lookingAngle,2) * 2) / 2;
-        Debug.Log(pos);
+        //Debug.Log(pos);
         return pos;
     }
 
+    //行動しない時間
+    public IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(parameter.rotateTime);
+        isAction = false;
+        yield break;
+    }
     private void FixedUpdate()
     {
     }
