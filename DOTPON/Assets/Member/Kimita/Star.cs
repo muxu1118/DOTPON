@@ -2,26 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dot : MonoBehaviour
+public class Star : MonoBehaviour
 {
-    private float lostTime = 10.0f;
-    public float LostTime
+    // Start is called before the first frame update
+    void Start()
     {
-        get { return LostTime; }
-        set { LostTime = value; }
-    }
-
-
-    private void Start()
-    {
-        StartCoroutine(LostDot());
-    }
-
-    IEnumerator LostDot()
-    {
-        yield return new WaitForSeconds(lostTime);
-     
-        Destroy(gameObject);
+        
     }
 
     // Update is called once per frame
@@ -29,14 +15,13 @@ public class Dot : MonoBehaviour
     {
         
     }
-
     /// <summary>
     /// 当たった時にドットを取得する
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             //当たったプレイヤーからスクリプトを取得しドットを送信
             //Destroy(gameaObject);

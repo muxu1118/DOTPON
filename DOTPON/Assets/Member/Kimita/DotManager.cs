@@ -25,10 +25,6 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            InstanceDot(3, Vector3.zero);
-        }
         if (Input.GetKeyDown(KeyCode.B))
         {
             EnemyDeadDotPop(5,Vector3.zero);
