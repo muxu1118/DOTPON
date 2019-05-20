@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DotMove : MonoBehaviour
+public class Move : MonoBehaviour
 {
     // timeSpeedは速さ、ratioは割合（どこで落ちるか）、angleは基準の角度
     public float timeSpeed, ratio, angle,Range;　//　おすすめ(0.4,1,90,2.5)
