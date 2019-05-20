@@ -7,8 +7,10 @@ public class plaer_m : MonoBehaviour
     [SerializeField] int hp;
     [SerializeField] GameObject obj;
     [SerializeField] GameObject obj2;
-    [SerializeField] GameObject goburin;
-    bool isDamage = false;
+    [HideInInspector]public bool isDamage = false;
+
+    public bool isAttack;
+    [SerializeField] GameObject ax;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class plaer_m : MonoBehaviour
     }
     void KeyInout()
     {
+        if (isAttack) return;
         if (Input.GetKeyDown(KeyCode.W))
         {
             PlayerMove(new Vector3(0, 0, 5));
@@ -40,11 +43,11 @@ public class plaer_m : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           obj.GetComponent<Goburin>().Damage(1);
+            AttackColliderOn();
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            obj2.GetComponent<Slime>().Damage(1);
+            AttackColliderOn();
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -62,6 +65,10 @@ public class plaer_m : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity += vec;
     }
+    /// <summary>
+    /// プレイヤーがダメージを受けた時の処理
+    /// </summary>
+    /// <param name="damage">ダメージ量</param>
     public void Damage(int damage)
     {
         if (isDamage) return;
@@ -74,9 +81,38 @@ public class plaer_m : MonoBehaviour
         isDamage = true;
         StartCoroutine(DamegeWait());
     }
+    /// <summary>
+    /// ダメージを受けた時の無敵時間
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DamegeWait()
     {
-        yield return new WaitForSeconds(1);
+        for (int i = 0; i < 4; i++)
+        {
+            yield return new WaitForSeconds(0.25f);
+            this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1);
+            yield return new WaitForSeconds(0.25f);
+            this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
+        }
         isDamage = false;
+        ax.GetComponent<BoxCollider>().enabled = false;
+    }
+    /// <summary>
+    /// 攻撃したときの待機時間
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator AttackWait()
+    {
+        yield return new WaitForSeconds(0.8f);
+        ax.GetComponent<BoxCollider>().enabled = false;
+        isAttack = true;
+        yield break;
+    }
+    void AttackColliderOn()
+    {
+        isAttack = false;
+        ax.GetComponent<Animator>().SetTrigger("Trigger");
+        ax.GetComponent<BoxCollider>().enabled = true;
+       StartCoroutine(AttackWait());
     }
 }

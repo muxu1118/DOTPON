@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class weapon : MonoBehaviour
 {
-    //各武器にステータスを参照させる
     public Parametor parametor;
-
     [HideInInspector]
     public int _attackSpeed;
     [HideInInspector]
@@ -15,13 +13,31 @@ public class weapon : MonoBehaviour
     public int _necessaryDot;
     [HideInInspector]
     public int _durableValue;
+    
 
     void Start()
     {
-        //_attackSpeed = parametor.attackSpeed;
-        //_attackDamage = parametor.attackDamage;
-        //_necessaryDot = parametor.necessaryDot;
-        //_durableValue = parametor.durableValue;
-    }   
+        _attackSpeed = parametor.attackSpeed;
+        _attackDamage = parametor.attackDamage;
+        _necessaryDot = parametor.necessaryDot;
+        _durableValue = parametor.durableValue;
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+
+        switch (other.gameObject.tag)
+        {
+            case "player":
+                if (other.gameObject.GetComponent<plaer_m>().isDamage) return;
+                Debug.Log(gameObject.transform.root.name + "に攻撃された！" + _attackDamage + "ダメージ！");
+                other.gameObject.GetComponent<plaer_m>().Damage(_attackDamage);
+                break;
+            case "enemy":
+                if (gameObject.transform.root.tag == "enemy") return;
+                Debug.Log(other.name + "に攻撃！" + _attackDamage + "ダメージ！");
+                other.gameObject.GetComponent<Enemy>().Damage(_attackDamage);
+                break;
+        }
+    }
 }
