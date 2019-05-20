@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571faecb276e2ca41a3a158b951de40a, type: 3}
   m_Name: katana
   m_EditorClassIdentifier: 
-  Name: katana
   attackSpeed: 15
   attackDamage: 1
   necessaryDot: 6
   durableValue: 4
-  weapon: {fileID: 1359829504648987593, guid: 06f126a413f266a43ab190f068c5ff3a, type: 3}
+  weapon: {fileID: 1359829504648987593, guid: a6f7efa1b6fee9c42b4a75e4ada48983, type: 3}
