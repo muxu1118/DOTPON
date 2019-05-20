@@ -7,8 +7,10 @@ public class plaer_m : MonoBehaviour
     [SerializeField] int hp;
     [SerializeField] GameObject obj;
     [SerializeField] GameObject obj2;
-    [SerializeField] GameObject goburin;
     bool isDamage = false;
+
+    public bool isAttack;
+    [SerializeField] GameObject ax;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +42,11 @@ public class plaer_m : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           obj.GetComponent<Goburin>().Damage(1);
+            AttackColliderOn();
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            obj2.GetComponent<Slime>().Damage(1);
+            AttackColliderOn();
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -78,5 +80,12 @@ public class plaer_m : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         isDamage = false;
+        ax.GetComponent<BoxCollider>().enabled = false;
+    }
+    void AttackColliderOn()
+    {
+        ax.GetComponent<Animator>().SetTrigger("Trigger");
+        ax.GetComponent<BoxCollider>().enabled = true;
+        DamegeWait();
     }
 }

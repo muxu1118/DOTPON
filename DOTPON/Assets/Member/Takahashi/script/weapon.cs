@@ -14,11 +14,29 @@ public class weapon : MonoBehaviour
     [HideInInspector]
     public int _durableValue;
 
+    [SerializeField]
+    plaer_m plaer;
+
     void Start()
     {
         _attackSpeed = parametor.attackSpeed;
         _attackDamage = parametor.attackDamage;
         _necessaryDot = parametor.necessaryDot;
         _durableValue = parametor.durableValue;
-    }   
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        switch (other.gameObject.tag)
+        {
+            case "playre":
+                break;
+            case "enemy":
+                if (gameObject.tag == "enemy") return;
+                Debug.Log(other.name + "に攻撃！" + _attackDamage + "ダメージ！");
+                other.gameObject.GetComponent<Enemy>().Damage(_attackDamage);
+                break;
+        }
+    }
 }

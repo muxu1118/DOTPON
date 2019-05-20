@@ -6,15 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public EnemyParameter parameter;
     [HideInInspector]public int HP;
-    [HideInInspector]public int DropDotNumber;
-    [HideInInspector] public float speed;
-    [HideInInspector] public float rotateTime;
-    [HideInInspector] public int rotateAngle;
-    [HideInInspector] public float lookingAngle;
-    [HideInInspector] public float distance;
     [HideInInspector]public bool isLooking = false;
-    [HideInInspector] public float lookSpeed;
-    [HideInInspector] public int attackPow;
     public void SpawnEnemy()
     {
         /*判定場所は後々
@@ -32,11 +24,11 @@ public class Enemy : MonoBehaviour
         //プレイヤーのスクリプトのダメージの関数に投げる
     }
     //しんだとき
-    public void DropDot(GameObject obj)
+    public void DropDot(GameObject obj,int kazu)
     {
         if (HP > 0) return;
         // managerに投げる
-        //DotManager.instance.EnemyDeadDotPop(kazu,obj.transform.position);
+        DotManager.instance.EnemyDeadDotPop(kazu,obj.transform.position);
         //enemyの消去
         Destroy(obj);
     }
