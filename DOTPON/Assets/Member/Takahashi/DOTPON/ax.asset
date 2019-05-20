@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571faecb276e2ca41a3a158b951de40a, type: 3}
   m_Name: ax
   m_EditorClassIdentifier: 
-  Name: ax
   attackSpeed: 1
   attackDamage: 1
   necessaryDot: 6
   durableValue: 6
-  weapon: {fileID: 6819009950764646929, guid: 8f15c20078cc63944a77a4f5ac8ecb26, type: 3}
+  weapon: {fileID: 6819009950764646929, guid: 80a39b4035d67034fbac02011334309a, type: 3}
