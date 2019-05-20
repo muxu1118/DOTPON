@@ -18,10 +18,10 @@ public class weapon : MonoBehaviour
 
     void Start()
     {
-        _attackSpeed = parametor.attackSpeed;
-        _attackDamage = parametor.attackDamage;
-        _necessaryDot = parametor.necessaryDot;
-        _durableValue = parametor.durableValue;
+        //_attackSpeed = parametor.attackSpeed;
+        //_attackDamage = parametor.attackDamage;
+        //_necessaryDot = parametor.necessaryDot;
+        //_durableValue = parametor.durableValue;
     }   
 
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -137,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274823006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 1}
+  m_LocalPosition: {x: -3.15, y: -0.1, z: -2.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 642533180}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd30ae9c51554c64585f2bc0a176e23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parametor: {fileID: 11400000, guid: 1df10d19c12268649954eb4aa22a69e3, type: 2}
+  parametor: {fileID: 0}
   _attackSpeed: 0
   _attackDamage: 0
   _necessaryDot: 0
@@ -438,13 +438,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 642533175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58d31233e5029944a86f8155c4abd2bb, type: 3}
+  m_Script: {fileID: 11500000, guid: ad5d9baad852b74459c9a536d247b905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weapon:
-  - {fileID: 6819009950764646929, guid: f07a881186b267344b4de0349c949b98, type: 3}
-  - {fileID: 1359829504648987593, guid: f7e9d83a376597b419895318e08881b9, type: 3}
-  - {fileID: 4715716043184094966, guid: c90691fb448a31e4dbb4de8408b320ed, type: 3}
+  - {fileID: 6819009950764646929, guid: 80a39b4035d67034fbac02011334309a, type: 3}
+  - {fileID: 1359829504648987593, guid: a6f7efa1b6fee9c42b4a75e4ada48983, type: 3}
+  - {fileID: 4715716043184094966, guid: 776f2f0517210c24bb43b8f09a99a7f1, type: 3}
   point: {fileID: 274823007}
 --- !u!65 &642533177
 BoxCollider:
