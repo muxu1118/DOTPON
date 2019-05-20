@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd30ae9c51554c64585f2bc0a176e23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parametor: {fileID: 11400000, guid: ab1ca04bd32c0414b83d250874d0993e, type: 2}
+  parametor: {fileID: 11400000, guid: c1db1a0138db5f644b07227126fc6007, type: 2}
   _attackSpeed: 0
   _attackDamage: 0
   _necessaryDot: 0
