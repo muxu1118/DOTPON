@@ -24,6 +24,7 @@ public class plaer_m : MonoBehaviour
     }
     void KeyInout()
     {
+        if (isAttack) return;
         if (Input.GetKeyDown(KeyCode.W))
         {
             PlayerMove(new Vector3(0, 0, 5));
@@ -64,6 +65,10 @@ public class plaer_m : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity += vec;
     }
+    /// <summary>
+    /// プレイヤーがダメージを受けた時の処理
+    /// </summary>
+    /// <param name="damage">ダメージ量</param>
     public void Damage(int damage)
     {
         if (isDamage) return;
@@ -76,6 +81,10 @@ public class plaer_m : MonoBehaviour
         isDamage = true;
         StartCoroutine(DamegeWait());
     }
+    /// <summary>
+    /// ダメージを受けた時の無敵時間
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DamegeWait()
     {
         for (int i = 0; i < 4; i++)
@@ -88,14 +97,20 @@ public class plaer_m : MonoBehaviour
         isDamage = false;
         ax.GetComponent<BoxCollider>().enabled = false;
     }
+    /// <summary>
+    /// 攻撃したときの待機時間
+    /// </summary>
+    /// <returns></returns>
     IEnumerator AttackWait()
     {
         yield return new WaitForSeconds(0.8f);
         ax.GetComponent<BoxCollider>().enabled = false;
+        isAttack = true;
         yield break;
     }
     void AttackColliderOn()
     {
+        isAttack = false;
         ax.GetComponent<Animator>().SetTrigger("Trigger");
         ax.GetComponent<BoxCollider>().enabled = true;
        StartCoroutine(AttackWait());
