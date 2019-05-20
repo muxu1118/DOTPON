@@ -7,7 +7,7 @@ public class plaer_m : MonoBehaviour
     [SerializeField] int hp;
     [SerializeField] GameObject obj;
     [SerializeField] GameObject obj2;
-    [HideInInspector]public bool isDamage = false;
+    public bool isDamage = false;
 
     public bool isAttack;
     [SerializeField] GameObject ax;
@@ -56,9 +56,13 @@ public class plaer_m : MonoBehaviour
             {
                 for(int j = 0;j < 2; j++)
                 {
-                    Instantiate(obj, new Vector3(i, 1, j), Quaternion.identity).transform.parent = _object.transform;
+                    GameObject chald = Instantiate(obj, new Vector3(i, 1, j), Quaternion.identity);
+                    chald.name = chald.name + (i + j);
+                    chald.transform.parent = _object.transform;
+
                 }
             }
+            _object.AddComponent<GoburinFlock>();
         }
     }
     void PlayerMove(Vector3 vec)
@@ -105,12 +109,12 @@ public class plaer_m : MonoBehaviour
     {
         yield return new WaitForSeconds(0.8f);
         ax.GetComponent<BoxCollider>().enabled = false;
-        isAttack = true;
+        isAttack = false;
         yield break;
     }
     void AttackColliderOn()
     {
-        isAttack = false;
+        isAttack = true;
         ax.GetComponent<Animator>().SetTrigger("Trigger");
         ax.GetComponent<BoxCollider>().enabled = true;
        StartCoroutine(AttackWait());

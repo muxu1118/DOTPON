@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5175814156300036581}
   m_Layer: 0
   m_Name: goburin
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,7 +252,8 @@ MonoBehaviour:
   parameter: {fileID: 11400000, guid: 4a4b721abfb2f2d47a8641fc8ffa325f, type: 2}
   HP: 0
   isLooking: 0
-  buki: {fileID: 0}
+  buki: {fileID: 3295366073200972735}
+  isAction: 0
   lookingCollider:
   - {fileID: 4477100712466058595}
   - {fileID: 3307470543475656151}
@@ -373,6 +374,17 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4715716043184094967, guid: 4122eee347dd5f5408b9182f3dc22827,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634439722612455991, guid: 4122eee347dd5f5408b9182f3dc22827,
+        type: 3}
+      propertyPath: parametor
+      value: 
+      objectReference: {fileID: 11400000, guid: c1db1a0138db5f644b07227126fc6007,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4122eee347dd5f5408b9182f3dc22827, type: 3}
 --- !u!1 &3295366073200972735 stripped

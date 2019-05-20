@@ -17,10 +17,10 @@ public class weapon : MonoBehaviour
 
     void Start()
     {
-        _attackSpeed = parametor.attackSpeed;
-        _attackDamage = parametor.attackDamage;
-        _necessaryDot = parametor.necessaryDot;
-        _durableValue = parametor.durableValue;
+    //    _attackSpeed = parametor.attackSpeed;
+    //    _attackDamage = parametor.attackDamage;
+    //    _necessaryDot = parametor.necessaryDot;
+    //    _durableValue = parametor.durableValue;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,13 +30,13 @@ public class weapon : MonoBehaviour
         {
             case "player":
                 if (other.gameObject.GetComponent<plaer_m>().isDamage) return;
-                Debug.Log(gameObject.transform.root.name + "に攻撃された！" + _attackDamage + "ダメージ！");
-                other.gameObject.GetComponent<plaer_m>().Damage(_attackDamage);
+                Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
+                other.gameObject.GetComponent<plaer_m>().Damage(parametor.attackDamage);
                 break;
             case "enemy":
                 if (gameObject.transform.root.tag == "enemy") return;
-                Debug.Log(other.name + "に攻撃！" + _attackDamage + "ダメージ！");
-                other.gameObject.GetComponent<Enemy>().Damage(_attackDamage);
+                Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
+                other.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage);
                 break;
         }
     }

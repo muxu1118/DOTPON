@@ -18,7 +18,7 @@ public class Goburin : Enemy
         //視野のcollider3つを配置するループ
         for (int i = 0;i < 3;i++)
         {
-            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(parameter.lookingAngle, 1, lookingAngle);
+            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, 1, lookingAngle);
             switch (i)
             { 
                 case 0:
