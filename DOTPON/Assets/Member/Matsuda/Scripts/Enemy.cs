@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public EnemyParameter parameter;
     [HideInInspector]public int HP;
     [HideInInspector]public bool isLooking = false;
+    [SerializeField] private GameObject buki;
     public void SpawnEnemy()
     {
         /*判定場所は後々
@@ -20,7 +21,8 @@ public class Enemy : MonoBehaviour
     //プレイヤーを攻撃する関数
     protected void Attack(int attack)
     {
-        GameObject.Find("player").GetComponent<plaer_m>().Damage(attack);
+        //GameObject.Find("player").GetComponent<plaer_m>().Damage(attack);
+        buki.GetComponent<Animator>().SetTrigger("Trigger");
         //プレイヤーのスクリプトのダメージの関数に投げる
     }
     //しんだとき

@@ -295,6 +295,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 540950407867066539, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cae3628ef69cbca4aa9b01c353161d67, type: 3}
 --- !u!1 &168854629 stripped
@@ -864,6 +869,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1304683596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 540950407867066539, guid: cae3628ef69cbca4aa9b01c353161d67,
+    type: 3}
+  m_PrefabInstance: {fileID: 5175814155144418265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1304683602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304683596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd30ae9c51554c64585f2bc0a176e23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parametor: {fileID: 11400000, guid: 93b8db5e06b096e4194f3d1e88dbaab8, type: 2}
+  _attackSpeed: 0
+  _attackDamage: 0
+  _necessaryDot: 0
+  _durableValue: 0
 --- !u!1 &1341697769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +1465,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 540950407867066539, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 540950407867066538, guid: cae3628ef69cbca4aa9b01c353161d67,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cae3628ef69cbca4aa9b01c353161d67, type: 3}

@@ -13,9 +13,7 @@ public class weapon : MonoBehaviour
     public int _necessaryDot;
     [HideInInspector]
     public int _durableValue;
-
-    [SerializeField]
-    plaer_m plaer;
+    
 
     void Start()
     {
@@ -30,10 +28,12 @@ public class weapon : MonoBehaviour
 
         switch (other.gameObject.tag)
         {
-            case "playre":
+            case "player":
+                Debug.Log(other.name + "に攻撃！" + _attackDamage + "ダメージ！");
+                other.gameObject.GetComponent<plaer_m>().Damage(_attackDamage);
                 break;
             case "enemy":
-                if (gameObject.tag == "enemy") return;
+                if (gameObject..tag == "enemy") return;
                 Debug.Log(other.name + "に攻撃！" + _attackDamage + "ダメージ！");
                 other.gameObject.GetComponent<Enemy>().Damage(_attackDamage);
                 break;
