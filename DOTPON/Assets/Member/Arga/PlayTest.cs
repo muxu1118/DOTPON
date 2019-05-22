@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayTest : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        number.text = MultiPlayerManager.instance.TotalPlayer.ToString();
+        //  number.text = MultiPlayerManager.instance.TotalPlayer.ToString();
     }
 
     public void Plus()
@@ -28,19 +29,36 @@ public class PlayTest : MonoBehaviour
         MultiPlayerManager.instance.TotalPlayer--;
     }
 
+    public void singlePlayer()
+    {
+        MultiPlayerManager.instance.TotalPlayer = 1;
+        MultiPlayerManager.instance.MultiPlayer();
+        SceneManager.LoadScene(1);
+    } 
 
     public void twoPlayer()
     {
         MultiPlayerManager.instance.TotalPlayer = 2;
+        MultiPlayerManager.instance.MultiPlayer();
+        SceneManager.LoadScene(1);
     } 
 
     public void threePlayer()
     {
         MultiPlayerManager.instance.TotalPlayer = 3;
+        MultiPlayerManager.instance.MultiPlayer();
+        SceneManager.LoadScene(1);
     } 
 
     public void fourPlayer()
     {
         MultiPlayerManager.instance.TotalPlayer = 4;
+        MultiPlayerManager.instance.MultiPlayer();
+        SceneManager.LoadScene(1);
     } 
+
+    public void backButton()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
