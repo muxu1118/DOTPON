@@ -442,9 +442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon:
-  - {fileID: 6819009950764646929, guid: 80a39b4035d67034fbac02011334309a, type: 3}
-  - {fileID: 1359829504648987593, guid: a6f7efa1b6fee9c42b4a75e4ada48983, type: 3}
-  - {fileID: 4715716043184094966, guid: 776f2f0517210c24bb43b8f09a99a7f1, type: 3}
+  - {fileID: 6819009950764646929, guid: db5b6373453a511419617f4a87dc3394, type: 3}
+  - {fileID: 1359829504648987593, guid: 91afc859ac496024d8e53e2c0565aba7, type: 3}
+  - {fileID: 4715716043184094966, guid: 4122eee347dd5f5408b9182f3dc22827, type: 3}
   point: {fileID: 274823007}
 --- !u!65 &642533177
 BoxCollider:
