@@ -6,9 +6,7 @@ public class WeaponCreate : MonoBehaviour
 {
     [SerializeField]
     GameObject[] weapon; //武器を格納
-    [SerializeField]
-    Transform point;     //武器を生成する場所
-    GameObject fakeWeapon;
+        
     bool trigger = true; //武器の作成と破棄の切り替え 
     int weaponNumber;    //武器の種類
     int weaponType = 0;  //武器を指定するための数値
@@ -16,20 +14,15 @@ public class WeaponCreate : MonoBehaviour
     void Start()
     {
         weaponNumber = weapon.Length;
-    }
-
-    void Update()
-    {        
-        WeaponChoice();
-    }
+    }    
 
     /// <summary>
     /// 指定の武器を作成
     /// </summary>
-    public void Create(int x)
+    /*public void Create(int x)
     {        
         fakeWeapon = Instantiate(weapon[x], point.transform.position, Quaternion.identity);            
-    }
+    }*/
 
     /// <summary>
     /// コントローラーのボタンが押された時の各判定
@@ -41,13 +34,13 @@ public class WeaponCreate : MonoBehaviour
             case "a":
                 if(trigger)
                 {
-                    Create(weaponType);
+                    weapon[weaponNumber].SetActive(true);
                     trigger = false;
                 }
                 else
                 {
                     //作成した武器を破棄
-                    Destroy(fakeWeapon);
+                    weapon[weaponNumber].SetActive(false);
                     trigger = true;
                 }                
                 break;     
@@ -75,6 +68,53 @@ public class WeaponCreate : MonoBehaviour
                     Debug.Log(weaponType);
                 }
                 break;
+        }
+    }
+
+    /// <summary>
+    /// 武器を表示非表示
+    /// </summary>
+    public void CreateWeapon(){
+        if (trigger)
+        {
+            weapon[weaponNumber].SetActive(true);
+            trigger = false;
+        }
+        else
+        {
+            //作成した武器を破棄
+            weapon[weaponNumber].SetActive(false);
+            trigger = true;
+        }
+    }
+
+    /// <summary>
+    /// 表示させる武器を変えるプラス方向)
+    /// </summary>
+    public void ChangeWeaponPlus()
+    {
+        weaponType += 1;
+        if (weaponType == weaponNumber)
+        {
+            weaponType = 0;
+        }
+        Debug.Log(weaponType);
+    }
+
+    /// <summary>
+    /// 表示させる武器を変える(マイナス方向)
+    /// </summary>
+    public void ChangeWeaponMinus()
+    {
+        if (weaponType > 0)
+        {
+            weaponType -= 1;
+            Debug.Log(weaponType);
+        }
+        else if (weaponType == 0)
+        {
+            weaponType = weaponNumber - 1;
+            Debug.Log(weaponType);
         }
     }
 }
