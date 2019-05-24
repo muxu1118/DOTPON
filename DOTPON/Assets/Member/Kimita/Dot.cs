@@ -36,11 +36,18 @@ public class Dot : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "player")
         {
-            //当たったプレイヤーからスクリプトを取得しドットを送信
-            //Destroy(gameaObject);
+            // 
+            
+            Destroy(gameObject);
         }
 
+    }
+
+    // プレイヤーに当たったどっとを破壊する
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }
