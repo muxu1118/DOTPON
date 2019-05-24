@@ -35,10 +35,7 @@ public class Dot_count : MonoBehaviour
 
     void SetCountText()
     {
-        Dot_Text.text = "×" + MultiPlayerManager.instance.P1dot();
-        if (count >= 99)
-        {
-            
-        }
+        //Dot_Text.text = "×" + MultiPlayerManager.instance.P1dot();
+        
     }
 }
