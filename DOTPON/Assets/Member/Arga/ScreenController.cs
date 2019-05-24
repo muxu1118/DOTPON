@@ -18,7 +18,7 @@ public class ScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch (MultiPlayerManager.instance.TotalPlayer)
+        switch (MultiPlayerManager.instance.totalPlayer)
         {
 
             case 1: singlePlayer();

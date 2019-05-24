@@ -10,7 +10,7 @@ public class PlayTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MultiPlayerManager.instance.P1Dot = 1;
     }
 
     // Update is called once per frame
@@ -21,39 +21,35 @@ public class PlayTest : MonoBehaviour
 
     public void Plus()
     {
-        MultiPlayerManager.instance.TotalPlayer++;
+        MultiPlayerManager.instance.totalPlayer++;
     }
 
     public void Minus()
     {
-        MultiPlayerManager.instance.TotalPlayer--;
+        MultiPlayerManager.instance.totalPlayer--;
     }
 
     public void singlePlayer()
     {
-        MultiPlayerManager.instance.TotalPlayer = 1;
-        MultiPlayerManager.instance.MultiPlayer();
+        MultiPlayerManager.instance.totalPlayer = 1;
         SceneManager.LoadScene(1);
     } 
 
     public void twoPlayer()
     {
-        MultiPlayerManager.instance.TotalPlayer = 2;
-        MultiPlayerManager.instance.MultiPlayer();
+        MultiPlayerManager.instance.totalPlayer = 2;
         SceneManager.LoadScene(1);
     } 
 
     public void threePlayer()
     {
-        MultiPlayerManager.instance.TotalPlayer = 3;
-        MultiPlayerManager.instance.MultiPlayer();
+        MultiPlayerManager.instance.totalPlayer = 3;
         SceneManager.LoadScene(1);
     } 
 
     public void fourPlayer()
     {
-        MultiPlayerManager.instance.TotalPlayer = 4;
-        MultiPlayerManager.instance.MultiPlayer();
+        MultiPlayerManager.instance.totalPlayer = 4;
         SceneManager.LoadScene(1);
     } 
 
