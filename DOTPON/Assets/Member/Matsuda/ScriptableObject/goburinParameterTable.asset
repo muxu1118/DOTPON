@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 2
   dropDot: 1
+  attackPow: 1
   speed: 3
   rotateTime: 1
   rotateAngle: 90
   lookingAngle: 15
   distance: 1
+  lookSpeed: 0.1

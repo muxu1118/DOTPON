@@ -6,15 +6,10 @@ public class Enemy : MonoBehaviour
 {
     public EnemyParameter parameter;
     [HideInInspector]public int HP;
-    [HideInInspector]public int DropDotNumber;
-    [HideInInspector] public float speed;
-    [HideInInspector] public float rotateTime;
-    [HideInInspector] public int rotateAngle;
-    [HideInInspector] public float lookingAngle;
-    [HideInInspector] public float distance;
     [HideInInspector]public bool isLooking = false;
-    [HideInInspector] public float lookSpeed;
-    [HideInInspector] public int attackPow;
+    [SerializeField] private GameObject buki;
+
+    public bool isAction = false;
     public void SpawnEnemy()
     {
         /*判定場所は後々
@@ -28,15 +23,16 @@ public class Enemy : MonoBehaviour
     //プレイヤーを攻撃する関数
     protected void Attack(int attack)
     {
-        GameObject.Find("player").GetComponent<plaer_m>().Damage(attack);
+        //GameObject.Find("player").GetComponent<plaer_m>().Damage(attack);
+        buki.GetComponent<Animator>().SetTrigger("Trigger");
         //プレイヤーのスクリプトのダメージの関数に投げる
     }
     //しんだとき
-    public void DropDot(GameObject obj)
+    public void DropDot(GameObject obj,int kazu)
     {
         if (HP > 0) return;
         // managerに投げる
-        //DotManager.instance.EnemyDeadDotPop(kazu,obj.transform.position);
+        DotManager.instance.EnemyDeadDotPop(kazu,obj.transform.position);
         //enemyの消去
         Destroy(obj);
     }
@@ -47,7 +43,9 @@ public class Enemy : MonoBehaviour
     public void Damage(int At)
     {
         HP -= At;
-        Debug.Log(HP);
+        isAction = true;
+        StartCoroutine(WaitTime());
+        Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
     }
     /// <summary>
     /// エネミーの回転をさせるコルーチン
@@ -73,10 +71,17 @@ public class Enemy : MonoBehaviour
     protected float CantLookPos(float lookingAngle)
     {
         float pos =  Mathf.Sqrt(Mathf.Pow(lookingAngle,2) * 2) / 2;
-        Debug.Log(pos);
+        //Debug.Log(pos);
         return pos;
     }
 
+    //行動しない時間
+    public IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(parameter.rotateTime);
+        isAction = false;
+        yield break;
+    }
     private void FixedUpdate()
     {
     }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 753848811255621911}
   m_Layer: 0
   m_Name: slime
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,12 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parameter: {fileID: 11400000, guid: 4a4b721abfb2f2d47a8641fc8ffa325f, type: 2}
   HP: 0
-  DropDotNumber: 0
-  speed: 0
-  rotateTime: 0
-  rotateAngle: 0
-  lookingAngle: 0
-  distance: 0
   isLooking: 0
-  player: {fileID: 0}
-  childCollider: {fileID: 0}
+  buki: {fileID: 0}
+  isAction: 0
+  lookingCollider: []

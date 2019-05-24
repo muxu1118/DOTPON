@@ -25,10 +25,6 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            InstanceDot(3, Vector3.zero);
-        }
         if (Input.GetKeyDown(KeyCode.B))
         {
             EnemyDeadDotPop(5,Vector3.zero);
@@ -49,8 +45,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         // 指定の数まで繰り返し
         while (count > 0) {
             // ドットの出現(位置はランダム)
-            Instantiate(dotObj, new Vector3(Random.Range(-20f, 20f), 1, Random.Range(-20f, 20f)), Quaternion.identity);
-            
+            Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
             count--;
         }
     }

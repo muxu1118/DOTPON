@@ -29,4 +29,18 @@ public class Dot : MonoBehaviour
     {
         
     }
+
+    /// <summary>
+    /// 当たった時にドットを取得する
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            //当たったプレイヤーからスクリプトを取得しドットを送信
+            //Destroy(gameaObject);
+        }
+
+    }
 }
