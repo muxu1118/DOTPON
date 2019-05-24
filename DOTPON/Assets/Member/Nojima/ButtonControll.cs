@@ -15,7 +15,7 @@ public class ButtonControll : MonoBehaviour
         Button();
 
         ControllerNum();
-
+        
 
     }
 
@@ -32,24 +32,49 @@ public class ButtonControll : MonoBehaviour
                 PlayerNumber++;
             }
         }
-        Debug.Log(PlayerNumber);//Player(接続されてるコントローラー)の数
+        //Debug.Log(PlayerNumber + "接続コントローラー数");//Player(接続されてるコントローラー)の数
     }
     private void Button()
     {
-        //    if (Input.GetKeyDown(x))
+        //    switch (Input.inputString)
         //    {
-        //        switch ()
+        //        case "joystick 1 button 0":
+        //            Debug.Log("deta");
+        //            break;
+
         //    }
 
-        //for (int PadNum = 1; PadNum <= PlayerNumber; PadNum++)
-        //{
-        //    Debug.Log("joystick" + PlayerNumber + "_1");
-        //    if (Input.GetButtonDown("joystick" + PlayerNumber + "_1"))
-        //    {
-        //        Debug.Log("1");
-        //    }
-        //}
 
+        
+        for (int padNum = 1; padNum <= 4; padNum++)
+        {
+            Debug.Log("Joystick" + padNum + "_1");
+            if (Input.GetKeyDown("joystick " + padNum + " button 0"))
+            {
+                Debug.Log(padNum+"_1");
+            }
+            if (Input.GetKeyDown("joystick " + padNum + " button 1"))
+            {
+                Debug.Log(padNum + "_2");
+            }
+            if (Input.GetKeyDown("joystick " + padNum + " button 2"))
+            {
+                Debug.Log(padNum + "_3");
+            }
+            if (Input.GetKeyDown("joystick " + padNum + " button 3"))
+            {
+                Debug.Log(padNum + "_4");
+            }
+            if (Input.GetKeyDown("joystick " + padNum + " button 4"))
+            {
+                Debug.Log(padNum + "_5");
+            }
+            if (Input.GetKeyDown("joystick " + padNum + " button 5"))
+            {
+                Debug.Log(padNum + "_6");
+            }
+
+        }
 
 
 
