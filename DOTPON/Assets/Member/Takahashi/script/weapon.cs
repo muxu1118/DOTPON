@@ -29,9 +29,9 @@ public class weapon : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "player":
-                if (other.gameObject.GetComponent<plaer_m>().isDamage) return;
+                if (other.gameObject.GetComponent<Player>().isDamage) return;
                 Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
-                other.gameObject.GetComponent<plaer_m>().Damage(parametor.attackDamage);
+                other.gameObject.GetComponent<Player>().Damage(parametor.attackDamage);
                 break;
             case "enemy":
                 if (gameObject.transform.root.tag == "enemy") return;

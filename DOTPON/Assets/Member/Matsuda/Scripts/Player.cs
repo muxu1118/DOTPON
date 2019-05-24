@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class plaer_m : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] int hp;
     [SerializeField] GameObject obj;
     [SerializeField] GameObject obj2;
     public bool isDamage = false;
+
+
+    [SerializeField]
+    private float WalkSpeed = 10f; //歩く速度
+    [SerializeField]
+    private float RunSpeed = 100f; //走る速度
+    //private float RotationSpeed = 100f; //向きを変える速度
 
     public bool isAttack;
     [SerializeField] GameObject ax;
@@ -21,10 +28,12 @@ public class plaer_m : MonoBehaviour
     void Update()
     {
         KeyInout();
+        Move();
     }
     void KeyInout()
     {
         if (isAttack) return;
+        /*
         if (Input.GetKeyDown(KeyCode.W))
         {
             PlayerMove(new Vector3(0, 0, 5));
@@ -41,28 +50,49 @@ public class plaer_m : MonoBehaviour
         {
             PlayerMove(new Vector3(5, 0, 0));
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        */
+        if (Input.GetKeyDown("joystick 1 button 3"))
         {
             AttackColliderOn();
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown("joystick 1 button 2"))
         {
             AttackColliderOn();
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            GameObject _object = new GameObject("GoburinFlock");
-            for(int i = 0;i < 2; i++)
-            {
-                for(int j = 0;j < 2; j++)
-                {
-                    GameObject chald = Instantiate(obj, new Vector3(i, 1, j), Quaternion.identity);
-                    chald.name = chald.name + (i + j);
-                    chald.transform.parent = _object.transform;
+            
+        }
+    }
+    void Move()
+    {
+        //transform.potisionの移動
 
-                }
-            }
-            _object.AddComponent<GoburinFlock>();
+        //走る
+        if (Input.GetAxisRaw("Mouse Y") == -1)
+        {
+            transform.position += transform.forward * RunSpeed * Time.deltaTime;
+            Debug.Log("呼ばれた");
+        }
+        //前に歩く
+        if (Input.GetAxisRaw("Mouse Y") < -0.3)
+        {
+            transform.position += transform.forward * WalkSpeed * Time.deltaTime;
+        }
+        //左に移動
+        if (Input.GetAxisRaw("Mouse X") < -0.3)
+        {
+            transform.position -= transform.right * WalkSpeed * Time.deltaTime;
+        }
+        //右に移動
+        if (Input.GetAxisRaw("Mouse X") > 0.3)
+        {
+            transform.position += transform.right * WalkSpeed * Time.deltaTime;
+        }
+        //後ろに歩く
+        if (Input.GetAxisRaw("Mouse Y") > 0.3)
+        {
+            transform.position -= transform.forward * WalkSpeed * Time.deltaTime;
         }
     }
     void PlayerMove(Vector3 vec)
