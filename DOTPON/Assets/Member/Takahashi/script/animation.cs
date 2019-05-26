@@ -14,12 +14,12 @@ public class animation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            mecanimControl.Play("attack", 1f, 0.1f, false);
+            mecanimControl.Play("a", 1f, 0.1f, false);
             Debug.Log("attack");
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            mecanimControl.Play("attack2", 1f, 0.1f, false);
+            mecanimControl.Play("a2", 1f, 0.1f, false);
             Debug.Log("attack2");
         }
         else if (Input.GetKeyDown(KeyCode.D))
