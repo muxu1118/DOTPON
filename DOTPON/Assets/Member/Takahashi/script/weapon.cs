@@ -25,7 +25,6 @@ public class weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         switch (other.gameObject.tag)
         {
             case "player":
