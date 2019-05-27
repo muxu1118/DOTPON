@@ -35,17 +35,7 @@ public class ButtonControll : MonoBehaviour
         //Debug.Log(PlayerNumber + "接続コントローラー数");//Player(接続されてるコントローラー)の数
     }
     private void Button()
-    {
-        //    switch (Input.inputString)
-        //    {
-        //        case "joystick 1 button 0":
-        //            Debug.Log("deta");
-        //            break;
-
-        //    }
-
-
-        
+    {   
         for (int padNum = 1; padNum <= 4; padNum++)
         {
             Debug.Log("Joystick" + padNum + "_1");
@@ -73,62 +63,6 @@ public class ButtonControll : MonoBehaviour
             {
                 Debug.Log(padNum + "_6");
             }
-
         }
-
-
-
-
-
-        //if (Input.GetKeyDown("joystick 1 button 0"))
-        //{
-        //    Debug.Log("1P1");
-        //}
-        //if (Input.GetKeyDown("joystick 1 button 1"))
-        //{
-        //    Debug.Log("1P2");
-        //}
-        //if (Input.GetKeyDown("joystick 1 button 2"))
-        //{
-        //    Debug.Log("1P3");
-        //}
-        //if (Input.GetKeyDown("joystick 1 button 3"))
-        //{
-        //    Debug.Log("1P4");
-        //}
-        //if (Input.GetKeyDown("joystick 1 button 4"))
-        //{
-        //    Debug.Log("1P5");
-        //}
-        //if (Input.GetKeyDown("joystick 1 button 5"))
-        //{
-        //    Debug.Log("1P6");
-        //}
-
-        //if (Input.GetKeyDown("joystick 2 button 0"))
-        //{
-        //    Debug.Log("2P1");
-        //}
-        //if (Input.GetKeyDown("joystick 2 button 1"))
-        //{
-        //    Debug.Log("2P2");
-        //}
-        //if (Input.GetKeyDown("joystick 2 button 2"))
-        //{
-        //    Debug.Log("2P3");
-        //}
-        //if (Input.GetKeyDown("joystick 2 button 3"))
-        //{
-        //    Debug.Log("2P4");
-        //}
-        //if (Input.GetKeyDown("joystick 2 button 4"))
-        //{
-        //    Debug.Log("2P5");
-        //}
-        //if (Input.GetKeyDown("joystick 2 button 5"))
-        //{
-        //    Debug.Log("2P6");
-        //}
-
     }
 }
