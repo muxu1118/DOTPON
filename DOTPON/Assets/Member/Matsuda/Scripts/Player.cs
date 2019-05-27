@@ -76,11 +76,11 @@ public class Player : MonoBehaviour
         {
             AttackColliderOn();
         }
-        if (Input.GetKeyDown("joystick 1 button 5"))
+        if (Input.GetKeyDown("joystick 1 button 2"))
         {
             WeaponChoice("a");
         }
-        if (Input.GetKeyDown("joystick 1 button 6"))
+        if (Input.GetKeyDown("joystick 1 button 5"))
         {
             WeaponChoice("s");
         }
@@ -277,7 +277,7 @@ public class Player : MonoBehaviour
     void AttackColliderOn()
     {
         isAttack = true;
-        nowWeapon.GetComponent<Animator>().SetTrigger("Trigger");
+        GetComponent<Animator>().SetTrigger("Attack");
         StartCoroutine(AttackWait());
     }
     private void OnTriggerEnter(Collider other)
