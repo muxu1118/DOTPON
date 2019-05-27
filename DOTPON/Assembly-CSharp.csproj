@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Member\Mori\Dot.cs" />
     <Compile Include="Assets\Member\Mori\Dot_count.cs" />
+    <Compile Include="Assets\Member\Mori\MultiPlayerManager.cs" />
     <Compile Include="Assets\Scripts\SingletonMonoBehaviour.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Ｄ_ドキュメント/ドットポン/DOTPON/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

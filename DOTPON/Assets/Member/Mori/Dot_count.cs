@@ -7,7 +7,7 @@ public class Dot_count : MonoBehaviour
 {
 
 
-    public Text Dot_Text;
+    private Text Dot_Text;
     
     private int count;
 
@@ -15,6 +15,7 @@ public class Dot_count : MonoBehaviour
     void Start()
     {
         count = 10;
+        Dot_Text = GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -35,7 +36,8 @@ public class Dot_count : MonoBehaviour
 
     void SetCountText()
     {
-        //Dot_Text.text = "×" + MultiPlayerManager.instance.P1dot();
+        Dot_Text.text = "×" + MultiPlayerManager.instance.P1Dot.ToString("00");
+
         
     }
 }
