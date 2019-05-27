@@ -14,8 +14,6 @@ public class Player : MonoBehaviour
     public PlayerKind own;
 
     [SerializeField] int hp;
-    [SerializeField] GameObject obj;
-    [SerializeField] GameObject obj2;
     public bool isDamage = false;
 
 
@@ -280,7 +278,7 @@ public class Player : MonoBehaviour
     {
         isAttack = true;
         nowWeapon.GetComponent<Animator>().SetTrigger("Trigger");
-       StartCoroutine(AttackWait());
+        StartCoroutine(AttackWait());
     }
     private void OnTriggerEnter(Collider other)
     {
