@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 8526831280575173795}
   - component: {fileID: 8526831280575173794}
   - component: {fileID: 8526831280575173796}
+  - component: {fileID: 3421387920206485692}
   m_Layer: 0
   m_Name: player1
   m_TagString: player
@@ -272,7 +273,13 @@ MonoBehaviour:
   WalkSpeed: 10
   RunSpeed: 100
   isAttack: 0
-  weapon: {fileID: 8526831280575173796}
+  controller: {fileID: 0}
+  weapon:
+  - {fileID: 2951158154377845040}
+  - {fileID: 2511023484431107036}
+  - {fileID: 3826759587879256240}
+  - {fileID: 1163108486216055341}
+  nowWeapon: {fileID: 1163108486216055341}
 --- !u!54 &8526831280575173794
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -296,9 +303,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8526831280575173805}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673fd0a74ff95bb4fbc8f277bc9ce3d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 76ad7ecd166f73f46893e35da08760f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weapon:
@@ -307,6 +314,20 @@ MonoBehaviour:
   - {fileID: 3826759587879256240}
   - {fileID: 1163108486216055341}
   nowWeapon: {fileID: 1163108486216055341}
+--- !u!114 &3421387920206485692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526831280575173805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f63ca76d8806894eb83b15851cf8646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  run: 10
+  walk: 5
 --- !u!1001 &1631681553917607968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -652,6 +673,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7580510374546150212, guid: db5b6373453a511419617f4a87dc3394,
+        type: 3}
+      propertyPath: parametor
+      value: 
+      objectReference: {fileID: 11400000, guid: 0009ae83b8628a1409b212d5a8006b63,
+        type: 2}
     - target: {fileID: 6819009950764646930, guid: db5b6373453a511419617f4a87dc3394,
         type: 3}
       propertyPath: m_Enabled
@@ -662,12 +689,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7580510374546150212, guid: db5b6373453a511419617f4a87dc3394,
-        type: 3}
-      propertyPath: parametor
-      value: 
-      objectReference: {fileID: 11400000, guid: 0009ae83b8628a1409b212d5a8006b63,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5b6373453a511419617f4a87dc3394, type: 3}
 --- !u!1 &2951158154377845040 stripped
