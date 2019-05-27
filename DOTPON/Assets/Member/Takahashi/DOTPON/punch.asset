@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 571faecb276e2ca41a3a158b951de40a, type: 3}
-  m_Name: katana
+  m_Name: punch
   m_EditorClassIdentifier: 
   attackSpeed: 1
   attackDamage: 1
-  necessaryDot: 6
-  durableValue: 4
-  weapon: {fileID: 1359829504648987593, guid: 91afc859ac496024d8e53e2c0565aba7, type: 3}
+  necessaryDot: 0
+  durableValue: 0
+  weapon: {fileID: 8360102815239109973, guid: 59f5d7f361ca15547905f6567ee59e63, type: 3}

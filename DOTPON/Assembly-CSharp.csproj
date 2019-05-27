@@ -83,7 +83,8 @@
     <Compile Include="Assets\Member\Milone\Scenes\gameSelect.cs" />
     <Compile Include="Assets\Member\Nojima\ButtonControll.cs" />
     <Compile Include="Assets\Member\Nojima\Parametor.cs" />
-    <Compile Include="Assets\Member\Takahashi\script\animation.cs" />
+    <Compile Include="Assets\Member\Takahashi\script\AnimationTest.cs" />
+    <Compile Include="Assets\Member\Takahashi\script\AniTest.cs" />
     <Compile Include="Assets\Member\Takahashi\script\weapon.cs" />
     <Compile Include="Assets\Member\Takahashi\script\WeaponCreate.cs" />
     <Compile Include="Assets\Scripts\SingletonMonoBehaviour.cs" />
