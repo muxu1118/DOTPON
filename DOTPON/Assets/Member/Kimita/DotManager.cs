@@ -93,20 +93,24 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         switch (player.own)
         {
             case Player.PlayerKind.Player1:
+                if (MultiPlayerManager.instance.P1Dot < num) return false;
                 MultiPlayerManager.instance.P1Dot -= num;
                 break;
             case Player.PlayerKind.Player2:
+                if (MultiPlayerManager.instance.P2Dot < num) return false;
                 MultiPlayerManager.instance.P2Dot -= num;
                 break;
             case Player.PlayerKind.Player3:
+                if (MultiPlayerManager.instance.P3Dot < num) return false;
                 MultiPlayerManager.instance.P3Dot -= num;
                 break;
             case Player.PlayerKind.Player4:
+                if (MultiPlayerManager.instance.P4Dot < num) return false;
                 MultiPlayerManager.instance.P4Dot -= num;
                 break;
             default:
                 Debug.LogError("よばれちゃいけんのやぞ");
-            break;
+                return false;
         }
         return true;
     }

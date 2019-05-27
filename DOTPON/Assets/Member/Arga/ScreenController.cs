@@ -84,6 +84,7 @@ public class ScreenController : MonoBehaviour
     {
         for(int i=0; i <cameras.Length; i++)
         {
+            if (cameras[i].gameObject == null) return;
             cameras[i].gameObject.SetActive(false);
         }
         

@@ -27,6 +27,6 @@ public class GoburinFlock : Goburin
         //{
         //    Debug.Log(AtoB + " + " + CtoD);
         //}
-
+        if (this.gameObject.transform.childCount <= 0) Destroy(this.gameObject);
     }
 }

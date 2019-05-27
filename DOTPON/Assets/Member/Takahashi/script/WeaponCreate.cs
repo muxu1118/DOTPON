@@ -50,6 +50,7 @@ public class WeaponCreate : MonoBehaviour
                     //作成した武器を破棄
                     nowWeapon.SetActive(false);
                     weapon[3].SetActive(true);
+                    nowWeapon = weapon[3];
                     trigger = true;
                 }                
                 break;     
