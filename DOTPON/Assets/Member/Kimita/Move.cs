@@ -5,7 +5,10 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     // timeSpeedは速さ、ratioは割合（どこで落ちるか）、angleは基準の角度
-    public float timeSpeed, ratio, angle,Range;　//　おすすめ(0.4,1,90,2.5)
+    public float timeSpeed, ratio, angle,Range; //　おすすめ(0.4,1,90,2.5)
+
+    private Vector3 defaultPos;
+    private Vector3 speed; //上下の速度の処理（予定）
 
     // Start is called before the first frame update
     void Start()
@@ -14,10 +17,11 @@ public class Move : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(new Vector3(65.0f, 65.0f, -35.0f) * Time.deltaTime);
+        transform.position = (new Vector3(defaultPos.x, defaultPos.y + Mathf.PingPong(0.6f * Time.time, 0.6f)));
+        //回転の処理
     }
     /// <summary>
     /// ブローチを目的の位置に移動させる
@@ -58,7 +62,7 @@ public class Move : MonoBehaviour
             transform.position = new Vector3(Vx, Vy, Vz);
             // １秒あたりのtの変化量 *1フレーム
             t += 1 / distance / timeSpeed * Time.deltaTime;
-
+            defaultPos = transform.position;
             yield return null;
         }
         

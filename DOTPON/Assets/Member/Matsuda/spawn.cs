@@ -28,7 +28,7 @@ public class spawn : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time / 100 >= 1)
+        if(time / 5 >= 1)
         {
             GameObject _object = new GameObject("GoburinFlock");
             _object.tag = "enemy";

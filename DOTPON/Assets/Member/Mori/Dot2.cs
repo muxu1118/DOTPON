@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Dot : MonoBehaviour
+public class Dot2 : MonoBehaviour
 { 
     private float lostTime = 10.0f;
 

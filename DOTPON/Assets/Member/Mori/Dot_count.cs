@@ -5,7 +5,15 @@ using UnityEngine.UI;
 
 public class Dot_count : MonoBehaviour
 {
-
+    enum DotText
+    {
+        P1Text,
+        P2Text,
+        P3Text,
+        P4Text
+    }
+    [SerializeField]
+    DotText dotText;
 
     private Text Dot_Text;
     
@@ -16,6 +24,7 @@ public class Dot_count : MonoBehaviour
     {
         count = 10;
         Dot_Text = GetComponent<Text>();
+        Debug.Log(Dot_Text);
     }
 
     // Update is called once per frame
@@ -36,8 +45,23 @@ public class Dot_count : MonoBehaviour
 
     void SetCountText()
     {
-        Dot_Text.text = "×" + MultiPlayerManager.instance.P1Dot.ToString("00");
-
+        switch (dotText)
+        {
+            case DotText.P1Text:
+                Dot_Text.text = "×" + MultiPlayerManager.instance.P1Dot.ToString("00");
+                break;
+            case DotText.P2Text:
+                Dot_Text.text = "×" + MultiPlayerManager.instance.P2Dot.ToString("00");
+                break;
+            case DotText.P3Text:
+                Dot_Text.text = "×" + MultiPlayerManager.instance.P3Dot.ToString("00");
+                break;
+            case DotText.P4Text:
+                Dot_Text.text = "×" + MultiPlayerManager.instance.P4Dot.ToString("00");
+                break;
+        }
         
+
+
     }
 }

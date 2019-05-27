@@ -160,23 +160,30 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.name == "Dot")
         {
+            
             switch (own)
             {
                 case PlayerKind.Player1:
                     MultiPlayerManager.instance.P1Dot++;
+                    Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
                     MultiPlayerManager.instance.P2Dot++;
+                    Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
                     MultiPlayerManager.instance.P3Dot++;
+                    Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
                     MultiPlayerManager.instance.P4Dot++;
+                    Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
                 default:
+                    Debug.LogError("よばれちゃいけんのやぞ");
                     break;
             }
+            other.GetComponent<Dot>().DestroyObject();
         }
     }
 }

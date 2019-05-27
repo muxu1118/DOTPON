@@ -10,12 +10,17 @@ public class WeaponCreate : MonoBehaviour
     bool trigger = true; //武器の作成と破棄の切り替え 
     int weaponNumber;    //武器の種類
     int weaponType = 0;  //武器を指定するための数値
+    
+    public GameObject nowWeapon;
    
     void Start()
     {
         weaponNumber = weapon.Length;
-    }    
-
+    }
+    private void Update()
+    {
+        WeaponChoice();
+    }
     /// <summary>
     /// 指定の武器を作成
     /// </summary>
@@ -34,13 +39,14 @@ public class WeaponCreate : MonoBehaviour
             case "a":
                 if(trigger)
                 {
-                    weapon[weaponNumber].SetActive(true);
+                    weapon[weaponType].SetActive(true);
+                    nowWeapon = weapon[weaponType];
                     trigger = false;
                 }
                 else
                 {
                     //作成した武器を破棄
-                    weapon[weaponNumber].SetActive(false);
+                    nowWeapon.SetActive(false);
                     trigger = true;
                 }                
                 break;     

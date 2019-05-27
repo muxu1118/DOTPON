@@ -11,10 +11,12 @@ public class Dot : MonoBehaviour
         set { LostTime = value; }
     }
 
+   
 
     private void Start()
     {
         StartCoroutine(LostDot());
+       
     }
 
     IEnumerator LostDot()
@@ -22,12 +24,6 @@ public class Dot : MonoBehaviour
         yield return new WaitForSeconds(lostTime);
      
         Destroy(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /// <summary>
@@ -39,8 +35,6 @@ public class Dot : MonoBehaviour
         if(other.gameObject.tag == "player")
         {
             // 
-            
-            Destroy(gameObject);
         }
 
     }
