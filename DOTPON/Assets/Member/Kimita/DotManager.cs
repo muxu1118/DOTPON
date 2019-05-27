@@ -82,34 +82,60 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
             count--;
         }
     }
-    
 
-    /*
-    private int PlayerCheck(string name)
+    /// <summary>
+    /// ドットポンの作成
+    /// </summary>
+    /// <param name="player">ドットポンを作成するプレイヤー</param>
+    /// <param name="num">減らす数</param>
+    public bool DotPonCreate(Player player,int num)
     {
-        switch (name)
+        switch (player.own)
         {
-            case "Player1":
-                return 1;
-            case "Player2":
-                return 2;
-            case "Player3":
-                return 3;
-            case "Player4":
-                return 4;
-            default: break;
+            case Player.PlayerKind.Player1:
+                MultiPlayerManager.instance.P1Dot -= num;
+                break;
+            case Player.PlayerKind.Player2:
+                MultiPlayerManager.instance.P2Dot -= num;
+                break;
+            case Player.PlayerKind.Player3:
+                MultiPlayerManager.instance.P3Dot -= num;
+                break;
+            case Player.PlayerKind.Player4:
+                MultiPlayerManager.instance.P4Dot -= num;
+                break;
+            default:
+                Debug.LogError("よばれちゃいけんのやぞ");
+            break;
         }
-        Debug.Log("プレイヤーネームが間違ってます");
-        return 0;
+        return true;
     }
+        /*
+        private int PlayerCheck(string name)
+        {
+            switch (name)
+            {
+                case "Player1":
+                    return 1;
+                case "Player2":
+                    return 2;
+                case "Player3":
+                    return 3;
+                case "Player4":
+                    return 4;
+                default: break;
+            }
+            Debug.Log("プレイヤーネームが間違ってます");
+            return 0;
+        }
 
-    public void CheckDot(string name)
-    {
-        if (PlayerCheck(name) == 0) return;
-        int playerNum = PlayerCheck(name);
-        dotHave[playerNum] += 10;
+        public void CheckDot(string name)
+        {
+            if (PlayerCheck(name) == 0) return;
+            int playerNum = PlayerCheck(name);
+            dotHave[playerNum] += 10;
+
+        }
+        */
 
     }
-    */
-
-}

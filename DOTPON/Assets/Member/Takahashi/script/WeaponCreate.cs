@@ -12,6 +12,7 @@ public class WeaponCreate : MonoBehaviour
     int weaponType = 0;  //武器を指定するための数値
     
     public GameObject nowWeapon;
+    int createNum = 0;
    
     void Start()
     {
@@ -37,8 +38,9 @@ public class WeaponCreate : MonoBehaviour
         switch (Input.inputString)
         {             
             case "a":
-                if(trigger)
+                if(trigger && DotManager.instance.DotPonCreate(GetComponent<Player>(),createNum ))
                 {
+                    weapon[3].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
                     trigger = false;
@@ -47,6 +49,7 @@ public class WeaponCreate : MonoBehaviour
                 {
                     //作成した武器を破棄
                     nowWeapon.SetActive(false);
+                    weapon[3].SetActive(true);
                     trigger = true;
                 }                
                 break;     
@@ -58,6 +61,7 @@ public class WeaponCreate : MonoBehaviour
                 {
                     weaponType = 0;
                 }
+                createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
                 Debug.Log(weaponType);
                 break;
 
@@ -73,6 +77,7 @@ public class WeaponCreate : MonoBehaviour
                     weaponType = weaponNumber - 1;
                     Debug.Log(weaponType);
                 }
+                createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
                 break;
         }
     }

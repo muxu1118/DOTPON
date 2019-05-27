@@ -23,6 +23,10 @@ using UnityEngine;
         public int durableValue; //耐久値
 
         [SerializeField]
+        [HeaderAttribute("必要ドット数")]
+        public int dotNum;
+
+        [SerializeField]
         [HeaderAttribute("武器のオブジェクト")]
         public GameObject weapon; //武器のオブジェクト
 
