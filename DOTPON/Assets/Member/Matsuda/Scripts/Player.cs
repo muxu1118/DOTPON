@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+     public enum PlayerKind
+    {
+        Player1 = 0,
+        Player2,
+        Player3,
+        Player4,
+    }
+    public PlayerKind own;
+
     [SerializeField] int hp;
     [SerializeField] GameObject obj;
     [SerializeField] GameObject obj2;
@@ -17,7 +26,8 @@ public class Player : MonoBehaviour
     //private float RotationSpeed = 100f; //向きを変える速度
 
     public bool isAttack;
-    [SerializeField] GameObject ax;
+    [SerializeField]
+    WeaponCreate weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +65,7 @@ public class Player : MonoBehaviour
         {
             AttackColliderOn();
         }
-        if (Input.GetKeyDown("joystick 1 button 2"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             AttackColliderOn();
         }
@@ -129,7 +139,6 @@ public class Player : MonoBehaviour
             this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
         }
         isDamage = false;
-        ax.GetComponent<BoxCollider>().enabled = false;
     }
     /// <summary>
     /// 攻撃したときの待機時間
@@ -138,15 +147,36 @@ public class Player : MonoBehaviour
     IEnumerator AttackWait()
     {
         yield return new WaitForSeconds(0.8f);
-        ax.GetComponent<BoxCollider>().enabled = false;
         isAttack = false;
         yield break;
     }
     void AttackColliderOn()
     {
         isAttack = true;
-        ax.GetComponent<Animator>().SetTrigger("Trigger");
-        ax.GetComponent<BoxCollider>().enabled = true;
+        weapon.nowWeapon.GetComponent<Animator>().SetTrigger("Trigger");
        StartCoroutine(AttackWait());
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Dot")
+        {
+            switch (own)
+            {
+                case PlayerKind.Player1:
+                    MultiPlayerManager.instance.P1Dot++;
+                    break;
+                case PlayerKind.Player2:
+                    MultiPlayerManager.instance.P2Dot++;
+                    break;
+                case PlayerKind.Player3:
+                    MultiPlayerManager.instance.P3Dot++;
+                    break;
+                case PlayerKind.Player4:
+                    MultiPlayerManager.instance.P4Dot++;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
