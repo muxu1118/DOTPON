@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCamera : MonoBehaviour
+public class PlayerCamera2 : MonoBehaviour
 {
     [SerializeField]
     private Transform player;          // 注視対象プレイヤー
