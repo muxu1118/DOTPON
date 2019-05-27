@@ -21,25 +21,25 @@ public class MoveController : MonoBehaviour
     }
     void MoveInput()
     {
-        if (Input.GetAxis("Vertical1") > 0.7)
+        if (Input.GetAxis("Vertical1_left") > 0.7)
         {   //走る
             Player.transform.position += transform.forward * run * Time.deltaTime;
         }
-        if (Input.GetAxis("Vertical1") > 0.3){
+        if (Input.GetAxis("Vertical1_left") > 0.3){
             //歩き
             Player.transform.position += transform.forward * walk * Time.deltaTime;
         }
-        if(Input.GetAxis("Vertical1") < -0.3)
+        if(Input.GetAxis("Vertical1_left") < -0.3)
         {
             //後ろに進む
             Player.transform.position -= transform.forward * walk * Time.deltaTime;
         }
-        if(Input.GetAxis("Horizontal1") > 0.4)
+        if(Input.GetAxis("Horizontal1_left") > 0.4)
         {
             //右に進む
             Player.transform.position += transform.right * walk * Time.deltaTime;
         }
-        if (Input.GetAxis("Horizontal1") < -0.4)
+        if (Input.GetAxis("Horizontal1_left") < -0.4)
         {
             //左に進む
             Player.transform.position -= transform.right * walk * Time.deltaTime;
