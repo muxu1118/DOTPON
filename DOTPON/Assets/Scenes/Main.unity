@@ -890,7 +890,7 @@ MonoBehaviour:
   - {x: 0, y: 0.5, z: 5}
   - {x: 5, y: 0.5, z: 0}
   - {x: -5, y: 0.5, z: 0}
-  playerPrefab: {fileID: 5326118406081306517, guid: 3bbd4e369f2b0044dbb0836effe7e84b,
+  playerPrefab: {fileID: 7151612623256778120, guid: b77d369de0874b64fac8e4d1fa6ac2b2,
     type: 3}
 --- !u!1 &1265183176
 GameObject:
@@ -1299,8 +1299,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal1
-  m_VerticalAxis: Vertical1
+  m_HorizontalAxis: Horizontal1_left
+  m_VerticalAxis: Vertical1_left
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
