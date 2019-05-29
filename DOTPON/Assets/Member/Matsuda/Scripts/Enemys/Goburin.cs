@@ -22,13 +22,13 @@ public class Goburin : Enemy
             switch (i)
             { 
                 case 0:
-                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle));
+                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle) /6);
                     break;
                 case 1:
-                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle), 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle)/6, 0, 0);
                     break;
                 case 2:
-                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle), 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle)/6, 0, 0);
                     break;
             }
         }
@@ -40,7 +40,8 @@ public class Goburin : Enemy
         time += Time.deltaTime;
         DropDot(gameObject,parameter.dropDot);
         if (isAction) return;
-        transform.position += vector * parameter.speed / 100;
+        this.transform.localPosition += vector * parameter.speed / 100;
+        Debug.Log(this.transform.position);
         if (time > 3 && !isLooking)
         {
             isAction = true;
