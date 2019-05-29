@@ -890,7 +890,8 @@ MonoBehaviour:
   - {x: 0, y: 0.5, z: 5}
   - {x: 5, y: 0.5, z: 0}
   - {x: -5, y: 0.5, z: 0}
-  playerPrefab: {fileID: 100024, guid: 45f2a69374d096d4f87508ad6de323d9, type: 3}
+  playerPrefab: {fileID: 5366474426209013577, guid: 8060791d666c5fb4192dda7d91d3a9e7,
+    type: 3}
   objects:
   - {fileID: 8263606967364089988, guid: 3594954b992238b4e8d9ff00c222af01, type: 3}
   - {fileID: 7069388997178931288, guid: dda1d90d873ce3b4182955aa501fa57b, type: 3}

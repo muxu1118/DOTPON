@@ -20,7 +20,7 @@ public class PlayerSpown : MonoBehaviour
         for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
         {
             var playerObj = Instantiate(playerPrefab, spewnPos[i],Quaternion.identity);
-
+            /*
             var player = playerObj.AddComponent<Player>();
             for(int j = 0; j < 4; j++)
             {
@@ -35,7 +35,7 @@ public class PlayerSpown : MonoBehaviour
             playerObj.AddComponent<Rigidbody>();
             playerObj.GetComponent<Animator>().runtimeAnimatorController = anim;
             //playerObj.GetComponent<Animator>().runtimeAnimatorController = ;
-
+            */
 
             playerObj.GetComponent<Player>().own = PlayerEnum(i);
             playerObj.transform.LookAt(new Vector3(0, 0, 0));

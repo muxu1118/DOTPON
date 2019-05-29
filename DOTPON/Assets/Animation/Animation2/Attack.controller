@@ -366,7 +366,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Idling
-  m_Speed: 3
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101758651508587968}
@@ -563,13 +563,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102217671495781184}
-    m_Position: {x: 276, y: 120, z: 0}
+    m_Position: {x: 264, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102495826577587390}
     m_Position: {x: 552, y: -36, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102302726552919608}
-    m_Position: {x: 588, y: 48, z: 0}
+    m_Position: {x: 600, y: 36, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102224888582466896}
     m_Position: {x: 588, y: 144, z: 0}
