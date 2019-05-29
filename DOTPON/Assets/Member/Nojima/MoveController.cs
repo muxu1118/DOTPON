@@ -10,24 +10,32 @@ public class MoveController : MonoBehaviour
     [SerializeField]
     float walk; //歩く速度
 
+    Animator anim;
+
     GameObject Player;
+
+    void Start()
+    {
+        Player = GameObject.Find("Cube");
+        anim = GetComponent<Animator>();
+    }
+
     void Update()
     {
         MoveInput();
     }
-    void Start()
-    {
-        Player = GameObject.Find("Cube");
-    }
+    
     void MoveInput()
     {
         if (Input.GetAxis("Vertical1_left") > 0.7)
         {   //走る
             this.transform.position += transform.forward * run * Time.deltaTime;
+            anim.SetFloat("Speed", 0.7f);
         }
         if (Input.GetAxis("Vertical1_left") > 0.3){
             //歩き
             this.transform.position += transform.forward * walk * Time.deltaTime;
+            anim.SetFloat("Speed", 0.3f);
         }
         if(Input.GetAxis("Vertical1_left") < -0.3)
         {
