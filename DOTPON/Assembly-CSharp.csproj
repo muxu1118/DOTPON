@@ -93,6 +93,7 @@
     <Compile Include="Assets\Member\Mori\Dot_count.cs" />
     <Compile Include="Assets\Member\Mori\Dot2.cs" />
     <Compile Include="Assets\Member\Nojima\ButtonControll.cs" />
+    <Compile Include="Assets\Member\Nojima\CameraController.cs" />
     <Compile Include="Assets\Member\Nojima\MoveController.cs" />
     <Compile Include="Assets\Member\Nojima\Parametor.cs" />
     <Compile Include="Assets\Member\Takahashi\script\AnimationTest.cs" />
