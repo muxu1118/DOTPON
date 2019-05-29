@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     //WeaponCreate weapon;
 
     [SerializeField]
-    GameObject[] weapon; //武器を格納
+    public GameObject[] weapon = new GameObject[4]; //武器を格納
 
     bool trigger = true; //武器の作成と破棄の切り替え 
     int weaponNumber;    //武器の種類
