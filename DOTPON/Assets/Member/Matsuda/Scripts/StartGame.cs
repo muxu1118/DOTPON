@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpown : MonoBehaviour
+public class StartGame : MonoBehaviour
 {
     [SerializeField]
     Vector3[] spewnPos;
@@ -10,15 +10,15 @@ public class PlayerSpown : MonoBehaviour
     GameObject playerPrefab;
 
     [SerializeField]
-    GameObject[] objects;
-    [SerializeField]
-    RuntimeAnimatorController anim;
+    GameObject[] buttonObj;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
+        //人数分の回数まわす
         for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
         {
+            //プレイヤーの生成
             var playerObj = Instantiate(playerPrefab, spewnPos[i],Quaternion.identity);
             /*
             var player = playerObj.AddComponent<Player>();
@@ -36,11 +36,13 @@ public class PlayerSpown : MonoBehaviour
             playerObj.GetComponent<Animator>().runtimeAnimatorController = anim;
             //playerObj.GetComponent<Animator>().runtimeAnimatorController = ;
             */
-
+            //ぷれいやーのenumをそれぞれに対応させる
             playerObj.GetComponent<Player>().own = PlayerEnum(i);
             playerObj.transform.LookAt(new Vector3(0, 0, 0));
+            //カメラのオブジェクトを探して参照させる
             var CameraController = GameObject.Find("CameraController").GetComponent<ScreenController>();
             CameraController.cameras[i] = playerObj.GetComponentInChildren<Camera>().gameObject;
+            buttonObj[i].SetActive(true);
         }
     }
     private Player.PlayerKind PlayerEnum(int num)
