@@ -142,6 +142,7 @@ public class Player : MonoBehaviour
                     weapon[3].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
+                    nowWeapon.GetComponent<BoxCollider>().enabled = false;
                     trigger = false;
                 }
                 else
@@ -271,7 +272,7 @@ public class Player : MonoBehaviour
     IEnumerator AttackWait()
     {
         yield return new WaitForSeconds(1f);
-        nowWeapon.GetComponent<BoxCollider>().enabled = false;
+        nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.12f);
         isAttack = false;
         yield break;
@@ -279,7 +280,7 @@ public class Player : MonoBehaviour
     void AttackColliderOn()
     {
         isAttack = true;
-        nowWeapon.GetComponent<BoxCollider>().enabled = true;
+        nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
         GetComponent<Animator>().SetTrigger("Attack");
         StartCoroutine(AttackWait());
     }

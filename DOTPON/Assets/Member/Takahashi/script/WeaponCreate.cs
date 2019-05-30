@@ -63,6 +63,8 @@ public class WeaponCreate : MonoBehaviour
                     weapon[3].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
+                    GetComponent<Player>().nowWeapon = weapon[weaponType];
+                    nowWeapon.GetComponent<BoxCollider>().enabled = false;
                     trigger = false;
                 }
                 else
