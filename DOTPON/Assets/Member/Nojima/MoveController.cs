@@ -23,6 +23,7 @@ public class MoveController : MonoBehaviour
         anim = GetComponent<Animator>();
         vel = new Vector3(Input.GetAxis("Vertical1_left") ,0f);
         */
+        anim = GetComponent<Animator>();
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
@@ -42,10 +43,14 @@ public class MoveController : MonoBehaviour
             this.transform.position += transform.forward * walk * Time.deltaTime;
             anim.SetFloat("Speed", i);
         }
-        if (i > 0.7)
+        else if (i > 0.8)
         {   //走る
             this.transform.position += transform.forward * run * Time.deltaTime;
             anim.SetFloat("Speed", i);
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0);
         }
 
         if (Input.GetAxis("Vertical1_left") > 0.7)
