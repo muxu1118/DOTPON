@@ -270,8 +270,9 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator AttackWait()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1f);
         nowWeapon.GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(0.12f);
         isAttack = false;
         yield break;
     }

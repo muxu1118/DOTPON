@@ -558,6 +558,10 @@ MonoBehaviour:
   - {fileID: 3399202046918664068}
   - {fileID: 4555451302981719}
   - {fileID: 3573101475266206663}
+  weaponName:
+  - AXE
+  - KATANA
+  - SWORD
   nowWeapon: {fileID: 3573101475266206663}
 --- !u!114 &4627755746136235672
 MonoBehaviour:

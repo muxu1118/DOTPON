@@ -41,7 +41,6 @@ public class Goburin : Enemy
         DropDot(gameObject,parameter.dropDot);
         if (isAction) return;
         this.transform.localPosition += vector * parameter.speed / 100;
-        Debug.Log(this.transform.position);
         if (time > 3 && !isLooking)
         {
             isAction = true;

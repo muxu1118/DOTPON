@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoburinFlock : Goburin
+public class GoburinFlock : MonoBehaviour
 {
     private Transform[] childTransform = new Transform[4];
     // Start is called before the first frame update
@@ -14,7 +14,6 @@ public class GoburinFlock : Goburin
             childTransform[i] = obj;
             i++;
         }
-        Debug.Log(childTransform);
     }
 
     // Update is called once per frame
