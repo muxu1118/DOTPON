@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
     {
         if (HP > 0) return;
         // managerに投げる
+        Debug.Log("しんだ");
         DotManager.instance.EnemyDeadDotPop(kazu,obj.transform.position);
         //enemyの消去
         Destroy(obj);
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
         HP -= At;
         isAction = true;
         StartCoroutine(WaitTime());
-        Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
+        //Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
     }
     /// <summary>
     /// エネミーの回転をさせるコルーチン

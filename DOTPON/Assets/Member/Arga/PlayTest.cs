@@ -10,7 +10,7 @@ public class PlayTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MultiPlayerManager.instance.P1Dot = 1;
+        //MultiPlayerManager.instance.P1Dot = 1;
     }
 
     // Update is called once per frame

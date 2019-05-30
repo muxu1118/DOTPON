@@ -29,12 +29,12 @@ public class weapon : MonoBehaviour
         {
             case "player":
                 if (other.gameObject.GetComponent<Player>().isDamage) return;
-                Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
+                //Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
                 other.gameObject.GetComponent<Player>().Damage(parametor.attackDamage);
                 break;
             case "enemy":
                 if (gameObject.transform.root.tag == "enemy") return;
-                Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
+                //Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
                 other.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage);
                 break;
         }

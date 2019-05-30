@@ -139,6 +139,7 @@ public class Player : MonoBehaviour
             case "a":
                 if (trigger && DotManager.instance.DotPonCreate(GetComponent<Player>(), createNum))
                 {
+                    GetComponent<Animator>().SetTrigger("Create");
                     weapon[3].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
@@ -148,6 +149,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     //作成した武器を破棄
+
                     nowWeapon.SetActive(false);
                     weapon[3].SetActive(true);
                     nowWeapon = weapon[3];
@@ -163,7 +165,7 @@ public class Player : MonoBehaviour
                     weaponType = 0;
                 }
                 createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
-                Debug.Log(weaponType);
+                //Debug.Log(weaponType);
                 break;
 
             //作成する武器の切り替え
@@ -171,12 +173,12 @@ public class Player : MonoBehaviour
                 if (weaponType > 0)
                 {
                     weaponType -= 1;
-                    Debug.Log(weaponType);
+                    //Debug.Log(weaponType);
                 }
                 else if (weaponType == 0)
                 {
                     weaponType = weaponNumber - 2;
-                    Debug.Log(weaponType);
+                    //Debug.Log(weaponType);
                 }
                 createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
                 break;
@@ -242,7 +244,7 @@ public class Player : MonoBehaviour
     {
         if (isDamage) return;
         hp = hp - damage;
-        Debug.Log(hp);
+        //Debug.Log(hp);
         if(hp <= 0)
         {
             Destroy(this.gameObject);
@@ -271,7 +273,9 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator AttackWait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
+        yield return new WaitForSeconds(0.5f);
         nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.12f);
         isAttack = false;
@@ -280,7 +284,6 @@ public class Player : MonoBehaviour
     void AttackColliderOn()
     {
         isAttack = true;
-        nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
         GetComponent<Animator>().SetTrigger("Attack");
         StartCoroutine(AttackWait());
     }
@@ -297,15 +300,15 @@ public class Player : MonoBehaviour
                     break;
                 case PlayerKind.Player2:
                     MultiPlayerManager.instance.P2Dot++;
-                    Debug.Log(MultiPlayerManager.instance.P2Dot);
+                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
                     MultiPlayerManager.instance.P3Dot++;
-                    Debug.Log(MultiPlayerManager.instance.P3Dot);
+                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
                     MultiPlayerManager.instance.P4Dot++;
-                    Debug.Log(MultiPlayerManager.instance.P4Dot);
+                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
                 default:
                     Debug.LogError("よばれちゃいけんのやぞ");

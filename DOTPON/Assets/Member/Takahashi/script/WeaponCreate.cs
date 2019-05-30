@@ -60,6 +60,8 @@ public class WeaponCreate : MonoBehaviour
             case "a":
                 if(trigger && DotManager.instance.DotPonCreate(GetComponent<Player>(),createNum ))
                 {
+
+                    GetComponent<Animator>().SetTrigger("Create");
                     weapon[3].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];

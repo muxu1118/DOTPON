@@ -79,6 +79,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         {
             // ドットの出現(位置はランダム)
             Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity).name = "Dot";
+            Debug.Log("ドット生成");
             count--;
         }
     }
