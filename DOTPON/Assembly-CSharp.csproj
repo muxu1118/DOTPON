@@ -73,6 +73,7 @@
     <Compile Include="Assets\Member\Kimita\Move.cs" />
     <Compile Include="Assets\Member\Kimita\Star.cs" />
     <Compile Include="Assets\Member\Kimita\StarManager.cs" />
+    <Compile Include="Assets\Member\Matsuda\Scripts\CameraPos.cs" />
     <Compile Include="Assets\Member\Matsuda\Scripts\enemy_m.cs" />
     <Compile Include="Assets\Member\Matsuda\Scripts\Enemys\Enemy.cs" />
     <Compile Include="Assets\Member\Matsuda\Scripts\Enemys\EnemyParameter.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="Assets\Member\Matsuda\Scripts\Enemys\Slime.cs" />
     <Compile Include="Assets\Member\Matsuda\Scripts\MoveSample.cs" />
     <Compile Include="Assets\Member\Matsuda\Scripts\Player.cs" />
-    <Compile Include="Assets\Member\Matsuda\Scripts\PlayerSpown.cs" />
+    <Compile Include="Assets\Member\Matsuda\Scripts\StartGame.cs" />
     <Compile Include="Assets\Member\Matsuda\spawn.cs" />
     <Compile Include="Assets\Member\Matsushita\Script\PlayerCamera.cs" />
     <Compile Include="Assets\Member\Matsushita\Script\PlayerMove.cs" />
