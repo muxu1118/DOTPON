@@ -550,7 +550,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5366474426209013577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 479f470b836349c41a0ff0aefd4c6e3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8124fdcfdf14b03418b36b471ee97745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weapon:
@@ -1001,6 +1001,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1453264195924920546, guid: 58f528e32f8833c4b942685bb0d606bb,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7142809957321371334, guid: 58f528e32f8833c4b942685bb0d606bb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1056,11 +1061,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 146.733
       objectReference: {fileID: 0}
-    - target: {fileID: 1453264195924920546, guid: 58f528e32f8833c4b942685bb0d606bb,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6264037851564855669, guid: 58f528e32f8833c4b942685bb0d606bb,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1092,21 +1092,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5366474426209506129}
     m_Modifications:
-    - target: {fileID: 4715716043184094966, guid: 4122eee347dd5f5408b9182f3dc22827,
-        type: 3}
-      propertyPath: m_Name
-      value: sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 4715716043184094966, guid: 4122eee347dd5f5408b9182f3dc22827,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4715716043184094966, guid: 4122eee347dd5f5408b9182f3dc22827,
-        type: 3}
-      propertyPath: m_TagString
-      value: weapon
-      objectReference: {fileID: 0}
     - target: {fileID: 4715716043184094962, guid: 4122eee347dd5f5408b9182f3dc22827,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1166,6 +1151,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715716043184094966, guid: 4122eee347dd5f5408b9182f3dc22827,
+        type: 3}
+      propertyPath: m_Name
+      value: sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715716043184094966, guid: 4122eee347dd5f5408b9182f3dc22827,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715716043184094966, guid: 4122eee347dd5f5408b9182f3dc22827,
+        type: 3}
+      propertyPath: m_TagString
+      value: weapon
       objectReference: {fileID: 0}
     - target: {fileID: 4715716043184094967, guid: 4122eee347dd5f5408b9182f3dc22827,
         type: 3}

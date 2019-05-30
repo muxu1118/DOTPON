@@ -20,7 +20,6 @@ public class WeaponCreate : MonoBehaviour
 
     void Start()
     {
-        
         weaponNumber = weapon.Length;
         switch (GetComponent<Player>().own)
         {
@@ -37,6 +36,7 @@ public class WeaponCreate : MonoBehaviour
                 DotPonText = GameObject.Find("P4DOTPON");
                 break;
         }
+        DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
     }
     private void Update()
     {
