@@ -82,7 +82,20 @@ public class MoveController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            this.transform.position += transform.forward * run * Time.deltaTime;
+            if (Input.GetKey(KeyCode.RightShift))
+            {
+                this.transform.position += transform.forward * run * Time.deltaTime;
+                anim.SetFloat("Speed", 0.8f);
+            }
+            else
+            {
+                this.transform.position += transform.forward * walk * Time.deltaTime;
+                anim.SetFloat("Speed", 0.5f);
+            }
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -98,11 +111,11 @@ public class MoveController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            this.transform.Rotate(0, 60 * Time.deltaTime, 0);
+            this.transform.Rotate(0, 120 * Time.deltaTime, 0);
         }
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            this.transform.Rotate(0, -60* Time.deltaTime, 0);
+            this.transform.Rotate(0, -120* Time.deltaTime, 0);
         }
     }
 }
