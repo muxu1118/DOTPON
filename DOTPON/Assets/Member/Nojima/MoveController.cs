@@ -15,6 +15,7 @@ public class MoveController : MonoBehaviour
     float i;
 
     GameObject Player;
+    Rigidbody rg;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class MoveController : MonoBehaviour
         vel = new Vector3(Input.GetAxis("Vertical1_left") ,0f);
         */
         anim = GetComponent<Animator>();
+        rg = GetComponent<Rigidbody>();
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
@@ -117,5 +119,16 @@ public class MoveController : MonoBehaviour
         {
             this.transform.Rotate(0, -120* Time.deltaTime, 0);
         }
+        /*
+        if (Input.anyKey)
+        {
+            rg.constraints = RigidbodyConstraints.FreezeRotation;
+            rg.constraints = RigidbodyConstraints.FreezeRotationY;
+        }
+        else
+        {
+            rg.constraints = RigidbodyConstraints.FreezeRotationY;
+        }
+        */
     }
 }

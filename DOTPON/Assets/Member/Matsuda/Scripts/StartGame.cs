@@ -11,6 +11,8 @@ public class StartGame : MonoBehaviour
 
     [SerializeField]
     GameObject[] buttonObj;
+    [SerializeField]
+    ScreenController screenController;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +42,7 @@ public class StartGame : MonoBehaviour
             playerObj.GetComponent<Player>().own = PlayerEnum(i);
             playerObj.transform.LookAt(new Vector3(0, 0, 0));
             //カメラのオブジェクトを探して参照させる
-            var CameraController = GameObject.Find("CameraController").GetComponent<ScreenController>();
-            CameraController.cameras[i] = playerObj.GetComponentInChildren<Camera>().gameObject;
+            screenController.cameras[i] = playerObj.GetComponentInChildren<Camera>().gameObject;
             buttonObj[i].SetActive(true);
         }
     }

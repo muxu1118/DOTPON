@@ -243,9 +243,30 @@ public class Player : MonoBehaviour
     public void Damage(int damage)
     {
         if (isDamage) return;
-        hp = hp - damage;
+        hp = hp - damage; switch (own)
+        {
+            case PlayerKind.Player1:
+                MultiPlayerManager.instance.P1Dot--;
+                //Debug.Log(MultiPlayerManager.instance.P1Dot);
+                break;
+            case PlayerKind.Player2:
+                MultiPlayerManager.instance.P2Dot--;
+                //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                break;
+            case PlayerKind.Player3:
+                MultiPlayerManager.instance.P3Dot--;
+                //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                break;
+            case PlayerKind.Player4:
+                MultiPlayerManager.instance.P4Dot--;
+                //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                break;
+            default:
+                Debug.LogError("よばれちゃいけんのやぞ");
+                break;
+        }
         //Debug.Log(hp);
-        if(hp <= 0)
+        if (hp <= 0)
         {
             Destroy(this.gameObject);
         }
