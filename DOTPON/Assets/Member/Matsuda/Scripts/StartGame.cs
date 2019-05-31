@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class StartGame : MonoBehaviour
     [SerializeField]
     ScreenController screenController;
 
+    [SerializeField]
+    GameObject[] cameras;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +43,14 @@ public class StartGame : MonoBehaviour
             */
             //ぷれいやーのenumをそれぞれに対応させる
             playerObj.GetComponent<Player>().own = PlayerEnum(i);
-            playerObj.transform.LookAt(new Vector3(0, 0, 0));
+            playerObj.transform.LookAt(GameObject.Find("CameraSetting").gameObject.transform.position);
             //カメラのオブジェクトを探して参照させる
-            screenController.cameras[i] = playerObj.GetComponentInChildren<Camera>().gameObject;
+            cameras[i].transform.parent = playerObj.transform;
+            cameras[i].GetComponent<PlayerCamera>().CameraPosSet();
             buttonObj[i].SetActive(true);
         }
+        //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
+        screenController.CameraNumCheck();
     }
     private Player.PlayerKind PlayerEnum(int num)
     {

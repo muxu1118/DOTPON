@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScreenController : MonoBehaviour
 {
 
-    public GameObject[] cameras;
+    public GameObject[] cameras = new GameObject[5];
     private int playerNumbers;
     private Rect singleCam = new Rect(0f, 0f, 1f, 1f);
     private Rect dualCam1 = new Rect(0f, 0f, 0.5f, 1f);
@@ -16,7 +17,7 @@ public class ScreenController : MonoBehaviour
     private Rect multiCam4 = new Rect(0.5f, 0f, 1f, 0.5f);
 
     // Start is called before the first frame update
-    void Start()
+    public void CameraNumCheck()
     {
         switch (MultiPlayerManager.instance.totalPlayer)
         {
@@ -44,6 +45,7 @@ public class ScreenController : MonoBehaviour
         DeactiveCam();
         cameras[0].GetComponent<Camera>().rect = singleCam;
         cameras[0].SetActive(true);
+
     }
 
     public void twoPlayer()
@@ -53,6 +55,7 @@ public class ScreenController : MonoBehaviour
         cameras[1].GetComponent<Camera>().rect = dualCam2;
         cameras[0].SetActive(true);
         cameras[1].SetActive(true);
+
     }
 
     public void threePlayer()
@@ -84,8 +87,8 @@ public class ScreenController : MonoBehaviour
     {
         for(int i=0; i <cameras.Length; i++)
         {
-            if (cameras[i].gameObject == null) return;
-            cameras[i].gameObject.SetActive(false);
+             cameras[i].gameObject.SetActive(false);
+           
         }
         
     }
