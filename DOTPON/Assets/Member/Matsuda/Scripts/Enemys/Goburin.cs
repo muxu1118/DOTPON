@@ -18,17 +18,17 @@ public class Goburin : Enemy
         //視野のcollider3つを配置するループ
         for (int i = 0;i < 3;i++)
         {
-            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, 1, lookingAngle);
+            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, transform.localScale.x /10, lookingAngle);
             switch (i)
             { 
                 case 0:
-                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle) /6);
+                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle)/2);
                     break;
                 case 1:
-                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle)/6, 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle)/2, 0, 0);
                     break;
                 case 2:
-                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle)/6, 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle)/2, 0, 0);
                     break;
             }
         }

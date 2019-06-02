@@ -18,6 +18,6 @@ MonoBehaviour:
   speed: 2
   rotateTime: 1.5
   rotateAngle: 90
-  lookingAngle: 15
-  distance: 3
+  lookingAngle: 7
+  distance: 7
   lookSpeed: 1

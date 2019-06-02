@@ -6,7 +6,6 @@ public class Slime : Enemy
 {
     Vector3 vector;
     [SerializeField] GameObject[] lookingCollider;
-    bool isAction = false;
     float time;
     float lookingAngle;
     // Start is called before the first frame update
@@ -17,24 +16,23 @@ public class Slime : Enemy
         HP = parameter.HP;
         lookingAngle = parameter.lookingAngle / 2;
         //視野のcollider3つを配置するループ
-        /*
+        float scale = transform.localScale.x * 2;
         for (int i = 0; i < 3; i++)
         {
-            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(parameter.lookingAngle, 1, lookingAngle);
+            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, 1, lookingAngle);
             switch (i)
             {
                 case 0:
-                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle));
+                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle) / scale);
                     break;
                 case 1:
-                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle), 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle) / scale, 0, 0);
                     break;
                 case 2:
-                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle), 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle) / scale, 0, 0);
                     break;
             }
         }
-        */
     }
 
     // Update is called once per frame
@@ -43,7 +41,7 @@ public class Slime : Enemy
         time += Time.deltaTime;
         DropDot(gameObject, parameter.dropDot);
         if (isAction) return;
-        transform.position += vector * parameter.speed / 100;
+        this.transform.localPosition += vector * parameter.speed / 100;
         if (time > 3 && !isLooking)
         {
             isAction = true;
@@ -72,6 +70,7 @@ public class Slime : Enemy
             //進む方向を自分の前に変更
             vector = transform.forward;
             isLooking = true;
+            if (isAction) return;
             //自分とプレイヤーの距離の取得
             float dis = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
             //distanceより近かったら攻撃する関数を呼ぶ
@@ -86,13 +85,6 @@ public class Slime : Enemy
     private void OnTriggerExit(Collider other)
     {
         isLooking = false;
-    }
-    //行動しない時間
-    IEnumerator WaitTime()
-    {
-        yield return new WaitForSeconds(parameter.rotateTime);
-        isAction = false;
-        yield break;
     }
 }
 
