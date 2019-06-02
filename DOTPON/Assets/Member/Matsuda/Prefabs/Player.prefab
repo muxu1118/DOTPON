@@ -913,6 +913,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1453264195924920546, guid: 58f528e32f8833c4b942685bb0d606bb,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7142809957321371334, guid: 58f528e32f8833c4b942685bb0d606bb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -967,11 +972,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 146.733
-      objectReference: {fileID: 0}
-    - target: {fileID: 1453264195924920546, guid: 58f528e32f8833c4b942685bb0d606bb,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6264037851564855669, guid: 58f528e32f8833c4b942685bb0d606bb,
         type: 3}
@@ -1211,6 +1211,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5366474426209506129}
     m_Modifications:
+    - target: {fileID: 8874533862748424919, guid: dda1d90d873ce3b4182955aa501fa57b,
+        type: 3}
+      propertyPath: m_Name
+      value: Katana
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874533862748424919, guid: dda1d90d873ce3b4182955aa501fa57b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874533862748424919, guid: dda1d90d873ce3b4182955aa501fa57b,
+        type: 3}
+      propertyPath: m_TagString
+      value: weapon
+      objectReference: {fileID: 0}
     - target: {fileID: 8874533862748460791, guid: dda1d90d873ce3b4182955aa501fa57b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1280,21 +1295,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874533862748424919, guid: dda1d90d873ce3b4182955aa501fa57b,
-        type: 3}
-      propertyPath: m_Name
-      value: Katana
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874533862748424919, guid: dda1d90d873ce3b4182955aa501fa57b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874533862748424919, guid: dda1d90d873ce3b4182955aa501fa57b,
-        type: 3}
-      propertyPath: m_TagString
-      value: weapon
       objectReference: {fileID: 0}
     - target: {fileID: 7010583479613736193, guid: dda1d90d873ce3b4182955aa501fa57b,
         type: 3}

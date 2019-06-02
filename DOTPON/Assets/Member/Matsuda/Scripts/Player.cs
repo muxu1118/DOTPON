@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
     {
         hp = 10;
         weaponNumber = weapon.Length;
+        this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
+        Debug.Log(transform.forward.x + " + " + transform.forward.y + " + " + transform.forward.z);
     }
 
     // Update is called once per frame
