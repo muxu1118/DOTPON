@@ -267,6 +267,8 @@ public class Player : MonoBehaviour
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
+        DotManager.instance.EnemyDeadDotPop(1,transform.position
+            );
         //Debug.Log(hp);
         if (hp <= 0)
         {
