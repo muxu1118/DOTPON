@@ -64,7 +64,7 @@ public class Slime : Enemy
             //ターゲットの方向ベクトルを取得
             Vector3 relativePos = other.transform.position - this.gameObject.transform.position;
             //方向を回転情報に変換
-            Quaternion rotation = Quaternion.LookRotation(relativePos);
+            Quaternion rotation = Quaternion.LookRotation(new Vector3(relativePos.x,0,relativePos.z));
             //現在の回転情報と、ターゲットの回転情報を補完する
             transform.rotation = Quaternion.Slerp(this.transform.rotation, rotation, parameter.lookSpeed);
             //進む方向を自分の前に変更

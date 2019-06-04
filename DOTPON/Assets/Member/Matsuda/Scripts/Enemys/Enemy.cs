@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     protected void Attack(int attack)
     {
         //GameObject.Find("player").GetComponent<plaer_m>().Damage(attack);
-        buki.GetComponent<Animator>().SetTrigger("Trigger");
+        buki.GetComponent<Animator>().SetTrigger("Attack");
         //プレイヤーのスクリプトのダメージの関数に投げる
     }
     //しんだとき

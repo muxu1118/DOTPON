@@ -11,6 +11,7 @@ public class SpownController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CreateEnemy();
         //_object.transform.position = positions[Random.Range(0, 4)];
         //for (int i = 0; i < 2; i++)
         //{
@@ -31,37 +32,41 @@ public class SpownController : MonoBehaviour
         time += Time.deltaTime;
         if(time / 10 >= 1)
         {
-            switch (Random.Range(0,3))
-            {
-                case 0:
-                    GameObject parentObject = new GameObject("GoburinFlock");
-                    parentObject.tag = "enemy";
-                    parentObject.transform.position = positions[Random.Range(0, 4)];
-                    for (int i = 0; i < 2; i++)
-                    {
-                        for (int j = 0; j < 2; j++)
-                        {
-                            GameObject child = Instantiate(obj[0], new Vector3(obj[0].transform.localPosition.x + i, 1, obj[0].transform.localPosition.z + j), Quaternion.identity);
-                            child.name = child.name + num;
-                            child.transform.parent = parentObject.transform;
-
-                        }
-                    }
-                    parentObject.AddComponent<GoburinFlock>();
-                    break;
-                case 1:
-                    GameObject slime = Instantiate(obj[1], positions[Random.Range(0,4)], Quaternion.identity);
-                    slime.name = slime.name + num;
-                    break;
-                case 2:
-                    GameObject golem = Instantiate(obj[2], positions[Random.Range(0, 4)], Quaternion.identity);
-                    golem.name = golem.name + num;
-                    break;
-                default:
-                    break;
-            }
-            num++;
-            time = 0;
+            CreateEnemy();
         }
+    }
+    void CreateEnemy()
+    {
+        switch (2)
+        {
+            case 0:
+                GameObject parentObject = new GameObject("GoburinFlock");
+                parentObject.tag = "enemy";
+                Vector3 spownPos = parentObject.transform.position = positions[Random.Range(0, 4)];
+                for (int i = 0; i < 2; i++)
+                {
+                    for (int j = 0; j < 2; j++)
+                    {
+                        GameObject child = Instantiate(obj[0], new Vector3(spownPos.x + i, 1, spownPos.z + j), Quaternion.identity);
+                        child.name = child.name + num;
+                        child.transform.parent = parentObject.transform;
+
+                    }
+                }
+                parentObject.AddComponent<GoburinFlock>();
+                break;
+            case 1:
+                GameObject slime = Instantiate(obj[1], positions[Random.Range(0, 4)], Quaternion.identity);
+                slime.name = slime.name + num;
+                break;
+            case 2:
+                GameObject golem = Instantiate(obj[2], positions[Random.Range(0, 4)], Quaternion.identity);
+                golem.name = golem.name + num;
+                break;
+            default:
+                break;
+        }
+        num++;
+        time = 0;
     }
 }
