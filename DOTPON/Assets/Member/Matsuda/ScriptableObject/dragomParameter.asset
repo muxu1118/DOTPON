@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5faab0f66c7ec8341a48f0894c54cc70, type: 3}
-  m_Name: slimeParameterTable
+  m_Name: dragomParameter
   m_EditorClassIdentifier: 
-  HP: 3
-  dropDot: 2
-  attackPow: 1
-  speed: 2
-  rotateTime: 1.5
-  rotateAngle: 90
-  lookingAngle: 21
-  distance: 7
-  lookSpeed: 0.1
-  lookAngleChangeTime: 5
+  HP: 0
+  dropDot: 0
+  attackPow: 0
+  speed: 0
+  rotateTime: 0
+  rotateAngle: 0
+  lookingAngle: 0
+  distance: 0
+  lookSpeed: 0

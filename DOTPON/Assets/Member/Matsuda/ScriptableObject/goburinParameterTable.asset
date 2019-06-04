@@ -21,3 +21,4 @@ MonoBehaviour:
   lookingAngle: 5
   distance: 1
   lookSpeed: 0.1
+  lookAngleChangeTime: 3

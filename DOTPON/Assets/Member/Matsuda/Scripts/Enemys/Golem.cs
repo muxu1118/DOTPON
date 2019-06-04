@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goburin : Enemy
+public class Golem : Enemy
 {
     Vector3 vector;
-    [SerializeField]GameObject[] lookingCollider;
+    [SerializeField] GameObject[] lookingCollider;
     float time;
     float lookingAngle;
     // Start is called before the first frame update
@@ -16,19 +16,20 @@ public class Goburin : Enemy
         HP = parameter.HP;
         lookingAngle = parameter.lookingAngle / 2;
         //視野のcollider3つを配置するループ
-        for (int i = 0;i < 3;i++)
+        float scale = transform.localScale.x * 2;
+        for (int i = 0; i < 3; i++)
         {
-            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, transform.localScale.x /10, lookingAngle);
+            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, 1, lookingAngle);
             switch (i)
-            { 
+            {
                 case 0:
-                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle)/2);
+                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle) / scale);
                     break;
                 case 1:
-                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle)/2, 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle) / scale, 0, 0);
                     break;
                 case 2:
-                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle)/2, 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle) / scale, 0, 0);
                     break;
             }
         }
@@ -38,14 +39,14 @@ public class Goburin : Enemy
     void Update()
     {
         time += Time.deltaTime;
-        DropDot(gameObject,parameter.dropDot);
+        DropDot(gameObject, parameter.dropDot);
         if (isAction) return;
-        this.transform.localPosition += vector * parameter.speed / 100;
+        this.transform.position += vector * parameter.speed / 100;
         if (time > parameter.lookAngleChangeTime && !isLooking)
         {
             isAction = true;
             //回転のコルーチンを呼び出す
-            StartCoroutine(Rotating(parameter.rotateAngle,parameter.rotateTime * 60));
+            StartCoroutine(Rotating(parameter.rotateAngle, parameter.rotateTime * 60));
             StartCoroutine(WaitTime());
             time = 0;
         }
@@ -69,11 +70,10 @@ public class Goburin : Enemy
             //進む方向を自分の前に変更
             vector = transform.forward;
             isLooking = true;
-            if (isAction) return;
             //自分とプレイヤーの距離の取得
             float dis = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
             //distanceより近かったら攻撃する関数を呼ぶ
-            if(dis <= parameter.distance)
+            if (dis <= parameter.distance)
             {
                 isAction = true;
                 Attack(parameter.attackPow);

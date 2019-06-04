@@ -31,5 +31,8 @@ public class EnemyParameter : ScriptableObject
     [SerializeField]
     [HeaderAttribute("プレイヤーの方向を向く速度")]
     public float lookSpeed;
+    [SerializeField]
+    [HeaderAttribute("移動の角度が変わるまでの間隔")]
+    public int lookAngleChangeTime;//HP
 }
 

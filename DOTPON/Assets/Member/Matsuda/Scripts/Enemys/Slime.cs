@@ -42,7 +42,7 @@ public class Slime : Enemy
         DropDot(gameObject, parameter.dropDot);
         if (isAction) return;
         this.transform.position += vector * parameter.speed / 100;
-        if (time > 3 && !isLooking)
+        if (time > parameter.lookAngleChangeTime && !isLooking)
         {
             isAction = true;
             //回転のコルーチンを呼び出す
