@@ -37,6 +37,7 @@ public class WeaponCreate : MonoBehaviour
                 break;
         }
         DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
+        createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
     }
     private void Update()
     {

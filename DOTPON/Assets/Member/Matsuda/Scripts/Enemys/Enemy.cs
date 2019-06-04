@@ -46,7 +46,8 @@ public class Enemy : MonoBehaviour
         HP -= At;
         isAction = true;
         StartCoroutine(WaitTime());
-        //Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
+        this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0,0,0);
+        Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
     }
     /// <summary>
     /// エネミーの回転をさせるコルーチン
@@ -81,6 +82,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(parameter.rotateTime);
         isAction = false;
+        this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1,1,1);
         yield break;
     }
     private void FixedUpdate()

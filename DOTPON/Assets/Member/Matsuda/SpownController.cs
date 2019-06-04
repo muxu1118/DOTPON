@@ -10,20 +10,18 @@ public class SpownController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject _object = new GameObject("GoburinFlock");
-        _object.tag = "enemy";
-        _object.transform.position = positions[Random.Range(0, 4)];
-        for (int i = 0; i < 2; i++)
-        {
-            for (int j = 0; j < 2; j++)
-            {
-                GameObject chald = Instantiate(obj[0], new Vector3(obj[0].transform.localPosition.x + i, 1, obj[0].transform.localPosition.z + j), Quaternion.identity);
-                chald.name = chald.name + (i + j);
-                chald.transform.parent = _object.transform;
+        //_object.transform.position = positions[Random.Range(0, 4)];
+        //for (int i = 0; i < 2; i++)
+        //{
+        //    for (int j = 0; j < 2; j++)
+        //    {
+        //        GameObject chald = Instantiate(obj[0], new Vector3(obj[0].transform.localPosition.x + i, 1, obj[0].transform.localPosition.z + j), Quaternion.identity);
+        //        chald.name = chald.name + (i + j);
+        //        chald.transform.parent = _object.transform;
 
-            }
-        }
-        _object.AddComponent<GoburinFlock>();
+        //    }
+        //}
+        //_object.AddComponent<GoburinFlock>();
     }
 
     // Update is called once per frame

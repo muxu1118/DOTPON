@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     {
         hp = 10;
         weaponNumber = weapon.Length;
+        createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
         this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
         Debug.Log(transform.forward.x + " + " + transform.forward.y + " + " + transform.forward.z);
     }
@@ -205,39 +206,39 @@ public class Player : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 表示させる武器を変えるプラス方向)
-    /// </summary>
-    public void ChangeWeaponPlus()
-    {
-        weaponType += 1;
-        if (weaponType == weaponNumber)
-        {
-            weaponType = 0;
-        }
-        Debug.Log(weaponType);
-    }
+    ///// <summary>
+    ///// 表示させる武器を変えるプラス方向)
+    ///// </summary>
+    //public void ChangeWeaponPlus()
+    //{
+    //    weaponType += 1;
+    //    if (weaponType == weaponNumber)
+    //    {
+    //        weaponType = 0;
+    //    }
+    //    Debug.Log(weaponType);
+    //}
 
-    /// <summary>
-    /// 表示させる武器を変える(マイナス方向)
-    /// </summary>
-    public void ChangeWeaponMinus()
-    {
-        if (weaponType > 0)
-        {
-            weaponType -= 1;
-            Debug.Log(weaponType);
-        }
-        else if (weaponType == 0)
-        {
-            weaponType = weaponNumber - 1;
-            Debug.Log(weaponType);
-        }
-    }
-    void PlayerMove(Vector3 vec)
-    {
-        GetComponent<Rigidbody>().velocity += vec;
-    }
+    ///// <summary>
+    ///// 表示させる武器を変える(マイナス方向)
+    ///// </summary>
+    //public void ChangeWeaponMinus()
+    //{
+    //    if (weaponType > 0)
+    //    {
+    //        weaponType -= 1;
+    //        Debug.Log(weaponType);
+    //    }
+    //    else if (weaponType == 0)
+    //    {
+    //        weaponType = weaponNumber - 1;
+    //        Debug.Log(weaponType);
+    //    }
+    //}
+    //void PlayerMove(Vector3 vec)
+    //{
+    //    GetComponent<Rigidbody>().velocity += vec;
+    //}
     /// <summary>
     /// プレイヤーがダメージを受けた時の処理
     /// </summary>
@@ -245,7 +246,8 @@ public class Player : MonoBehaviour
     public void Damage(int damage)
     {
         if (isDamage) return;
-        hp = hp - damage; switch (own)
+        hp = hp - damage;
+        switch (own)
         {
             case PlayerKind.Player1:
                 MultiPlayerManager.instance.P1Dot--;
@@ -267,8 +269,7 @@ public class Player : MonoBehaviour
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
-        DotManager.instance.EnemyDeadDotPop(1,transform.position
-            );
+        DotManager.instance.EnemyDeadDotPop(1,transform.position);
         //Debug.Log(hp);
         if (hp <= 0)
         {
@@ -321,7 +322,7 @@ public class Player : MonoBehaviour
             {
                 case PlayerKind.Player1:
                     MultiPlayerManager.instance.P1Dot++;
-                    Debug.Log(MultiPlayerManager.instance.P1Dot);
+                    //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
                     MultiPlayerManager.instance.P2Dot++;

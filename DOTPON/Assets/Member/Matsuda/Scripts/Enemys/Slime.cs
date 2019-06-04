@@ -41,7 +41,7 @@ public class Slime : Enemy
         time += Time.deltaTime;
         DropDot(gameObject, parameter.dropDot);
         if (isAction) return;
-        this.transform.localPosition += vector * parameter.speed / 100;
+        this.transform.position += vector * parameter.speed / 100;
         if (time > 3 && !isLooking)
         {
             isAction = true;
@@ -71,15 +71,9 @@ public class Slime : Enemy
             vector = transform.forward;
             isLooking = true;
             if (isAction) return;
-            //自分とプレイヤーの距離の取得
-            float dis = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
-            //distanceより近かったら攻撃する関数を呼ぶ
-            if (dis <= parameter.distance)
-            {
-                isAction = true;
-                Attack(parameter.attackPow);
-                StartCoroutine(WaitTime());
-            }
+            isAction = true;
+            Attack(parameter.attackPow);
+            StartCoroutine(WaitTime());
         }
     }
     private void OnTriggerExit(Collider other)
