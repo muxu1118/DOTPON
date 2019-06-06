@@ -27,22 +27,24 @@ public class Player : MonoBehaviour
     //[SerializeField]
     //WeaponCreate weapon;
 
-    [SerializeField]
-    public GameObject[] weapon = new GameObject[4]; //武器を格納
+    //[SerializeField]
+    //public GameObject[] weapon = new GameObject[4]; //武器を格納
 
-    bool trigger = true; //武器の作成と破棄の切り替え 
-    int weaponNumber;    //武器の種類
-    int weaponType = 0;  //武器を指定するための数値
+    //bool trigger = true; //武器の作成と破棄の切り替え 
+    //int weaponNumber;    //武器の種類
+    //int weaponType = 0;  //武器を指定するための数値
 
-    public GameObject nowWeapon;
-    int createNum = 0;
+    //public GameObject nowWeapon;
+    //int createNum = 0;
+    WeaponCreate create;
 
     // Start is called before the first frame update
     void Start()
     {
         hp = 10;
-        weaponNumber = weapon.Length;
-        createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
+        //weaponNumber = weapon.Length;
+        //createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
+        create = GetComponent<WeaponCreate>();
         this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
         Debug.Log(transform.forward.x + " + " + transform.forward.y + " + " + transform.forward.z);
     }
@@ -81,24 +83,23 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown("joystick 1 button 2"))
         {
-            WeaponChoice("a");
+            create.WeaponChoice("a");
         }
         if (Input.GetKeyDown("joystick 1 button 5"))
         {
-            WeaponChoice("s");
+            create.WeaponChoice("s");
         }
         if (Input.GetKeyDown("joystick 1 button 7"))
         {
-            WeaponChoice("d"); 
+            create.WeaponChoice("d"); 
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             AttackColliderOn();
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            
         }
     }
     void Move()
@@ -135,76 +136,76 @@ public class Player : MonoBehaviour
     }/// <summary>
      /// コントローラーのボタンが押された時の各判定
      /// </summary>
-    private void WeaponChoice(string str)
-    {
-        switch (str)
-        {
-            case "a":
-                if (trigger && DotManager.instance.DotPonCreate(GetComponent<Player>(), createNum))
-                {
-                    GetComponent<Animator>().SetTrigger("Create");
-                    weapon[3].SetActive(false);
-                    weapon[weaponType].SetActive(true);
-                    nowWeapon = weapon[weaponType];
-                    nowWeapon.GetComponent<BoxCollider>().enabled = false;
-                    trigger = false;
-                }
-                else
-                {
-                    //作成した武器を破棄
+    //private void WeaponChoice(string str)
+    //{
+    //    switch (str)
+    //    {
+    //        case "a":
+    //            if (trigger && DotManager.instance.DotPonCreate(GetComponent<Player>(), createNum))
+    //            {
+    //                GetComponent<Animator>().SetTrigger("Create");
+    //                weapon[3].SetActive(false);
+    //                weapon[weaponType].SetActive(true);
+    //                nowWeapon = weapon[weaponType];
+    //                nowWeapon.GetComponent<BoxCollider>().enabled = false;
+    //                trigger = false;
+    //            }
+    //            else
+    //            {
+    //                //作成した武器を破棄
 
-                    nowWeapon.SetActive(false);
-                    weapon[3].SetActive(true);
-                    nowWeapon = weapon[3];
-                    trigger = true;
-                }
-                break;
+    //                nowWeapon.SetActive(false);
+    //                weapon[3].SetActive(true);
+    //                nowWeapon = weapon[3];
+    //                trigger = true;
+    //            }
+    //            break;
 
-            //作成する武器の切り替え
-            case "s":
-                weaponType += 1;
-                if (weaponType == weaponNumber -1)
-                {
-                    weaponType = 0;
-                }
-                createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
-                //Debug.Log(weaponType);
-                break;
+    //        //作成する武器の切り替え
+    //        case "s":
+    //            weaponType += 1;
+    //            if (weaponType == weaponNumber -1)
+    //            {
+    //                weaponType = 0;
+    //            }
+    //            createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
+    //            //Debug.Log(weaponType);
+    //            break;
 
-            //作成する武器の切り替え
-            case "d":
-                if (weaponType > 0)
-                {
-                    weaponType -= 1;
-                    //Debug.Log(weaponType);
-                }
-                else if (weaponType == 0)
-                {
-                    weaponType = weaponNumber - 2;
-                    //Debug.Log(weaponType);
-                }
-                createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
-                break;
-        }
-    }
+    //        //作成する武器の切り替え
+    //        case "d":
+    //            if (weaponType > 0)
+    //            {
+    //                weaponType -= 1;
+    //                //Debug.Log(weaponType);
+    //            }
+    //            else if (weaponType == 0)
+    //            {
+    //                weaponType = weaponNumber - 2;
+    //                //Debug.Log(weaponType);
+    //            }
+    //            createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
+    //            break;
+    //    }
+    //}
 
-    /// <summary>
-    /// 武器を表示非表示
-    /// </summary>
-    public void CreateWeapon()
-    {
-        if (trigger)
-        {
-            weapon[weaponNumber].SetActive(true);
-            trigger = false;
-        }
-        else
-        {
-            //作成した武器を破棄
-            weapon[weaponNumber].SetActive(false);
-            trigger = true;
-        }
-    }
+    ///// <summary>
+    ///// 武器を表示非表示
+    ///// </summary>
+    //public void CreateWeapon()
+    //{
+    //    if (trigger)
+    //    {
+    //        weapon[weaponNumber].SetActive(true);
+    //        trigger = false;
+    //    }
+    //    else
+    //    {
+    //        //作成した武器を破棄
+    //        weapon[weaponNumber].SetActive(false);
+    //        trigger = true;
+    //    }
+    //}
 
     ///// <summary>
     ///// 表示させる武器を変えるプラス方向)
@@ -301,9 +302,9 @@ public class Player : MonoBehaviour
     IEnumerator AttackWait()
     {
         yield return new WaitForSeconds(0.5f);
-        nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
+        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(0.5f);
-        nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
+        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.12f);
         isAttack = false;
         yield break;
@@ -311,7 +312,15 @@ public class Player : MonoBehaviour
     void AttackColliderOn()
     {
         isAttack = true;
-        GetComponent<Animator>().SetTrigger("Attack");
+        if (create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch")
+        {
+            //腕振るほう
+            GetComponent<Animator>().SetTrigger("Attack");
+        }else if (create.nowWeapon.name == "Katana" || create.nowWeapon.name == "sword")
+        {
+            //上段切りみたいなの
+            GetComponent<Animator>().SetTrigger("Attack2");
+        }
         StartCoroutine(AttackWait());
     }
     private void OnTriggerEnter(Collider other)

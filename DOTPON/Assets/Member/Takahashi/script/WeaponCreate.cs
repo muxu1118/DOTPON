@@ -41,7 +41,7 @@ public class WeaponCreate : MonoBehaviour
     }
     private void Update()
     {
-        WeaponChoice();
+        WeaponChoice("");
     }
     /// <summary>
     /// 指定の武器を作成
@@ -54,7 +54,7 @@ public class WeaponCreate : MonoBehaviour
     /// <summary>
     /// コントローラーのボタンが押された時の各判定
     /// </summary>
-    private void WeaponChoice()
+    public void WeaponChoice(string str)
     {
         switch (Input.inputString)
         {             
@@ -66,7 +66,6 @@ public class WeaponCreate : MonoBehaviour
                     weapon[3].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
-                    GetComponent<Player>().nowWeapon = weapon[weaponType];
                     nowWeapon.GetComponent<BoxCollider>().enabled = false;
                     trigger = false;
                 }
