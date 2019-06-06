@@ -276,6 +276,7 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
         }
         isDamage = true;
+        Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
         StartCoroutine(DamegeWait());
     }
     /// <summary>

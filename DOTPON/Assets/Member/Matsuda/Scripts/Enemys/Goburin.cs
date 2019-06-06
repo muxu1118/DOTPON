@@ -46,7 +46,7 @@ public class Goburin : Enemy
             isAction = true;
             //回転のコルーチンを呼び出す
             StartCoroutine(Rotating(parameter.rotateAngle,parameter.rotateTime * 60));
-            StartCoroutine(WaitTime());
+            StartCoroutine(WaitTime(parameter.rotateTime));
             time = 0;
         }
         vector = transform.forward;
@@ -77,7 +77,7 @@ public class Goburin : Enemy
             {
                 isAction = true;
                 Attack(parameter.attackPow);
-                StartCoroutine(WaitTime());
+                StartCoroutine(WaitTime(1.5f));
             }
         }
     }

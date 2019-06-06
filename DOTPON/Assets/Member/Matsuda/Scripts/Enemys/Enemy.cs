@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
     {
         HP -= At;
         isAction = true;
-        StartCoroutine(WaitTime());
+        StartCoroutine(WaitTime(1));
         this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0,0,0);
         Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
     }
@@ -78,9 +78,9 @@ public class Enemy : MonoBehaviour
     }
 
     //行動しない時間
-    public IEnumerator WaitTime()
+    public IEnumerator WaitTime(float time)
     {
-        yield return new WaitForSeconds(parameter.rotateTime);
+        yield return new WaitForSeconds(time);
         isAction = false;
         this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1,1,1);
         yield break;
