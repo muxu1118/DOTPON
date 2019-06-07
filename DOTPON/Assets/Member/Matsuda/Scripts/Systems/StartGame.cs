@@ -13,6 +13,8 @@ public class StartGame : MonoBehaviour
     [SerializeField]
     GameObject[] buttonObj;
     [SerializeField]
+    GameObject[] BukiObj;
+    [SerializeField]
     ScreenController screenController;
 
     [SerializeField]
@@ -32,6 +34,7 @@ public class StartGame : MonoBehaviour
             cameras[i].transform.parent = playerObj.transform;
             cameras[i].GetComponent<PlayerCamera>().CameraPosSet();
             buttonObj[i].SetActive(true);
+            BukiObj[i].SetActive(true);
         }
         //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
         screenController.CameraNumCheck();

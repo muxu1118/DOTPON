@@ -30,7 +30,7 @@ public class ChangeDOTPON : MonoBehaviour
         int num3 = num2 + 1;
         if (num3 > 2) num3 = 0;
         float tim = 0;
-        while (tim < 35)
+        while (tim < 45)
         {
             tim++;
             Objects[num].transform.position = Vector3.Lerp(Objects[num].transform.position, positions[1].position, Time.deltaTime * 5);
