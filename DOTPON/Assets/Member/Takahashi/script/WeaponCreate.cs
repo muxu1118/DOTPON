@@ -36,7 +36,7 @@ public class WeaponCreate : MonoBehaviour
                 DotPonText = GameObject.Find("P4DOTPON");
                 break;
         }
-        DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
+        //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
         createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
     }
     private void Update()
@@ -87,7 +87,9 @@ public class WeaponCreate : MonoBehaviour
                     weaponType = 0;
                 }
                 createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
-                DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
+                //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
+                DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,true);
+                //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
                 Debug.Log(weaponType);
                 break;
 
@@ -103,7 +105,9 @@ public class WeaponCreate : MonoBehaviour
                     weaponType = weaponNumber - 2;
                     Debug.Log(weaponType);
                 }
-                DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
+                //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
+                DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,false);
+                //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
                 createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
                 break;
         }
