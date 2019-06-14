@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         //weaponNumber = weapon.Length;
         //createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
         create = GetComponent<WeaponCreate>();
-        this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
+        //this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
         Debug.Log(transform.forward.x + " + " + transform.forward.y + " + " + transform.forward.z);
     }
 
@@ -100,6 +100,10 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
         }
     }
     void Move()
