@@ -25,7 +25,7 @@ public class PlayerMove : MonoBehaviour
         //transform.potisionの移動
         
         //走る
-        if (Input.GetAxisRaw("Mouse Y") ==-1)
+        if (Input.GetAxisRaw("Mouse Y") <-0.9)
         {
             transform.position += transform.forward * RunSpeed * Time.deltaTime;
             Debug.Log("呼ばれた");
@@ -54,6 +54,20 @@ public class PlayerMove : MonoBehaviour
             transform.position -= transform.forward * WalkSpeed * Time.deltaTime;
             Debug.Log("後ろ");
         }
+        
+        //HorizontalとVerticalの移動
+        /*
+        float x = Input.GetAxisRaw("Mouse X") * Time.deltaTime * WalkSpeed;
+
+        float z = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * WalkSpeed;
+        if (z>0)
+        {
+            transform.position += transform.forward * z + transform.right * x;
+        }
+
+        //xとzの数値に基づいて移動
+        transform.position += transform.forward * z + transform.right * x;
+        */
     }
     
 }
