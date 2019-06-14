@@ -54,29 +54,39 @@ public class MoveController : MonoBehaviour
         {
             anim.SetFloat("Speed", 0);
         }
+        
 
-        if (Input.GetAxis("Vertical1_left") > 0.7)
-        {   //走る
-            this.transform.position += transform.forward * run * Time.deltaTime;
-        }
-        if (Input.GetAxis("Vertical1_left") > 0.3){
-            //歩き
-            this.transform.position += transform.forward * walk * Time.deltaTime;
-        }
-        if(Input.GetAxis("Vertical1_left") < -0.3)
+        for (int Num = 1;Num <= 4;Num++)
         {
-            //後ろに進む
-            this.transform.position -= transform.forward * walk * Time.deltaTime;
-        }
-        if(Input.GetAxis("Horizontal1_left") > 0.4)
-        {
-            //右に進む
-            this.transform.position += transform.right * walk * Time.deltaTime;
-        }
-        if (Input.GetAxis("Horizontal1_left") < -0.4)
-        {
-            //左に進む
-            this.transform.position -= transform.right * walk * Time.deltaTime;
+            if (Input.GetAxis("Vertical"+ Num + "_left") > 0.7)
+            {   //走る
+                
+                this.transform.position += transform.forward * run * Time.deltaTime;
+            }
+            if (Input.GetAxis("Vertical" + Num + "_left") > 0.3)
+            {
+                //歩き
+                
+                this.transform.position += transform.forward * walk * Time.deltaTime;
+            }
+            if (Input.GetAxis("Vertical" + Num + "_left") < -0.3)
+            {
+                //後ろに進む
+                
+                this.transform.position -= transform.forward * walk * Time.deltaTime;
+            }
+            if (Input.GetAxis("Horizontal" + Num + "_left") > 0.4)
+            {
+                //右に進む
+                
+                this.transform.position += transform.right * walk * Time.deltaTime;
+            }
+            if (Input.GetAxis("Horizontal" + Num + "_left") < -0.4)
+            {
+                //左に進む
+                
+                this.transform.position -= transform.right * walk * Time.deltaTime;
+            }
         }
     }
 
