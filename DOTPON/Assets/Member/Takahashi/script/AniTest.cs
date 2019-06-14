@@ -27,7 +27,7 @@ public class AniTest : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.A))
         {
 
-            switch (tag)
+            switch ()
             {
                 case "ken":
                     anim.SetTrigger("Attack");
