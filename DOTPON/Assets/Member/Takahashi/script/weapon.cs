@@ -13,14 +13,17 @@ public class weapon : MonoBehaviour
     public int _necessaryDot;
     [HideInInspector]
     public int _durableValue;
+
+    private string tagName;
     
 
     void Start()
     {
-    //    _attackSpeed = parametor.attackSpeed;
-    //    _attackDamage = parametor.attackDamage;
-    //    _necessaryDot = parametor.necessaryDot;
-    //    _durableValue = parametor.durableValue;
+        //    _attackSpeed = parametor.attackSpeed;
+        //    _attackDamage = parametor.attackDamage;
+        //    _necessaryDot = parametor.necessaryDot;
+        //    _durableValue = parametor.durableValue;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,5 +41,11 @@ public class weapon : MonoBehaviour
                 other.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage);
                 break;
         }
+    }
+
+    public void TagGet()
+    {
+        tagName = gameObject.tag;
+        Debug.Log(tagName);
     }
 }

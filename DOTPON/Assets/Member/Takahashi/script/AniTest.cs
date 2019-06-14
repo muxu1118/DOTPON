@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class AniTest : MonoBehaviour
 {
-
     Animator anim;
+    
+    enum attackMeans
+    {
+        ken,
+        ax,
+        bomb,
+        shield,
+        fist
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+ 
     }
 
     // Update is called once per frame
@@ -18,11 +26,21 @@ public class AniTest : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            anim.SetTrigger("Attack");
+
+            switch (tag)
+            {
+                case "ken":
+                    anim.SetTrigger("Attack");
+                    break;
+                case "ax":
+                    anim.SetTrigger("Attack2");
+                    break;
+            }            
         }
+
         if (Input.GetKeyDown(KeyCode.S))
         {
-            anim.SetTrigger("Attack2");
+            
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
