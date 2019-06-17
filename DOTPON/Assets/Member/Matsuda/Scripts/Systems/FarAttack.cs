@@ -16,8 +16,11 @@ public class FarAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vecter = player.transform.forward;
-        StartCoroutine(PosMove(new Vector3( vecter.x * pow,0,vecter.z * pow)));
+        Debug.Log(this.gameObject.transform.position);
+        vecter = this.gameObject.transform.root.forward;
+        vecter = new Vector3(vecter.x * pow + this.gameObject.transform.position.x,0, vecter.z * pow + this.gameObject.transform.position.z);
+        Debug.Log(vecter);
+        StartCoroutine(PosMove(vecter));
     }
 
     // Update is called once per frame
@@ -48,7 +51,8 @@ public class FarAttack : MonoBehaviour
         float P1x = P2.x * ratio;
         float P1z = P2.z * ratio;
         //angle * Mathf.Deg2Rad 角度からラジアンへ変換
-        float P1y = Mathf.Sin(angle * Mathf.Deg2Rad) * Mathf.Abs((P1x + P1z) / 2) / Mathf.Cos(angle * Mathf.Deg2Rad);
+        //float P1y = Mathf.Sin(angle * Mathf.Deg2Rad) * Mathf.Abs((P1x + P1z) / 2) / Mathf.Cos(angle * Mathf.Deg2Rad);
+        float P1y = 5f;
         Vector3 P1 = new Vector3(P1x, P1y, P1z);
         // 終点についたらおしまい
         while (t <= 1)
@@ -63,6 +67,7 @@ public class FarAttack : MonoBehaviour
             defaultPos = transform.position;
             yield return null;
         }
+        Destroy(this.gameObject);
         
     }
 }

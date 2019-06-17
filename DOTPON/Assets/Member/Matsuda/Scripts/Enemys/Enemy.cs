@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public EnemyParameter parameter;
     [HideInInspector]public int HP;
     [HideInInspector]public bool isLooking = false;
-    [SerializeField] private GameObject buki;
+    [SerializeField] protected GameObject buki;
 
     public bool isAction = false;
     public void SpawnEnemy()

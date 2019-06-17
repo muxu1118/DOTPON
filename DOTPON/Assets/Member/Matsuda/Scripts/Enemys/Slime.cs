@@ -8,6 +8,7 @@ public class Slime : Enemy
     [SerializeField] GameObject[] lookingCollider;
     float time;
     float lookingAngle;
+    [SerializeField] GameObject bukiObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +73,10 @@ public class Slime : Enemy
             isLooking = true;
             if (isAction) return;
             isAction = true;
+            var obj = Instantiate(bukiObj, transform.localPosition, Quaternion.identity);
+            obj.GetComponent<FarAttack>().pow = 3;;
+            obj.transform.parent = this.gameObject.transform;
+            buki = obj;
             Attack(parameter.attackPow);
             StartCoroutine(WaitTime(1.5f));
         }
