@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faab0f66c7ec8341a48f0894c54cc70, type: 3}
   m_Name: dragomParameter
   m_EditorClassIdentifier: 
-  HP: 0
-  dropDot: 0
-  attackPow: 0
+  HP: 50
+  dropDot: 60
+  attackPow: 5
   speed: 0
-  rotateTime: 0
-  rotateAngle: 0
-  lookingAngle: 0
-  distance: 0
-  lookSpeed: 0
+  rotateTime: 2
+  rotateAngle: 90
+  lookingAngle: 15
+  distance: 10
+  lookSpeed: 0.1
+  lookAngleChangeTime: 3

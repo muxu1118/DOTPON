@@ -10,22 +10,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected GameObject buki;
 
     public bool isAction = false;
-    public void SpawnEnemy()
-    {
-        /*判定場所は後々
-        現在のモンスター数を取得。一定数以上だったらreturn
-        前回の生成からの時間を取得。
-        ５秒経っているか
-        */
-        //4か所にenemy生成
-        //enemyに対応した情報を持たせる
-    }
     //プレイヤーを攻撃する関数
-    protected void Attack(int attack)
+    protected void Attack()
     {
-        //GameObject.Find("player").GetComponent<plaer_m>().Damage(attack);
         buki.GetComponent<Animator>().SetTrigger("Attack");
-        //プレイヤーのスクリプトのダメージの関数に投げる
     }
     //しんだとき
     public void DropDot(GameObject obj,int kazu)
@@ -44,6 +32,7 @@ public class Enemy : MonoBehaviour
     public void Damage(int At)
     {
         HP -= At;
+        DropDot(this.gameObject,parameter.dropDot);
         isAction = true;
         StartCoroutine(WaitTime(1));
         this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0,0,0);
@@ -84,8 +73,5 @@ public class Enemy : MonoBehaviour
         isAction = false;
         this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1,1,1);
         yield break;
-    }
-    private void FixedUpdate()
-    {
     }
 }

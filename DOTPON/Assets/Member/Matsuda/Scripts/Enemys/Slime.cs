@@ -40,7 +40,6 @@ public class Slime : Enemy
     void Update()
     {
         time += Time.deltaTime;
-        DropDot(gameObject, parameter.dropDot);
         if (isAction) return;
         this.transform.position += vector * parameter.speed / 100;
         if (time > parameter.lookAngleChangeTime && !isLooking)
@@ -77,7 +76,7 @@ public class Slime : Enemy
             obj.GetComponent<FarAttack>().pow = 3;;
             obj.transform.parent = this.gameObject.transform;
             buki = obj;
-            Attack(parameter.attackPow);
+            Attack();
             StartCoroutine(WaitTime(1.5f));
         }
     }
