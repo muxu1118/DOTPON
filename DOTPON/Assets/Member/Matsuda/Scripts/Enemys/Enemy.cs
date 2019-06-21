@@ -16,12 +16,38 @@ public class Enemy : MonoBehaviour
         buki.GetComponent<Animator>().SetTrigger("Attack");
     }
     //しんだとき
-    public void DropDot(GameObject obj,int kazu)
+    public void DropDot(GameObject obj,int kazu,GameObject parentObj)
     {
         if (HP > 0) return;
         // managerに投げる
         Debug.Log("しんだ");
-        DotManager.instance.EnemyDeadDotPop(kazu,obj.transform.position);
+        //ドラゴンが死んだ場合、最後の攻撃者にstarを与える
+        if (obj.name == "dragon(Clone)")
+        {
+            switch (parentObj.GetComponent<Player>().own)
+            {
+                case Player.PlayerKind.Player1:
+                    MultiPlayerManager.instance.P1Star++;
+                    Debug.Log(MultiPlayerManager.instance.P1Star);
+                    break;
+                case Player.PlayerKind.Player2:
+                    MultiPlayerManager.instance.P2Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                    break;
+                case Player.PlayerKind.Player3:
+                    MultiPlayerManager.instance.P3Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                    break;
+                case Player.PlayerKind.Player4:
+                    MultiPlayerManager.instance.P4Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                    break;
+                default:
+                    Debug.LogError("よばれちゃいけんのやぞ");
+                    break;
+            }
+        }
+        DotManager.instance.EnemyDeadDotPop(kazu, obj.transform.position);
         //enemyの消去
         Destroy(obj);
     }
@@ -29,10 +55,10 @@ public class Enemy : MonoBehaviour
     /// ダメージを受けたときに呼ばれる関数
     /// </summary>
     /// <param name="At">攻撃力</param>
-    public void Damage(int At)
+    public void Damage(int At,GameObject obj)
     {
         HP -= At;
-        DropDot(this.gameObject,parameter.dropDot);
+        DropDot(this.gameObject,parameter.dropDot,obj);
         isAction = true;
         StartCoroutine(WaitTime(1));
         this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0,0,0);

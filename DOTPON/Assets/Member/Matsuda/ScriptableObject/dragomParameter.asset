@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faab0f66c7ec8341a48f0894c54cc70, type: 3}
   m_Name: dragomParameter
   m_EditorClassIdentifier: 
-  HP: 50
+  HP: 3
   dropDot: 60
   attackPow: 5
   speed: 0

@@ -73,7 +73,8 @@ public class Slime : Enemy
             if (isAction) return;
             isAction = true;
             var obj = Instantiate(bukiObj, transform.localPosition, Quaternion.identity);
-            obj.GetComponent<FarAttack>().pow = 3;;
+            //遠距離攻撃の距離を自分とプレイヤーの距離に
+            obj.GetComponent<FarAttack>().pow = Vector3.Distance(this.transform.position,other.gameObject.transform.position);
             obj.transform.parent = this.gameObject.transform;
             buki = obj;
             Attack();
