@@ -31,6 +31,10 @@ public class Dot_count : MonoBehaviour
     void Update()
     {
         SetCountText();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MultiPlayerManager.instance.P1Dot++;
+        }
     }
 
     void OnTriggerEnter(Collider other)
