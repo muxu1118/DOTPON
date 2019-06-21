@@ -6,9 +6,9 @@ public class SpownController : MonoBehaviour
 {
     [SerializeField] GameObject[] obj;
     [SerializeField] Vector3[] positions;
+    [SerializeField] GameObject dragonObj;
     float time;
-    int num;
-
+    bool isDragonSpown = false;
     [SerializeField] float spownDelay;
     // Start is called before the first frame update
     void Start()
@@ -24,9 +24,15 @@ public class SpownController : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time /  spownDelay>= 1)
+        //制限時間%2<=timeだったら
+        if (/*gametime*/2 % 2 <= time && !isDragonSpown)
         {
-            List<int> createdPos = new List<int>() {-1};
+            Instantiate(dragonObj, positions[Random.Range(0, 4)], Quaternion.identity);
+            isDragonSpown = true;
+        }
+        List<int> createdPos = new List<int>() { -1 };
+        if (time /  spownDelay>= 1)
+        {
             for (int i = 0;i < 4;i++)
             {
                 createdPos.Add(CreateEnemy(createdPos));
@@ -65,7 +71,7 @@ public class SpownController : MonoBehaviour
                     for (int j = 0; j < 2; j++)
                     {
                         GameObject child = Instantiate(obj[0], new Vector3(spownPos.x + i, 1, spownPos.z + j), Quaternion.identity);
-                        child.name = child.name + num;
+                        child.name = child.name;
                         child.transform.parent = parentObject.transform;
 
                     }
@@ -74,16 +80,15 @@ public class SpownController : MonoBehaviour
                 break;
             case 1:
                 GameObject slime = Instantiate(obj[1], positions[posNum], Quaternion.identity);
-                slime.name = slime.name + num;
+                slime.name = slime.name;
                 break;
             case 2:
                 GameObject golem = Instantiate(obj[2], positions[posNum], Quaternion.identity);
-                golem.name = golem.name + num;
+                golem.name = golem.name;
                 break;
             default:
                 break;
         }
-        num++;
         return posNum;
     }
 }

@@ -21,7 +21,12 @@ public class Player : MonoBehaviour
     private float WalkSpeed = 10f; //歩く速度
     [SerializeField]
     private float RunSpeed = 100f; //走る速度
-    //private float RotationSpeed = 100f; //向きを変える速度
+                                   //private float RotationSpeed = 100f; //向きを変える速度
+
+    //遠距離攻撃の武器
+    [SerializeField] GameObject farAtkWeapon;
+    //遠距離攻撃の距離
+    int farAtkDistance = 3;
 
     public bool isAttack;
     //[SerializeField]
@@ -45,7 +50,7 @@ public class Player : MonoBehaviour
         //weaponNumber = weapon.Length;
         //createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
         create = GetComponent<WeaponCreate>();
-        this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
+        //this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
         Debug.Log(transform.forward.x + " + " + transform.forward.y + " + " + transform.forward.z);
     }
 
@@ -100,6 +105,23 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
+            FarAttack();
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            farAtkDistance++;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (farAtkDistance > 1)
+            {
+                farAtkDistance--;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
         }
     }
     void Move()
@@ -321,6 +343,12 @@ public class Player : MonoBehaviour
             //上段切りみたいなの
             GetComponent<Animator>().SetTrigger("Attack2");
         }
+        StartCoroutine(AttackWait());
+    }
+    void FarAttack()
+    {
+        isAttack = true;
+        Instantiate(farAtkWeapon,transform.localPosition + transform.forward,Quaternion.identity).GetComponent<FarAttack>().pow = farAtkDistance;
         StartCoroutine(AttackWait());
     }
     private void OnTriggerEnter(Collider other)
