@@ -5,6 +5,8 @@ using UnityEngine;
 public class AniTest : MonoBehaviour
 {
     Animator anim;
+    string weaponName;
+    Weapon weapon;
     
     enum attackMeans
     {
@@ -18,16 +20,18 @@ public class AniTest : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
- 
+        weapon = GetComponent<Weapon>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //攻撃ボタンを押したときの処理
         if(Input.GetKeyDown(KeyCode.A))
         {
-
-            switch ()
+            weapon.TagGet(weaponName);
+            Debug.Log(weaponName);
+            switch (weaponName)
             {
                 case "ken":
                     anim.SetTrigger("Attack");

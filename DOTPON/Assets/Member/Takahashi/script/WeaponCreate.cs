@@ -37,7 +37,7 @@ public class WeaponCreate : MonoBehaviour
                 break;
         }
         //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
-        createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
+        createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
     }
     private void Update()
     {
@@ -86,7 +86,7 @@ public class WeaponCreate : MonoBehaviour
                 {
                     weaponType = 0;
                 }
-                createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
+                createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
                 DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,true);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
@@ -108,7 +108,7 @@ public class WeaponCreate : MonoBehaviour
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
                 DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,false);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
-                createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
+                createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
                 break;
         }
     }

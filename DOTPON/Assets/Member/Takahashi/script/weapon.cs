@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public Parametor parametor;
     [HideInInspector]
@@ -43,9 +43,9 @@ public class weapon : MonoBehaviour
         }
     }
 
-    public void TagGet()
+    public void TagGet(string weaponName)
     {
-        tagName = gameObject.tag;
+        weaponName = gameObject.tag;
         Debug.Log(tagName);
     }
 }
