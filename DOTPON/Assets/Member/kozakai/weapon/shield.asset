@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 571faecb276e2ca41a3a158b951de40a, type: 3}
-  m_Name: ParameterTable
+  m_Name: shield
   m_EditorClassIdentifier: 
-  attackSpeed: 0
-  attackDamage: 0
-  necessaryDot: 0
-  durableValue: 0
+  attackSpeed: 3
+  attackDamage: 1
+  necessaryDot: 6
+  durableValue: 8
   dotNum: 0
   weapon: {fileID: 0}
