@@ -508,3 +508,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkSpeed: 5
   RunSpeed: 10
+  cam: {fileID: 534669905}

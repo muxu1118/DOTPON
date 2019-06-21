@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+
     //X軸の角度を制限するための変数
     float angleUp = 60f;
     float angleDown = -60f;
@@ -38,18 +39,26 @@ public class CameraMove : MonoBehaviour
         //Axisの位置をplayerの位置+axisPosできめる
         transform.position = player.transform.position + axisPos;
 
+        // GetAxisの誤差は返す
+        if (Input.GetAxis("CameraMoveY") >= -0.01f && Input.GetAxis("CameraMoveY") <= 0.01f) return;
+        if (Input.GetAxis("CameraMoveX") >= -0.01f && Input.GetAxis("CameraMoveX") <= 0.01f) return;
+
         //Cameraの角度にマウスからとった値を入れる
         transform.eulerAngles += new Vector3(Input.GetAxis("CameraMoveY") * rotateSpeed, Input.GetAxis("CameraMoveX") * rotateSpeed, 0);
-
+       
         //x軸の角度
         float angleX = transform.eulerAngles.x;
-
         //x軸の値を180度超えたら360引くことで制限しやすくする
-        if(angleX>=180)
+        if (angleX >= 30&&angleX<=180)
         {
-            angleX = angleX - 180;
+            angleX = 30;
+        }
+        if (angleX <= 360 && angleX >= 180)
+        {
+            angleX = 0;
         }
         //Math.Clamp(値、最小値、最大値)でx軸の値を制限する
-        transform.eulerAngles = new Vector3(Mathf.Clamp(angleX, angleDown, angleUp), transform.eulerAngles.y, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(angleX, transform.eulerAngles.y, transform.eulerAngles.z);
     }
+    
 }
