@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] int hp;
     public bool isDamage = false;
-
+    //スター作成のフラグ
+    bool createStar;
 
     [SerializeField]
     private float WalkSpeed = 10f; //歩く速度
@@ -381,4 +382,5 @@ public class Player : MonoBehaviour
             other.GetComponent<Dot>().DestroyObject();
         }
     }
+    
 }
