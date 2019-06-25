@@ -4,25 +4,47 @@ using UnityEngine;
 
 public class AniTest : MonoBehaviour
 {
-
     Animator anim;
+    string weaponName;
+    Weapon weapon;
+    
+    enum attackMeans
+    {
+        ken,
+        ax,
+        bomb,
+        shield,
+        fist
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        weapon = GetComponent<Weapon>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //攻撃ボタンを押したときの処理
         if(Input.GetKeyDown(KeyCode.A))
         {
-            anim.SetTrigger("Attack");
+            weapon.TagGet(weaponName);
+            Debug.Log(weaponName);
+            switch (weaponName)
+            {
+                case "ken":
+                    anim.SetTrigger("Attack");
+                    break;
+                case "ax":
+                    anim.SetTrigger("Attack2");
+                    break;
+            }            
         }
+
         if (Input.GetKeyDown(KeyCode.S))
         {
-            anim.SetTrigger("Attack2");
+            
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
