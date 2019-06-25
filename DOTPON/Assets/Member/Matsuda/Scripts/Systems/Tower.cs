@@ -17,22 +17,42 @@ public class Tower : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "Player") return;
-        switch (other.GetComponent<Player>().own)
+        if (other.gameObject.tag != "player") return;
+        Debug.Log("player");
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            case Player.PlayerKind.Player1:
-                num = MultiPlayerManager.instance.P1Dot;
+            switch (other.GetComponent<Player>().own)
+            {
+                //case Player.PlayerKind.Player1:
+                //    num = MultiPlayerManager.instance.P1Dot;
+                //    break;
+                //case Player.PlayerKind.Player2:
+                //    num = MultiPlayerManager.instance.P2Dot;
+                //    break;
+                //case Player.PlayerKind.Player3:
+                //    num = MultiPlayerManager.instance.P3Dot;
+                //    break;
+                //case Player.PlayerKind.Player4:
+                //    num = MultiPlayerManager.instance.P4Dot;
+                //    break;
+                case Player.PlayerKind.Player1:
+                    MultiPlayerManager.instance.P1Star++;
+                    Debug.Log("これは"+other.GetComponent<Player>().own);
+                    break;
+                case Player.PlayerKind.Player2:
+                    MultiPlayerManager.instance.P2Star++;
+                    Debug.Log("これは" + other.GetComponent<Player>().own);
+                    break;
+                case Player.PlayerKind.Player3:
+                    MultiPlayerManager.instance.P3Star++;
+                    Debug.Log("これは" + other.GetComponent<Player>().own);
+                    break;
+                case Player.PlayerKind.Player4:
+                    MultiPlayerManager.instance.P4Star++;
+                    Debug.Log("これは" + other.GetComponent<Player>().own);
+                    break;
 
-                break;
-            case Player.PlayerKind.Player2:
-                num = MultiPlayerManager.instance.P2Dot;
-                break;
-            case Player.PlayerKind.Player3:
-                num = MultiPlayerManager.instance.P3Dot;
-                break;
-            case Player.PlayerKind.Player4:
-                num = MultiPlayerManager.instance.P4Dot;
-                break;
+        }
         }
     }
 }
