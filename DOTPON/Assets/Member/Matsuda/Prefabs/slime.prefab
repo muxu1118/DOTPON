@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39178fdc9cb5306438d61955a548fc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameter: {fileID: 11400000, guid: 9d7b7515ffd87284aaf65b8d38234047, type: 2}
+  parameter: {fileID: 11400000, guid: 3dc0734268abd734ba872801823c3369, type: 2}
   HP: 0
   isLooking: 0
   buki: {fileID: 0}

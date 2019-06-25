@@ -27,6 +27,7 @@ public class SpownController : MonoBehaviour
         //制限時間%2<=timeだったら
         if (/*gametime*/2 % 2 <= time && !isDragonSpown)
         {
+            if (true) return;
             Instantiate(dragonObj, positions[Random.Range(0, 4)], Quaternion.identity);
             isDragonSpown = true;
         }
