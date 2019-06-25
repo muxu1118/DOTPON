@@ -47,7 +47,24 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = 10;
+        switch (own)
+        {
+            case PlayerKind.Player1:
+                hp = MultiPlayerManager.instance.P1Dot += 10;
+                break;
+            case PlayerKind.Player2:
+                hp = MultiPlayerManager.instance.P2Dot += 10;
+                break;
+            case PlayerKind.Player3:
+                hp = MultiPlayerManager.instance.P3Dot += 10;
+                break;
+            case PlayerKind.Player4:
+                hp = MultiPlayerManager.instance.P4Dot += 10;
+                break;
+            default:
+                Debug.LogError("よばれちゃいけんのやぞ");
+                break;
+        }
         //weaponNumber = weapon.Length;
         //createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
         create = GetComponent<WeaponCreate>();
@@ -189,23 +206,22 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(0.5f);
-        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(0.12f);
+        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;;
         isAttack = false;
         yield break;
     }
     void AttackColliderOn()
     {
         isAttack = true;
-        if (create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch")
+        if (true/*create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch"*/)
         {
             //腕振るほう
-            GetComponent<Animator>().SetTrigger("Attack");
-        }else if (create.nowWeapon.name == "Katana" || create.nowWeapon.name == "sword")
+            GetComponent<Animator>().SetTrigger("SwordAttack");
+        }/*else if (create.nowWeapon.name == "Katana" || create.nowWeapon.name == "sword")
         {
             //上段切りみたいなの
             GetComponent<Animator>().SetTrigger("Attack2");
-        }
+        }*/
         StartCoroutine(AttackWait());
     }
     void FarAttack()
@@ -222,19 +238,19 @@ public class Player : MonoBehaviour
             switch (own)
             {
                 case PlayerKind.Player1:
-                    MultiPlayerManager.instance.P1Dot++;
+                    hp = MultiPlayerManager.instance.P1Dot++;
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
-                    MultiPlayerManager.instance.P2Dot++;
+                    hp = MultiPlayerManager.instance.P2Dot++;
                     //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
-                    MultiPlayerManager.instance.P3Dot++;
+                    hp = MultiPlayerManager.instance.P3Dot++;
                     //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
-                    MultiPlayerManager.instance.P4Dot++;
+                    hp = MultiPlayerManager.instance.P4Dot++;
                     //Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
                 default:
