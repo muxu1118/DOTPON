@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DotPonDruble : MonoBehaviour
+public class DotPonDruble : WeaponCreate
 {
     [SerializeField] GameObject weaponObj;
+    [SerializeField] GameObject punchObj;
     int value;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,11 @@ public class DotPonDruble : MonoBehaviour
     public void DownDursble(GameObject obj)
     {
         value--;
-        if(value <= 0) { obj.SetActive(false); }
-
+        if(value <= 0)
+        {
+            obj.SetActive(false);
+            punchObj.SetActive(true);
+            nowWeapon = punchObj;
+        }
     }
 }

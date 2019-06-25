@@ -36,6 +36,7 @@ public class weapon : MonoBehaviour
                 if (gameObject.transform.root.tag == "enemy") return;
                 //Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
                 other.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,transform.root.gameObject);
+                transform.root.GetComponent<WeaponCreate>().DownDursble();
                 break;
         }
     }

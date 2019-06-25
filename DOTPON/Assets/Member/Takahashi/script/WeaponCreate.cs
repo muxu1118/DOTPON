@@ -18,6 +18,9 @@ public class WeaponCreate : MonoBehaviour
     int createNum = 0;
     GameObject DotPonText;
 
+    //DTOPONの耐久値
+    int value;
+
     void Start()
     {
         weaponNumber = weapon.Length;
@@ -38,6 +41,7 @@ public class WeaponCreate : MonoBehaviour
         }
         //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
         createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
+        value = nowWeapon.GetComponent<weapon>().parametor.durableValue;
     }
     private void Update()
     {
@@ -67,6 +71,7 @@ public class WeaponCreate : MonoBehaviour
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
                     nowWeapon.GetComponent<BoxCollider>().enabled = false;
+                    value = nowWeapon.GetComponent<weapon>().parametor.durableValue;
                     trigger = false;
                 }
                 else
@@ -75,6 +80,7 @@ public class WeaponCreate : MonoBehaviour
                     nowWeapon.SetActive(false);
                     weapon[3].SetActive(true);
                     nowWeapon = weapon[3];
+                    value = nowWeapon.GetComponent<weapon>().parametor.durableValue;
                     trigger = true;
                 }                
                 break;     
@@ -157,6 +163,25 @@ public class WeaponCreate : MonoBehaviour
         {
             weaponType = weaponNumber - 1;
             Debug.Log(weaponType);
+        }
+    }
+    /// <summary>
+    /// 耐久値がダウンした時に呼ばれる関数
+    /// </summary>
+    public void DownDursble()
+    {
+        value--;
+        if (value <= 0)
+        {
+            nowWeapon.SetActive(false);
+            nowWeapon = weapon[3];
+            weapon[3].SetActive(true);
+            Debug.Log("こわれた");
+            value = nowWeapon.GetComponent<weapon>().parametor.durableValue;
+        }
+        else
+        {
+            Debug.Log("残り耐久値 = " + value);
         }
     }
 }
