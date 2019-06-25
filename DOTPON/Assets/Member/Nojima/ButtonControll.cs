@@ -45,8 +45,6 @@ public class ButtonControll : MonoBehaviour
     {   
         for (int padNum = 1; padNum <= 4; padNum++)
         {
-            Debug.Log("Joystick" + padNum + "_1");
-
             // ドットポン選択(右)
             if (Input.GetKeyDown("joystick " + padNum + " button 0"))
             {

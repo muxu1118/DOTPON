@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     {
         CamObj = GameObject.Find("Main Camera");
         Camera = CamObj.GetComponent<Camera>();
-        Player = GameObject.Find("Cube");
+        Player = GameObject.Find("Cube1");
         PlayerPos = Player.transform.position;
         
     }
