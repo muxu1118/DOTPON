@@ -15,13 +15,19 @@ public class Player : MonoBehaviour
 
     [SerializeField] int hp;
     public bool isDamage = false;
-
+    //スター作成のフラグ
+    bool createStar;
 
     [SerializeField]
     private float WalkSpeed = 10f; //歩く速度
     [SerializeField]
     private float RunSpeed = 100f; //走る速度
-    //private float RotationSpeed = 100f; //向きを変える速度
+                                   //private float RotationSpeed = 100f; //向きを変える速度
+
+    //遠距離攻撃の武器
+    [SerializeField] GameObject farAtkWeapon;
+    //遠距離攻撃の距離
+    int farAtkDistance = 3;
 
     public bool isAttack;
     //[SerializeField]
@@ -45,7 +51,7 @@ public class Player : MonoBehaviour
         //weaponNumber = weapon.Length;
         //createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
         create = GetComponent<WeaponCreate>();
-        this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
+        //this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
         Debug.Log(transform.forward.x + " + " + transform.forward.y + " + " + transform.forward.z);
     }
 
@@ -100,146 +106,25 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
+            FarAttack();
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            farAtkDistance++;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (farAtkDistance > 1)
+            {
+                farAtkDistance--;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
         }
     }
-    void Move()
-    {
-        //transform.potisionの移動
-        /*
-        //走る
-        if (Input.GetAxisRaw("Mouse Y") == -1)
-        {
-            transform.position += transform.forward * RunSpeed * Time.deltaTime;
-            Debug.Log("呼ばれた");
-        }
-        //前に歩く
-        if (Input.GetAxisRaw("Mouse Y") < -0.3)
-        {
-            transform.position += transform.forward * WalkSpeed * Time.deltaTime;
-        }
-        //左に移動
-        if (Input.GetAxisRaw("Mouse X") < -0.3)
-        {
-            transform.position -= transform.right * WalkSpeed * Time.deltaTime;
-        }
-        //右に移動
-        if (Input.GetAxisRaw("Mouse X") > 0.3)
-        {
-            transform.position += transform.right * WalkSpeed * Time.deltaTime;
-        }
-        //後ろに歩く
-        if (Input.GetAxisRaw("Mouse Y") > 0.3)
-        {
-            transform.position -= transform.forward * WalkSpeed * Time.deltaTime;
-        }
-        */
-    }/// <summary>
-     /// コントローラーのボタンが押された時の各判定
-     /// </summary>
-    //private void WeaponChoice(string str)
-    //{
-    //    switch (str)
-    //    {
-    //        case "a":
-    //            if (trigger && DotManager.instance.DotPonCreate(GetComponent<Player>(), createNum))
-    //            {
-    //                GetComponent<Animator>().SetTrigger("Create");
-    //                weapon[3].SetActive(false);
-    //                weapon[weaponType].SetActive(true);
-    //                nowWeapon = weapon[weaponType];
-    //                nowWeapon.GetComponent<BoxCollider>().enabled = false;
-    //                trigger = false;
-    //            }
-    //            else
-    //            {
-    //                //作成した武器を破棄
-
-    //                nowWeapon.SetActive(false);
-    //                weapon[3].SetActive(true);
-    //                nowWeapon = weapon[3];
-    //                trigger = true;
-    //            }
-    //            break;
-
-    //        //作成する武器の切り替え
-    //        case "s":
-    //            weaponType += 1;
-    //            if (weaponType == weaponNumber -1)
-    //            {
-    //                weaponType = 0;
-    //            }
-    //            createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
-    //            //Debug.Log(weaponType);
-    //            break;
-
-    //        //作成する武器の切り替え
-    //        case "d":
-    //            if (weaponType > 0)
-    //            {
-    //                weaponType -= 1;
-    //                //Debug.Log(weaponType);
-    //            }
-    //            else if (weaponType == 0)
-    //            {
-    //                weaponType = weaponNumber - 2;
-    //                //Debug.Log(weaponType);
-    //            }
-    //            createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
-    //            break;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// 武器を表示非表示
-    ///// </summary>
-    //public void CreateWeapon()
-    //{
-    //    if (trigger)
-    //    {
-    //        weapon[weaponNumber].SetActive(true);
-    //        trigger = false;
-    //    }
-    //    else
-    //    {
-    //        //作成した武器を破棄
-    //        weapon[weaponNumber].SetActive(false);
-    //        trigger = true;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// 表示させる武器を変えるプラス方向)
-    ///// </summary>
-    //public void ChangeWeaponPlus()
-    //{
-    //    weaponType += 1;
-    //    if (weaponType == weaponNumber)
-    //    {
-    //        weaponType = 0;
-    //    }
-    //    Debug.Log(weaponType);
-    //}
-
-    ///// <summary>
-    ///// 表示させる武器を変える(マイナス方向)
-    ///// </summary>
-    //public void ChangeWeaponMinus()
-    //{
-    //    if (weaponType > 0)
-    //    {
-    //        weaponType -= 1;
-    //        Debug.Log(weaponType);
-    //    }
-    //    else if (weaponType == 0)
-    //    {
-    //        weaponType = weaponNumber - 1;
-    //        Debug.Log(weaponType);
-    //    }
-    //}
-    //void PlayerMove(Vector3 vec)
-    //{
-    //    GetComponent<Rigidbody>().velocity += vec;
-    //}
     /// <summary>
     /// プレイヤーがダメージを受けた時の処理
     /// </summary>
@@ -323,6 +208,12 @@ public class Player : MonoBehaviour
         }
         StartCoroutine(AttackWait());
     }
+    void FarAttack()
+    {
+        isAttack = true;
+        Instantiate(farAtkWeapon,transform.localPosition + transform.forward,Quaternion.identity).GetComponent<FarAttack>().pow = farAtkDistance;
+        StartCoroutine(AttackWait());
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Dot")
@@ -353,4 +244,5 @@ public class Player : MonoBehaviour
             other.GetComponent<Dot>().DestroyObject();
         }
     }
+    
 }

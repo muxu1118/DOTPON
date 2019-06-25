@@ -39,7 +39,6 @@ public class Golem : Enemy
     void Update()
     {
         time += Time.deltaTime;
-        DropDot(gameObject, parameter.dropDot);
         if (isAction) return;
         this.transform.position += vector * parameter.speed / 100;
         if (time > parameter.lookAngleChangeTime && !isLooking)
@@ -76,7 +75,7 @@ public class Golem : Enemy
             if (dis <= parameter.distance)
             {
                 isAction = true;
-                Attack(parameter.attackPow);
+                Attack();
                 StartCoroutine(WaitTime(1.5f));
             }
         }

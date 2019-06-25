@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5009037343160442876}
   m_Layer: 0
   m_Name: Katana 2
-  m_TagString: Untagged
+  m_TagString: ken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc2e7892095d37642a1d737a156c530f, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

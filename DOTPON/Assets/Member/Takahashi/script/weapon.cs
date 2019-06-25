@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public Parametor parametor;
     [HideInInspector]
@@ -13,14 +13,17 @@ public class weapon : MonoBehaviour
     public int _necessaryDot;
     [HideInInspector]
     public int _durableValue;
+
+    private string tagName;
     
 
     void Start()
     {
-    //    _attackSpeed = parametor.attackSpeed;
-    //    _attackDamage = parametor.attackDamage;
-    //    _necessaryDot = parametor.necessaryDot;
-    //    _durableValue = parametor.durableValue;
+        //    _attackSpeed = parametor.attackSpeed;
+        //    _attackDamage = parametor.attackDamage;
+        //    _necessaryDot = parametor.necessaryDot;
+        //    _durableValue = parametor.durableValue;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,8 +38,15 @@ public class weapon : MonoBehaviour
             case "enemy":
                 if (gameObject.transform.root.tag == "enemy") return;
                 //Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
-                other.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage);
+                other.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,transform.root.gameObject);
+                transform.root.GetComponent<WeaponCreate>().DownDursble();
                 break;
         }
+    }
+
+    public void TagGet(string weaponName)
+    {
+        weaponName = gameObject.tag;
+        Debug.Log(tagName);
     }
 }

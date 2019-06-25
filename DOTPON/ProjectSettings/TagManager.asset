@@ -8,6 +8,11 @@ TagManager:
   - enemy
   - Dot
   - weapon
+  - ax
+  - ken
+  - bomb
+  - shield
+  - ' fist'
   layers:
   - Default
   - TransparentFX
