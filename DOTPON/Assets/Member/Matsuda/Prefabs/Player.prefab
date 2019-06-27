@@ -1098,7 +1098,7 @@ PrefabInstance:
         type: 3}
       propertyPath: parametor
       value: 
-      objectReference: {fileID: 11400000, guid: ee1c0271b1cc1de4eae6536d7d61edb2,
+      objectReference: {fileID: 11400000, guid: c1db1a0138db5f644b07227126fc6007,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4122eee347dd5f5408b9182f3dc22827, type: 3}
@@ -1205,7 +1205,7 @@ PrefabInstance:
         type: 3}
       propertyPath: parametor
       value: 
-      objectReference: {fileID: 11400000, guid: f56beb2259a6b774ca1afd09ed3d0363,
+      objectReference: {fileID: 11400000, guid: 0009ae83b8628a1409b212d5a8006b63,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41b25c2da8813de47acde624b07bd409, type: 3}
@@ -1327,7 +1327,7 @@ PrefabInstance:
         type: 3}
       propertyPath: parametor
       value: 
-      objectReference: {fileID: 11400000, guid: a67b2bc816e50934ea03f9c1bfb58ba2,
+      objectReference: {fileID: 11400000, guid: 9f70b137978aee44ea38b7e00df1ef6d,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dda1d90d873ce3b4182955aa501fa57b, type: 3}

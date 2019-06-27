@@ -15,6 +15,7 @@ public class WeaponCreate : MonoBehaviour
     int weaponType = 0;  //武器を指定するための数値
     
     public GameObject nowWeapon;
+    //DTOPON作成に必要な数
     int createNum = 0;
     GameObject DotPonText;
 
