@@ -2,55 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerCONTROLLER: MonoBehaviour
 {
-    public string PlayerNumber;
-    public Rigidbody rb;
-    public float movespeed;
-    public MeshRenderer playerImage;
-    public bool knockBackActive;
-    public float knockbaklenght=2f;
-    public float knockBackCounter;
-    public Material[] material;
+   
 
+
+    public string playerNum;
+    public float inputdelay = 0.1f;
+    public float movespeed=10;
+    public Animator anim;
+    public CharacterController charCon;
+    public float jumpForce = 10f;
+    public float gravityScale = 5;
+    public float rotateSpeed=3;
+    Vector3 movedirection;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-       knockBackActive = false;
+        charCon.GetComponent<CharacterController>();
+        anim.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (knockBackActive)
-        {
-            knockBackCounter -= Time.deltaTime;
-            if (Mathf.Floor(knockBackCounter * 5f) % 2 == 0)
-            {
-                playerImage.sharedMaterial = material[1];
-            }
-            else
-            {
-                playerImage.sharedMaterial = material[0];
-            }
-            if (knockBackCounter <= 0)
-            {
-                playerImage.sharedMaterial = material[2];
-                knockBackActive = false;
-            }
-        }
-        float movex= Input.GetAxis(PlayerNumber + "Horizontal");
-        float movez = Input.GetAxis(PlayerNumber + "Vertical");
-        Vector3 movement = new Vector3(movex, 0f, movez);
-        rb.velocity = movement * movespeed;
+        float ystore = movedirection.y;
 
-        if (Input.GetKey(KeyCode.Z))
+        movedirection = (transform.forward * (Input.GetAxis("Vertical")));
+        movedirection = movedirection.normalized * movespeed;
+        movedirection.y = ystore;
+
+        if (charCon.isGrounded)
         {
-            knockBackCounter = knockbaklenght;
-            knockBackActive = true;
+            movedirection.y = 0;
+            if (Input.GetButtonDown("Jump"))
+            {
+                movedirection.y = jumpForce;
+            }
         }
+
+        var h = Input.GetAxis("Horizontal");
+        movedirection.y = movedirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        charCon.Move(movedirection * Time.deltaTime);
+
+        if (Mathf.Abs(h)>inputdelay)
+        {
+            Quaternion nevRotation = transform.rotation;
+
+
+             nevRotation*= Quaternion.AngleAxis(rotateSpeed*h*Time.deltaTime,Vector3.up);
+
+            transform.rotation = nevRotation;
+        }
+        anim.SetBool("isGrounded", charCon.isGrounded);
+        anim.SetFloat("speed", Mathf.Abs(Input.GetAxis("Vertical") ));
         
-        
+
     }
+
+
+
+    
 }
+
+

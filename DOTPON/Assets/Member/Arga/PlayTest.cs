@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayTest : MonoBehaviour
 {
-    public Text number;
+    /*public Text number;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,5 +56,5 @@ public class PlayTest : MonoBehaviour
     public void backButton()
     {
         SceneManager.LoadScene(0);
-    }
+    }*/
 }

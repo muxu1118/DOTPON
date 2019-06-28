@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScreenController : MonoBehaviour
 {
-
+/*
     public GameObject[] cameras;
     private int playerNumbers;
     private Rect singleCam = new Rect(0f, 0f, 1f, 1f);
@@ -87,5 +87,5 @@ public class ScreenController : MonoBehaviour
             cameras[i].gameObject.SetActive(false);
         }
         
-    }
+    }*/
 }
