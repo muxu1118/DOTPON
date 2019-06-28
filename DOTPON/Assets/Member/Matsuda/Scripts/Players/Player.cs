@@ -30,6 +30,10 @@ public class Player : MonoBehaviour
     int farAtkDistance = 3;
 
     public bool isAttack;
+
+    // コントローラーに対応する番号
+    int padNum;
+
     //[SerializeField]
     //WeaponCreate weapon;
 
@@ -65,6 +69,7 @@ public class Player : MonoBehaviour
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
+        padNum = (int)own+1;
         //weaponNumber = weapon.Length;
         //createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
         create = GetComponent<WeaponCreate>();
@@ -100,19 +105,19 @@ public class Player : MonoBehaviour
             PlayerMove(new Vector3(5, 0, 0));
         }
         */
-        if (Input.GetKeyDown("joystick 1 button 1"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 1"))
         {
             AttackColliderOn();
         }
-        if (Input.GetKeyDown("joystick 1 button 2"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
         {
             create.WeaponChoice("a");
         }
-        if (Input.GetKeyDown("joystick 1 button 5"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 5"))
         {
             create.WeaponChoice("s");
         }
-        if (Input.GetKeyDown("joystick 1 button 7"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 7"))
         {
             create.WeaponChoice("d"); 
         }
