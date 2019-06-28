@@ -17,8 +17,8 @@ MonoBehaviour:
   attackPow: 1
   speed: 3
   rotateTime: 2
-  rotateAngle: 120
-  lookingAngle: 120
+  rotateAngle: 90
+  lookingAngle: 5
   distance: 4
-  lookSpeed: 3
+  lookSpeed: 0.1
   lookAngleChangeTime: 3
