@@ -28,7 +28,7 @@ public class Shield : MonoBehaviour
         }
         else if(other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage);
+            other.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,other.gameObject);
         }
 
         if(other.gameObject.tag == "s")

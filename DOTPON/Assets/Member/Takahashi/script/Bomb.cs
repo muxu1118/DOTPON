@@ -43,7 +43,7 @@ public class Bomb : MonoBehaviour
             }
             else if(obj.gameObject.tag == "Enemy")
             {
-                obj.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage);
+                obj.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,obj.gameObject);
             }
         }
     }

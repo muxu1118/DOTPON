@@ -1,16 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EffectManager : MonoBehaviour
 {
-<<<<<<< HEAD:DOTPON/Assets/Member/Takahashi/script/EffectManager.cs
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-=======
+    
     enum StarText
     {
         P1Text,
@@ -28,7 +24,6 @@ public class EffectManager : MonoBehaviour
     void Start()
     {
         Star_Text = GetComponent<Text>();
->>>>>>> origin/Arga:DOTPON/Assets/Member/Arga/testScript/test2.cs
     }
 
     // Update is called once per frame
