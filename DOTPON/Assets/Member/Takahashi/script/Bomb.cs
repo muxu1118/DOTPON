@@ -5,15 +5,19 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {        
     public Parametor parametor;
-    AudioManager audioManager; 
+    //AudioManager audioManager; 
     
     void Start()
     {
-        audioManager = GameObject.Find("Manager").GetComponent<AudioManager>();
-        StartCoroutine("bom");
+        //audioManager = GameObject.Find("Manager").GetComponent<AudioManager>();
+        StartCoroutine("bomExplosion");
     }
 
-    IEnumerator bom()
+    /// <summary>
+    /// 爆弾の爆発
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator bomExplosion()
     {
         yield return new WaitForSeconds(3.0f);
 
@@ -26,18 +30,18 @@ public class Bomb : MonoBehaviour
     }
 
     /// <summary>
-    /// 爆弾の処理
+    /// 爆弾の当たり判定
     /// </summary>
     private void BombAttack()
     {
         Collider[] targets = Physics.OverlapSphere(transform.position, 0.7f);
         foreach(Collider obj in targets)
         {
-            if(obj.tag == "Player")
+            if(obj.gameObject.tag == "Player")
             {
                 obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage);
             }
-            else if(obj.tag == "Enemy")
+            else if(obj.gameObject.tag == "Enemy")
             {
                 obj.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage);
             }
