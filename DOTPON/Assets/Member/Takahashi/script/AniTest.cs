@@ -33,11 +33,15 @@ public class AniTest : MonoBehaviour
             Debug.Log(weaponName);
             switch (weaponName)
             {
-                case "ken":
-                    anim.SetTrigger("Attack");
+                case "sword":
+                    anim.SetTrigger("SwordAttack");
                     break;
                 case "ax":
-                    anim.SetTrigger("Attack2");
+                    anim.SetTrigger("AxAttack");
+                    break;
+                case "shield":
+                    anim.SetTrigger("ShieldAttack");
+
                     break;
             }            
         }
