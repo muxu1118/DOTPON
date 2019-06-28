@@ -9,7 +9,11 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
     public int totalPlayer;
 
     PlayerStats ps1, ps2, ps3, ps4;
-    // public int[] Ranking;
+
+    // ランク：　1 ~ 4
+    // int型　Ranking[0] ~ Ranking[3]
+    // string型 Ranking1 ~ Ranking 4    
+    public int[] Ranking;
     public string Ranking1, Ranking2, Ranking3, Ranking4;
 
     public int P1Dot
@@ -74,11 +78,15 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
         // {
         //     Ranking[i] = SortedList[i].rPlay;
         // }
-        // Ranking = new int[] {SortedList[0].rPlay,SortedList[1].rPlay,SortedList[2].rPlay,SortedList[3].rPlay};
+        Ranking = new int[] {SortedList[0].rPlay,SortedList[1].rPlay,SortedList[2].rPlay,SortedList[3].rPlay};
+        
         Ranking1 = SortedList[0].rPlay.ToString();
         Ranking2 = SortedList[1].rPlay.ToString();
         Ranking3 = SortedList[2].rPlay.ToString();
         Ranking4 = SortedList[3].rPlay.ToString();
+
+        // RankStatsList.Clear();
+        // SortedList.Clear();
     }
 
 }
