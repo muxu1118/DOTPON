@@ -39,9 +39,21 @@ public class StartGame : MonoBehaviour
             StarTextObj[i].SetActive(true);
             BukiUIObj[i].SetActive(true);
         }
+
         //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
         screenController.CameraNumCheck();
     }
+    /// <summary>
+    /// 死んだあと復活
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator RespornPlayer(GameObject obj)
+    {
+        obj.SetActive(false);
+        yield return new WaitForSeconds(5f);
+        obj.SetActive(true);
+    }
+    
     private Player.PlayerKind PlayerEnum(int num)
     {
         switch (num) {
