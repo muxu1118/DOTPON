@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7363085357701053204}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2693526001938932166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd30ae9c51554c64585f2bc0a176e23f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a8b08a0f6974ec4db8e4f3076c617a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parametor: {fileID: 11400000, guid: 507a66b96ffc7f441998b3ad0043f98e, type: 2}
