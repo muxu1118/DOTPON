@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     //プレイヤーを攻撃する関数
     protected void Attack()
     {
-        buki.GetComponent<Animator>().SetTrigger("Attack");
+        GetComponent<Animator>().SetTrigger("Attack");
     }
     //しんだとき
     public void DropDot(GameObject obj,int kazu,GameObject parentObj)
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
         if (HP > 0) return;
         // managerに投げる
         Debug.Log("しんだ");
+        GetComponent<Animator>().SetTrigger("Down");
         //ドラゴンが死んだ場合、最後の攻撃者にstarを与える
         if (obj.name == "dragon(Clone)")
         {
