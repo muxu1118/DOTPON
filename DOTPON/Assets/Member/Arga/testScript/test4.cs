@@ -88,6 +88,7 @@ public class test4 : MonoBehaviour
                     Rank_Text.text = "x" + MultiPlayerManager.instance.P4Dot.ToString();
                 }
                 break;
+            case RankText.R4Text:
                 if (MultiPlayerManager.instance.Ranking4 == "1")
                 {
                     Rank_Text.text = "x" + MultiPlayerManager.instance.P1Dot.ToString();
