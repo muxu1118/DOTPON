@@ -29,7 +29,7 @@ public class AniTest : MonoBehaviour
         //攻撃ボタンを押したときの処理
         if(Input.GetKeyDown(KeyCode.A))
         {
-            weapon.TagGet(weaponName);
+            //weapon.TagGet(weaponName);
             Debug.Log(weaponName);
             switch (weaponName)
             {
@@ -48,7 +48,7 @@ public class AniTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            
+            anim.SetTrigger("SwordAttack");
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -56,7 +56,7 @@ public class AniTest : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            anim.SetTrigger("Damage");
+            anim.SetTrigger("AxAttack");
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -68,7 +68,7 @@ public class AniTest : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            anim.SetTrigger("modoru");
+            
         }
     }
 }
