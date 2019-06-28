@@ -46,7 +46,6 @@ public class WeaponCreate : MonoBehaviour
     }
     private void Update()
     {
-        WeaponChoice("");
     }
     /// <summary>
     /// 指定の武器を作成
@@ -61,7 +60,7 @@ public class WeaponCreate : MonoBehaviour
     /// </summary>
     public void WeaponChoice(string str)
     {
-        switch (Input.inputString)
+        switch (str)
         {             
             case "a":
                 if(trigger && DotManager.instance.DotPonCreate(GetComponent<Player>(),createNum ))

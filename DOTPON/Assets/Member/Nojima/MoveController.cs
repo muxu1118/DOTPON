@@ -34,16 +34,15 @@ public class MoveController : MonoBehaviour
         rg = GetComponent<Rigidbody>();
         transform.rotation = new Quaternion(0, 0, 0, 0);
         playerNum = (int)GetComponent<Player>().own + 1;
-        Cube1 = GameObject.Find("Cube1");
-        Cube2 = GameObject.Find("Cube2");
-        Cube3 = GameObject.Find("Cube3");
-        Cube4 = GameObject.Find("Cube4");
+        //Cube1 = GameObject.Find("Cube1");
+        //Cube2 = GameObject.Find("Cube2");
+        //Cube3 = GameObject.Find("Cube3");
+        //Cube4 = GameObject.Find("Cube4");
 
     }
 
     void Update()
     {
-        Debug.Log("aaa"+Input.inputString);
         MoveInput();
         MoveInputKey();
     }
