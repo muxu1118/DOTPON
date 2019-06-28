@@ -11,9 +11,11 @@ public class StartGame : MonoBehaviour
     GameObject playerPrefab;
 
     [SerializeField]
-    GameObject[] buttonObj;
+    GameObject[] DotTextObj;
     [SerializeField]
-    GameObject[] BukiObj;
+    GameObject[] StarTextObj;
+    [SerializeField]
+    GameObject[] BukiUIObj;
     [SerializeField]
     ScreenController screenController;
 
@@ -33,8 +35,9 @@ public class StartGame : MonoBehaviour
             //カメラのオブジェクトを探して参照させる
             cameras[i].transform.parent = playerObj.transform;
             cameras[i].GetComponent<PlayerCamera>().CameraPosSet();
-            buttonObj[i].SetActive(true);
-            BukiObj[i].SetActive(true);
+            DotTextObj[i].SetActive(true);
+            StarTextObj[i].SetActive(true);
+            BukiUIObj[i].SetActive(true);
         }
         //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
         screenController.CameraNumCheck();

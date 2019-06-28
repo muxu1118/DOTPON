@@ -9,7 +9,9 @@ public class SpownController : MonoBehaviour
     [SerializeField] GameObject dragonObj;
     float time;
     bool isDragonSpown = false;
+    int NowSpown;
     [SerializeField] float spownDelay;
+    [SerializeField] int MaxSpown;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,11 @@ public class SpownController : MonoBehaviour
         {
             for (int i = 0;i < 4;i++)
             {
-                createdPos.Add(CreateEnemy(createdPos));
+                if(NowSpown < MaxSpown)
+                {
+                    createdPos.Add(CreateEnemy(createdPos));
+                    NowSpown++;
+                }
             }
             time = 0;
         }

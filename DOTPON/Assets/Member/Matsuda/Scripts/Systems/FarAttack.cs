@@ -16,10 +16,8 @@ public class FarAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(this.gameObject.transform.position);
         vecter = this.gameObject.transform.root.forward;
         vecter = new Vector3(vecter.x * pow + this.gameObject.transform.position.x,0, vecter.z * pow + this.gameObject.transform.position.z);
-        Debug.Log(vecter);
         StartCoroutine(PosMove(vecter));
     }
 

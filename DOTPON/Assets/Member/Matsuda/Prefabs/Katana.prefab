@@ -88,10 +88,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8874533862748424919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd30ae9c51554c64585f2bc0a176e23f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a8b08a0f6974ec4db8e4f3076c617a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parametor: {fileID: 11400000, guid: e36dd587b334f2c4299f2f65a575b492, type: 2}
+  parametor: {fileID: 11400000, guid: a67b2bc816e50934ea03f9c1bfb58ba2, type: 2}
   _attackSpeed: 0
   _attackDamage: 0
   _necessaryDot: 0
@@ -104,7 +104,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8874533862748424919}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.008698919, y: 0.008698917, z: 0.030446209}

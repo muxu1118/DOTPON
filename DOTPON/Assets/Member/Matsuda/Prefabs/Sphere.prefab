@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2693526001938932187}
   - component: {fileID: 2693526001938932164}
   - component: {fileID: 2693526001938932165}
-  - component: {fileID: 3274067434551395229}
+  - component: {fileID: 7363085357701053204}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -112,7 +112,7 @@ MonoBehaviour:
   pow: 1
   vecter: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
---- !u!114 &3274067434551395229
+--- !u!114 &7363085357701053204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

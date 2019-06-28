@@ -176,6 +176,7 @@ public class Player : MonoBehaviour
         //Debug.Log(hp);
         if (hp <= 0)
         {
+            //HPが0になったとき
             Destroy(this.gameObject);
         }
         isDamage = true;
