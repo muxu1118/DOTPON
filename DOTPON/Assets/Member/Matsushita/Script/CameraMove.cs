@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-
+    /*
     //X軸の角度を制限するための変数
     float angleUp = 60f;
     float angleDown = -60f;
-
+    */
     //playerをInspecterに入れる
     [SerializeField]
     GameObject player;
@@ -19,7 +19,7 @@ public class CameraMove : MonoBehaviour
 
     //Cameraが回転するスピード
     [SerializeField]
-    float rotateSpeed = 3;
+    float rotateSpeed = 3.0f;
 
     //Axisの位置を指定する変数
     [SerializeField]
@@ -31,6 +31,7 @@ public class CameraMove : MonoBehaviour
         cam.transform.localPosition = new Vector3(0, 0, -3);
         //CameraとAxisの向きを最初だけそろえる
         cam.transform.localRotation = transform.rotation;
+        //
     }
 
     // Update is called once per frame
@@ -38,10 +39,11 @@ public class CameraMove : MonoBehaviour
     {
         //Axisの位置をplayerの位置+axisPosできめる
         transform.position = player.transform.position + axisPos;
-
+        Debug.Log(Input.GetAxis("CameraMoveX"));
+        //Debug.Log(Input.GetAxis("CameraMoveY"));
         // GetAxisの誤差は返す
-        if (Input.GetAxis("CameraMoveY") >= -0.01f && Input.GetAxis("CameraMoveY") <= 0.01f) return;
-        if (Input.GetAxis("CameraMoveX") >= -0.01f && Input.GetAxis("CameraMoveX") <= 0.01f) return;
+        if (Input.GetAxis("CameraMoveY") >= -0.001f && Input.GetAxis("CameraMoveY") <= 0.001f) return;
+        if (Input.GetAxis("CameraMoveX") >= -0.001f && Input.GetAxis("CameraMoveX") <= 0.001f) return;
 
         //Cameraの角度にマウスからとった値を入れる
         transform.eulerAngles += new Vector3(Input.GetAxis("CameraMoveY") * rotateSpeed, Input.GetAxis("CameraMoveX") * rotateSpeed, 0);
