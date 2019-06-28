@@ -21,6 +21,7 @@ public class MoveController : MonoBehaviour
     GameObject Cube3;
     GameObject Cube4;
 
+    int playerNum;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class MoveController : MonoBehaviour
         anim = GetComponent<Animator>();
         rg = GetComponent<Rigidbody>();
         transform.rotation = new Quaternion(0, 0, 0, 0);
+        playerNum = (int)GetComponent<Player>().own + 1;
         Cube1 = GameObject.Find("Cube1");
         Cube2 = GameObject.Find("Cube2");
         Cube3 = GameObject.Find("Cube3");
@@ -41,6 +43,7 @@ public class MoveController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("aaa"+Input.inputString);
         MoveInput();
         MoveInputKey();
     }
@@ -64,57 +67,85 @@ public class MoveController : MonoBehaviour
         //{
         //    anim.SetFloat("Speed", 0);
         //}
-        
 
-        for (int Num = 1;Num <= 4;Num++)
-        {
-            if (Input.GetAxis("Vertical"+ Num + "_left") > 0.7)
-            {   //走る
-                Debug.Log(Num+"run");
-                //Cubeをプレイヤーに変更すれば別のシーンで使用可
-                if (Num == 1) { Cube1.transform.position += transform.forward * run * Time.deltaTime; }
-                if (Num == 2) { Cube2.transform.position += transform.forward * run * Time.deltaTime; }
-                if (Num == 3) { Cube3.transform.position += transform.forward * run * Time.deltaTime; }
-                if (Num == 4) { Cube4.transform.position += transform.forward * run * Time.deltaTime; }
-            }
-            if (Input.GetAxis("Vertical" + Num + "_left") > 0.3)
-            {
-                //歩き
-                Debug.Log(Num + "walk");
-                if (Num == 1) { Cube1.transform.position += transform.forward * walk * Time.deltaTime; }
-                if (Num == 2) { Cube2.transform.position += transform.forward * walk * Time.deltaTime; }
-                if (Num == 3) { Cube3.transform.position += transform.forward * walk * Time.deltaTime; }
-                if (Num == 4) { Cube4.transform.position += transform.forward * walk * Time.deltaTime; }
-            }
-            if (Input.GetAxis("Vertical" + Num + "_left") < -0.3)
-            {
-                //後ろに進む
-                Debug.Log(Num + "back");
-                if (Num == 1) { Cube1.transform.position -= transform.forward * walk * Time.deltaTime; }
-                if (Num == 2) { Cube2.transform.position -= transform.forward * walk * Time.deltaTime; }
-                if (Num == 3) { Cube3.transform.position -= transform.forward * walk * Time.deltaTime; }
-                if (Num == 4) { Cube4.transform.position -= transform.forward * walk * Time.deltaTime; }
-            }
-            if (Input.GetAxis("Horizontal" + Num + "_left") > 0.4)
-            {
-                //右に進む
-                Debug.Log(Num + "right");
-                if (Num == 1) { Cube1.transform.position += transform.right * walk * Time.deltaTime; }
-                if (Num == 2) { Cube2.transform.position += transform.right * walk * Time.deltaTime; }
-                if (Num == 3) { Cube3.transform.position += transform.right * walk * Time.deltaTime; }
-                if (Num == 4) { Cube4.transform.position += transform.right * walk * Time.deltaTime; }
-            }
-            if (Input.GetAxis("Horizontal" + Num + "_left") < -0.4)
-            {
-                //左に進む
-                Debug.Log(Num + "left");
-                if (Num == 1) { Cube1.transform.position -= transform.right * walk * Time.deltaTime; }
-                if (Num == 2) { Cube2.transform.position -= transform.right * walk * Time.deltaTime; }
-                if (Num == 3) { Cube3.transform.position -= transform.right * walk * Time.deltaTime; }
-                if (Num == 4) { Cube4.transform.position -= transform.right * walk * Time.deltaTime; }
 
-            }
+        if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.7)
+        {   //走る
+            //Cubeをプレイヤーに変更すれば別のシーンで使用可
+            transform.position += transform.forward * run * Time.deltaTime;
         }
+        if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.3)
+        {
+            //歩き
+            transform.position += transform.forward * walk * Time.deltaTime;
+        }
+        if (Input.GetAxis("Vertical" + playerNum + "_left") < -0.3)
+        {
+            //後ろに進む
+            transform.position -= transform.forward * walk * Time.deltaTime;
+        }
+        if (Input.GetAxis("Horizontal" + playerNum + "_left") > 0.4)
+        {
+            //右に進む
+            transform.position += transform.right * walk * Time.deltaTime;
+        }
+        if (Input.GetAxis("Horizontal" + playerNum + "_left") < -0.4)
+        { 
+            //左に進む
+            transform.position -= transform.right * walk * Time.deltaTime;
+
+        }
+
+
+        //for (int Num = 1;Num <= 4;Num++)
+        //{
+        //    if (Input.GetAxis("Vertical"+ Num + "_left") > 0.7)
+        //    {   //走る
+        //        Debug.Log(Num+"run");
+        //        //Cubeをプレイヤーに変更すれば別のシーンで使用可
+        //        if (Num == 1) { Cube1.transform.position += transform.forward * run * Time.deltaTime; }
+        //        if (Num == 2) { Cube2.transform.position += transform.forward * run * Time.deltaTime; }
+        //        if (Num == 3) { Cube3.transform.position += transform.forward * run * Time.deltaTime; }
+        //        if (Num == 4) { Cube4.transform.position += transform.forward * run * Time.deltaTime; }
+        //    }
+        //    if (Input.GetAxis("Vertical" + Num + "_left") > 0.3)
+        //    {
+        //        //歩き
+        //        Debug.Log(Num + "walk");
+        //        if (Num == 1) { Cube1.transform.position += transform.forward * walk * Time.deltaTime; }
+        //        if (Num == 2) { Cube2.transform.position += transform.forward * walk * Time.deltaTime; }
+        //        if (Num == 3) { Cube3.transform.position += transform.forward * walk * Time.deltaTime; }
+        //        if (Num == 4) { Cube4.transform.position += transform.forward * walk * Time.deltaTime; }
+        //    }
+        //    if (Input.GetAxis("Vertical" + Num + "_left") < -0.3)
+        //    {
+        //        //後ろに進む
+        //        Debug.Log(Num + "back");
+        //        if (Num == 1) { Cube1.transform.position -= transform.forward * walk * Time.deltaTime; }
+        //        if (Num == 2) { Cube2.transform.position -= transform.forward * walk * Time.deltaTime; }
+        //        if (Num == 3) { Cube3.transform.position -= transform.forward * walk * Time.deltaTime; }
+        //        if (Num == 4) { Cube4.transform.position -= transform.forward * walk * Time.deltaTime; }
+        //    }
+        //    if (Input.GetAxis("Horizontal" + Num + "_left") > 0.4)
+        //    {
+        //        //右に進む
+        //        Debug.Log(Num + "right");
+        //        if (Num == 1) { Cube1.transform.position += transform.right * walk * Time.deltaTime; }
+        //        if (Num == 2) { Cube2.transform.position += transform.right * walk * Time.deltaTime; }
+        //        if (Num == 3) { Cube3.transform.position += transform.right * walk * Time.deltaTime; }
+        //        if (Num == 4) { Cube4.transform.position += transform.right * walk * Time.deltaTime; }
+        //    }
+        //    if (Input.GetAxis("Horizontal" + Num + "_left") < -0.4)
+        //    {
+        //        //左に進む
+        //        Debug.Log(Num + "left");
+        //        if (Num == 1) { Cube1.transform.position -= transform.right * walk * Time.deltaTime; }
+        //        if (Num == 2) { Cube2.transform.position -= transform.right * walk * Time.deltaTime; }
+        //        if (Num == 3) { Cube3.transform.position -= transform.right * walk * Time.deltaTime; }
+        //        if (Num == 4) { Cube4.transform.position -= transform.right * walk * Time.deltaTime; }
+
+        //    }
+        //}
     }
 
     void MoveInputKey()

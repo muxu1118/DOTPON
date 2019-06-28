@@ -42,7 +42,8 @@ public class ButtonControll : MonoBehaviour
         //Debug.Log(PlayerNumber + "接続コントローラー数");//Player(接続されてるコントローラー)の数
     }
     private void Button()
-    {   
+    {
+
         for (int padNum = 1; padNum <= 4; padNum++)
         {
             // ドットポン選択(右)
