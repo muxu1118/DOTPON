@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 2170593807836659608}
   - component: {fileID: 2170593807836659606}
   - component: {fileID: 1436942862038552369}
+  - component: {fileID: 6601954935524825041}
   m_Layer: 0
   m_Name: golem
   m_TagString: enemy
@@ -222,6 +223,25 @@ MonoBehaviour:
   - {fileID: 1076640697294197395}
   - {fileID: 7960391284433263635}
   - {fileID: 1231792992390587180}
+--- !u!95 &6601954935524825041
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2170593807836659604}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 869cdb2e0962c894992acaec82b219ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7960391284433263635
 GameObject:
   m_ObjectHideFlags: 0

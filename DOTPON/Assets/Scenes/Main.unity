@@ -4206,7 +4206,7 @@ GameObject:
   - component: {fileID: 1248723720}
   - component: {fileID: 1248723721}
   m_Layer: 0
-  m_Name: CameraSetting
+  m_Name: PlayerSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4238,11 +4238,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b77e7f559d1a840b88f5b4c87f565f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spewnPos:
-  - {x: 0, y: 0.5, z: -5}
-  - {x: 0, y: 0.5, z: 5}
-  - {x: 5, y: 0.5, z: 0}
-  - {x: -5, y: 0.5, z: 0}
+  spownPos:
+  - {x: 0, y: 0, z: -5}
+  - {x: 0, y: 0, z: 5}
+  - {x: 5, y: 0, z: 0}
+  - {x: -5, y: 0, z: 0}
   playerPrefab: {fileID: 5366474426209013577, guid: 8060791d666c5fb4192dda7d91d3a9e7,
     type: 3}
   DotTextObj:

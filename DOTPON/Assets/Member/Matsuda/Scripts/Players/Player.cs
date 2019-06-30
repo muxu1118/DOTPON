@@ -74,7 +74,6 @@ public class Player : MonoBehaviour
         //createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
         create = GetComponent<WeaponCreate>();
         //this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
-        Debug.Log(transform.forward.x + " + " + transform.forward.y + " + " + transform.forward.z);
     }
 
     // Update is called once per frame
@@ -182,11 +181,14 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             //HPが0になったとき
-            StartCoroutine(RespornPlayer());
+            StartCoroutine(GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject));
         }
-        isDamage = true;
-        Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
-        StartCoroutine(DamegeWait());
+        else
+        {
+            isDamage = true;
+            Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
+            StartCoroutine(DamegeWait());
+        }
     }
     /// <summary>
     /// ダメージを受けた時の無敵時間

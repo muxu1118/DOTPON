@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StartGame : MonoBehaviour
 {
     [SerializeField]
-    Vector3[] spewnPos;
+    Vector3[] spownPos;
     [SerializeField]
     GameObject playerPrefab;
 
@@ -28,8 +28,8 @@ public class StartGame : MonoBehaviour
         for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
         {
             //プレイヤーの生成
-            var playerObj = Instantiate(playerPrefab, spewnPos[i],Quaternion.identity);
-            
+            var playerObj = Instantiate(playerPrefab, spownPos[i],Quaternion.identity);
+            playerObj.name = "Player" + (i + 1);
             //ぷれいやーのenumをそれぞれに対応させる
             playerObj.GetComponent<Player>().own = PlayerEnum(i);
             //カメラのオブジェクトを探して参照させる
@@ -49,8 +49,11 @@ public class StartGame : MonoBehaviour
     /// <returns></returns>
     public IEnumerator RespornPlayer(GameObject obj)
     {
+        Debug.Log("start");
         obj.SetActive(false);
-        yield return new WaitForSeconds(5f);
+        obj.transform.position = spownPos[int.Parse(obj.name.Substring(6)) - 1];
+        yield return new WaitForSecondsRealtime(5f);
+        Debug.Log("end");
         obj.SetActive(true);
     }
     
