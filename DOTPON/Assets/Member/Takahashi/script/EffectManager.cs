@@ -19,7 +19,6 @@ public class EffectManager : MonoBehaviour
 
     private Text Star_Text;
 
-    private int count;
     // Start is called before the first frame update
     void Start()
     {
