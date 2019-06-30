@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public Rigidbody rb;
     [SerializeField]
     private float WalkSpeed = 5f; //歩く速度
     [SerializeField]
