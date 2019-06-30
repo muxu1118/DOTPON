@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             //HPが0になったとき
-            Destroy(this.gameObject);
+            StartCoroutine(RespornPlayer());
         }
         isDamage = true;
         Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
@@ -216,18 +216,26 @@ public class Player : MonoBehaviour
         isAttack = false;
         yield break;
     }
+    
     void AttackColliderOn()
     {
         isAttack = true;
-        if (true/*create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch"*/)
+        switch (create.nowWeapon.name)
         {
-            //腕振るほう
-            GetComponent<Animator>().SetTrigger("SwordAttack");
-        }/*else if (create.nowWeapon.name == "Katana" || create.nowWeapon.name == "sword")
-        {
-            //上段切りみたいなの
-            GetComponent<Animator>().SetTrigger("Attack2");
-        }*/
+            case "Axe": GetComponent<Animator>().SetTrigger("AxAttack"); break;
+            case "sword": GetComponent<Animator>().SetTrigger("SwordAttack"); break;
+            default: GetComponent<Animator>().SetTrigger("SwordAttack"); break;
+
+        }
+        //if (true/*create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch"*/)
+        //{
+        //    //腕振るほう
+        //    GetComponent<Animator>().SetTrigger("SwordAttack");
+        //}/*else if (create.nowWeapon.name == "Katana" || create.nowWeapon.name == "sword")
+        //{
+        //    //上段切りみたいなの
+        //    GetComponent<Animator>().SetTrigger("Attack2");
+        //}*/
         StartCoroutine(AttackWait());
     }
     void FarAttack()
