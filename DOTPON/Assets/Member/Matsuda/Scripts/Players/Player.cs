@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float RunSpeed = 100f; //走る速度
                                    //private float RotationSpeed = 100f; //向きを変える速度
+    bool trigger; 
 
     //遠距離攻撃の武器
     [SerializeField] GameObject farAtkWeapon;
@@ -54,16 +55,16 @@ public class Player : MonoBehaviour
         switch (own)
         {
             case PlayerKind.Player1:
-                hp = MultiPlayerManager.instance.P1Dot += 2;
+                hp = MultiPlayerManager.instance.P1Dot = 10;
                 break;
             case PlayerKind.Player2:
-                hp = MultiPlayerManager.instance.P2Dot += 10;
+                hp = MultiPlayerManager.instance.P2Dot = 10;
                 break;
             case PlayerKind.Player3:
-                hp = MultiPlayerManager.instance.P3Dot += 10;
+                hp = MultiPlayerManager.instance.P3Dot = 10;
                 break;
             case PlayerKind.Player4:
-                hp = MultiPlayerManager.instance.P4Dot += 10;
+                hp = MultiPlayerManager.instance.P4Dot = 10;
                 break;
             default:
                 Debug.LogError("よばれちゃいけんのやぞ");
@@ -107,20 +108,50 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown("joystick " + padNum + " button 1"))
         {
             AttackColliderOn();
+            Debug.Log("At");
         }
         if (Input.GetKeyDown("joystick " + padNum + " button 2"))
         {
             create.WeaponChoice("a");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 5"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
         {
             create.WeaponChoice("s");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 7"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 4"))
         {
             create.WeaponChoice("d"); 
         }
-
+        if (Input.GetKeyDown("joystick " + padNum + " button 7")&&trigger)
+        {
+            // Towerでスターの生成
+            switch (own)
+            {
+                case PlayerKind.Player1:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    MultiPlayerManager.instance.P1Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P1Dot);
+                    break;
+                case PlayerKind.Player2:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    MultiPlayerManager.instance.P2Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                    break;
+                case PlayerKind.Player3:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    MultiPlayerManager.instance.P3Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                    break;
+                case PlayerKind.Player4:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    MultiPlayerManager.instance.P4Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                    break;
+                default:
+                    Debug.LogError("よばれちゃいけんのやぞ");
+                    break;
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             AttackColliderOn();
@@ -250,7 +281,6 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.name == "Dot")
         {
-            
             switch (own)
             {
                 case PlayerKind.Player1:
@@ -275,6 +305,18 @@ public class Player : MonoBehaviour
             }
             other.GetComponent<Dot>().DestroyObject();
         }
+        if (other.gameObject.tag == "Tower")
+        {
+
+            trigger = true;
+        }
     }
-    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Tower")
+        {
+            trigger = false;
+        }
+    }
+
 }

@@ -20,8 +20,10 @@ public class MoveController : MonoBehaviour
     GameObject Cube2;
     GameObject Cube3;
     GameObject Cube4;
-
+    [SerializeField]
+    Transform cam;
     int playerNum;
+    
 
     void Start()
     {
@@ -39,6 +41,8 @@ public class MoveController : MonoBehaviour
         //Cube3 = GameObject.Find("Cube3");
         //Cube4 = GameObject.Find("Cube4");
 
+
+        cam = GameObject.Find("P"+transform.root.gameObject.name.Substring(6)+"Cam").transform;
     }
 
     void Update()
@@ -72,27 +76,35 @@ public class MoveController : MonoBehaviour
         {   //走る
             //Cubeをプレイヤーに変更すれば別のシーンで使用可
             transform.position += transform.forward * run * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
         }
         if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.3)
         {
             //歩き
             transform.position += transform.forward * walk * Time.deltaTime;
+            //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
+            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
         }
         if (Input.GetAxis("Vertical" + playerNum + "_left") < -0.3)
         {
             //後ろに進む
             transform.position -= transform.forward * walk * Time.deltaTime;
+            //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
+            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
         }
         if (Input.GetAxis("Horizontal" + playerNum + "_left") > 0.4)
         {
             //右に進む
             transform.position += transform.right * walk * Time.deltaTime;
+            //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
+            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
         }
         if (Input.GetAxis("Horizontal" + playerNum + "_left") < -0.4)
         { 
             //左に進む
             transform.position -= transform.right * walk * Time.deltaTime;
-
+            //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
+            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
         }
 
 

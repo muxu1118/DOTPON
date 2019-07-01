@@ -33,8 +33,8 @@ public class StartGame : MonoBehaviour
             //ぷれいやーのenumをそれぞれに対応させる
             playerObj.GetComponent<Player>().own = PlayerEnum(i);
             //カメラのオブジェクトを探して参照させる
-            cameras[i].transform.parent = playerObj.transform;
-            cameras[i].GetComponent<PlayerCamera>().CameraPosSet();
+            //cameras[i].transform.parent = playerObj.transform;
+            cameras[i].GetComponent<CameraMove>().Setting();
             DotTextObj[i].SetActive(true);
             StarTextObj[i].SetActive(true);
             BukiUIObj[i].SetActive(true);
