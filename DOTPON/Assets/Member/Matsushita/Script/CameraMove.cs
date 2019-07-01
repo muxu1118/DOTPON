@@ -17,6 +17,8 @@ public class CameraMove : MonoBehaviour
     [SerializeField]
     Camera cam;
 
+    string ControllerNum;
+
     //Cameraが回転するスピード
     [SerializeField]
     float rotateSpeed = 3.0f;
@@ -36,6 +38,7 @@ public class CameraMove : MonoBehaviour
     public void Setting(GameObject obj)
     {
         player = obj;
+        ControllerNum = obj.name.Substring(6);
         this.gameObject.transform.position = player.transform.position;
     }
 
@@ -52,7 +55,7 @@ public class CameraMove : MonoBehaviour
         //if (Input.GetAxis("Horizontal1_right") >= -0.001f && Input.GetAxis("Horizontal1_right") <= 0.001f) return;
 
         //Cameraの角度にマウスからとった値を入れる
-        transform.eulerAngles += new Vector3(Input.GetAxis("Vertical1_right") * rotateSpeed, Input.GetAxis("Horizontal1_right") * rotateSpeed, 0);
+        transform.eulerAngles += new Vector3(Input.GetAxis("Vertical"+ControllerNum+"_right") * rotateSpeed, Input.GetAxis("Horizontal"+ControllerNum+"_right") * rotateSpeed, 0);
        
         //x軸の角度
         float angleX = transform.eulerAngles.x;

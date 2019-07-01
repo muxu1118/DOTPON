@@ -78,7 +78,7 @@ public class SpownController : MonoBehaviour
                     for (int j = 0; j < 2; j++)
                     {
                         GameObject child = Instantiate(obj[0], new Vector3(spownPos.x + i, 1, spownPos.z + j), Quaternion.identity);
-                        child.name = child.name;
+                        child.name = child.name.Replace("(Clone)", "");
                         child.transform.parent = parentObject.transform;
 
                     }
@@ -87,11 +87,11 @@ public class SpownController : MonoBehaviour
                 break;
             case 1:
                 GameObject slime = Instantiate(obj[1], positions[posNum], Quaternion.identity);
-                slime.name = slime.name;
+                slime.name = slime.name.Replace("(Clone)","");
                 break;
             case 2:
                 GameObject golem = Instantiate(obj[2], positions[posNum], Quaternion.identity);
-                golem.name = golem.name;
+                golem.name = golem.name.Replace("(Clone)", "");
                 break;
             default:
                 break;

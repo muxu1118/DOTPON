@@ -13,7 +13,16 @@ public class Enemy : MonoBehaviour
     //プレイヤーを攻撃する関数
     protected void Attack()
     {
-        GetComponent<Animator>().SetTrigger("Attack");
+
+        if (gameObject.name == "Golem" || gameObject.name == "Dragom(clone)")
+        {
+            buki.GetComponent<Animator>().SetTrigger("Attack");
+        }
+        else
+        {
+            GetComponent<Animator>().SetTrigger("Attack");
+        }
+
     }
     //しんだとき
     public void DropDot(GameObject obj,int kazu,GameObject parentObj)
@@ -29,7 +38,6 @@ public class Enemy : MonoBehaviour
             {
                 case Player.PlayerKind.Player1:
                     MultiPlayerManager.instance.P1Star++;
-                    Debug.Log(MultiPlayerManager.instance.P1Star);
                     break;
                 case Player.PlayerKind.Player2:
                     MultiPlayerManager.instance.P2Star++;

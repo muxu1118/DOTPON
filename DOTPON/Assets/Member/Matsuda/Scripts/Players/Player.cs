@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         switch (own)
         {
             case PlayerKind.Player1:
-                hp = MultiPlayerManager.instance.P1Dot = 10;
+                hp = MultiPlayerManager.instance.P1Dot = 50;
                 break;
             case PlayerKind.Player2:
                 hp = MultiPlayerManager.instance.P2Dot = 10;
@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
         {
             create.WeaponChoice("s");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 4"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 0"))
         {
             create.WeaponChoice("d"); 
         }
