@@ -47,14 +47,19 @@ public class StartGame : MonoBehaviour
     /// 死んだあと復活
     /// </summary>
     /// <returns></returns>
-    public IEnumerator RespornPlayer(GameObject obj)
+    private IEnumerator RespornPlayerCoroutine(GameObject obj)
     {
         Debug.Log("start");
         obj.SetActive(false);
         obj.transform.position = spownPos[int.Parse(obj.name.Substring(6)) - 1];
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSeconds(5.0f);
         Debug.Log("end");
         obj.SetActive(true);
+    }
+
+    public void RespornPlayer(GameObject obj)
+    {
+        StartCoroutine(RespornPlayerCoroutine(obj));
     }
     
     private Player.PlayerKind PlayerEnum(int num)

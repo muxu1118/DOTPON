@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         switch (own)
         {
             case PlayerKind.Player1:
-                hp = MultiPlayerManager.instance.P1Dot += 10;
+                hp = MultiPlayerManager.instance.P1Dot += 2;
                 break;
             case PlayerKind.Player2:
                 hp = MultiPlayerManager.instance.P2Dot += 10;
@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             //HPが0になったとき
-            StartCoroutine(GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject));
+            GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
         }
         else
         {
