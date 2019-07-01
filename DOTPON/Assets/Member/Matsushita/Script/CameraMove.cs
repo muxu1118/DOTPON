@@ -33,9 +33,9 @@ public class CameraMove : MonoBehaviour
         cam.transform.localRotation = transform.rotation;
         //
     }
-    public void Setting()
+    public void Setting(GameObject obj)
     {
-        player = GameObject.Find("Player1").gameObject;
+        player = obj;
         this.gameObject.transform.position = player.transform.position;
     }
 
