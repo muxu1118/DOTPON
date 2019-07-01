@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     protected void Attack()
     {
 
-        if (gameObject.name == "Golem" || gameObject.name == "Dragom(clone)")
+        if (gameObject.name == "golem" || gameObject.name == "Dragom(clone)")
         {
             buki.GetComponent<Animator>().SetTrigger("Attack");
         }
