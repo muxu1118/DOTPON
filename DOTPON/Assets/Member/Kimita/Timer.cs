@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         textTime = GetComponent<Text>();
-        textTime.text = "残り時間 " + ((int)(timeCount/60)).ToString()+":"+ ((int)(timeCount % 60)).ToString();
+        textTime.text = "残り時間 " + ((int)(timeCount/60)).ToString()+":"+ ((int)(timeCount % 60)).ToString("00");
         
     }
 
@@ -32,16 +33,16 @@ public class Timer : MonoBehaviour
     {
         // 毎秒数える
         timeCount -= Time.deltaTime;
-        textTime.text = "残り時間 " + ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString();
-        imageTime[0].sprite = imageCount[(int)(timeCount / 60)];
-        imageTime[1].sprite = imageCount[(int)(timeCount % 60 % 10)];
-        imageTime[2].sprite = imageCount[(int)(timeCount % 60 / 10)];
+        textTime.text = "残り時間 " + ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
+        //imageTime[0].sprite = imageCount[(int)(timeCount / 60)];
+        //imageTime[1].sprite = imageCount[(int)(timeCount % 60 % 10)];
+        //imageTime[2].sprite = imageCount[(int)(timeCount % 60 / 10)];
 
-        if (limitTime <= timeCount)
+        if (limitTime >= timeCount)
         {
             // ゲーム終了
             // リザルト画面に移動
-
+            SceneManager.LoadScene(2);
         }
     }
 }

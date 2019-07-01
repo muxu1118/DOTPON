@@ -55,10 +55,10 @@ public class Player : MonoBehaviour
         switch (own)
         {
             case PlayerKind.Player1:
-                hp = MultiPlayerManager.instance.P1Dot = 50;
+                hp = MultiPlayerManager.instance.P1Dot = 15;
                 break;
             case PlayerKind.Player2:
-                hp = MultiPlayerManager.instance.P2Dot = 10;
+                hp = MultiPlayerManager.instance.P2Dot = 20;
                 break;
             case PlayerKind.Player3:
                 hp = MultiPlayerManager.instance.P3Dot = 10;
