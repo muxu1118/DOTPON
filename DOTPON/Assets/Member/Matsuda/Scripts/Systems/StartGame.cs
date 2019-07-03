@@ -5,22 +5,35 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
+    //エネミー生成位置の配列
     [SerializeField]
     Vector3[] spownPos;
+    //プレイヤーのプレハブ
     [SerializeField]
     GameObject playerPrefab;
 
+    //ドット保持表示のテキスト
     [SerializeField]
     GameObject[] DotTextObj;
+    //スター保持表示のテキスト
     [SerializeField]
     GameObject[] StarTextObj;
+    //選択武器表示のUI
     [SerializeField]
     GameObject[] BukiUIObj;
     [SerializeField]
     ScreenController screenController;
-
+    //プレイヤーにアタッチするカメラ
     [SerializeField]
     GameObject[] cameras;
+
+    [SerializeField]
+    SpownController SpownClass;
+    [SerializeField]
+    Timer timer;
+    [SerializeField]
+    Text text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +53,8 @@ public class StartGame : MonoBehaviour
             StarTextObj[i].SetActive(true);
             BukiUIObj[i].SetActive(true);
         }
-
         //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
+        StartCoroutine(GameStartCoroutine());
         screenController.CameraNumCheck();
     }
     /// <summary>
@@ -58,6 +71,23 @@ public class StartGame : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         Debug.Log("end");
         obj.SetActive(true);
+    }
+
+    /// <summary>
+    /// ３，２，１、GO
+    /// </summary>
+    IEnumerator GameStartCoroutine()
+    {
+        text.text = "3";
+        yield return new WaitForSeconds(1f);
+        text.text = "2";
+        yield return new WaitForSeconds(1f);
+        text.text = "1";
+        yield return new WaitForSeconds(1f);
+        text.text = "GO!!";
+        yield return new WaitForSeconds(1f);
+        SpownClass.enabled = true;
+        timer.enabled = true;
     }
 
     public void RespornPlayer(GameObject obj)

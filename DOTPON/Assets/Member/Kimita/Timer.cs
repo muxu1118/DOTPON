@@ -41,7 +41,14 @@ public class Timer : MonoBehaviour
         {
             // ゲーム終了
             // リザルト画面に移動
-            SceneManager.LoadScene(2);
+            StartCoroutine(EndCorutine());
         }
+    }
+
+    IEnumerator EndCorutine()
+    {
+        textTime.text = "GameSet!!";
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(2);
     }
 }

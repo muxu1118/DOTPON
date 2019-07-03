@@ -4036,7 +4036,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462512755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2cceefa7f32cfa40be8522355bec1c6, type: 3}
   m_Name: 
@@ -5742,7 +5742,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656611926}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a062fec7e0a16e4fbd937ca7d93e89d, type: 3}
   m_Name: 
@@ -5762,6 +5762,7 @@ MonoBehaviour:
   - {x: -6, y: 1, z: -6}
   dragonObj: {fileID: 897962232566034707, guid: ec6693d88e7513540ac3c2c01c2e2c60,
     type: 3}
+  NowSpown: 0
   spownDelay: 30
   MaxSpown: 30
   timer: {fileID: 462512757}
@@ -10697,6 +10698,9 @@ MonoBehaviour:
   - {fileID: 648607031}
   - {fileID: 1623411010}
   - {fileID: 1111719590}
+  SpownClass: {fileID: 656611927}
+  timer: {fileID: 462512757}
+  text: {fileID: 462512758}
 --- !u!1 &1262200336
 GameObject:
   m_ObjectHideFlags: 0
