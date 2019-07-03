@@ -12,6 +12,8 @@ public class SpownController : MonoBehaviour
     int NowSpown;
     [SerializeField] float spownDelay;
     [SerializeField] int MaxSpown;
+    [SerializeField] Timer timer;
+    int MaxTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class SpownController : MonoBehaviour
         {
             createdPos.Add(CreateEnemy(createdPos));
         }
+        MaxTime = (int)timer.timeCount;
     }
 
     // Update is called once per frame
@@ -27,11 +30,12 @@ public class SpownController : MonoBehaviour
     {
         time += Time.deltaTime;
         //制限時間%2<=timeだったら
-        if (/*gametime*/2 % 2 <= time && !isDragonSpown)
+        if (MaxTime / 2 <= time && !isDragonSpown)
         {
-            if (true) return;
-            Instantiate(dragonObj, positions[Random.Range(0, 4)], Quaternion.identity);
+            Debug.Log("ドラゴンスポーン");
             isDragonSpown = true;
+            return;
+            Instantiate(dragonObj, positions[Random.Range(0, 4)], Quaternion.identity);
         }
         List<int> createdPos = new List<int>() { -1 };
         if (time /  spownDelay>= 1)
@@ -67,7 +71,7 @@ public class SpownController : MonoBehaviour
                 }
             }
         }
-        switch (Random.Range(0,3))
+        switch (Random.Range(0,2))
         {
             case 0:
                 GameObject parentObject = new GameObject("GoburinFlock");

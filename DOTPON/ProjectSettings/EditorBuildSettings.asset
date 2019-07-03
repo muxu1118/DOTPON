@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: fde1ed96a71072648b290ffddff723dc
+  - enabled: 1
+    path: Assets/Member/Arga/Scene/ResultScene.unity
+    guid: e89c502cb0c5cd44682c0b5bc1965a72
   m_configObjects: {}
