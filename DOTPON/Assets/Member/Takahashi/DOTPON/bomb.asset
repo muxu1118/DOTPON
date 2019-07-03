@@ -17,4 +17,4 @@ MonoBehaviour:
   necessaryDot: 3
   durableValue: 4
   dotNum: 3
-  weapon: {fileID: 4613529809317670753, guid: b7699728f8bd91b42bd2293cc313fbb2, type: 3}
+  weapon: {fileID: 2693526001938932166, guid: bf5352f4445c9e74198ad3b5f1284c8c, type: 3}

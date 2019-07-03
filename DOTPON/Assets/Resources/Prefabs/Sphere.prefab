@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2693526001938932164}
   - component: {fileID: 2693526001938932165}
   - component: {fileID: 7363085357701053204}
+  - component: {fileID: 5657933268059649619}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: weapon
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2693526001938932166}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a8b08a0f6974ec4db8e4f3076c617a7, type: 3}
   m_Name: 
@@ -129,3 +130,16 @@ MonoBehaviour:
   _attackDamage: 0
   _necessaryDot: 0
   _durableValue: 0
+--- !u!114 &5657933268059649619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693526001938932166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f7c95f7de95614cb7ce8e96208f6cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parametor: {fileID: 11400000, guid: d152e0ccb611e3049a9f3c3dd9dfeb6d, type: 2}
