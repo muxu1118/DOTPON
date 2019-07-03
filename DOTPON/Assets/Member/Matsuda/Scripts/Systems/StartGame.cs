@@ -22,6 +22,8 @@ public class StartGame : MonoBehaviour
     [SerializeField]
     GameObject[] BukiUIObj;
     [SerializeField]
+    GameObject[] DursbleUI;
+    [SerializeField]
     ScreenController screenController;
     //プレイヤーにアタッチするカメラ
     [SerializeField]
@@ -52,6 +54,7 @@ public class StartGame : MonoBehaviour
             DotTextObj[i].SetActive(true);
             StarTextObj[i].SetActive(true);
             BukiUIObj[i].SetActive(true);
+            DursbleUI[i].SetActive(true);
         }
         //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
         StartCoroutine(GameStartCoroutine());

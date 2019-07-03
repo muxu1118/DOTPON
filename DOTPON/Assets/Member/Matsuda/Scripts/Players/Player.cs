@@ -30,28 +30,19 @@ public class Player : MonoBehaviour
     //遠距離攻撃の距離
     int farAtkDistance = 3;
 
-    public bool isAttack;
+    public bool isAction;
 
     // コントローラーに対応する番号
     int padNum;
 
-    //[SerializeField]
-    //WeaponCreate weapon;
+    Animator animator;
 
-    //[SerializeField]
-    //public GameObject[] weapon = new GameObject[4]; //武器を格納
-
-    //bool trigger = true; //武器の作成と破棄の切り替え 
-    //int weaponNumber;    //武器の種類
-    //int weaponType = 0;  //武器を指定するための数値
-
-    //public GameObject nowWeapon;
-    //int createNum = 0;
     WeaponCreate create;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         switch (own)
         {
             case PlayerKind.Player1:
@@ -86,7 +77,7 @@ public class Player : MonoBehaviour
     }
     void KeyInout()
     {
-        if (isAttack) return;
+        if (isAction) return;
         /*
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -231,6 +222,7 @@ public class Player : MonoBehaviour
             isDamage = true;
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
+            animator.SetTrigger("Hit");
         }
     }
     /// <summary>
@@ -257,21 +249,31 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(0.5f);
-        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;;
-        isAttack = false;
+        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(0.8f);
+        isAction = false;
         yield break;
     }
-    
+    /// <summary>
+    /// なにかアクションしたとき
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator ActionWait(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isAction = false;
+        yield break;
+    }
     void AttackColliderOn()
     {
-        isAttack = true;
+        isAction = true;
         switch (create.nowWeapon.name)
         {
-            case "Axe": GetComponent<Animator>().SetTrigger("AxAttack"); break;
-            case "sword": GetComponent<Animator>().SetTrigger("SwordAttack"); break;
-            case "bomb":GetComponent<Animator>().SetTrigger("BombAttack");break;
-            case "shield":GetComponent<Animator>().SetTrigger("ShiledAttack"); break;
-            default: GetComponent<Animator>().SetTrigger("SwordAttack"); break;
+            case "Axe": animator.SetTrigger("AxAttack"); break;
+            case "sword": animator.SetTrigger("SwordAttack"); break;
+            case "bomb":animator.SetTrigger("BombAttack");break;
+            case "shield":animator.SetTrigger("ShiledAttack"); break;
+            default: animator.SetTrigger("SwordAttack"); break;
 
         }
         //if (true/*create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch"*/)
@@ -287,9 +289,9 @@ public class Player : MonoBehaviour
     }
     void FarAttack()
     {
-        isAttack = true;
+        isAction = true;
         Instantiate(farAtkWeapon,transform.localPosition + transform.forward,Quaternion.identity).GetComponent<FarAttack>().pow = farAtkDistance;
-        StartCoroutine(AttackWait());
+        StartCoroutine(ActionWait(1f));
     }
     private void OnTriggerEnter(Collider other)
     {
