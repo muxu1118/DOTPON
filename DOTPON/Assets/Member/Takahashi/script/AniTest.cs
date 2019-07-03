@@ -48,11 +48,11 @@ public class AniTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            anim.SetTrigger("SwordAttack");
+            anim.SetTrigger("ShieldAttack");
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            anim.SetTrigger("Create");
+            anim.SetTrigger("Hit");
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -60,7 +60,7 @@ public class AniTest : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            anim.SetTrigger("Run");
+            anim.SetTrigger("SwordAttack");
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
