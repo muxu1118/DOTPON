@@ -34,7 +34,7 @@ public class MoveController : MonoBehaviour
         */
         anim = GetComponent<Animator>();
         rg = GetComponent<Rigidbody>();
-        transform.rotation = new Quaternion(0, 0, 0, 0);
+        //transform.rotation = new Quaternion(0, 0, 0, 0);
         playerNum = (int)GetComponent<Player>().own + 1;
         //Cube1 = GameObject.Find("Cube1");
         //Cube2 = GameObject.Find("Cube2");

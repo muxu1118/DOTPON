@@ -32,7 +32,7 @@ public class CameraMove : MonoBehaviour
         //CameraのAxisに相対的な位置をlocalPositionで指定
         cam.transform.localPosition = new Vector3(0, 0, -3);
         //CameraとAxisの向きを最初だけそろえる
-        cam.transform.localRotation = transform.rotation;
+        //cam.transform.localRotation = transform.rotation;
         //
     }
     public void Setting(GameObject obj)
@@ -40,6 +40,7 @@ public class CameraMove : MonoBehaviour
         player = obj;
         ControllerNum = obj.name.Substring(6);
         this.gameObject.transform.position = player.transform.position;
+        this.gameObject.transform.rotation = player.transform.rotation;
     }
 
     // Update is called once per frame

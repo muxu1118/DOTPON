@@ -28,8 +28,8 @@ public class StartGame : MonoBehaviour
         for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
         {
             //プレイヤーの生成
-            var playerObj = Instantiate(playerPrefab, spownPos[i],Quaternion.Euler(0,90,0));
-            Debug.Log(playerObj.transform.rotation);
+            var playerObj = Instantiate(playerPrefab, spownPos[i],Quaternion.identity);
+            playerObj.transform.LookAt(new Vector3(0,0,0));
             playerObj.name = "Player" + (i + 1);
             //ぷれいやーのenumをそれぞれに対応させる
             playerObj.GetComponent<Player>().own = PlayerEnum(i);
