@@ -15,15 +15,26 @@ public class Player : MonoBehaviour
 
     [SerializeField] int hp;
     public bool isDamage = false;
-
+    //スター作成のフラグ
+    bool createStar;
 
     [SerializeField]
     private float WalkSpeed = 10f; //歩く速度
     [SerializeField]
     private float RunSpeed = 100f; //走る速度
-    //private float RotationSpeed = 100f; //向きを変える速度
+                                   //private float RotationSpeed = 100f; //向きを変える速度
+    bool trigger; 
+
+    //遠距離攻撃の武器
+    [SerializeField] GameObject farAtkWeapon;
+    //遠距離攻撃の距離
+    int farAtkDistance = 3;
 
     public bool isAttack;
+
+    // コントローラーに対応する番号
+    int padNum;
+
     //[SerializeField]
     //WeaponCreate weapon;
 
@@ -41,12 +52,29 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = 10;
+        switch (own)
+        {
+            case PlayerKind.Player1:
+                hp = MultiPlayerManager.instance.P1Dot = 15;
+                break;
+            case PlayerKind.Player2:
+                hp = MultiPlayerManager.instance.P2Dot = 20;
+                break;
+            case PlayerKind.Player3:
+                hp = MultiPlayerManager.instance.P3Dot = 10;
+                break;
+            case PlayerKind.Player4:
+                hp = MultiPlayerManager.instance.P4Dot = 10;
+                break;
+            default:
+                Debug.LogError("よばれちゃいけんのやぞ");
+                break;
+        }
+        padNum = (int)own+1;
         //weaponNumber = weapon.Length;
         //createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
         create = GetComponent<WeaponCreate>();
-        this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
-        Debug.Log(transform.forward.x + " + " + transform.forward.y + " + " + transform.forward.z);
+        //this.gameObject.transform.LookAt(GameObject.Find("Tower").transform);
     }
 
     // Update is called once per frame
@@ -77,169 +105,78 @@ public class Player : MonoBehaviour
             PlayerMove(new Vector3(5, 0, 0));
         }
         */
-        if (Input.GetKeyDown("joystick 1 button 1"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 1"))
         {
             AttackColliderOn();
+            Debug.Log("At");
         }
-        if (Input.GetKeyDown("joystick 1 button 2"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
         {
             create.WeaponChoice("a");
         }
-        if (Input.GetKeyDown("joystick 1 button 5"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
         {
             create.WeaponChoice("s");
         }
-        if (Input.GetKeyDown("joystick 1 button 7"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 0"))
         {
             create.WeaponChoice("d"); 
         }
-
+        if (Input.GetKeyDown("joystick " + padNum + " button 7")&&trigger)
+        {
+            // Towerでスターの生成
+            switch (own)
+            {
+                case PlayerKind.Player1:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    MultiPlayerManager.instance.P1Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P1Dot);
+                    break;
+                case PlayerKind.Player2:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    MultiPlayerManager.instance.P2Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                    break;
+                case PlayerKind.Player3:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    MultiPlayerManager.instance.P3Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                    break;
+                case PlayerKind.Player4:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    MultiPlayerManager.instance.P4Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                    break;
+                default:
+                    Debug.LogError("よばれちゃいけんのやぞ");
+                    break;
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             AttackColliderOn();
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
+            FarAttack();
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            farAtkDistance++;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (farAtkDistance > 1)
+            {
+                farAtkDistance--;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
         }
     }
-    void Move()
-    {
-        //transform.potisionの移動
-        /*
-        //走る
-        if (Input.GetAxisRaw("Mouse Y") == -1)
-        {
-            transform.position += transform.forward * RunSpeed * Time.deltaTime;
-            Debug.Log("呼ばれた");
-        }
-        //前に歩く
-        if (Input.GetAxisRaw("Mouse Y") < -0.3)
-        {
-            transform.position += transform.forward * WalkSpeed * Time.deltaTime;
-        }
-        //左に移動
-        if (Input.GetAxisRaw("Mouse X") < -0.3)
-        {
-            transform.position -= transform.right * WalkSpeed * Time.deltaTime;
-        }
-        //右に移動
-        if (Input.GetAxisRaw("Mouse X") > 0.3)
-        {
-            transform.position += transform.right * WalkSpeed * Time.deltaTime;
-        }
-        //後ろに歩く
-        if (Input.GetAxisRaw("Mouse Y") > 0.3)
-        {
-            transform.position -= transform.forward * WalkSpeed * Time.deltaTime;
-        }
-        */
-    }/// <summary>
-     /// コントローラーのボタンが押された時の各判定
-     /// </summary>
-    //private void WeaponChoice(string str)
-    //{
-    //    switch (str)
-    //    {
-    //        case "a":
-    //            if (trigger && DotManager.instance.DotPonCreate(GetComponent<Player>(), createNum))
-    //            {
-    //                GetComponent<Animator>().SetTrigger("Create");
-    //                weapon[3].SetActive(false);
-    //                weapon[weaponType].SetActive(true);
-    //                nowWeapon = weapon[weaponType];
-    //                nowWeapon.GetComponent<BoxCollider>().enabled = false;
-    //                trigger = false;
-    //            }
-    //            else
-    //            {
-    //                //作成した武器を破棄
-
-    //                nowWeapon.SetActive(false);
-    //                weapon[3].SetActive(true);
-    //                nowWeapon = weapon[3];
-    //                trigger = true;
-    //            }
-    //            break;
-
-    //        //作成する武器の切り替え
-    //        case "s":
-    //            weaponType += 1;
-    //            if (weaponType == weaponNumber -1)
-    //            {
-    //                weaponType = 0;
-    //            }
-    //            createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
-    //            //Debug.Log(weaponType);
-    //            break;
-
-    //        //作成する武器の切り替え
-    //        case "d":
-    //            if (weaponType > 0)
-    //            {
-    //                weaponType -= 1;
-    //                //Debug.Log(weaponType);
-    //            }
-    //            else if (weaponType == 0)
-    //            {
-    //                weaponType = weaponNumber - 2;
-    //                //Debug.Log(weaponType);
-    //            }
-    //            createNum = weapon[weaponType].GetComponent<weapon>().parametor.dotNum;
-    //            break;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// 武器を表示非表示
-    ///// </summary>
-    //public void CreateWeapon()
-    //{
-    //    if (trigger)
-    //    {
-    //        weapon[weaponNumber].SetActive(true);
-    //        trigger = false;
-    //    }
-    //    else
-    //    {
-    //        //作成した武器を破棄
-    //        weapon[weaponNumber].SetActive(false);
-    //        trigger = true;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// 表示させる武器を変えるプラス方向)
-    ///// </summary>
-    //public void ChangeWeaponPlus()
-    //{
-    //    weaponType += 1;
-    //    if (weaponType == weaponNumber)
-    //    {
-    //        weaponType = 0;
-    //    }
-    //    Debug.Log(weaponType);
-    //}
-
-    ///// <summary>
-    ///// 表示させる武器を変える(マイナス方向)
-    ///// </summary>
-    //public void ChangeWeaponMinus()
-    //{
-    //    if (weaponType > 0)
-    //    {
-    //        weaponType -= 1;
-    //        Debug.Log(weaponType);
-    //    }
-    //    else if (weaponType == 0)
-    //    {
-    //        weaponType = weaponNumber - 1;
-    //        Debug.Log(weaponType);
-    //    }
-    //}
-    //void PlayerMove(Vector3 vec)
-    //{
-    //    GetComponent<Rigidbody>().velocity += vec;
-    //}
     /// <summary>
     /// プレイヤーがダメージを受けた時の処理
     /// </summary>
@@ -274,11 +211,15 @@ public class Player : MonoBehaviour
         //Debug.Log(hp);
         if (hp <= 0)
         {
-            Destroy(this.gameObject);
+            //HPが0になったとき
+            GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
         }
-        isDamage = true;
-        Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
-        StartCoroutine(DamegeWait());
+        else
+        {
+            isDamage = true;
+            Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
+            StartCoroutine(DamegeWait());
+        }
     }
     /// <summary>
     /// ダメージを受けた時の無敵時間
@@ -304,46 +245,58 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(0.5f);
-        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(0.12f);
+        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;;
         isAttack = false;
         yield break;
     }
+    
     void AttackColliderOn()
     {
         isAttack = true;
-        if (create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch")
+        switch (create.nowWeapon.name)
         {
-            //腕振るほう
-            GetComponent<Animator>().SetTrigger("Attack");
-        }else if (create.nowWeapon.name == "Katana" || create.nowWeapon.name == "sword")
-        {
-            //上段切りみたいなの
-            GetComponent<Animator>().SetTrigger("Attack2");
+            case "Axe": GetComponent<Animator>().SetTrigger("AxAttack"); break;
+            case "sword": GetComponent<Animator>().SetTrigger("SwordAttack"); break;
+            default: GetComponent<Animator>().SetTrigger("SwordAttack"); break;
+
         }
+        //if (true/*create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch"*/)
+        //{
+        //    //腕振るほう
+        //    GetComponent<Animator>().SetTrigger("SwordAttack");
+        //}/*else if (create.nowWeapon.name == "Katana" || create.nowWeapon.name == "sword")
+        //{
+        //    //上段切りみたいなの
+        //    GetComponent<Animator>().SetTrigger("Attack2");
+        //}*/
+        StartCoroutine(AttackWait());
+    }
+    void FarAttack()
+    {
+        isAttack = true;
+        Instantiate(farAtkWeapon,transform.localPosition + transform.forward,Quaternion.identity).GetComponent<FarAttack>().pow = farAtkDistance;
         StartCoroutine(AttackWait());
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Dot")
         {
-            
             switch (own)
             {
                 case PlayerKind.Player1:
-                    MultiPlayerManager.instance.P1Dot++;
+                    hp = MultiPlayerManager.instance.P1Dot++;
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
-                    MultiPlayerManager.instance.P2Dot++;
+                    hp = MultiPlayerManager.instance.P2Dot++;
                     //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
-                    MultiPlayerManager.instance.P3Dot++;
+                    hp = MultiPlayerManager.instance.P3Dot++;
                     //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
-                    MultiPlayerManager.instance.P4Dot++;
+                    hp = MultiPlayerManager.instance.P4Dot++;
                     //Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
                 default:
@@ -352,5 +305,18 @@ public class Player : MonoBehaviour
             }
             other.GetComponent<Dot>().DestroyObject();
         }
+        if (other.gameObject.tag == "Tower")
+        {
+
+            trigger = true;
+        }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Tower")
+        {
+            trigger = false;
+        }
+    }
+
 }

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ScreenController : MonoBehaviour
 {
-
     public GameObject[] cameras = new GameObject[5];
     private int playerNumbers;
     private Rect singleCam = new Rect(0f, 0f, 1f, 1f);
@@ -43,7 +42,7 @@ public class ScreenController : MonoBehaviour
     public void singlePlayer()
     {
         DeactiveCam();
-        cameras[0].GetComponent<Camera>().rect = singleCam;
+        cameras[0].GetComponentInChildren<Camera>().rect = singleCam;
         cameras[0].SetActive(true);
 
     }
@@ -51,8 +50,8 @@ public class ScreenController : MonoBehaviour
     public void twoPlayer()
     {
         DeactiveCam();
-        cameras[0].GetComponent<Camera>().rect = dualCam1;
-        cameras[1].GetComponent<Camera>().rect = dualCam2;
+        cameras[0].GetComponentInChildren<Camera>().rect = dualCam1;
+        cameras[1].GetComponentInChildren<Camera>().rect = dualCam2;
         cameras[0].SetActive(true);
         cameras[1].SetActive(true);
 
@@ -61,9 +60,9 @@ public class ScreenController : MonoBehaviour
     public void threePlayer()
     {
         DeactiveCam();
-        cameras[0].GetComponent<Camera>().rect = multiCam1;
-        cameras[1].GetComponent<Camera>().rect = multiCam2;
-        cameras[2].GetComponent<Camera>().rect = multiCam3;
+        cameras[0].GetComponentInChildren<Camera>().rect = multiCam1;
+        cameras[1].GetComponentInChildren<Camera>().rect = multiCam2;
+        cameras[2].GetComponentInChildren<Camera>().rect = multiCam3;
         cameras[0].SetActive(true);
         cameras[1].SetActive(true);
         cameras[2].SetActive(true);
@@ -73,10 +72,10 @@ public class ScreenController : MonoBehaviour
     public void fourPlayer()
     {
         DeactiveCam();
-        cameras[0].GetComponent<Camera>().rect = multiCam1;
-        cameras[1].GetComponent<Camera>().rect = multiCam2;
-        cameras[2].GetComponent<Camera>().rect = multiCam3;
-        cameras[3].GetComponent<Camera>().rect = multiCam4;
+        cameras[0].GetComponentInChildren<Camera>().rect = multiCam1;
+        cameras[1].GetComponentInChildren<Camera>().rect = multiCam2;
+        cameras[2].GetComponentInChildren<Camera>().rect = multiCam3;
+        cameras[3].GetComponentInChildren<Camera>().rect = multiCam4;
         cameras[0].SetActive(true);
         cameras[1].SetActive(true);
         cameras[2].SetActive(true);

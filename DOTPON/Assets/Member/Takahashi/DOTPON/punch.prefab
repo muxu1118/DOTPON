@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1453264195924920546}
   - component: {fileID: 843446078396487741}
   - component: {fileID: 6264037851564855669}
-  - component: {fileID: 6563400894502838818}
   - component: {fileID: 9044132285138982286}
+  - component: {fileID: 7135406870600841783}
   m_Layer: 0
   m_Name: punch
   m_TagString: ' fist'
@@ -93,23 +93,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6563400894502838818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468608261205490189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd30ae9c51554c64585f2bc0a176e23f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parametor: {fileID: 11400000, guid: 507a66b96ffc7f441998b3ad0043f98e, type: 2}
-  _attackSpeed: 0
-  _attackDamage: 0
-  _necessaryDot: 0
-  _durableValue: 0
 --- !u!95 &9044132285138982286
 Animator:
   serializedVersion: 3
@@ -129,3 +112,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7135406870600841783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468608261205490189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8b08a0f6974ec4db8e4f3076c617a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parametor: {fileID: 11400000, guid: 507a66b96ffc7f441998b3ad0043f98e, type: 2}
+  _attackSpeed: 0
+  _attackDamage: 0
+  _necessaryDot: 0
+  _durableValue: 0

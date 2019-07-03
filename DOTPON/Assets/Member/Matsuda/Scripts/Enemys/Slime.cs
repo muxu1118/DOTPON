@@ -8,6 +8,7 @@ public class Slime : Enemy
     [SerializeField] GameObject[] lookingCollider;
     float time;
     float lookingAngle;
+    [SerializeField] GameObject bukiObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +40,6 @@ public class Slime : Enemy
     void Update()
     {
         time += Time.deltaTime;
-        DropDot(gameObject, parameter.dropDot);
         if (isAction) return;
         this.transform.position += vector * parameter.speed / 100;
         if (time > parameter.lookAngleChangeTime && !isLooking)
@@ -72,7 +72,11 @@ public class Slime : Enemy
             isLooking = true;
             if (isAction) return;
             isAction = true;
-            Attack(parameter.attackPow);
+            var obj = Instantiate(bukiObj, transform.localPosition, Quaternion.identity);
+            //遠距離攻撃の距離を自分とプレイヤーの距離に
+            obj.GetComponent<FarAttack>().pow = Vector3.Distance(this.transform.position,other.gameObject.transform.position);
+            obj.transform.parent = this.gameObject.transform;
+            buki = obj;
             StartCoroutine(WaitTime(1.5f));
         }
     }

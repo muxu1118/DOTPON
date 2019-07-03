@@ -7,33 +7,56 @@ public class Enemy : MonoBehaviour
     public EnemyParameter parameter;
     [HideInInspector]public int HP;
     [HideInInspector]public bool isLooking = false;
-    [SerializeField] private GameObject buki;
+    [SerializeField] protected GameObject buki;
 
     public bool isAction = false;
-    public void SpawnEnemy()
-    {
-        /*判定場所は後々
-        現在のモンスター数を取得。一定数以上だったらreturn
-        前回の生成からの時間を取得。
-        ５秒経っているか
-        */
-        //4か所にenemy生成
-        //enemyに対応した情報を持たせる
-    }
     //プレイヤーを攻撃する関数
-    protected void Attack(int attack)
+    protected void Attack()
     {
-        //GameObject.Find("player").GetComponent<plaer_m>().Damage(attack);
-        buki.GetComponent<Animator>().SetTrigger("Attack");
-        //プレイヤーのスクリプトのダメージの関数に投げる
+
+        if (gameObject.name == "golem" || gameObject.name == "Dragom(clone)")
+        {
+            buki.GetComponent<Animator>().SetTrigger("Attack");
+        }
+        else
+        {
+            GetComponent<Animator>().SetTrigger("Attack");
+        }
+
     }
     //しんだとき
-    public void DropDot(GameObject obj,int kazu)
+    public void DropDot(GameObject obj,int kazu,GameObject parentObj)
     {
         if (HP > 0) return;
         // managerに投げる
         Debug.Log("しんだ");
-        DotManager.instance.EnemyDeadDotPop(kazu,obj.transform.position);
+        GetComponent<Animator>().SetTrigger("Down");
+        //ドラゴンが死んだ場合、最後の攻撃者にstarを与える
+        if (obj.name == "dragon(Clone)")
+        {
+            switch (parentObj.GetComponent<Player>().own)
+            {
+                case Player.PlayerKind.Player1:
+                    MultiPlayerManager.instance.P1Star++;
+                    break;
+                case Player.PlayerKind.Player2:
+                    MultiPlayerManager.instance.P2Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                    break;
+                case Player.PlayerKind.Player3:
+                    MultiPlayerManager.instance.P3Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                    break;
+                case Player.PlayerKind.Player4:
+                    MultiPlayerManager.instance.P4Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                    break;
+                default:
+                    Debug.LogError("よばれちゃいけんのやぞ");
+                    break;
+            }
+        }
+        DotManager.instance.EnemyDeadDotPop(kazu, obj.transform.position);
         //enemyの消去
         Destroy(obj);
     }
@@ -41,9 +64,10 @@ public class Enemy : MonoBehaviour
     /// ダメージを受けたときに呼ばれる関数
     /// </summary>
     /// <param name="At">攻撃力</param>
-    public void Damage(int At)
+    public void Damage(int At,GameObject obj)
     {
         HP -= At;
+        DropDot(this.gameObject,parameter.dropDot,obj);
         isAction = true;
         StartCoroutine(WaitTime(1));
         this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0,0,0);
@@ -84,8 +108,5 @@ public class Enemy : MonoBehaviour
         isAction = false;
         this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1,1,1);
         yield break;
-    }
-    private void FixedUpdate()
-    {
     }
 }

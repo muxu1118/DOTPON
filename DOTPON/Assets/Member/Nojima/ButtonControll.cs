@@ -42,11 +42,10 @@ public class ButtonControll : MonoBehaviour
         //Debug.Log(PlayerNumber + "接続コントローラー数");//Player(接続されてるコントローラー)の数
     }
     private void Button()
-    {   
+    {
+
         for (int padNum = 1; padNum <= 4; padNum++)
         {
-            Debug.Log("Joystick" + padNum + "_1");
-
             // ドットポン選択(右)
             if (Input.GetKeyDown("joystick " + padNum + " button 0"))
             {
