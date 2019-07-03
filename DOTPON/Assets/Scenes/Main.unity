@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1176,7 +1176,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 7440cbe708bc49746a90fbad0bb15136, type: 3}
+  m_Texture: {fileID: 2800000, guid: 574b8fad39ddc6444a8183a401842755, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1596,7 +1596,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 7440cbe708bc49746a90fbad0bb15136, type: 3}
+  m_Texture: {fileID: 2800000, guid: 574b8fad39ddc6444a8183a401842755, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5677,7 +5677,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cam: {fileID: 2130455606}
   rotateSpeed: 3
-  axisPos: {x: 0, y: 2, z: 0}
+  axisPos: {x: 0, y: 3, z: 0}
 --- !u!4 &648607033
 Transform:
   m_ObjectHideFlags: 0
@@ -9171,7 +9171,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cam: {fileID: 1307764824}
   rotateSpeed: 3
-  axisPos: {x: 0, y: 2, z: 0}
+  axisPos: {x: 0, y: 3, z: 0}
 --- !u!4 &1111719592
 Transform:
   m_ObjectHideFlags: 0
@@ -13779,7 +13779,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cam: {fileID: 1140823712}
   rotateSpeed: 3
-  axisPos: {x: 0, y: 2, z: 0}
+  axisPos: {x: 0, y: 3, z: 0}
 --- !u!4 &1623411012
 Transform:
   m_ObjectHideFlags: 0
@@ -13827,7 +13827,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cam: {fileID: 130676638}
   rotateSpeed: 3
-  axisPos: {x: 0, y: 2, z: 0}
+  axisPos: {x: 0, y: 3, z: 0}
 --- !u!4 &1633078549
 Transform:
   m_ObjectHideFlags: 0
@@ -16576,7 +16576,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 7440cbe708bc49746a90fbad0bb15136, type: 3}
+  m_Texture: {fileID: 2800000, guid: 574b8fad39ddc6444a8183a401842755, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -17469,7 +17469,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 7440cbe708bc49746a90fbad0bb15136, type: 3}
+  m_Texture: {fileID: 2800000, guid: 574b8fad39ddc6444a8183a401842755, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

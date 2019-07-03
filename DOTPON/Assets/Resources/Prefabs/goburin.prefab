@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8b08a0f6974ec4db8e4f3076c617a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parametor: {fileID: 11400000, guid: 507a66b96ffc7f441998b3ad0043f98e, type: 2}
+  parametor: {fileID: 11400000, guid: 6c423a4d5ccaf9e419c42cc850ac775f, type: 2}
   _attackSpeed: 0
   _attackDamage: 0
   _necessaryDot: 0
@@ -402,10 +402,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5128620980534384033}
     m_Modifications:
-    - target: {fileID: 100004, guid: 9200852514119c643a26acce32d69510, type: 3}
-      propertyPath: m_Name
-      value: goburin_walk
-      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 9200852514119c643a26acce32d69510, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -449,6 +445,10 @@ PrefabInstance:
     - target: {fileID: 400004, guid: 9200852514119c643a26acce32d69510, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9200852514119c643a26acce32d69510, type: 3}
+      propertyPath: m_Name
+      value: goburin_walk
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9200852514119c643a26acce32d69510, type: 3}

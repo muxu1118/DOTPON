@@ -55,16 +55,16 @@ public class Player : MonoBehaviour
         switch (own)
         {
             case PlayerKind.Player1:
-                hp = MultiPlayerManager.instance.P1Dot = 15;
+                hp = MultiPlayerManager.instance.P1Dot;
                 break;
             case PlayerKind.Player2:
-                hp = MultiPlayerManager.instance.P2Dot = 20;
+                hp = MultiPlayerManager.instance.P2Dot;
                 break;
             case PlayerKind.Player3:
-                hp = MultiPlayerManager.instance.P3Dot = 10;
+                hp = MultiPlayerManager.instance.P3Dot;
                 break;
             case PlayerKind.Player4:
-                hp = MultiPlayerManager.instance.P4Dot = 10;
+                hp = MultiPlayerManager.instance.P4Dot;
                 break;
             default:
                 Debug.LogError("よばれちゃいけんのやぞ");
@@ -184,23 +184,23 @@ public class Player : MonoBehaviour
     public void Damage(int damage)
     {
         if (isDamage) return;
-        hp = hp - damage;
+        int hp = 0;
         switch (own)
         {
             case PlayerKind.Player1:
-                MultiPlayerManager.instance.P1Dot--;
+                hp = MultiPlayerManager.instance.P1Dot--;
                 //Debug.Log(MultiPlayerManager.instance.P1Dot);
                 break;
             case PlayerKind.Player2:
-                MultiPlayerManager.instance.P2Dot--;
+               hp = MultiPlayerManager.instance.P2Dot--;
                 //Debug.Log(MultiPlayerManager.instance.P2Dot);
                 break;
             case PlayerKind.Player3:
-                MultiPlayerManager.instance.P3Dot--;
+                hp = MultiPlayerManager.instance.P3Dot--;
                 //Debug.Log(MultiPlayerManager.instance.P3Dot);
                 break;
             case PlayerKind.Player4:
-                MultiPlayerManager.instance.P4Dot--;
+                hp = MultiPlayerManager.instance.P4Dot--;
                 //Debug.Log(MultiPlayerManager.instance.P4Dot);
                 break;
             default:

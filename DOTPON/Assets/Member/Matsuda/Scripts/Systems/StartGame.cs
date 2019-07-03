@@ -52,7 +52,9 @@ public class StartGame : MonoBehaviour
     {
         Debug.Log("start");
         obj.SetActive(false);
-        obj.transform.position = spownPos[int.Parse(obj.name.Substring(6)) - 1];
+        int i = int.Parse(obj.name.Substring(6)) - 1;
+        obj.transform.position = spownPos[i];
+        PlayerEnum(i);
         yield return new WaitForSeconds(5.0f);
         Debug.Log("end");
         obj.SetActive(true);
@@ -67,12 +69,16 @@ public class StartGame : MonoBehaviour
     {
         switch (num) {
             case 0:
+                MultiPlayerManager.instance.P1Dot += 10;
                 return Player.PlayerKind.Player1;
             case 1:
+                MultiPlayerManager.instance.P2Dot += 10;
                 return Player.PlayerKind.Player2;
             case 2:
+                MultiPlayerManager.instance.P3Dot += 10;
                 return Player.PlayerKind.Player3;
             case 3:
+                MultiPlayerManager.instance.P4Dot += 10;
                 return Player.PlayerKind.Player4;
             default:
                 return Player.PlayerKind.Player1;

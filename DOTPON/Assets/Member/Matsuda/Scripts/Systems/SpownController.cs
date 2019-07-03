@@ -9,7 +9,7 @@ public class SpownController : MonoBehaviour
     [SerializeField] GameObject dragonObj;
     float time;
     bool isDragonSpown = false;
-    int NowSpown;
+    public int NowSpown;
     [SerializeField] float spownDelay;
     [SerializeField] int MaxSpown;
     [SerializeField] Timer timer;
@@ -29,7 +29,7 @@ public class SpownController : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        //制限時間%2<=timeだったら
+        //制限時間/2<=timeだったら
         if (MaxTime / 2 <= time && !isDragonSpown)
         {
             Debug.Log("ドラゴンスポーン");
@@ -45,7 +45,6 @@ public class SpownController : MonoBehaviour
                 if(NowSpown < MaxSpown)
                 {
                     createdPos.Add(CreateEnemy(createdPos));
-                    NowSpown++;
                 }
             }
             time = 0;
@@ -57,6 +56,7 @@ public class SpownController : MonoBehaviour
         int posNum = 0;
         while (isCreated)
         {
+            //同じ場所からスポーンしないようにする処理
             posNum = Random.Range(0,positions.Length);
             if (createdPos[0] == -1)
             {
@@ -71,6 +71,7 @@ public class SpownController : MonoBehaviour
                 }
             }
         }
+        //ランダムでどれかのEnemyがスポーンする
         switch (Random.Range(0,2))
         {
             case 0:
@@ -100,6 +101,7 @@ public class SpownController : MonoBehaviour
             default:
                 break;
         }
+        NowSpown++;
         return posNum;
     }
 }

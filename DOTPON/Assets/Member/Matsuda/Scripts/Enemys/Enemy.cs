@@ -56,7 +56,9 @@ public class Enemy : MonoBehaviour
                     break;
             }
         }
+        GameObject.Find("SpownController").GetComponent<SpownController>().NowSpown--;
         DotManager.instance.EnemyDeadDotPop(kazu, obj.transform.position);
+        
         //enemyの消去
         Destroy(obj);
     }

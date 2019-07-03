@@ -81,6 +81,21 @@ public class WeaponCreate : MonoBehaviour
                     weapon[3].SetActive(true);
                     nowWeapon = weapon[3];
                     value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
+                    switch (GetComponent<Player>().own)
+                    {
+                        case Player.PlayerKind.Player1:
+                            MultiPlayerManager.instance.P1Dot++;
+                            break;
+                        case Player.PlayerKind.Player2:
+                            MultiPlayerManager.instance.P2Dot++;
+                            break;
+                        case Player.PlayerKind.Player3:
+                            MultiPlayerManager.instance.P3Dot++;
+                            break;
+                        case Player.PlayerKind.Player4:
+                            MultiPlayerManager.instance.P4Dot++;
+                            break;
+                    }
                     trigger = true;
                 }                
                 break;     
