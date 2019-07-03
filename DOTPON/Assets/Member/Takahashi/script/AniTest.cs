@@ -7,6 +7,8 @@ public class AniTest : MonoBehaviour
     Animator anim;
     string weaponName;
     Weapon weapon;
+
+    private int hash;
     
     enum attackMeans
     {
@@ -21,6 +23,7 @@ public class AniTest : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         weapon = GetComponent<Weapon>();
+        hash = Animator.StringToHash("NotMove");
     }
 
     // Update is called once per frame
@@ -46,25 +49,25 @@ public class AniTest : MonoBehaviour
             }            
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
         {
             anim.SetTrigger("ShieldAttack");
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
+        {
+            anim.SetTrigger("Create");
+        }
+        if (Input.GetKeyDown(KeyCode.F) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
         {
             anim.SetTrigger("Hit");
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            anim.SetTrigger("AxAttack");
-        }
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
         {
             anim.SetTrigger("SwordAttack");
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            anim.SetTrigger("Walk");
+            anim.SetTrigger("AxAttack");
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
