@@ -160,6 +160,18 @@ public class Player : MonoBehaviour
         {
             FarAttack();
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            create.WeaponChoice("a");
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            create.WeaponChoice("s");
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            create.WeaponChoice("d");
+        }
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
             farAtkDistance++;
@@ -257,6 +269,8 @@ public class Player : MonoBehaviour
         {
             case "Axe": GetComponent<Animator>().SetTrigger("AxAttack"); break;
             case "sword": GetComponent<Animator>().SetTrigger("SwordAttack"); break;
+            case "bomb":GetComponent<Animator>().SetTrigger("BombAttack");break;
+            case "shield":GetComponent<Animator>().SetTrigger("ShiledAttack"); break;
             default: GetComponent<Animator>().SetTrigger("SwordAttack"); break;
 
         }

@@ -10675,7 +10675,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 5}
   - {x: 5, y: 0, z: 0}
   - {x: -5, y: 0, z: 0}
-  playerPrefab: {fileID: 5366474426209013577, guid: 8060791d666c5fb4192dda7d91d3a9e7,
+  playerPrefab: {fileID: 1180316639711667733, guid: 5d84a8c6b897b3a45a0304452a8a0aaa,
     type: 3}
   DotTextObj:
   - {fileID: 2038839808}
