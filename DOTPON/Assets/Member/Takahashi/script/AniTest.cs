@@ -8,6 +8,12 @@ public class AniTest : MonoBehaviour
     string weaponName;
     Weapon weapon;
 
+    FarAttack farAttack;
+
+    SphereCollider sph;
+    //[SerializeField]
+    //GameObject capga;
+
     private int hash;
     
     enum attackMeans
@@ -24,6 +30,11 @@ public class AniTest : MonoBehaviour
         anim = GetComponent<Animator>();
         weapon = GetComponent<Weapon>();
         hash = Animator.StringToHash("NotMove");
+        //farAttack = this.gameObject.GetComponent<FarAttack>();
+        //farAttack.PosMove2();
+        sph = GetComponent<SphereCollider>();
+        sph.radius = 1.5f;
+        
     }
 
     // Update is called once per frame
@@ -68,10 +79,6 @@ public class AniTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             anim.SetTrigger("AxAttack");
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            
-        }
+        }        
     }
 }

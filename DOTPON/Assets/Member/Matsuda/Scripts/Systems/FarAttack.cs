@@ -8,7 +8,8 @@ public class FarAttack : MonoBehaviour
     public float timeSpeed, ratio, angle, Range,pow; //　おすすめ(0.4,1,90,2.5)
 
     private Vector3 defaultPos;
-    private Vector3 speed; //上下の速度の処理（予定）
+    private Vector3 speed; //上下の速度の処理（予定）    
+    private Bomb bombDamage;
 
     [SerializeField] Vector3 vecter;
     [SerializeField] GameObject player;
@@ -18,13 +19,24 @@ public class FarAttack : MonoBehaviour
     {
         vecter = this.gameObject.transform.root.forward;
         vecter = new Vector3(vecter.x * pow + this.gameObject.transform.position.x,0, vecter.z * pow + this.gameObject.transform.position.z);
-        StartCoroutine(PosMove(vecter));
+        bombDamage = GetComponent<Bomb>();
+
+        //エネミーだったらすぐにボムを投げる
+        if (transform.root.gameObject.tag == "Enemy")
+        {
+            StartCoroutine(PosMove(vecter));
+        }                                                                            
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void PosMove2()
+    {
+        StartCoroutine(PosMove(vecter));
     }
 
     IEnumerator PosMove(Vector3 vec)
@@ -65,7 +77,12 @@ public class FarAttack : MonoBehaviour
             defaultPos = transform.position;
             yield return null;
         }
-        Destroy(this.gameObject);
-        
+
+        //ここで爆発によるダメージが入る
+        bombDamage.BombAttack();
+
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(this.gameObject);        
     }
 }

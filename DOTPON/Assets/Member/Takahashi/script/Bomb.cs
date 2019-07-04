@@ -6,11 +6,15 @@ public class Bomb : MonoBehaviour
 {        
     public Parametor parametor;
     //AudioManager audioManager; 
+    SphereCollider sph;
+    float range = 1.5f;
     
     void Start()
     {
+        sph = GetComponent<SphereCollider>();
         //audioManager = GameObject.Find("Manager").GetComponent<AudioManager>();
-        StartCoroutine("bomExplosion");
+
+        //StartCoroutine("bomExplosion");
     }
 
     /// <summary>
@@ -25,14 +29,16 @@ public class Bomb : MonoBehaviour
         //audioManager.playSfx(3);
 
         BombAttack();
+        sph.radius = range;
         yield return new WaitForSeconds(0.5f);
+        sph.radius = 0.5f;
         Destroy(gameObject);
     }
 
     /// <summary>
     /// 爆弾の当たり判定
     /// </summary>
-    private void BombAttack()
+    public void BombAttack()
     {
         Collider[] targets = Physics.OverlapSphere(transform.position, 0.7f);
         foreach(Collider obj in targets)
