@@ -150,7 +150,6 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            FarAttack();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -216,6 +215,8 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             //HPが0になったとき
+            isAction = false;
+            create.ResetWeapon();
             StarManager.instance.DeadStarDrop(transform.position,own);
             GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
         }
@@ -257,6 +258,18 @@ public class Player : MonoBehaviour
         yield break;
     }
     /// <summary>
+    /// 遠距離攻撃用のコルーチン
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
+    IEnumerator FarAttackWait(GameObject obj)
+    {
+        yield return new WaitForSeconds(1.3f);
+        obj.GetComponent<FarAttack>().PosMove2(farAtkDistance);
+    }
+
+
+    /// <summary>
     /// なにかアクションしたとき
     /// </summary>
     /// <returns></returns>
@@ -277,7 +290,7 @@ public class Player : MonoBehaviour
             case "bomb":animator.SetTrigger("BombAttack");
                 var obj = Instantiate(create.nowWeapon, this.transform.position, Quaternion.identity);
                 obj.transform.parent = this.gameObject.transform;
-                obj.GetComponent<FarAttack>().PosMove2(farAtkDistance);
+                StartCoroutine(FarAttackWait(obj));
                 break;
             case "shield":animator.SetTrigger("ShiledAttack"); break;
             default: animator.SetTrigger("SwordAttack"); break;
@@ -300,12 +313,7 @@ public class Player : MonoBehaviour
         }
         StartCoroutine(AttackWait());
     }
-    void FarAttack()
-    {
-        isAction = true;
-        Instantiate(farAtkWeapon,transform.localPosition + transform.forward,Quaternion.identity).GetComponent<FarAttack>().pow = farAtkDistance;
-        StartCoroutine(ActionWait(1f));
-    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Dot")

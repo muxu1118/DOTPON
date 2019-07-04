@@ -223,4 +223,14 @@ public class WeaponCreate : MonoBehaviour
         }
         DOTPONDursbleUI.GetComponent<DOTPONDursble>().DownDursbleUI();
     }
+
+    //死んだときに武器を初期化
+    public void ResetWeapon()
+    {
+        nowWeapon.SetActive(false);
+        weapon[6].SetActive(true);
+        nowWeapon = weapon[6];
+        value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
+        trigger = true;
+    }
 }
