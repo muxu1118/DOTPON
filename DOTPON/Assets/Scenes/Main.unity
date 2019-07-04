@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13456,6 +13456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1376702209}
   - component: {fileID: 1376702208}
+  - component: {fileID: 1376702210}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -13490,6 +13491,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1376702210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376702207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c86e914d7c700c47a38a4eed303f4ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starObject: {fileID: 1737330964004318407, guid: c24240e8b43c25645b6109b0bed1c4c5,
+    type: 3}
 --- !u!1 &1378114391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 23ba5d19d9e8d524ab940fbe7f741d87,

@@ -36,6 +36,9 @@ public class StartGame : MonoBehaviour
     [SerializeField]
     Text text;
 
+    List<GameObject> players = new List<GameObject>();
+    List<MoveController> moveControllers = new List<MoveController>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,9 @@ public class StartGame : MonoBehaviour
         {
             //プレイヤーの生成
             var playerObj = Instantiate(playerPrefab, spownPos[i],Quaternion.identity);
+            players.Add(playerObj);
+            moveControllers.Add(playerObj.GetComponent<MoveController>());
+            playerObj.GetComponent<MoveController>().enabled = false;
             playerObj.transform.LookAt(new Vector3(0,0,0));
             playerObj.name = "Player" + (i + 1);
             //ぷれいやーのenumをそれぞれに対応させる
@@ -91,6 +97,11 @@ public class StartGame : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SpownClass.enabled = true;
         timer.enabled = true;
+        for (int i = 0;i < players.Count;i++)
+        {
+            players[i].GetComponent<Player>().isAction = false;
+            moveControllers[i].GetComponent<MoveController>().enabled = true;
+        }
     }
 
     public void RespornPlayer(GameObject obj)
