@@ -42,25 +42,38 @@ public class StarManager : SingletonMonoBehaviour<StarManager>
         switch (PK)
         {
             case Player.PlayerKind.Player1:
-                MultiPlayerManager.instance.P1Star--;
+                if (MultiPlayerManager.instance.P1Star > 0)
+                {
+                    MultiPlayerManager.instance.P1Star--;
+                }
+                else return;
                 break;
             case Player.PlayerKind.Player2:
-                MultiPlayerManager.instance.P2Star--;
+                if (MultiPlayerManager.instance.P1Star > 0)
+                {
+                    MultiPlayerManager.instance.P2Star--;
+                }
+                else return;
                 break;
             case Player.PlayerKind.Player3:
-                MultiPlayerManager.instance.P3Star--;
+                if (MultiPlayerManager.instance.P1Star > 0)
+                {
+                    MultiPlayerManager.instance.P3Star--;
+                }
+                else return;
                 break;
             case Player.PlayerKind.Player4:
-                MultiPlayerManager.instance.P4Star--;
+                if (MultiPlayerManager.instance.P1Star > 0)
+                {
+                    MultiPlayerManager.instance.P4Star--;
+                }
+                else return;
                 break;
             default:
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
-        // dotObjのスクリプトを読み込み出現に時間を加える
-        // DotScript Dot = dotObj.GetCompoment<DotScript>();
-        // Dot.Time = time;
-        // ドットの出現(位置はランダム)
+        //スター出現させる
         Instantiate(starObject, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity).name = "Star";
     }
 
