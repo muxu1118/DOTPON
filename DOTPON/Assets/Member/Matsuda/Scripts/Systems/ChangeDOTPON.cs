@@ -13,7 +13,7 @@ public class ChangeDOTPON : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        i = 10;
+        i = 15;
     }
 
     // Update is called once per frame
