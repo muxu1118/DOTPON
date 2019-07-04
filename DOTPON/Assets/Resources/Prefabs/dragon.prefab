@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 897962232566034705}
   - component: {fileID: 6338005534600862953}
   m_Layer: 0
-  m_Name: doragom
+  m_Name: dragon
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,10 +301,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 913880486666599482}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd30ae9c51554c64585f2bc0a176e23f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a8b08a0f6974ec4db8e4f3076c617a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parametor: {fileID: 11400000, guid: 507a66b96ffc7f441998b3ad0043f98e, type: 2}
+  parametor: {fileID: 11400000, guid: 5a534d8e5e998574283b4c43dca89cb8, type: 2}
   _attackSpeed: 0
   _attackDamage: 0
   _necessaryDot: 0
@@ -474,10 +474,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3669651308114485078}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd30ae9c51554c64585f2bc0a176e23f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a8b08a0f6974ec4db8e4f3076c617a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parametor: {fileID: 11400000, guid: 507a66b96ffc7f441998b3ad0043f98e, type: 2}
+  parametor: {fileID: 11400000, guid: 5a534d8e5e998574283b4c43dca89cb8, type: 2}
   _attackSpeed: 0
   _attackDamage: 0
   _necessaryDot: 0

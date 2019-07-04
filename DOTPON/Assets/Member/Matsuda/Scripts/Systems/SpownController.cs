@@ -9,9 +9,11 @@ public class SpownController : MonoBehaviour
     [SerializeField] GameObject dragonObj;
     float time;
     bool isDragonSpown = false;
-    int NowSpown;
+    public int NowSpown;
     [SerializeField] float spownDelay;
     [SerializeField] int MaxSpown;
+    [SerializeField] Timer timer;
+    int MaxTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,18 +22,20 @@ public class SpownController : MonoBehaviour
         {
             createdPos.Add(CreateEnemy(createdPos));
         }
+        MaxTime = (int)timer.timeCount;
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        //制限時間%2<=timeだったら
-        if (/*gametime*/2 % 2 <= time && !isDragonSpown)
+        //制限時間/2<=timeだったら
+        if (MaxTime / 2 <= time && !isDragonSpown)
         {
-            if (true) return;
-            Instantiate(dragonObj, positions[Random.Range(0, 4)], Quaternion.identity);
+            Debug.Log("ドラゴンスポーン");
             isDragonSpown = true;
+            return;
+            Instantiate(dragonObj, positions[Random.Range(0, 4)], Quaternion.identity);
         }
         List<int> createdPos = new List<int>() { -1 };
         if (time /  spownDelay>= 1)
@@ -41,7 +45,6 @@ public class SpownController : MonoBehaviour
                 if(NowSpown < MaxSpown)
                 {
                     createdPos.Add(CreateEnemy(createdPos));
-                    NowSpown++;
                 }
             }
             time = 0;
@@ -53,6 +56,7 @@ public class SpownController : MonoBehaviour
         int posNum = 0;
         while (isCreated)
         {
+            //同じ場所からスポーンしないようにする処理
             posNum = Random.Range(0,positions.Length);
             if (createdPos[0] == -1)
             {
@@ -67,7 +71,8 @@ public class SpownController : MonoBehaviour
                 }
             }
         }
-        switch (Random.Range(0,3))
+        //ランダムでどれかのEnemyがスポーンする
+        switch (Random.Range(0,2))
         {
             case 0:
                 GameObject parentObject = new GameObject("GoburinFlock");
@@ -96,6 +101,7 @@ public class SpownController : MonoBehaviour
             default:
                 break;
         }
+        NowSpown++;
         return posNum;
     }
 }

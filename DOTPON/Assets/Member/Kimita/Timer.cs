@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField]
     // 時間を計る初期値
-    float timeCount = 300;
+    public float timeCount = 300;
     // 時間の上限
     float limitTime = 0;
     // 時間をUnity上で見せる用
@@ -42,7 +41,14 @@ public class Timer : MonoBehaviour
         {
             // ゲーム終了
             // リザルト画面に移動
-            SceneManager.LoadScene(2);
+            StartCoroutine(EndCorutine());
         }
+    }
+
+    IEnumerator EndCorutine()
+    {
+        textTime.text = "GameSet!!";
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(2);
     }
 }

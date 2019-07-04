@@ -56,7 +56,9 @@ public class Enemy : MonoBehaviour
                     break;
             }
         }
+        GameObject.Find("SpownController").GetComponent<SpownController>().NowSpown--;
         DotManager.instance.EnemyDeadDotPop(kazu, obj.transform.position);
+        
         //enemyの消去
         Destroy(obj);
     }
@@ -70,7 +72,15 @@ public class Enemy : MonoBehaviour
         DropDot(this.gameObject,parameter.dropDot,obj);
         isAction = true;
         StartCoroutine(WaitTime(1));
-        this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0,0,0);
+        if(this.gameObject.name == "slime")
+        {
+            var slime = GetComponentInChildren<MeshRenderer>();
+            slime.material.color = new Color(0, 0, 0);
+        }
+        else if(this.gameObject.name == "goburin")
+        {
+            GetComponent<Animator>().SetTrigger("Down");
+        }
         Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
     }
     /// <summary>
@@ -105,8 +115,18 @@ public class Enemy : MonoBehaviour
     public IEnumerator WaitTime(float time)
     {
         yield return new WaitForSeconds(time);
-        isAction = false;
-        this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1,1,1);
+        isAction = false; if (this.gameObject.name == "slime")
+        {
+            GetComponentInChildren<MeshRenderer>().material.color = new Color(1,1,1);
+        }
+        else if (this.gameObject.name == "goburin")
+        {
+            SkinnedMeshRenderer[] gob = GetComponentsInChildren<SkinnedMeshRenderer>();
+            foreach (SkinnedMeshRenderer skin in gob)
+            {
+                skin.material.color = new Color(1,1,1);
+            }
+        }
         yield break;
     }
 }
