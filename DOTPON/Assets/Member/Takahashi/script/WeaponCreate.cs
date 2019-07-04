@@ -76,10 +76,16 @@ public class WeaponCreate : MonoBehaviour
                 {
 
                     GetComponent<Animator>().SetTrigger("Create");
-                    weapon[3].SetActive(false);
+                    weapon[6].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
-                    nowWeapon.GetComponent<BoxCollider>().enabled = false;
+                    if (nowWeapon == weapon[3])
+                    {
+                    }
+                    else
+                    {
+                        nowWeapon.GetComponent<BoxCollider>().enabled = false;
+                    }
                     value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
                     trigger = false;
                     player.isAction = true;
@@ -90,11 +96,11 @@ public class WeaponCreate : MonoBehaviour
                 {
                     //作成した武器を破棄
                     nowWeapon.SetActive(false);
-                    weapon[3].SetActive(true);
-                    nowWeapon = weapon[3];
+                    weapon[6].SetActive(true);
+                    nowWeapon = weapon[6];
                     value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
                     trigger = true;
-                    if (nowWeapon != weapon[3])
+                    if (nowWeapon != weapon[6])
                     {
                         switch (player.own)
                         {
@@ -201,13 +207,13 @@ public class WeaponCreate : MonoBehaviour
     /// </summary>
     public void DownDursble()
     {
-        if (nowWeapon == weapon[3]) return;
+        if (nowWeapon == weapon[6]) return;
         value--;
         if (value <= 0)
         {
             nowWeapon.SetActive(false);
-            nowWeapon = weapon[3];
-            weapon[3].SetActive(true);
+            nowWeapon = weapon[6];
+            weapon[6].SetActive(true);
             Debug.Log("こわれた");
             value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
         }

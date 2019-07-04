@@ -43,6 +43,7 @@ public class Weapon : MonoBehaviour
                 if (gameObject.transform.root.tag == "enemy") return;
                 //Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
                 other.gameObject.GetComponent<Enemy>().Damage(GetAttackPower(parametor.attackDamage), transform.root.gameObject);
+                if (this.gameObject.name == "bomb(Clone)") return;
                 transform.root.GetComponent<WeaponCreate>().DownDursble();
                 break;
         }

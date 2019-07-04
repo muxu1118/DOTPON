@@ -74,17 +74,21 @@ public class MoveController : MonoBehaviour
         if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.7)
         {   //走る
             //Cubeをプレイヤーに変更すれば別のシーンで使用可
-            transform.position += transform.forward * run * Time.deltaTime;
-            anim.SetFloat("Speed",0.8f);
+            anim.SetFloat("Speed", 0.8f);
+            transform.position += transform.forward * run * Time.deltaTime;            
             transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
         }
-        if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.3)
+        else if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.3)
         {
             //歩き
             anim.SetFloat("Speed", 0.5f);
             transform.position += transform.forward * walk * Time.deltaTime;
             //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
             transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0f);
         }
         if (Input.GetAxis("Vertical" + playerNum + "_left") < -0.3)
         {
@@ -177,7 +181,6 @@ public class MoveController : MonoBehaviour
         }
         else
         {
-            anim.SetFloat("Speed", 0);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {

@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     WeaponCreate create;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -268,11 +269,16 @@ public class Player : MonoBehaviour
     void AttackColliderOn()
     {
         isAction = true;
+        Debug.Log(create.nowWeapon.name);
         switch (create.nowWeapon.name)
         {
             case "Axe": animator.SetTrigger("AxAttack"); break;
             case "sword": animator.SetTrigger("SwordAttack"); break;
-            case "bomb":animator.SetTrigger("BombAttack");break;
+            case "bomb":animator.SetTrigger("BombAttack");
+                var obj = Instantiate(create.nowWeapon, this.transform.position, Quaternion.identity);
+                obj.transform.parent = this.gameObject.transform;
+                obj.GetComponent<FarAttack>().PosMove2(farAtkDistance);
+                break;
             case "shield":animator.SetTrigger("ShiledAttack"); break;
             default: animator.SetTrigger("SwordAttack"); break;
 
@@ -286,6 +292,12 @@ public class Player : MonoBehaviour
         //    //上段切りみたいなの
         //    GetComponent<Animator>().SetTrigger("Attack2");
         //}*/
+        if (create.nowWeapon.name == "bomb")
+        {
+            create.DownDursble();
+            isAction = false;
+            return;
+        }
         StartCoroutine(AttackWait());
     }
     void FarAttack()

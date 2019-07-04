@@ -185,7 +185,7 @@ MonoBehaviour:
   - {fileID: 3124048909495137071}
   - {fileID: 123255144181915685}
   - {fileID: 3001240119699926963}
-  - {fileID: 3431538904191380621}
+  - {fileID: 2693526001938932166, guid: bf5352f4445c9e74198ad3b5f1284c8c, type: 3}
   - {fileID: 8936383408128231029}
   - {fileID: 5517890166585167210}
   - {fileID: 3431538904191380621}
@@ -2306,6 +2306,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1189363539906525026, guid: 244f4fdf33ce9ea4d8746cff4c3f458d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1189363539906391520, guid: 244f4fdf33ce9ea4d8746cff4c3f458d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2375,11 +2380,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1189363539906525026, guid: 244f4fdf33ce9ea4d8746cff4c3f458d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 244f4fdf33ce9ea4d8746cff4c3f458d, type: 3}

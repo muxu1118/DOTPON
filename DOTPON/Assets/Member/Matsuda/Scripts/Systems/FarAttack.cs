@@ -22,7 +22,7 @@ public class FarAttack : MonoBehaviour
         bombDamage = GetComponent<Bomb>();
 
         //エネミーだったらすぐにボムを投げる
-        if (transform.root.gameObject.tag == "Enemy")
+        if (transform.root.gameObject.tag == "enemy")
         {
             StartCoroutine(PosMove(vecter));
         }                                                                            
@@ -34,9 +34,11 @@ public class FarAttack : MonoBehaviour
         
     }
 
-    public void PosMove2()
+    public void PosMove2(float pow2)
     {
-        StartCoroutine(PosMove(vecter));
+        Vector3 vecter2 = this.gameObject.transform.root.forward;
+        vecter2 = new Vector3(vecter2.x * pow2 + this.gameObject.transform.position.x, 0, vecter2.z * pow2 + this.gameObject.transform.position.z);
+        StartCoroutine(PosMove(vecter2));
     }
 
     IEnumerator PosMove(Vector3 vec)
@@ -78,11 +80,15 @@ public class FarAttack : MonoBehaviour
             yield return null;
         }
 
-        //ここで爆発によるダメージが入る
-        bombDamage.BombAttack();
-
-        yield return new WaitForSeconds(0.5f);
-
-        Destroy(this.gameObject);        
+        if (gameObject.name == "bomb(Clone)")
+        {
+            //ここで爆発によるダメージが入る
+            bombDamage.ExplotionCoroutine();
+            
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }        
     }
 }

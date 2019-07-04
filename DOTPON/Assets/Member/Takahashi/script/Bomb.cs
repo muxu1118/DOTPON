@@ -6,32 +6,48 @@ public class Bomb : MonoBehaviour
 {        
     public Parametor parametor;
     //AudioManager audioManager; 
+    [SerializeField]
     SphereCollider sph;
-    float range = 1.5f;
+    [SerializeField]
+    GameObject obj;
+    [SerializeField]float range;
     
     void Start()
     {
-        sph = GetComponent<SphereCollider>();
+        
         //audioManager = GameObject.Find("Manager").GetComponent<AudioManager>();
 
         //StartCoroutine("bomExplosion");
+    }
+
+    public void ExplotionCoroutine()
+    {
+        Destroy(obj);
+        transform.parent = null;
+        StartCoroutine(bomExplosion());
     }
 
     /// <summary>
     /// 爆弾の爆発
     /// </summary>
     /// <returns></returns>
+    ///
     IEnumerator bomExplosion()
     {
-        yield return new WaitForSeconds(3.0f);
 
         //エフェクトを再生させる
         //audioManager.playSfx(3);
 
-        BombAttack();
-        sph.radius = range;
-        yield return new WaitForSeconds(0.5f);
-        sph.radius = 0.5f;
+        
+        int i = 0;
+        while (i < 60)
+        {
+            gameObject.transform.localScale += new Vector3(1,1,1) * range * Time.deltaTime;
+            i++;
+            BombAttack();
+            yield return null;
+        }
+        sph.radius = 1f;
         Destroy(gameObject);
     }
 
@@ -43,11 +59,11 @@ public class Bomb : MonoBehaviour
         Collider[] targets = Physics.OverlapSphere(transform.position, 0.7f);
         foreach(Collider obj in targets)
         {
-            if(obj.gameObject.tag == "Player")
+            if(obj.gameObject.tag == "player")
             {
                 obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage);
             }
-            else if(obj.gameObject.tag == "Enemy")
+            else if(obj.gameObject.tag == "enemy")
             {
                 obj.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,obj.gameObject);
             }

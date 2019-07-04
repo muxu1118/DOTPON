@@ -195,7 +195,7 @@ MonoBehaviour:
   - {fileID: 3024951526878940298}
   - {fileID: 8533577444696104835}
   - {fileID: 1803980813646921077}
-  bukiObj: {fileID: 2693526001938932166, guid: bf5352f4445c9e74198ad3b5f1284c8c, type: 3}
+  bukiObj: {fileID: 1355025604051251396, guid: 9346233b92fc83d4b9d8079fb8abc768, type: 3}
 --- !u!1 &8533577444696104835
 GameObject:
   m_ObjectHideFlags: 0
