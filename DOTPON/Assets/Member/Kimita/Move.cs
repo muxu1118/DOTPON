@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    public enum objKind
+    {
+        Dot,
+        Star
+    }
+    public objKind thisObj;
     // timeSpeedは速さ、ratioは割合（どこで落ちるか）、angleは基準の角度
     public float timeSpeed, ratio, angle,Range; //　おすすめ(0.4,1,90,2.5)
-
+    
     private Vector3 defaultPos;
     private Vector3 speed; //上下の速度の処理（予定）
 
@@ -15,16 +21,29 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collider = GetComponent<BoxCollider>();
-        collider.enabled = false;
+        thisObj = (gameObject.name == "Star") ? objKind.Star : objKind.Dot;
+        if (thisObj == objKind.Dot)
+        {
+            collider = GetComponent<BoxCollider>();
+            collider.enabled = false;
+        }
         StartCoroutine(PosMove(new Vector3(Random.Range(gameObject.transform.position.x - Range, gameObject.transform.position.x + Range),gameObject.transform.position.y, Random.Range(gameObject.transform.position.z - Range, gameObject.transform.position.z + Range))));
+        
 
     }
 
     void Update()
     {
-        transform.Rotate(new Vector3(65.0f, 65.0f, -35.0f) * Time.deltaTime);
         transform.position = (new Vector3(defaultPos.x, defaultPos.y + Mathf.PingPong(0.6f * Time.time, 0.6f), defaultPos.z));
+        if (thisObj == objKind.Star)
+        {
+            transform.Rotate(new Vector3(0, 90, 10) * Time.deltaTime, Space.World);
+        }
+        else
+        {
+            transform.Rotate(new Vector3(65.0f, 65.0f, -35.0f) * Time.deltaTime);
+        }
+        
         //回転の処理
     }
     /// <summary>
@@ -69,7 +88,10 @@ public class Move : MonoBehaviour
             defaultPos = transform.position;
             yield return null;
         }
-        collider.enabled = true;
+        if (thisObj == objKind.Dot)
+        {
+            collider.enabled = true;
+        }
 
 
     }

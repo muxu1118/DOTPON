@@ -215,6 +215,7 @@ public class Player : MonoBehaviour
         if (hp <= 0)
         {
             //HPが0になったとき
+            StarManager.instance.DeadStarDrop(transform.position,own);
             GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
         }
         else
@@ -320,6 +321,32 @@ public class Player : MonoBehaviour
                     break;
             }
             other.GetComponent<Dot>().DestroyObject();
+        }
+        if (other.gameObject.name == "Star")
+        {
+            switch (own)
+            {
+                case PlayerKind.Player1:
+                    MultiPlayerManager.instance.P1Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P1Dot);
+                    break;
+                case PlayerKind.Player2:
+                    MultiPlayerManager.instance.P2Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                    break;
+                case PlayerKind.Player3:
+                    MultiPlayerManager.instance.P3Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                    break;
+                case PlayerKind.Player4:
+                    MultiPlayerManager.instance.P4Star++;
+                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                    break;
+                default:
+                    Debug.LogError("よばれちゃいけんのやぞ");
+                    break;
+            }
+            other.GetComponent<Star>().DestroyObject();
         }
         if (other.gameObject.tag == "Tower")
         {
