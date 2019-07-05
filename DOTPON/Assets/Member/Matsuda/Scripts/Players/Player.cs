@@ -120,22 +120,22 @@ public class Player : MonoBehaviour
             switch (own)
             {
                 case PlayerKind.Player1:
-                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P1Star++;
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
-                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P2Star++;
                     //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
-                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P3Star++;
                     //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
-                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P4Star++;
                     //Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
