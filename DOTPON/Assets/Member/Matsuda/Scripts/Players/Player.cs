@@ -270,6 +270,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(1.3f);
         obj.GetComponent<FarAttack>().PosMove2(farAtkDistance);
+        isAction = false;
     }
 
 
@@ -312,7 +313,6 @@ public class Player : MonoBehaviour
         if (create.nowWeapon.name == "bomb")
         {
             create.DownDursble();
-            isAction = false;
             return;
         }
         StartCoroutine(AttackWait());

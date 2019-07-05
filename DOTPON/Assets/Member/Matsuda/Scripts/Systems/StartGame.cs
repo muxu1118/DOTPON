@@ -35,6 +35,8 @@ public class StartGame : MonoBehaviour
     Timer timer;
     [SerializeField]
     Text text;
+    [SerializeField]
+    Image[] kyokaisen;
 
     List<GameObject> players = new List<GameObject>();
     List<MoveController> moveControllers = new List<MoveController>();
@@ -61,6 +63,9 @@ public class StartGame : MonoBehaviour
             StarTextObj[i].SetActive(true);
             BukiUIObj[i].SetActive(true);
             DursbleUI[i].SetActive(true);
+        
+            if(i>=1)
+            kyokaisen[i/2].gameObject.SetActive(true);
         }
         //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
         StartCoroutine(GameStartCoroutine());
