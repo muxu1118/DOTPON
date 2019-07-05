@@ -16,5 +16,5 @@ MonoBehaviour:
   attackDamage: 15
   necessaryDot: 10
   durableValue: 1
-  dotNum: 0
+  dotNum: 10
   weapon: {fileID: 0}
