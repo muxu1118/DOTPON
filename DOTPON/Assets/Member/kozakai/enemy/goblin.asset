@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: goblin
   m_EditorClassIdentifier: 
   HP: 2
-  dropDot: 1
+  dropDot: 4
   attackPow: 1
   speed: 3
   rotateTime: 2
