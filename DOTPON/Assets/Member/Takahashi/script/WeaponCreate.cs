@@ -79,7 +79,7 @@ public class WeaponCreate : MonoBehaviour
                     weapon[6].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
-                    if (nowWeapon == weapon[3])
+                    if (nowWeapon == weapon[5])
                     {
                     }
                     else
