@@ -191,26 +191,30 @@ public class Player : MonoBehaviour
         switch (own)
         {
             case PlayerKind.Player1:
-                hp = --MultiPlayerManager.instance.P1Dot;
+                hp = MultiPlayerManager.instance.P1Dot -= damage;
+                
                 //Debug.Log(MultiPlayerManager.instance.P1Dot);
                 break;
             case PlayerKind.Player2:
-               hp = --MultiPlayerManager.instance.P2Dot;
+                hp = MultiPlayerManager.instance.P2Dot -= damage;
+                
                 //Debug.Log(MultiPlayerManager.instance.P2Dot);
                 break;
             case PlayerKind.Player3:
-                hp = --MultiPlayerManager.instance.P3Dot;
+                hp = MultiPlayerManager.instance.P3Dot -= damage;
+                
                 //Debug.Log(MultiPlayerManager.instance.P3Dot);
                 break;
             case PlayerKind.Player4:
-                hp = --MultiPlayerManager.instance.P4Dot;
+                hp = MultiPlayerManager.instance.P4Dot -= damage;
+                
                 //Debug.Log(MultiPlayerManager.instance.P4Dot);
                 break;
             default:
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
-        DotManager.instance.EnemyDeadDotPop(1,transform.position);
+        DotManager.instance.EnemyDeadDotPop(damage,transform.position);
         Debug.Log(hp);
         if (hp <= 0)
         {

@@ -85,6 +85,7 @@ public class SpownController : MonoBehaviour
                         GameObject child = Instantiate(obj[0], new Vector3(spownPos.x + i, 1, spownPos.z + j), Quaternion.identity);
                         child.name = child.name.Replace("(Clone)", "");
                         child.transform.parent = parentObject.transform;
+                        NowSpown++;
 
                     }
                 }
@@ -93,15 +94,16 @@ public class SpownController : MonoBehaviour
             case 1:
                 GameObject slime = Instantiate(obj[1], positions[posNum], Quaternion.identity);
                 slime.name = slime.name.Replace("(Clone)","");
+                NowSpown++;
                 break;
             case 2:
                 GameObject golem = Instantiate(obj[2], positions[posNum], Quaternion.identity);
                 golem.name = golem.name.Replace("(Clone)", "");
+                NowSpown++;
                 break;
             default:
                 break;
         }
-        NowSpown++;
         return posNum;
     }
 }
