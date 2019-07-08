@@ -19,6 +19,9 @@ public class Timer : MonoBehaviour
     [SerializeField]
     Sprite[] imageCount = new Sprite[10];
 
+    // サブ時間
+    float subTime = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,21 @@ public class Timer : MonoBehaviour
     {
         // 毎秒数える
         timeCount -= Time.deltaTime;
-        textTime.text = "残り時間 " + ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
+        subTime += Time.deltaTime;
+        if (subTime  <= 9)
+        {
+            textTime.text = "残り時間 " + ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
+        }else if(subTime <= 10)
+        {
+            textTime.text = ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
+            textTime.color = Color.magenta;
+
+        }
+        else
+        {
+            subTime = 0;
+            textTime.color = Color.cyan;
+        }
         //imageTime[0].sprite = imageCount[(int)(timeCount / 60)];
         //imageTime[1].sprite = imageCount[(int)(timeCount % 60 % 10)];
         //imageTime[2].sprite = imageCount[(int)(timeCount % 60 / 10)];

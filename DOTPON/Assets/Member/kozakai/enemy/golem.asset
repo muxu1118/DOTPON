@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: golem
   m_EditorClassIdentifier: 
   HP: 10
-  dropDot: 7
+  dropDot: 18
   attackPow: 3
   speed: 1
   rotateTime: 5

@@ -18,7 +18,7 @@ public class SpownController : MonoBehaviour
     void Start()
     {
         List<int> createdPos = new List<int>() {-1 };
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             createdPos.Add(CreateEnemy(createdPos));
         }
@@ -40,7 +40,7 @@ public class SpownController : MonoBehaviour
         List<int> createdPos = new List<int>() { -1 };
         if (time /  spownDelay>= 1)
         {
-            for (int i = 0;i < 4;i++)
+            for (int i = 0;i < 2;i++)
             {
                 if(NowSpown < MaxSpown)
                 {
@@ -85,6 +85,7 @@ public class SpownController : MonoBehaviour
                         GameObject child = Instantiate(obj[0], new Vector3(spownPos.x + i, 1, spownPos.z + j), Quaternion.identity);
                         child.name = child.name.Replace("(Clone)", "");
                         child.transform.parent = parentObject.transform;
+                        NowSpown++;
 
                     }
                 }
@@ -93,15 +94,16 @@ public class SpownController : MonoBehaviour
             case 1:
                 GameObject slime = Instantiate(obj[1], positions[posNum], Quaternion.identity);
                 slime.name = slime.name.Replace("(Clone)","");
+                NowSpown++;
                 break;
             case 2:
                 GameObject golem = Instantiate(obj[2], positions[posNum], Quaternion.identity);
                 golem.name = golem.name.Replace("(Clone)", "");
+                NowSpown++;
                 break;
             default:
                 break;
         }
-        NowSpown++;
         return posNum;
     }
 }
