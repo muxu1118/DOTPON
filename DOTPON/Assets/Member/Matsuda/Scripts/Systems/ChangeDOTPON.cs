@@ -10,22 +10,24 @@ public class ChangeDOTPON : MonoBehaviour
     bool isMove = true;
     [SerializeField]int i;
     bool looping = false;
+
+    [SerializeField] Text text;
     // Start is called before the first frame update
     void Start()
     {
         i = 15;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void DrubleText(int num)
     {
+        text.text = num.ToString();
     }
 
     public void DOTPONWheel(int num,bool plus)
     {
         StartCoroutine(MoveWheel(num, plus));
     }
-    public IEnumerator MoveWheel(int num ,bool plus)
+    private IEnumerator MoveWheel(int num ,bool plus)
     {
         looping = true;
         int num2 = num + 1;

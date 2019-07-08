@@ -35,6 +35,8 @@ public class StartGame : MonoBehaviour
     Timer timer;
     [SerializeField]
     Text text;
+    [SerializeField]
+    Image[] kyokaisen;
 
     List<GameObject> players = new List<GameObject>();
     List<MoveController> moveControllers = new List<MoveController>();
@@ -61,10 +63,14 @@ public class StartGame : MonoBehaviour
             StarTextObj[i].SetActive(true);
             BukiUIObj[i].SetActive(true);
             DursbleUI[i].SetActive(true);
+        
+            if(i>=1)
+            kyokaisen[i/2].gameObject.SetActive(true);
         }
         //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
         StartCoroutine(GameStartCoroutine());
         screenController.CameraNumCheck();
+        SetStar();
     }
     /// <summary>
     /// 死んだあと復活
@@ -113,20 +119,27 @@ public class StartGame : MonoBehaviour
     {
         switch (num) {
             case 0:
-                MultiPlayerManager.instance.P1Dot += 10;
+                MultiPlayerManager.instance.P1Dot = 10;
                 return Player.PlayerKind.Player1;
             case 1:
-                MultiPlayerManager.instance.P2Dot += 10;
+                MultiPlayerManager.instance.P2Dot = 10;
                 return Player.PlayerKind.Player2;
             case 2:
-                MultiPlayerManager.instance.P3Dot += 10;
+                MultiPlayerManager.instance.P3Dot = 10;
                 return Player.PlayerKind.Player3;
             case 3:
-                MultiPlayerManager.instance.P4Dot += 10;
+                MultiPlayerManager.instance.P4Dot = 10;
                 return Player.PlayerKind.Player4;
             default:
                 return Player.PlayerKind.Player1;
         }
         
+    }
+    private void SetStar()
+    {
+        MultiPlayerManager.instance.P1Star = 0;
+        MultiPlayerManager.instance.P2Star = 0;
+        MultiPlayerManager.instance.P3Star = 0;
+        MultiPlayerManager.instance.P4Star = 0;
     }
 }

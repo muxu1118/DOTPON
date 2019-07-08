@@ -48,7 +48,7 @@ public class buki_mori : MonoBehaviour
                 
             case 4://4人プレイ
                 RectTransform rect6 = joicon[0].GetComponent<RectTransform>();
-                rect6.localScale = new Vector3(transform.localScale.x * range / 2, transform.localScale.y * range / 42, 1);
+                rect6.localScale = new Vector3(transform.localScale.x * range / 2, transform.localScale.y * range / 2, 1);
                 rect6.localPosition = new Vector3(-x / 2 / 2, y / 2 * 2 / 3, 0);
                 RectTransform rect7 = joicon[1].GetComponent<RectTransform>();
                 rect7.localScale = new Vector3(transform.localScale.x * range / 2, transform.localScale.y * range / 2, 1);

@@ -52,6 +52,7 @@ public class WeaponCreate : MonoBehaviour
         //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
         createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
         value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
+        DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[0].GetComponent<Weapon>().parametor.necessaryDot);
     }
     private void Update()
     {
@@ -79,10 +80,7 @@ public class WeaponCreate : MonoBehaviour
                     weapon[6].SetActive(false);
                     weapon[weaponType].SetActive(true);
                     nowWeapon = weapon[weaponType];
-                    if (nowWeapon == weapon[3])
-                    {
-                    }
-                    else
+                    if (nowWeapon != weapon[5])
                     {
                         nowWeapon.GetComponent<BoxCollider>().enabled = false;
                     }
@@ -132,6 +130,7 @@ public class WeaponCreate : MonoBehaviour
                 createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
                 DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,true);
+                DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
                 Debug.Log(weaponType);
                 break;
@@ -150,6 +149,7 @@ public class WeaponCreate : MonoBehaviour
                 }
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
                 DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,false);
+                DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
                 createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
                 break;

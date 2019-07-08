@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: axe
   m_EditorClassIdentifier: 
   attackSpeed: 2
-  attackDamage: 3
+  attackDamage: 5
   necessaryDot: 6
   durableValue: 6
-  dotNum: 4
+  dotNum: 5
   weapon: {fileID: 5713209274112605249, guid: 41b25c2da8813de47acde624b07bd409, type: 3}
