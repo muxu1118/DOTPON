@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
             PlayerMove(new Vector3(5, 0, 0));
         }
         */
-        if (Input.GetKeyDown("joystick " + padNum + " button 1"))
+     
         {
             AttackColliderOn();
             Debug.Log("At");

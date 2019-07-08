@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
     public IEnumerator WaitTime(float time)
     {
         yield return new WaitForSeconds(time);
-        isAction = false; if (this.gameObject.name == "slime")
+        if (this.gameObject.name == "slime")
         {
             GetComponentInChildren<MeshRenderer>().material.color = new Color(1,1,1);
         }
@@ -127,6 +127,7 @@ public class Enemy : MonoBehaviour
                 skin.material.color = new Color(1,1,1);
             }
         }
+        isAction = false;
         yield break;
     }
 }

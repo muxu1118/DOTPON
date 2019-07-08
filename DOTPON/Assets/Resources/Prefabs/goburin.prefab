@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 5128620980284874201}
   - component: {fileID: 2716224807306241580}
   - component: {fileID: 5775383025039655676}
+  - component: {fileID: 240316473188037384}
   m_Layer: 0
   m_Name: goburin
   m_TagString: enemy
@@ -118,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5128620980534086081}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17401746, y: 0.536, z: -2.29}
+  m_LocalPosition: {x: 0.17401746, y: 1.26, z: -2.29}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 5128620979251811404}
@@ -242,6 +243,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &240316473188037384
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128620980534086081}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1 &5128620980545464498
 GameObject:
   m_ObjectHideFlags: 0

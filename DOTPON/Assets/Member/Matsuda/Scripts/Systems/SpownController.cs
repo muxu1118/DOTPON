@@ -14,11 +14,12 @@ public class SpownController : MonoBehaviour
     [SerializeField] int MaxSpown;
     [SerializeField] Timer timer;
     int MaxTime;
+    [SerializeField] int oneTimeSpownNum;
     // Start is called before the first frame update
     void Start()
     {
         List<int> createdPos = new List<int>() {-1 };
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < oneTimeSpownNum; i++)
         {
             createdPos.Add(CreateEnemy(createdPos));
         }
@@ -40,7 +41,7 @@ public class SpownController : MonoBehaviour
         List<int> createdPos = new List<int>() { -1 };
         if (time /  spownDelay>= 1)
         {
-            for (int i = 0;i < 2;i++)
+            for (int i = 0;i < oneTimeSpownNum;i++)
             {
                 if(NowSpown < MaxSpown)
                 {
