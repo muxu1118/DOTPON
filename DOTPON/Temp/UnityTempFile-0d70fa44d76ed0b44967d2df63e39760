@@ -1,12 +1,11 @@
 /target:library
 /nowarn:0169
-/out:Temp/Unity.TextMeshPro.Editor.dll
+/out:Temp/Unity.PackageManagerUI.Editor.dll
 /debug:portable
 /optimize-
 /nostdlib+
 /preferreduilang:en-US
 /langversion:latest
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
 /reference:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll"
 /reference:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll"
 /reference:"C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll"
@@ -83,7 +82,6 @@
 /reference:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
-/reference:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll"
 /reference:"C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll"
@@ -94,8 +92,6 @@
 /reference:C:/Users/student/Documents/DOTPON/DOTPON/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll
 /reference:C:/Users/student/Documents/DOTPON/DOTPON/Library/PackageCache/com.unity.purchasing@2.0.3/UnityEngine.Purchasing.dll
 /reference:C:/Users/student/Documents/DOTPON/DOTPON/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll
-/reference:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll"
-/reference:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Common.dll"
 /reference:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll"
 /reference:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.dll"
 /reference:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Core.dll"
@@ -315,43 +311,55 @@
 /define:UNITY_PRO_LICENSE
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\DropdownOptionListDrawer.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\EditorCoroutine.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\GlyphInfoDrawer.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\KerningPairDrawer.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\SpriteInfoDrawer.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TextAlignmentDrawer.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_BaseEditorPanel.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_BaseShaderGUI.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_BitmapShaderGUI.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_ColorGradientAssetMenu.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_ColorGradientEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_DropdownEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_EditorPanel.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_EditorUtility.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_FontAssetEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_InputFieldEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_MeshRendererEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_PackageUtilities.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_PostBuildProcessHandler.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_ProjectTextSettings.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_ResourcesLoader.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_SDFShaderGUI.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_SettingsEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_SpriteAssetEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_SpriteAssetImporter.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_SpriteAssetMenu.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_StyleAssetMenu.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_StyleSheetEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_SubMesh_Editor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_SubMeshUI_Editor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_UiEditorPanel.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMP_UIStyleManager.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMPro_ContextMenus.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMPro_CreateObjectMenu.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMPro_EditorShaderUtilities.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMPro_FontAssetCreatorWindow.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMPro_FontPlugin.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMPro_SortingLayerHelper.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMPro_TextContainerEditor.cs
-C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.textmeshpro@1.3.0\Scripts\Editor\TMPro_TexturePostProcessor.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\AssemblyInfo.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\External\SemVersion.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\External\SemVersionExtension.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Common\ApplicationUtil.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Common\OperationSignal.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Common\Resources.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Common\ThreadedDelay.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Interfaces\IAddOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Interfaces\IBaseOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Interfaces\IListOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Interfaces\IOperationFactory.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Interfaces\IRemoveOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Interfaces\ISearchOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\OperationFactory.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\Package.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageAssetPostprocessor.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageCollection.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageError.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageFilter.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageGroupOrigins.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageInfo.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageInfoListExtensions.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageJsonHelper.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageListExtensions.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageOrigin.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageSearchFilter.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageState.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Packages\PackageTag.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Upm\UpmAddOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Upm\UpmBaseOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Upm\UpmListOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Upm\UpmOperationFactory.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Upm\UpmRemoveOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\Services\Upm\UpmSearchOperation.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\Common\Alert.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\Common\LoadingSpinner.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\Common\PopupField.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\Common\UIUtils.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\Common\VersionItem.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\Interfaces\IPackageManagerExtension.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageAddFromUrlField.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageDetails.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageFiltering.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageGroup.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageItem.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageList.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageManagerExtensions.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageManagerPrefs.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageManagerToolbar.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageManagerWindow.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageSearchToolbar.cs
+C:\Users\student\Documents\DOTPON\DOTPON\Library\PackageCache\com.unity.package-manager-ui@2.0.3\Editor\Sources\UI\PackageStatusBar.cs
