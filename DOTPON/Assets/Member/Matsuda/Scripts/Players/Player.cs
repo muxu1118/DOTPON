@@ -31,14 +31,13 @@ public class Player : MonoBehaviour
     int farAtkDistance = 3;
 
     public bool isAction;
+    bool shieldCheck = false;  //盾を構えているか構えていないかのフラグ
 
     // コントローラーに対応する番号
     int padNum;
 
     Animator animator;
-
     WeaponCreate create;
-
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +96,20 @@ public class Player : MonoBehaviour
             PlayerMove(new Vector3(5, 0, 0));
         }
         */
+        //盾を構えてい時ボタンを離したらIdlingに戻す
+        if(shieldCheck == true)
+        {
+            if (Input.GetKeyUp("joystick " + padNum + " button 1"))
+            {
+                shieldCheck = false;
+                GetComponent<MoveController>().shieldStart(false);
+                animator.SetTrigger("ShieldGuard");
+            }            
+        }        
+        if (Input.GetKeyUp("joystick " + padNum + " button 1"))
+        {
+            animator.SetTrigger("ShieldGuard");
+        }
         if (Input.GetKeyDown("joystick " + padNum + " button 1"))
         {
             AttackColliderOn();
@@ -230,6 +243,7 @@ public class Player : MonoBehaviour
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
             animator.SetTrigger("Hit");
+            //shieldCheck = false;
         }
     }
     /// <summary>
@@ -297,7 +311,11 @@ public class Player : MonoBehaviour
                 obj.transform.parent = this.gameObject.transform;
                 StartCoroutine(FarAttackWait(obj));
                 break;
-            case "shield":animator.SetTrigger("ShiledAttack"); break;
+            case "Shield":
+                shieldCheck = true;
+                GetComponent<MoveController>().shieldStart(true);
+                animator.SetTrigger("ShieldAttack");                
+                break;
             default: animator.SetTrigger("SwordAttack"); break;
 
         }
@@ -316,7 +334,7 @@ public class Player : MonoBehaviour
             return;
         }
         StartCoroutine(AttackWait());
-    }
+    }    
 
     private void OnTriggerEnter(Collider other)
     {

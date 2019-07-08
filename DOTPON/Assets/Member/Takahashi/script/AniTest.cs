@@ -40,6 +40,7 @@ public class AniTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.LogWarning("こいつが出たらヤバイ");
         //攻撃ボタンを押したときの処理
         if(Input.GetKeyDown(KeyCode.A))
         {
@@ -60,10 +61,16 @@ public class AniTest : MonoBehaviour
             }            
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
+        if (Input.GetKeyDown(KeyCode.S))
         {
             anim.SetTrigger("ShieldAttack");
+
         }
+        if(Input.GetKeyUp(KeyCode.S))
+        {
+            anim.SetTrigger("ShieldGuard");
+        }
+
         if (Input.GetKeyDown(KeyCode.D) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
         {
             anim.SetTrigger("Create");
