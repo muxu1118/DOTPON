@@ -275,7 +275,6 @@ GameObject:
   - component: {fileID: 908766058}
   - component: {fileID: 908766057}
   - component: {fileID: 908766056}
-  - component: {fileID: 908766060}
   m_Layer: 0
   m_Name: Cube1
   m_TagString: Untagged
@@ -355,20 +354,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &908766060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908766055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f63ca76d8806894eb83b15851cf8646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  run: 5
-  walk: 2.5
 --- !u!1 &1027258674
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +638,7 @@ GameObject:
   - component: {fileID: 2034928074}
   - component: {fileID: 2034928073}
   - component: {fileID: 2034928076}
-  - component: {fileID: 2034928077}
+  - component: {fileID: 2034928075}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -687,6 +672,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034928075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034928072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8cb60dad892904f95f492e2837b7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  run: 2
+  walk: 1
 --- !u!95 &2034928076
 Animator:
   serializedVersion: 3
@@ -706,16 +705,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2034928077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034928072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 210f26dd63e0cf34c85e2cb5e7664750, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CamMoveSpeed: 1
