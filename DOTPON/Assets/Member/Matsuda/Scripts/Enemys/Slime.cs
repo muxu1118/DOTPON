@@ -77,7 +77,7 @@ public class Slime : Enemy
             obj.GetComponent<FarAttack>().pow = Vector3.Distance(this.transform.position,other.gameObject.transform.position);
             obj.transform.parent = this.gameObject.transform;
             buki = obj;
-            StartCoroutine(WaitTime(1.5f));
+            StartCoroutine(WaitTime(3f));
         }
     }
     private void OnTriggerExit(Collider other)

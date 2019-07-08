@@ -68,7 +68,20 @@ public class SpownController : MonoBehaviour
             {
                 if (posNum != createdPos[i])
                 {
-                    isCreated = false;
+                    Collider[] colliders = Physics.OverlapSphere(positions[posNum], 1);
+                    bool trigger = false;
+                    for (int j = 0;j < colliders.Length;j++)
+                    {
+                        if(colliders[j].gameObject.tag == "enemy")
+                        {
+                            trigger = true;
+                            break;
+                        }
+                    }
+                    if (!trigger)
+                    {
+                        isCreated = false;
+                    }
                 }
             }
         }
