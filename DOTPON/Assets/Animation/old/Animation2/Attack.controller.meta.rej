@@ -1,0 +1,10 @@
+diff a/DOTPON/Assets/Animation/old/Animation2/Attack.controller.meta b/DOTPON/Assets/Animation/old/Animation2/Attack.controller.meta	(rejected hunks)
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: ab96db3723a1cc940a36b2fa1fc89db5
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 0
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 

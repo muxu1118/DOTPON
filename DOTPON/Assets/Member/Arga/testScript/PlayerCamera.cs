@@ -10,12 +10,13 @@ public class PlayerCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - player.transform.position;
+        
+            //offset = transform.position - player.transform.position;
+            //transform.localRotation = new Quaternion(20, 0, 0, 0);
     }
-
-    // Update is called once per frame
-    void LateUpdate()
+    public void CameraPosSet()
     {
-        transform.position = player.transform.position + offset;
+        player = transform.root.gameObject;
+        transform.localPosition = new Vector3(0, 3, -3);
     }
 }

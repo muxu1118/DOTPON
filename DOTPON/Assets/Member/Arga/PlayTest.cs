@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 public class PlayTest : MonoBehaviour
 {
     public Text number;
+    [SerializeField]
+    GameObject SelectPanel;
+    [SerializeField]
+    GameObject StartPanel;
     // Start is called before the first frame update
     void Start()
     {
-        // MultiPlayerManager.instance.P1Dot = 1;
+
     }
 
     // Update is called once per frame
@@ -56,6 +60,15 @@ public class PlayTest : MonoBehaviour
     public void backButton()
     {
         SceneManager.LoadScene(0);
+    }
+    public void ResultButton()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void StartButton()
+    {
+        StartPanel.SetActive(false);
+        SelectPanel.SetActive(true);
     }
 
     public void P1PlusDot()
