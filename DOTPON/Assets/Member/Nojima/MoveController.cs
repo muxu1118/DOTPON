@@ -8,11 +8,12 @@ public class MoveController : MonoBehaviour
     [SerializeField]
     float run; //走る速度
     [SerializeField]
-    float walk; //歩く速度
+    float walk; //歩く速度    
 
     Animator anim;
     Vector3 vel;
     float i;
+    bool notMove = false;
     private int animatorHash;
 
     GameObject Player;
@@ -43,7 +44,6 @@ public class MoveController : MonoBehaviour
         //Cube3 = GameObject.Find("Cube3");
         //Cube4 = GameObject.Find("Cube4");
 
-
         cam = GameObject.Find("P"+transform.root.gameObject.name.Substring(6)+"Cam").transform;
     }
 
@@ -51,7 +51,13 @@ public class MoveController : MonoBehaviour
     {
         MoveInput();
         MoveInputKey();        
-    }   
+    }
+
+    public void shieldStart(bool check)
+    {
+        notMove = check;
+        Debug.Log(notMove);
+    }
 
     void MoveInput()
     {
@@ -73,69 +79,61 @@ public class MoveController : MonoBehaviour
         //    anim.SetFloat("Speed", 0);
         //}
 
-        if (anim.GetCurrentAnimatorStateInfo(0).tagHash == animatorHash)
+        if(notMove == false)
         {
-            walk /= 2;
-            run /= 2;
-        }
-
-        if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.7)
-        {
-            
-            if (anim.GetCurrentAnimatorStateInfo(0).tagHash == animatorHash)
+            if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.7)
             {
-                run = run / 2;
-                Debug.Log(run);
+                if (anim.GetCurrentAnimatorStateInfo(0).tagHash == animatorHash)
+                {
+                    run /= 2;
+                }
+                //走る
+                //Cubeをプレイヤーに変更すれば別のシーンで使用可
+                anim.SetFloat("Speed", 0.8f);
+                transform.position += transform.forward * run * Time.deltaTime;
+                transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
+                run = 7;
             }
-            //走る
-            //Cubeをプレイヤーに変更すれば別のシーンで使用可
-            anim.SetFloat("Speed", 0.8f);
-            transform.position += transform.forward * run * Time.deltaTime;
-            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
-            Debug.LogWarning(run);
-            run = 10;
-        }
-        else if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.3)
-        {
-            
-            
-            //歩き
-            anim.SetFloat("Speed", 0.5f);
-            transform.position += transform.forward * walk * Time.deltaTime;
-            //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
-            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
-            walk = 10;
-
-        }
-        else
-        {
-            anim.SetFloat("Speed", 0f);
-        }
-        if (Input.GetAxis("Vertical" + playerNum + "_left") < -0.3)
-        {
-            //後ろに進む
-            transform.position -= transform.forward * walk * Time.deltaTime;
-            //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
-            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
-        }
-        if (Input.GetAxis("Horizontal" + playerNum + "_left") > 0.4)
-        {
-            //右に進む
-            transform.position += transform.right * walk * Time.deltaTime;
-            //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
-            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
-        }
-        if (Input.GetAxis("Horizontal" + playerNum + "_left") < -0.4)
-        {
-            //左に進む
-            transform.position -= transform.right * walk * Time.deltaTime;
-            //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
-            transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
+            else if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.3)
+            {
+                if (anim.GetCurrentAnimatorStateInfo(0).tagHash == animatorHash)
+                {
+                    walk /= 2;
+                }
+                //歩き
+                anim.SetFloat("Speed", 0.5f);
+                transform.position += transform.forward * walk * Time.deltaTime;
+                //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
+                transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
+                walk = 5;
+            }
+            else
+            {
+                anim.SetFloat("Speed", 0f);
+            }
+            if (Input.GetAxis("Vertical" + playerNum + "_left") < -0.3)
+            {
+                //後ろに進む
+                transform.position -= transform.forward * walk * Time.deltaTime;
+                //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
+                transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
+            }
+            if (Input.GetAxis("Horizontal" + playerNum + "_left") > 0.4)
+            {
+                //右に進む
+                transform.position += transform.right * walk * Time.deltaTime;
+                //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
+                transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
+            }
+            if (Input.GetAxis("Horizontal" + playerNum + "_left") < -0.4)
+            {
+                //左に進む
+                transform.position -= transform.right * walk * Time.deltaTime;
+                //transform.rotation = new Quaternion(0, cam.rotation.y, 0, 0);
+                transform.rotation = Quaternion.Euler(new Vector3(0, cam.eulerAngles.y, 0));
+            }
         }
         
-        
-
-
         //for (int Num = 1;Num <= 4;Num++)
         //{
         //    if (Input.GetAxis("Vertical"+ Num + "_left") > 0.7)

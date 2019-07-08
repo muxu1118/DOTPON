@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {        
     public Parametor parametor;
-    //AudioManager audioManager; 
+    
     [SerializeField]
     SphereCollider sph;
     [SerializeField]
@@ -38,9 +38,9 @@ public class Bomb : MonoBehaviour
         //エフェクトを再生させる
         //audioManager.playSfx(3);
 
-        
-        int i = 0;
-        while (i < 60)
+        //爆発の範囲
+        int i = 0;        
+        while (i < 30)
         {
             gameObject.transform.localScale += new Vector3(1,1,1) * range * Time.deltaTime;
             i++;
