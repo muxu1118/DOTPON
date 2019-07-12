@@ -1,49 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BUKSelect : MonoBehaviour
 {
     enum weapon
     {
         axe = 0,
-        sword,
         katana,
+        sword,
+        hammar,
         shield,
-        bomb,
-        hammer
+        bomb
     }
     weapon nowWeapon = 0;
-
-    [SerializeField]
-    GameObject selectObj;
-
+    
     List<GameObject> objs = new List<GameObject>();
     List<int> weapons = new List<int>();
+    [SerializeField]
+    RawImage[] rawImages;
+    [SerializeField]
+    Texture[] textures;
     private void Start()
     {
-        SetSelectUI();   
     }
     int num;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            objs[0].GetComponent<ChangeDOTPON>().DOTPONWheel(num,true);
+            GetComponent<ChangeDOTPON>().DOTPONWheel(num,true);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            objs[0].GetComponent<ChangeDOTPON>().DOTPONWheel(num, false);
+            GetComponent<ChangeDOTPON>().DOTPONWheel(num, false);
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (weapons.Count >= 3) return;
             weapons.Add((int)nowWeapon);
+            SetWeapon();
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             if (weapons.Count <= 0) return;
             weapons.RemoveAt(weapons.Count);
+            SetWeapon();
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -57,35 +60,28 @@ public class BUKSelect : MonoBehaviour
         }
     }
 
-    public void SetSelectUI()
+    void SetWeapon()
     {
-        float screenX = Screen.width;
-        int players = MultiPlayerManager.instance.totalPlayer;
-        for (int i = 0;i < players;i++)
+        switch (weapons.Count)
         {
-            objs.Add(Instantiate(selectObj));
-            objs[i].transform.parent = this.transform;
-            objs[i].GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
-        }
-        switch (players)
-        {
+            case 0:
+                rawImages[0].texture = textures[weapons[0]];
+                rawImages[0].color = new Color(1, 1, 1, 1);
+                rawImages[1].color = new Color(1, 1, 1, 0);
+                break;
             case 1:
+                rawImages[1].texture = textures[weapons[1]];
+                rawImages[1].color = new Color(1, 1, 1, 1);
+                rawImages[2].color = new Color(1, 1, 1, 0);
                 break;
             case 2:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 4 - screenX / 2,20,0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 4 + screenX / 2, 20, 0);
+                rawImages[2].texture = textures[weapons[2]];
+                rawImages[2].color = new Color(1, 1, 1, 1);
                 break;
-            case 3:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 5 - screenX / 2, 20, 0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(0, 20, 0);
-                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 5 + screenX / 2, 20, 0);
-                break;
-            case 4:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 8 - screenX / 2, 20, 0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX * 5 / 8 + screenX / 2, 20, 0);
-                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(screenX * 5 / 8 - screenX / 2, 20, 0);
-                objs[3].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 8 + screenX / 2, 20, 0);
+            default:
+                rawImages[0].color = new Color(1,1,1,0);
                 break;
         }
     }
+    
 }

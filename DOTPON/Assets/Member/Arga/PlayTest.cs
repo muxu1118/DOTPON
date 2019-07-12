@@ -11,6 +11,10 @@ public class PlayTest : MonoBehaviour
     GameObject SelectPanel;
     [SerializeField]
     GameObject StartPanel;
+    [SerializeField]
+    GameObject WeaponPanel;
+    [SerializeField]
+    GameObject selectObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,26 +40,73 @@ public class PlayTest : MonoBehaviour
     public void singlePlayer()
     {
         MultiPlayerManager.instance.totalPlayer = 1;
-        SceneManager.LoadScene(1);
+        WeaponPanel.SetActive(true);
+        SelectPanel.SetActive(false);
+        SetSelectUI();
     } 
 
     public void twoPlayer()
     {
         MultiPlayerManager.instance.totalPlayer = 2;
-        SceneManager.LoadScene(1);
+        WeaponPanel.SetActive(true);
+        SelectPanel.SetActive(false);
+        SetSelectUI();
     } 
 
     public void threePlayer()
     {
         MultiPlayerManager.instance.totalPlayer = 3;
-        SceneManager.LoadScene(1);
+        WeaponPanel.SetActive(true);
+        SelectPanel.SetActive(false);
+        SetSelectUI();
     } 
 
     public void fourPlayer()
     {
         MultiPlayerManager.instance.totalPlayer = 4;
-        SceneManager.LoadScene(1);
+        WeaponPanel.SetActive(true);
+        SelectPanel.SetActive(false);
+        SetSelectUI();
     } 
+
+    public void SetSelectUI()
+    {
+        List<GameObject> objs = new List<GameObject>();
+        float screenX = Screen.width;
+        int players = MultiPlayerManager.instance.totalPlayer;
+        for (int i = 0; i < players; i++)
+        {
+            objs.Add(Instantiate(selectObj));
+            objs[i].transform.parent = this.transform;
+            objs[i].GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+
+        }
+        switch (players)
+        {
+            case 1:
+                break;
+            case 2:
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 4 - screenX / 2, 20, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 4 + screenX / 2, 20, 0);
+                break;
+            case 3:
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 5 - screenX / 2, 20, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(0, 20, 0);
+                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 5 + screenX / 2, 20, 0);
+                break;
+            case 4:
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 8 - screenX / 2, 20, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX * 5 / 8 + screenX / 2, 20, 0);
+                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(screenX * 5 / 8 - screenX / 2, 20, 0);
+                objs[3].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 8 + screenX / 2, 20, 0);
+                break;
+        }
+    }
+
+    public void GameStartButton()
+    {
+        SceneManager.LoadScene(1);
+    }
 
     public void backButton()
     {
