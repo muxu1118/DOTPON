@@ -10,6 +10,7 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
 
     PlayerStats ps1, ps2, ps3, ps4;
 
+    public Material mat1, mat2, mat3, mat4;
     // ランク：　1 ~ 4
     // int型　Ranking[0] ~ Ranking[3]
     // string型 Ranking1 ~ Ranking 4    
