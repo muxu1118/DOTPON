@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2c385dd3731623549b92a02eae09d3c5
+guid: 56f69af2261e22d4989f310bae525202
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -94,7 +94,7 @@ ModelImporter:
     4300020: hand_R1
     4300022: arem_R1
     4300024: body
-    7400000: Wepon_Walk
+    7400000: Weapon_Idling
     9500000: //RootNode
     13700000: arem_R1
     13700002: body
@@ -138,10 +138,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Wepon_Walk
+      name: Weapon_Idling
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 30
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -32,15 +32,15 @@ public class AniTest : MonoBehaviour
         hash = Animator.StringToHash("NotMove");
         //farAttack = this.gameObject.GetComponent<FarAttack>();
         //farAttack.PosMove2();
-        sph = GetComponent<SphereCollider>();
-        sph.radius = 1.5f;
+        //sph = GetComponent<SphereCollider>();
+        //sph.radius = 1.5f;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.LogWarning("こいつが出たらヤバイ");
+        //Debug.LogWarning("こいつが出たらヤバイ");
         //攻撃ボタンを押したときの処理
         if(Input.GetKeyDown(KeyCode.A))
         {
@@ -63,21 +63,22 @@ public class AniTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            anim.SetTrigger("ShieldAttack");
+            anim.speed = 2.0f;
+            anim.SetTrigger("SwordAttack");
+        }
+        //if(Input.GetKeyUp(KeyCode.S))
+        //{
+        //    anim.SetTrigger("ShieldGuard");
+        //}
 
-        }
-        if(Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            anim.SetTrigger("ShieldGuard");
+            anim.SetFloat("X", 1);
+            //anim.SetTrigger("Create");
         }
-
-        if (Input.GetKeyDown(KeyCode.D) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            anim.SetTrigger("Create");
-        }
-        if (Input.GetKeyDown(KeyCode.F) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
-        {
-            anim.SetTrigger("Hit");
+            anim.SetTrigger("gg");
         }
         if (Input.GetKeyDown(KeyCode.G) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
         {
