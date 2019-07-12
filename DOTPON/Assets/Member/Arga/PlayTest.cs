@@ -15,6 +15,8 @@ public class PlayTest : MonoBehaviour
     GameObject WeaponPanel;
     [SerializeField]
     GameObject selectObj;
+    [SerializeField]
+    GameObject selectedObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,33 +74,52 @@ public class PlayTest : MonoBehaviour
     public void SetSelectUI()
     {
         List<GameObject> objs = new List<GameObject>();
+        List<GameObject> selectObjs = new List<GameObject>();
         float screenX = Screen.width;
+        float screenY = Screen.height;
         int players = MultiPlayerManager.instance.totalPlayer;
         for (int i = 0; i < players; i++)
         {
             objs.Add(Instantiate(selectObj));
-            objs[i].transform.parent = this.transform;
+            objs[i].transform.parent = GameObject.Find("WeaponPanel").transform;
             objs[i].GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
-
+            selectObjs.Add(Instantiate(selectedObj));
+            selectObjs[i].name = "P" + i + "Select";
+            selectObjs[i].transform.parent = GameObject.Find("WeaponPanel").transform;
+            objs[i].GetComponent<BUKSelect>().selectedObj = selectObjs[i].GetComponent<SelectedUI>();
         }
         switch (players)
         {
             case 1:
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(0, screenY * 2 / 3 - screenY / 2, 0);
+                selectObjs[0].GetComponent<RectTransform>().localPosition = new Vector3(0, screenY * 4 / 5 -screenY / 2, 0);
                 break;
             case 2:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 4 - screenX / 2, 20, 0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 4 + screenX / 2, 20, 0);
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 4 - screenX / 2, 100, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 4 + screenX / 2, 100, 0);
+                
+                selectObjs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 4 - screenX / 2, 200, 0);
+                selectObjs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 4 + screenX / 2, 200, 0);
                 break;
             case 3:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 5 - screenX / 2, 20, 0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(0, 20, 0);
-                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 5 + screenX / 2, 20, 0);
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 5 - screenX / 2,100 , 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(0, 100, 0);
+                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 5 + screenX / 2, 100, 0);
+
+                selectObjs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 5 - screenX / 2, 200, 0);
+                selectObjs[1].GetComponent<RectTransform>().localPosition = new Vector3(0, 200, 0);
+                selectObjs[2].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 5 + screenX / 2, 200, 0);
                 break;
             case 4:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 8 - screenX / 2, 20, 0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX * 5 / 8 + screenX / 2, 20, 0);
-                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(screenX * 5 / 8 - screenX / 2, 20, 0);
-                objs[3].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 8 + screenX / 2, 20, 0);
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 8 - screenX / 2, 100, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX * 5 / 8 + screenX / 2, 100, 0);
+                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(screenX * 5 / 8 - screenX / 2, 100, 0);
+                objs[3].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 8 + screenX / 2, 100, 0);
+
+                selectObjs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 8 - screenX / 2, 300, 0);
+                selectObjs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX * 5 / 8 + screenX / 2, 300, 0);
+                selectObjs[2].GetComponent<RectTransform>().localPosition = new Vector3(screenX * 5 / 8 - screenX / 2, 300, 0);
+                selectObjs[3].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 8 + screenX / 2, 300, 0);
                 break;
         }
     }

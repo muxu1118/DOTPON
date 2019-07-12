@@ -848,7 +848,6 @@ GameObject:
   - component: {fileID: 829789463}
   - component: {fileID: 829789465}
   - component: {fileID: 829789464}
-  - component: {fileID: 829789466}
   m_Layer: 5
   m_Name: WeaponPanel
   m_TagString: Untagged
@@ -912,22 +911,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829789462}
   m_CullTransparentMesh: 0
---- !u!114 &829789466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829789462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593783ffe81a99b4ea291d4cc57b4f82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectObj: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
-    type: 3}
-  rawImages: []
-  textures: []
 --- !u!1 &938748329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,6 +1979,10 @@ MonoBehaviour:
   SelectPanel: {fileID: 1997769582}
   StartPanel: {fileID: 2126984742}
   WeaponPanel: {fileID: 829789462}
+  selectObj: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
+    type: 3}
+  selectedObj: {fileID: 2825820881518053, guid: a2561ad93740c9b46a4a9ab6296d8650,
+    type: 3}
 --- !u!4 &1505144496
 Transform:
   m_ObjectHideFlags: 0

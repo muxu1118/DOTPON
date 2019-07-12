@@ -15,73 +15,50 @@ public class BUKSelect : MonoBehaviour
         bomb
     }
     weapon nowWeapon = 0;
-    
+
+    [HideInInspector] public SelectedUI selectedObj;
     List<GameObject> objs = new List<GameObject>();
     List<int> weapons = new List<int>();
     [SerializeField]
     RawImage[] rawImages;
     [SerializeField]
     Texture[] textures;
-    private void Start()
-    {
-    }
     int num;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            GetComponent<ChangeDOTPON>().DOTPONWheel(num,true);
+            if (nowWeapon == weapon.bomb) nowWeapon = weapon.bomb;
+            nowWeapon++;
+            GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon,true);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            GetComponent<ChangeDOTPON>().DOTPONWheel(num, false);
+            if (nowWeapon == weapon.axe) nowWeapon = weapon.bomb;
+            nowWeapon--;
+            GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, false);
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (weapons.Count >= 3) return;
             weapons.Add((int)nowWeapon);
-            SetWeapon();
+            selectedObj.ChangeTexture(weapons.Count - 1,textures[(int)nowWeapon]);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             if (weapons.Count <= 0) return;
             weapons.RemoveAt(weapons.Count);
-            SetWeapon();
+            selectedObj.ChangeTexture(weapons.Count, textures[(int)nowWeapon]);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            num++;
             Debug.Log(num);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log(num);
-            num--;
         }
     }
-
-    void SetWeapon()
-    {
-        switch (weapons.Count)
-        {
-            case 0:
-                rawImages[0].texture = textures[weapons[0]];
-                rawImages[0].color = new Color(1, 1, 1, 1);
-                rawImages[1].color = new Color(1, 1, 1, 0);
-                break;
-            case 1:
-                rawImages[1].texture = textures[weapons[1]];
-                rawImages[1].color = new Color(1, 1, 1, 1);
-                rawImages[2].color = new Color(1, 1, 1, 0);
-                break;
-            case 2:
-                rawImages[2].texture = textures[weapons[2]];
-                rawImages[2].color = new Color(1, 1, 1, 1);
-                break;
-            default:
-                rawImages[0].color = new Color(1,1,1,0);
-                break;
-        }
-    }
+    
     
 }

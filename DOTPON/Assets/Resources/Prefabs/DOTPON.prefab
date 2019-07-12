@@ -674,6 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593783ffe81a99b4ea291d4cc57b4f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedObj: {fileID: 0}
   rawImages:
   - {fileID: 0}
   - {fileID: 0}
@@ -763,7 +764,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: '
+
+'
 --- !u!1 &289534091461934900
 GameObject:
   m_ObjectHideFlags: 0
