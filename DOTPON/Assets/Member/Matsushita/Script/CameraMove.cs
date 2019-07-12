@@ -45,7 +45,7 @@ public class CameraMove : MonoBehaviour
         if (Input.GetAxis("CameraMoveY") >= -0.001f && Input.GetAxis("CameraMoveY") <= 0.001f) return;
         if (Input.GetAxis("CameraMoveX") >= -0.001f && Input.GetAxis("CameraMoveX") <= 0.001f) return;
 
-        //Cameraの角度にマウスからとった値を入れる
+        //Cameraの角度にRスティックからとった値を入れる
         transform.eulerAngles += new Vector3(Input.GetAxis("CameraMoveY") * rotateSpeed, Input.GetAxis("CameraMoveX") * rotateSpeed, 0);
        
         //x軸の角度
