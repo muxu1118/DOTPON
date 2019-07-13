@@ -63,7 +63,7 @@ public class AniTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            anim.speed = 2.0f;
+            //anim.speed = 2.0f;
             anim.SetTrigger("SwordAttack");
         }
         //if(Input.GetKeyUp(KeyCode.S))
@@ -73,20 +73,20 @@ public class AniTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            anim.SetFloat("X", 1);
-            //anim.SetTrigger("Create");
+            //anim.SetFloat("X", 1);
+            anim.SetTrigger("Create");
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            anim.SetTrigger("gg");
+            anim.SetTrigger("AxAttack");
         }
-        if (Input.GetKeyDown(KeyCode.G) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            anim.SetTrigger("SwordAttack");
+            anim.SetTrigger("ShieldAttack");
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            anim.SetTrigger("AxAttack");
+            //anim.SetTrigger("AxAttack");
         }        
     }
 }
