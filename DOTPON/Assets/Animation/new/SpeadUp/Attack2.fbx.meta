@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3548c010a67d91d47b9976aa8b8819fb
+guid: 6a73fa40ec03e4a478672bd4e624dd1b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -94,7 +94,7 @@ ModelImporter:
     4300020: hand_R1
     4300022: arem_R1
     4300024: body
-    7400000: SwordAttack
+    7400000: AxAttack2
     9500000: //RootNode
     13700000: arem_R1
     13700002: body
@@ -138,10 +138,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: SwordAttack
+      name: AxAttack2
       takeName: Take 001
-      firstFrame: 10
-      lastFrame: 55
+      firstFrame: 1
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -164,7 +164,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

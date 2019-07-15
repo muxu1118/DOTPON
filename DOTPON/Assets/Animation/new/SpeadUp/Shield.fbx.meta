@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2c385dd3731623549b92a02eae09d3c5
+guid: fe5335dfe1c4271439094613e588bab8
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -37,8 +37,8 @@ ModelImporter:
     100062: RightHandLocator
     100064: RightLeg
     100066: RightLeg 1
-    100068: Spine
-    100070: //RootNode
+    100068: //RootNode
+    100070: Spine
     100072: wrist_R
     100074: wrist_R1
     400000: arem_R1
@@ -75,8 +75,8 @@ ModelImporter:
     400062: RightHandLocator
     400064: RightLeg
     400066: RightLeg 1
-    400068: Spine
-    400070: //RootNode
+    400068: //RootNode
+    400070: Spine
     400072: wrist_R
     400074: wrist_R1
     2100000: lambert5
@@ -94,7 +94,7 @@ ModelImporter:
     4300020: hand_R1
     4300022: arem_R1
     4300024: body
-    7400000: Wepon_Walk
+    7400000: Shield2
     9500000: //RootNode
     13700000: arem_R1
     13700002: body
@@ -138,10 +138,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Wepon_Walk
+      name: Shield2
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 30
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
