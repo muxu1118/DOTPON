@@ -63,6 +63,27 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
         set { ps4.star = value; CountRanking();}
     }
 
+    public List<int> P1Weapon
+    {
+        get { return ps1.weapon; }
+        set { ps1.weapon = value; }
+    }
+    public List<int>P2Weapon
+    {
+        get { return ps2.weapon; }
+        set { ps2.weapon = value; }
+    }
+    public List<int> P3Weapon
+    {
+        get { return ps3.weapon; }
+        set { ps3.weapon = value; }
+    }
+    public List<int> P4Weapon
+    {
+        get { return ps3.weapon; }
+        set { ps3.weapon = value; }
+    }
+
     void CountRanking()
     {
 
@@ -96,6 +117,7 @@ struct PlayerStats
 {
     public int dot;
     public int star;
+    public List<int> weapon;
 }
 
 struct RankStats

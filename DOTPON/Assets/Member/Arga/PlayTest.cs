@@ -81,6 +81,21 @@ public class PlayTest : MonoBehaviour
         for (int i = 0; i < players; i++)
         {
             objs.Add(Instantiate(selectObj));
+            switch (i)
+            {
+                case 0:
+                    objs[i].GetComponent<BUKSelect>().playerNum = BUKSelect.player.player1;
+                    break;
+                case 1:
+                    objs[i].GetComponent<BUKSelect>().playerNum = BUKSelect.player.player2;
+                    break;
+                case 2:
+                    objs[i].GetComponent<BUKSelect>().playerNum = BUKSelect.player.player3;
+                    break;
+                case 3:
+                    objs[i].GetComponent<BUKSelect>().playerNum = BUKSelect.player.player4;
+                    break;
+            }
             objs[i].transform.parent = GameObject.Find("WeaponPanel").transform;
             objs[i].GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
             selectObjs.Add(Instantiate(selectedObj));
@@ -126,7 +141,33 @@ public class PlayTest : MonoBehaviour
 
     public void GameStartButton()
     {
-        SceneManager.LoadScene(1);
+        bool trigger = false;
+        BUKSelect[] select = WeaponPanel.GetComponentsInChildren<BUKSelect>();
+        for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
+        {
+            if (select[i].weapons.Count == 3) {
+                trigger = true;
+                switch (i)
+                {
+                    case 0:
+                        MultiPlayerManager.instance.P1Weapon = select[i].weapons;
+                        break;
+                    case 1:
+                        MultiPlayerManager.instance.P2Weapon = select[i].weapons;
+                        break;
+                    case 2:
+                        MultiPlayerManager.instance.P3Weapon = select[i].weapons;
+                        break;
+                    case 3:
+                        MultiPlayerManager.instance.P4Weapon = select[i].weapons;
+                        break;
+                }
+            }
+        }
+        if (trigger)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void backButton()

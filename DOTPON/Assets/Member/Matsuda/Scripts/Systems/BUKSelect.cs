@@ -16,17 +16,67 @@ public class BUKSelect : MonoBehaviour
     }
     weapon nowWeapon = 0;
 
+    public enum player
+    {
+        player1,
+        player2,
+        player3,
+        player4
+    }
+    // コントローラーに対応する番号
+    public player playerNum = 0;
+    int padNum ;
+
     [HideInInspector] public SelectedUI selectedObj;
     List<GameObject> objs = new List<GameObject>();
-    [SerializeField]List<int> weapons = new List<int>();
+    public List<int> weapons = new List<int>();
     [SerializeField]
     RawImage[] rawImages;
     [SerializeField]
     Texture[] textures;
     int num;
     bool isChange;
+    private void Start()
+    {
+        padNum = (int)playerNum + 1;
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown("joystick " + padNum + " button 1"))
+        {
+            if (weapons.Count <= 0) return;
+            weapons.RemoveAt(weapons.Count - 1);
+            selectedObj.ChangeTextureDown(weapons.Count);
+        }
+        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
+        {
+            foreach (int i in weapons)
+            {
+                Debug.Log(i + " + " + (int)nowWeapon);
+                if (i == (int)nowWeapon) isChange = true;
+            }
+            if (weapons.Count >= 3 || isChange)
+            {
+                isChange = false;
+                return;
+            }
+            weapons.Add((int)nowWeapon);
+            selectedObj.ChangeTextureUp(weapons.Count, textures[(int)nowWeapon]);
+            isChange = false;
+        }
+        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
+        {
+            if (nowWeapon == weapon.bomb) nowWeapon = weapon.axe;
+            nowWeapon++;
+            GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, true);
+        }
+        if (Input.GetKeyDown("joystick " + padNum + " button 0"))
+        {
+            if (nowWeapon == weapon.axe) nowWeapon = weapon.bomb;
+            nowWeapon--;
+            GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, false);
+        }
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (nowWeapon == weapon.bomb) nowWeapon = weapon.axe;
