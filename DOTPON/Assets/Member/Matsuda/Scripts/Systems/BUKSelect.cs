@@ -18,17 +18,18 @@ public class BUKSelect : MonoBehaviour
 
     [HideInInspector] public SelectedUI selectedObj;
     List<GameObject> objs = new List<GameObject>();
-    List<int> weapons = new List<int>();
+    [SerializeField]List<int> weapons = new List<int>();
     [SerializeField]
     RawImage[] rawImages;
     [SerializeField]
     Texture[] textures;
     int num;
+    bool isChange;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (nowWeapon == weapon.bomb) nowWeapon = weapon.bomb;
+            if (nowWeapon == weapon.bomb) nowWeapon = weapon.axe;
             nowWeapon++;
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon,true);
         }
@@ -40,15 +41,25 @@ public class BUKSelect : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (weapons.Count >= 3) return;
+            foreach (int i in weapons)
+            {
+                Debug.Log(i + " + " + (int)nowWeapon);
+                if (i == (int)nowWeapon) isChange = true;
+            }
+            if (weapons.Count >= 3 || isChange)
+            {
+                isChange = false;
+                return;
+            }
             weapons.Add((int)nowWeapon);
-            selectedObj.ChangeTexture(weapons.Count - 1,textures[(int)nowWeapon]);
+            selectedObj.ChangeTextureUp(weapons.Count,textures[(int)nowWeapon]);
+            isChange = false;
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             if (weapons.Count <= 0) return;
-            weapons.RemoveAt(weapons.Count);
-            selectedObj.ChangeTexture(weapons.Count, textures[(int)nowWeapon]);
+            weapons.RemoveAt(weapons.Count-1);
+            selectedObj.ChangeTextureDown(weapons.Count);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
