@@ -17,8 +17,6 @@ public class CameraMove : MonoBehaviour
     [SerializeField]
     Camera cam;
 
-    string ControllerNum;
-
     //Cameraが回転するスピード
     [SerializeField]
     float rotateSpeed = 3.0f;
@@ -32,15 +30,8 @@ public class CameraMove : MonoBehaviour
         //CameraのAxisに相対的な位置をlocalPositionで指定
         cam.transform.localPosition = new Vector3(0, 0, -3);
         //CameraとAxisの向きを最初だけそろえる
-        //cam.transform.localRotation = transform.rotation;
+        cam.transform.localRotation = transform.rotation;
         //
-    }
-    public void Setting(GameObject obj)
-    {
-        player = obj;
-        ControllerNum = obj.name.Substring(6);
-        this.gameObject.transform.position = player.transform.position;
-        this.gameObject.transform.rotation = player.transform.rotation;
     }
 
     // Update is called once per frame
@@ -48,15 +39,14 @@ public class CameraMove : MonoBehaviour
     {
         //Axisの位置をplayerの位置+axisPosできめる
         transform.position = player.transform.position + axisPos;
-        //Debug.Log(Input.GetAxis("Horizontal1_right"));
-        //Debug.Log("V"+Input.GetAxis("Vertical1_right"));
+        Debug.Log(Input.GetAxis("CameraMoveX"));
         //Debug.Log(Input.GetAxis("CameraMoveY"));
         // GetAxisの誤差は返す
-        //if (Input.GetAxis("Vertical1_right") >= -0.001f && Input.GetAxis("Vertical1_right") <= 0.001f) return;
-        //if (Input.GetAxis("Horizontal1_right") >= -0.001f && Input.GetAxis("Horizontal1_right") <= 0.001f) return;
+        if (Input.GetAxis("CameraMoveY") >= -0.001f && Input.GetAxis("CameraMoveY") <= 0.001f) return;
+        if (Input.GetAxis("CameraMoveX") >= -0.001f && Input.GetAxis("CameraMoveX") <= 0.001f) return;
 
-        //Cameraの角度にマウスからとった値を入れる
-        transform.eulerAngles += new Vector3(Input.GetAxis("Vertical"+ControllerNum+"_right") * rotateSpeed, Input.GetAxis("Horizontal"+ControllerNum+"_right") * rotateSpeed, 0);
+        //Cameraの角度にRスティックからとった値を入れる
+        transform.eulerAngles += new Vector3(Input.GetAxis("CameraMoveY") * rotateSpeed, Input.GetAxis("CameraMoveX") * rotateSpeed, 0);
        
         //x軸の角度
         float angleX = transform.eulerAngles.x;
@@ -65,7 +55,7 @@ public class CameraMove : MonoBehaviour
         {
             angleX = 30;
         }
-        if (angleX <= 360 && angleX >= 180|| angleX <= 0 && angleX >= -360)
+        if (angleX <= 360 && angleX >= 180)
         {
             angleX = 0;
         }
