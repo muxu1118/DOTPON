@@ -466,6 +466,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalPlayer: 0
+  mat1: {fileID: 2100000, guid: 9d7f58fe8dfe5d54883b76a5561ffe4f, type: 2}
+  mat2: {fileID: 2100000, guid: 33ccee1e7a6add546b566045def11620, type: 2}
+  mat3: {fileID: 2100000, guid: 4f8ab415caf186e4e8ffce3b66f0e65e, type: 2}
+  mat4: {fileID: 2100000, guid: fb267a41824e9bc4c9ac14c8edcd9c15, type: 2}
   Ranking: 
   Ranking1: 
   Ranking2: 
