@@ -13,6 +13,8 @@ public class EnemyParameter : ScriptableObject
     public int dropDot;//ドロップするドット数
     [HeaderAttribute("攻撃力")]
     public int attackPow;
+    [HeaderAttribute("攻撃頻度")]
+    public int attackWait;
     [SerializeField]
     [HeaderAttribute("移動速度(cubeのサンプルを目安に)")]
     public float speed;

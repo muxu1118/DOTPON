@@ -199,6 +199,8 @@ MonoBehaviour:
   - 
   - 
   nowWeapon: {fileID: 3431538904191380621}
+  changeObj: {fileID: 3634088465292596046, guid: de127688a22278c43bdc823061d5aca5,
+    type: 3}
 --- !u!114 &5787395287823697074
 MonoBehaviour:
   m_ObjectHideFlags: 0

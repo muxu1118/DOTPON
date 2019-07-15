@@ -92,7 +92,7 @@ public class Goburin : Enemy
             {
                 isAction = true;
                 Attack();
-                StartCoroutine(WaitTime(3f));
+                StartCoroutine(WaitTime(parameter.attackWait));
             }else if (dis <= parameter.distance * 2)
             {
                 stayLooking = true;
