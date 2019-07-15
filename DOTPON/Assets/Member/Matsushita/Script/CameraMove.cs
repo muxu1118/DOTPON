@@ -17,6 +17,7 @@ public class CameraMove : MonoBehaviour
     [SerializeField]
     Camera cam;
 
+    string ControllerNum;
     //Cameraが回転するスピード
     [SerializeField]
     float rotateSpeed = 3.0f;
@@ -34,19 +35,27 @@ public class CameraMove : MonoBehaviour
         //
     }
 
+    public void Setting(GameObject obj)
+    {
+        player = obj;
+        ControllerNum = player.name.Substring(6);
+        this.transform.position = player.transform.position;
+        this.transform.rotation = player.transform.rotation;
+    }
+
     // Update is called once per frame
     void Update()
     {
         //Axisの位置をplayerの位置+axisPosできめる
         transform.position = player.transform.position + axisPos;
-        Debug.Log(Input.GetAxis("CameraMoveX"));
+        Debug.Log(Input.GetAxis("Vertical" + ControllerNum + "_right"));
         //Debug.Log(Input.GetAxis("CameraMoveY"));
         // GetAxisの誤差は返す
-        if (Input.GetAxis("CameraMoveY") >= -0.001f && Input.GetAxis("CameraMoveY") <= 0.001f) return;
-        if (Input.GetAxis("CameraMoveX") >= -0.001f && Input.GetAxis("CameraMoveX") <= 0.001f) return;
+        if (Input.GetAxis("Horizontal" + ControllerNum + "_right") >= -0.001f && Input.GetAxis("Horizontal" + ControllerNum + "_right") <= 0.001f) return;
+        if (Input.GetAxis("Vertical" + ControllerNum + "_right") >= -0.001f && Input.GetAxis("Vertical" + ControllerNum + "_right") <= 0.001f) return;
 
         //Cameraの角度にRスティックからとった値を入れる
-        transform.eulerAngles += new Vector3(Input.GetAxis("CameraMoveY") * rotateSpeed, Input.GetAxis("CameraMoveX") * rotateSpeed, 0);
+        transform.eulerAngles += new Vector3(Input.GetAxis("Horizontal" + ControllerNum + "_right") * rotateSpeed, Input.GetAxis("Horizontal" + ControllerNum + "_right") * rotateSpeed, 0);
        
         //x軸の角度
         float angleX = transform.eulerAngles.x;

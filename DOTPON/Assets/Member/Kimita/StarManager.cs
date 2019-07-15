@@ -33,7 +33,10 @@ public class StarManager : SingletonMonoBehaviour<StarManager>
         
     }
 
-
+    public GameObject InstanceStar()
+    {
+        return Instantiate(starObject);
+    }
     /// <summary>
     /// スターの出現 (出現される場所と減らすプレイヤー)
     /// </summary>

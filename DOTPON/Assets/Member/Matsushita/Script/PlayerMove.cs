@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     private float RunSpeed = 10f; //走る速度
 
     private Vector3 Player_pos;
-    private Rigidbody rb;
+
 
     [SerializeField]
     Transform cam;

@@ -24,8 +24,15 @@ public class Star : MonoBehaviour
     }
 
     // プレイヤーに当たったら破壊
-    public void DestroyObject()
+    public void DestroyObject(Transform trans)
     {
+        this.gameObject.transform.position = new Vector3(trans.position.x,trans.position.y + 2,trans.position.z);
+        StartCoroutine(PopUpStar());
+    }
+    IEnumerator PopUpStar()
+    {
+        this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 1.5f, 0);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 }
