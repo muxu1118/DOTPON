@@ -59,8 +59,6 @@ public class StartGame : MonoBehaviour
             //カメラのオブジェクトを探して参照させる
             //cameras[i].transform.parent = playerObj.transform;
             cameras[i].GetComponent<CameraMove>().Setting(playerObj);
-            DotTextObj[i].SetActive(true);
-            StarTextObj[i].SetActive(true);
             BukiUIObj[i].SetActive(true);
             DursbleUI[i].SetActive(true);
         
