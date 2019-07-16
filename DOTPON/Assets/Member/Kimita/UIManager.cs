@@ -8,6 +8,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     // プレイヤーのキャンバス
     [SerializeField]
     GameObject playerCanvas;
+
     // Canvasの位置
     List<Vector2> canvasPosis = new List<Vector2>();
     // 出したキャンバスを保存する場所
