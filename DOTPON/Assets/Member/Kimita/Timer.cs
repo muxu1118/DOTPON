@@ -61,6 +61,8 @@ public class Timer : MonoBehaviour
         if (limitTime >= timeCount)
         {
             // ゲーム終了
+            var i = GameObject.Find("EndImage");
+            i.GetComponent<EndGame>().EndMainGame();
             // リザルト画面に移動
             StartCoroutine(EndCorutine());
         }
