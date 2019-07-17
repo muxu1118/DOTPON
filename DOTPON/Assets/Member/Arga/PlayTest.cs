@@ -166,13 +166,13 @@ public class PlayTest : MonoBehaviour
         }
         if (trigger)
         {
-            SceneManager.LoadScene(1);
+            FadeManager.Instance.LoadScene("Main",1.0f);
         }
     }
 
     public void backButton()
     {
-        SceneManager.LoadScene(0);
+        FadeManager.Instance.LoadScene("StartScene",1.0f);
     }
     public void ResultButton()
     {
