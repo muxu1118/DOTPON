@@ -21,9 +21,10 @@ public class Shield : MonoBehaviour
     IEnumerator shieldGuard()
     {     
         transform.root.gameObject.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
+        Debug.Log(gameObject.name);
         transform.root.gameObject.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(0.1f);
-        Debug.Log("守れた？");
+        Debug.LogWarning("守れた？");
     }        
 }
