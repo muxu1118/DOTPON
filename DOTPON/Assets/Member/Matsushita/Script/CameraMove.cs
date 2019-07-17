@@ -48,7 +48,6 @@ public class CameraMove : MonoBehaviour
     {
         //Axisの位置をplayerの位置+axisPosできめる
         transform.position = player.transform.position + axisPos;
-        Debug.Log(Input.GetAxis("Vertical" + ControllerNum + "_right"));
         //Debug.Log(Input.GetAxis("CameraMoveY"));
         // GetAxisの誤差は返す
         if (Input.GetAxis("Horizontal" + ControllerNum + "_right") >= -0.001f && Input.GetAxis("Horizontal" + ControllerNum + "_right") <= 0.001f) return;

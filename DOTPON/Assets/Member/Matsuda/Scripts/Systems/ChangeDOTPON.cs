@@ -10,6 +10,7 @@ public class ChangeDOTPON : MonoBehaviour
     bool isMove = true;
     [SerializeField]int i;
     bool looping = false;
+    int[] numbers = new int[3];
 
     [SerializeField] Text text;
     // Start is called before the first frame update
@@ -92,6 +93,61 @@ public class ChangeDOTPON : MonoBehaviour
                 Objects[num2].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num2].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
                 Objects[num2].transform.position = Vector3.MoveTowards(Objects[num2].transform.position, positions[1].position, i);
                 Objects[num2].transform.localScale = Vector3.Lerp(Objects[num2].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
+            }
+            yield return null;
+        }
+        Debug.Log("END");
+        looping = false;
+        yield break;
+    }
+    public void DOTPONWheelS(int num, bool plus)
+    {
+        StartCoroutine(MoveWheelS(num, plus));
+    }
+    private IEnumerator MoveWheelS(int num, bool plus)
+    {
+        switch (num)
+        {
+            case 0:
+                numbers = new int[] { 0, 1, 2 };
+                break;
+            case 1:
+                numbers = new int[] { 1, 2, 0 };
+                break;
+            case 2:
+                numbers = new int[] { 2, 0, 1 };
+                break;
+        }
+        float tim = 0;
+        while (tim < 10)
+        {
+            tim++;
+            Objects[numbers[0]].transform.SetAsLastSibling();
+            Objects[numbers[0]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[0]].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
+            Objects[numbers[0]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[0]].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
+            Objects[numbers[0]].transform.position = Vector3.MoveTowards(Objects[numbers[0]].transform.position, positions[2].position, i);
+            Objects[numbers[0]].transform.localScale = Vector3.Lerp(Objects[numbers[0]].transform.localScale, new Vector3(1, 1, 0), Time.deltaTime * 20);
+            if (plus)
+            {
+                Objects[numbers[1]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                Objects[numbers[1]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                Objects[numbers[1]].transform.position = Vector3.MoveTowards(Objects[numbers[1]].transform.position, positions[1].position, i * 2);
+                Objects[numbers[1]].transform.localScale = Vector3.Lerp(Objects[numbers[1]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
+                Objects[numbers[2]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                Objects[numbers[2]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                Objects[numbers[2]].transform.position = Vector3.MoveTowards(Objects[numbers[2]].transform.position, positions[3].position, i);
+                Objects[numbers[2]].transform.localScale = Vector3.Lerp(Objects[numbers[2]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
+            }
+            else
+            {
+                Objects[numbers[2]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                Objects[numbers[2]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                Objects[numbers[2]].transform.position = Vector3.MoveTowards(Objects[numbers[2]].transform.position, positions[3].position, i * 2);
+                Objects[numbers[2]].transform.localScale = Vector3.Lerp(Objects[numbers[2]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
+                Objects[numbers[1]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                Objects[numbers[1]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                Objects[numbers[1]].transform.position = Vector3.MoveTowards(Objects[numbers[1]].transform.position, positions[1].position, i);
+                Objects[numbers[1]].transform.localScale = Vector3.Lerp(Objects[numbers[1]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
             }
             yield return null;
         }

@@ -14,15 +14,25 @@ public class DangerEffect : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Danger()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        StartCoroutine(Effect());
+    }
+
+    IEnumerator Effect()
+    {
+        bool trigger = true;
+        while (img.color == new Color(0,0,0,0))
         {
-            this.img.color = new Color(0.5f,0,0,0.5f);
-        }
-        else
-        {
-            this.img.color = Color.Lerp(this.img.color,Color.clear,Time.deltaTime);
+            if (trigger)
+            {
+                this.img.color = new Color(0.5f, 0, 0, 0.5f);
+            }
+            else
+            {
+                this.img.color = Color.Lerp(this.img.color, Color.clear, Time.deltaTime);
+            }
+            yield return null;
         }
     }
 }
