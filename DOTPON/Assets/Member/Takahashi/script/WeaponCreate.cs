@@ -19,8 +19,8 @@ public class WeaponCreate : MonoBehaviour
     public GameObject nowWeapon;
     //DTOPON作成に必要な数
     int createNum = 0;
-    [SerializeField]GameObject DotPonText;
-    GameObject DOTPONDursbleUI;
+    [SerializeField]ChangeDOTPON DotPonText;
+    DOTPONDursble DOTPONDursbleUI;
 
     //DTOPONの耐久値
     int value;
@@ -35,42 +35,50 @@ public class WeaponCreate : MonoBehaviour
         switch (player.own)
         {
             case Player.PlayerKind.Player1:
-                DotPonText = GameObject.Find("P1DOTPON");
-                DOTPONDursbleUI = GameObject.Find("P1Dursble");
+                var playerCanvas = GameObject.Find("P1PlayerCanvas");
+                DotPonText = playerCanvas.GetComponentInChildren<ChangeDOTPON>();
+                DOTPONDursbleUI = playerCanvas.GetComponent<DOTPONDursble>();
                 for (int i = 0;i < 3;i++)
                 {
                     useWeapon[i] = weapon[MultiPlayerManager.instance.P1Weapon[i]];
                 }
+                DotPonText.SetTexture(MultiPlayerManager.instance.P1Weapon);
                 break;
             case Player.PlayerKind.Player2:
-                DotPonText = GameObject.Find("P2DOTPON");
-                DOTPONDursbleUI = GameObject.Find("P2Dursble");
+                var playerCanvas2 = GameObject.Find("P2PlayerCanvas");
+                DotPonText = playerCanvas2.GetComponentInChildren<ChangeDOTPON>();
+                DOTPONDursbleUI = playerCanvas2.GetComponent<DOTPONDursble>();
                 for (int i = 0; i < 3; i++)
                 {
                     useWeapon[i] = weapon[MultiPlayerManager.instance.P2Weapon[i]];
                 }
+                DotPonText.SetTexture(MultiPlayerManager.instance.P2Weapon);
                 break;
             case Player.PlayerKind.Player3:
-                DotPonText = GameObject.Find("P3DOTPON");
-                DOTPONDursbleUI = GameObject.Find("P3Dursble");
+                var playerCanvas3 = GameObject.Find("P3PlayerCanvas");
+                DotPonText = playerCanvas3.GetComponentInChildren<ChangeDOTPON>();
+                DOTPONDursbleUI = playerCanvas3.GetComponent<DOTPONDursble>();
                 for (int i = 0; i < 3; i++)
                 {
                     useWeapon[i] = weapon[MultiPlayerManager.instance.P3Weapon[i]];
                 }
+                DotPonText.SetTexture(MultiPlayerManager.instance.P3Weapon);
                 break;
             case Player.PlayerKind.Player4:
-                DotPonText = GameObject.Find("P4DOTPON");
-                DOTPONDursbleUI = GameObject.Find("P4Dursble");
+                var playerCanvas4 = GameObject.Find("P4PlayerCanvas");
+                DotPonText = playerCanvas4.GetComponentInChildren<ChangeDOTPON>();
+                DOTPONDursbleUI = playerCanvas4.GetComponent<DOTPONDursble>();
                 for (int i = 0; i < 3; i++)
                 {
                     useWeapon[i] = weapon[MultiPlayerManager.instance.P4Weapon[i]];
                 }
+                DotPonText.SetTexture(MultiPlayerManager.instance.P4Weapon);
                 break;
         }
         //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
         createNum = useWeapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
         value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
-        //DotPonText.GetComponent<ChangeDOTPON>().DrubleText(useWeapon[0].GetComponent<Weapon>().parametor.necessaryDot);
+        DotPonText.DrubleText(useWeapon[0].GetComponent<Weapon>().parametor.necessaryDot);
     }
     private void Update()
     {

@@ -25,6 +25,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         {
             saveCanvas.Add(Instantiate(playerCanvas, Vector3.zero, Quaternion.identity));
             saveCanvas[0].transform.parent = gameObject.transform;
+            saveCanvas[0].name = "P1PlayerCanvas" ;
             saveCanvas[0].GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
             saveCanvas[0].transform.localScale = Vector3.one;
         }
@@ -33,6 +34,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
             for (int i=0; i < playerNumber;i++) {
                 saveCanvas.Add(Instantiate(playerCanvas, canvasPosis[i], Quaternion.identity));
                 saveCanvas[i].transform.parent = gameObject.transform;
+                saveCanvas[i].name = "P" +  (i+1).ToString() + "PlayerCanvas";
                 saveCanvas[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(canvasPosis[i].x, canvasPosis[i].y, 0);
                 saveCanvas[i].transform.localScale = new Vector3(0.5f,0.5f,1);
             }

@@ -1296,6 +1296,10 @@ MonoBehaviour:
   - {fileID: 9119883394240359435}
   - {fileID: 9119883394446546304}
   - {fileID: 9119883394795608661}
+  childObjects:
+  - {fileID: 9119883393770148088}
+  - {fileID: 9119883393348656716}
+  - {fileID: 9119883394630754002}
   positions:
   - {fileID: 9119883393259230999}
   - {fileID: 9119883394394442464}
@@ -1304,6 +1308,13 @@ MonoBehaviour:
   - {fileID: 9119883394720008598}
   - {fileID: 9119883393569880642}
   i: 1
+  textures:
+  - {fileID: 2800000, guid: d88ce52ceaf3f3a478d16574f48f5b96, type: 3}
+  - {fileID: 2800000, guid: 53b85c43781a4144f9527668915cea99, type: 3}
+  - {fileID: 2800000, guid: 574b8fad39ddc6444a8183a401842755, type: 3}
+  - {fileID: 2800000, guid: fdea63d6ce7e9ae459a02274b025ee5b, type: 3}
+  - {fileID: 2800000, guid: 6fd021599b048e5478ddde0233467ae4, type: 3}
+  - {fileID: 2800000, guid: 42e61f6068955f147a0d4cfd2a25771a, type: 3}
   text: {fileID: 9119883394254641382}
 --- !u!1 &9119883394240359435
 GameObject:

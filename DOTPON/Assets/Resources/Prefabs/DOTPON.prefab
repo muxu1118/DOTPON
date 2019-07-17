@@ -653,6 +653,13 @@ MonoBehaviour:
   - {fileID: 289534090101818724}
   - {fileID: 289534091292462411}
   - {fileID: 289534091478717390}
+  childObjects:
+  - {fileID: 289534090207839566}
+  - {fileID: 289534091239799474}
+  - {fileID: 289534090472156258}
+  - {fileID: 289534090904222404}
+  - {fileID: 289534091649213053}
+  - {fileID: 289534090649949867}
   positions:
   - {fileID: 289534091600241418}
   - {fileID: 289534091039714392}
@@ -661,6 +668,13 @@ MonoBehaviour:
   - {fileID: 289534091497125973}
   - {fileID: 289534090610252877}
   i: 1
+  textures:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   text: {fileID: 289534091351734257}
 --- !u!114 &4616301572395209697
 MonoBehaviour:
@@ -674,7 +688,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593783ffe81a99b4ea291d4cc57b4f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNum: 0
   selectedObj: {fileID: 0}
+  weapons: 
   rawImages:
   - {fileID: 0}
   - {fileID: 0}

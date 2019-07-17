@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class ChangeDOTPON : MonoBehaviour
 {
     [SerializeField] private GameObject[] Objects;
+    [SerializeField] GameObject[] childObjects;
     [SerializeField] RectTransform[] positions;
     bool isMove = true;
     [SerializeField]int i;
     bool looping = false;
     int[] numbers = new int[3];
-
+    [SerializeField]Texture[] textures = new Texture[6];
     [SerializeField] Text text;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,14 @@ public class ChangeDOTPON : MonoBehaviour
         i = 15;
     }
     
+    public void SetTexture(List<int> texNum)
+    {
+        for (int i = 0; i < 3;i++)
+        {
+            childObjects[i].GetComponent<RawImage>().texture = textures[texNum[i]];
+        }
+    }
+
     public void DrubleText(int num)
     {
         text.text = num.ToString();
@@ -51,46 +60,46 @@ public class ChangeDOTPON : MonoBehaviour
             if (plus)
             {
                 Objects[num2].GetComponent<RawImage>().color = Color.Lerp(Objects[num2].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
-                Objects[num2].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num2].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
+                childObjects[num2].GetComponent<RawImage>().color = Color.Lerp(childObjects[num2].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
                 Objects[num2].transform.position = Vector3.MoveTowards(Objects[num2].transform.position, positions[1].position, i);
                 Objects[num2].transform.localScale = Vector3.Lerp(Objects[num2].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[num3].transform.SetAsFirstSibling();
                 Objects[num3].GetComponent<RawImage>().color = Color.Lerp(Objects[num3].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
-                Objects[num3].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num3].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                childObjects[num3].GetComponent<RawImage>().color = Color.Lerp(childObjects[num3].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
                 Objects[num3].transform.position = Vector3.MoveTowards(Objects[num3].transform.position, positions[0].position, i);
                 Objects[num3].transform.localScale = Vector3.Lerp(Objects[num3].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[num4].transform.position = Vector3.MoveTowards(Objects[num4].transform.position, positions[5].position, i);
                 Objects[num4].transform.localScale = Vector3.Lerp(Objects[num4].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[num5].transform.SetAsFirstSibling();
                 Objects[num5].GetComponent<RawImage>().color = Color.Lerp(Objects[num5].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
-                Objects[num5].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num5].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                childObjects[num5].GetComponent<RawImage>().color = Color.Lerp(childObjects[num5].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
                 Objects[num5].transform.position = Vector3.MoveTowards(Objects[num5].transform.position, positions[4].position, i);
                 Objects[num5].transform.localScale = Vector3.Lerp(Objects[num5].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[num6].GetComponent<RawImage>().color = Color.Lerp(Objects[num6].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
-                Objects[num6].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num6].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
+                childObjects[num6].GetComponent<RawImage>().color = Color.Lerp(childObjects[num6].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
                 Objects[num6].transform.position = Vector3.MoveTowards(Objects[num6].transform.position, positions[3].position, i);
                 Objects[num6].transform.localScale = Vector3.Lerp(Objects[num6].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
             }
             else
             {
                 Objects[num6].GetComponent<RawImage>().color = Color.Lerp(Objects[num6].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
-                Objects[num6].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num6].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
+                childObjects[num6].GetComponent<RawImage>().color = Color.Lerp(childObjects[num6].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
                 Objects[num6].transform.position = Vector3.MoveTowards(Objects[num6].transform.position, positions[3].position, i);
                 Objects[num6].transform.localScale = Vector3.Lerp(Objects[num6].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[num5].transform.SetAsFirstSibling();
                 Objects[num5].GetComponent<RawImage>().color = Color.Lerp(Objects[num5].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
-                Objects[num5].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num5].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                childObjects[num5].GetComponent<RawImage>().color = Color.Lerp(childObjects[num5].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
                 Objects[num5].transform.position = Vector3.MoveTowards(Objects[num5].transform.position, positions[4].position, i);
                 Objects[num5].transform.localScale = Vector3.Lerp(Objects[num5].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[num4].transform.position = Vector3.MoveTowards(Objects[num4].transform.position, positions[5].position, i);
                 Objects[num4].transform.localScale = Vector3.Lerp(Objects[num4].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[num3].transform.SetAsFirstSibling();
                 Objects[num3].GetComponent<RawImage>().color = Color.Lerp(Objects[num3].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
-                Objects[num3].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num3].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                childObjects[num3].GetComponent<RawImage>().color = Color.Lerp(childObjects[num3].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
                 Objects[num3].transform.position = Vector3.MoveTowards(Objects[num3].transform.position, positions[0].position, i);
                 Objects[num3].transform.localScale = Vector3.Lerp(Objects[num3].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[num2].GetComponent<RawImage>().color = Color.Lerp(Objects[num2].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
-                Objects[num2].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[num2].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
+                childObjects[num2].GetComponent<RawImage>().color = Color.Lerp(childObjects[num2].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
                 Objects[num2].transform.position = Vector3.MoveTowards(Objects[num2].transform.position, positions[1].position, i);
                 Objects[num2].transform.localScale = Vector3.Lerp(Objects[num2].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
             }
@@ -124,28 +133,28 @@ public class ChangeDOTPON : MonoBehaviour
             tim++;
             Objects[numbers[0]].transform.SetAsLastSibling();
             Objects[numbers[0]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[0]].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
-            Objects[numbers[0]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[0]].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
+            childObjects[numbers[0]].GetComponent<RawImage>().color = Color.Lerp(childObjects[numbers[0]].GetComponent<RawImage>().color, new Color(1, 1, 1, 1), Time.deltaTime * 20);
             Objects[numbers[0]].transform.position = Vector3.MoveTowards(Objects[numbers[0]].transform.position, positions[2].position, i);
             Objects[numbers[0]].transform.localScale = Vector3.Lerp(Objects[numbers[0]].transform.localScale, new Vector3(1, 1, 0), Time.deltaTime * 20);
             if (plus)
             {
                 Objects[numbers[1]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
-                Objects[numbers[1]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                childObjects[numbers[1]].GetComponent<RawImage>().color = Color.Lerp(childObjects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
                 Objects[numbers[1]].transform.position = Vector3.MoveTowards(Objects[numbers[1]].transform.position, positions[1].position, i * 2);
                 Objects[numbers[1]].transform.localScale = Vector3.Lerp(Objects[numbers[1]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[numbers[2]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
-                Objects[numbers[2]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                childObjects[numbers[2]].GetComponent<RawImage>().color = Color.Lerp(childObjects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
                 Objects[numbers[2]].transform.position = Vector3.MoveTowards(Objects[numbers[2]].transform.position, positions[3].position, i);
                 Objects[numbers[2]].transform.localScale = Vector3.Lerp(Objects[numbers[2]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
             }
             else
             {
                 Objects[numbers[2]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
-                Objects[numbers[2]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                childObjects[numbers[2]].GetComponent<RawImage>().color = Color.Lerp(childObjects[numbers[2]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
                 Objects[numbers[2]].transform.position = Vector3.MoveTowards(Objects[numbers[2]].transform.position, positions[3].position, i * 2);
                 Objects[numbers[2]].transform.localScale = Vector3.Lerp(Objects[numbers[2]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
                 Objects[numbers[1]].GetComponent<RawImage>().color = Color.Lerp(Objects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
-                Objects[numbers[1]].GetComponentInChildren<RawImage>().color = Color.Lerp(Objects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
+                childObjects[numbers[1]].GetComponent<RawImage>().color = Color.Lerp(childObjects[numbers[1]].GetComponent<RawImage>().color, new Color(1, 1, 1, 0.3f), Time.deltaTime * 20);
                 Objects[numbers[1]].transform.position = Vector3.MoveTowards(Objects[numbers[1]].transform.position, positions[1].position, i);
                 Objects[numbers[1]].transform.localScale = Vector3.Lerp(Objects[numbers[1]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
             }
