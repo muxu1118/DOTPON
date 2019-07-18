@@ -10,7 +10,11 @@ public class Dot_count : MonoBehaviour
         P1Text,
         P2Text,
         P3Text,
-        P4Text
+        P4Text,
+        P1Star,
+        P2Star,
+        P3Star,
+        P4Star
     }
     [SerializeField]
     DotText dotText;
@@ -62,6 +66,18 @@ public class Dot_count : MonoBehaviour
                 break;
             case DotText.P4Text:
                 Dot_Text.text = MultiPlayerManager.instance.P4Dot.ToString("00");
+                break;
+            case DotText.P1Star:
+                Dot_Text.text = MultiPlayerManager.instance.P1Star.ToString("00");
+                break;
+            case DotText.P2Star:
+                Dot_Text.text = MultiPlayerManager.instance.P2Star.ToString("00");
+                break;
+            case DotText.P3Star:
+                Dot_Text.text = MultiPlayerManager.instance.P3Star.ToString("00");
+                break;
+            case DotText.P4Star:
+                Dot_Text.text = MultiPlayerManager.instance.P4Star.ToString("00");
                 break;
         }
         

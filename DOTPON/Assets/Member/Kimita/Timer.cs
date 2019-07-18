@@ -84,7 +84,7 @@ public class Timer : MonoBehaviour
     IEnumerator EndCorutine()
     {
         textTime.text = "GameSet!!";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3.5f);
         FadeManager.Instance.LoadScene("ResultScene", 1.0f);
         Destroy(this);
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1097,7 +1097,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116732197}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &130676636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3957,7 +3957,7 @@ MonoBehaviour:
   spownDelay: 25
   MaxSpown: 10
   timer: {fileID: 462512757}
-  oneTimeSpownNum: 0
+  oneTimeSpownNum: 2
 --- !u!4 &656611928
 Transform:
   m_ObjectHideFlags: 0
@@ -4062,7 +4062,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664754626}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &666558730
 GameObject:
   m_ObjectHideFlags: 0
@@ -4297,7 +4297,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685084453}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &708516344
 GameObject:
   m_ObjectHideFlags: 0
@@ -4463,7 +4463,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735150769}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!1 &738810586
 GameObject:
   m_ObjectHideFlags: 0
@@ -4893,7 +4893,7 @@ PrefabInstance:
     - target: {fileID: 2218328021391442916, guid: 8f62c6308e9e36548b53f309f5c7b40e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: 2218328021391442916, guid: 8f62c6308e9e36548b53f309f5c7b40e,
         type: 3}
@@ -4943,22 +4943,22 @@ PrefabInstance:
     - target: {fileID: 8636554824014378386, guid: 8f62c6308e9e36548b53f309f5c7b40e,
         type: 3}
       propertyPath: timeCount
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2218328021363342434, guid: 8f62c6308e9e36548b53f309f5c7b40e,
         type: 3}
       propertyPath: timeCount
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2218328021950522434, guid: 8f62c6308e9e36548b53f309f5c7b40e,
         type: 3}
       propertyPath: timeCount
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2218328022353865156, guid: 8f62c6308e9e36548b53f309f5c7b40e,
         type: 3}
       propertyPath: timeCount
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f62c6308e9e36548b53f309f5c7b40e, type: 3}
@@ -10002,7 +10002,6 @@ MonoBehaviour:
   StartPanel: {fileID: 0}
   WeaponPanel: {fileID: 0}
   selectObj: {fileID: 0}
-  selectedObj: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &1793447680
 MonoBehaviour:

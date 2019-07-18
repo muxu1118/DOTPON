@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
         if(this.gameObject.name == "slime")
         {
             var slime = GetComponentInChildren<MeshRenderer>();
-            slime.material.color = new Color(0, 0, 0);
+            //slime.material.color = new Color(0, 0, 0);
         }
         else if(this.gameObject.name == "goburin")
         {

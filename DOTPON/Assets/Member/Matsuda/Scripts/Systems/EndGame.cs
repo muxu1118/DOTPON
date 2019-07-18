@@ -28,11 +28,12 @@ public class EndGame : MonoBehaviour
         Debug.Log("EndEndCoroutineNow");
         trigger = true;
         float time = 0;
-        while (time <= 10)
+        while (time <=5)
         {
             this.gameObject.GetComponent<RectTransform>().localPosition += new Vector3(0,-8,0);
             time += Time.deltaTime;
             yield return null;
         }
+        this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 900, 0);
     }
 }

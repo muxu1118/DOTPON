@@ -77,6 +77,7 @@ public class PlayTest : MonoBehaviour
         List<GameObject> selectObjs = new List<GameObject>();
         float screenX = Screen.width;
         float screenY = Screen.height;
+        Debug.Log(screenX+"+"+screenY);
         int players = MultiPlayerManager.instance.totalPlayer;
         for (int i = 0; i < players; i++)
         {

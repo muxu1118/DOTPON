@@ -114,7 +114,7 @@ public class WeaponCreate : MonoBehaviour
                     trigger = false;
                     player.isAction = true;
                     StartCoroutine(player.ActionWait(2.5f));
-                    DOTPONDursbleUI.GetComponent<DOTPONDursble>().SetDursble(value);
+                    //DOTPONDursbleUI.GetComponent<DOTPONDursble>().SetDursble(value);
                 }
                 else
                 {
@@ -142,7 +142,7 @@ public class WeaponCreate : MonoBehaviour
                                 break;
                         }
                     }
-                    DOTPONDursbleUI.GetComponent<DOTPONDursble>().ResetDursble();
+                    //DOTPONDursbleUI.GetComponent<DOTPONDursble>().ResetDursble();
                 }
                 break;     
                 
