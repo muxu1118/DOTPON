@@ -19,6 +19,7 @@ public class WeaponCreate : MonoBehaviour
     int createNum = 0;
     GameObject DotPonText;
     GameObject DOTPONDursbleUI;
+    Pizza pizza;
 
     //DTOPONの耐久値
     int value;
@@ -30,29 +31,49 @@ public class WeaponCreate : MonoBehaviour
     {
         player = GetComponent<Player>();
         weaponNumber = weapon.Length;
-        switch (player.own)
+        List<GameObject> UI = new List<GameObject>();
+        UI = GameObject.Find("Canvas").GetComponent<UIManager>().saveCanvas;
+        foreach (Transform child in UI[(int)player.own].transform)
         {
-            case Player.PlayerKind.Player1:
-                DotPonText = GameObject.Find("P1DOTPON");
-                DOTPONDursbleUI = GameObject.Find("P1Dursble");
-                break;
-            case Player.PlayerKind.Player2:
-                DotPonText = GameObject.Find("P2DOTPON");
-                DOTPONDursbleUI = GameObject.Find("P2Dursble");
-                break;
-            case Player.PlayerKind.Player3:
-                DotPonText = GameObject.Find("P3DOTPON");
-                DOTPONDursbleUI = GameObject.Find("P3Dursble");
-                break;
-            case Player.PlayerKind.Player4:
-                DotPonText = GameObject.Find("P4DOTPON");
-                DOTPONDursbleUI = GameObject.Find("P4Dursble");
-                break;
+            if(child.gameObject.name == "P1DOTPON")
+            {
+                DotPonText = child.gameObject;
+            }
+            if (child.gameObject.name == "P1Dursble")
+            {
+                DOTPONDursbleUI = child.gameObject;
+            }
+        }
+        //switch (player.own)
+        //{
+        //    case Player.PlayerKind.Player1:
+        //        DotPonText = GameObject.Find("P1DOTPON");
+        //        DOTPONDursbleUI = GameObject.Find("P1Dursble");
+        //        break;
+        //    case Player.PlayerKind.Player2:
+        //        DotPonText = GameObject.Find("P2DOTPON");
+        //        DOTPONDursbleUI = GameObject.Find("P2Dursble");
+        //        break;
+        //    case Player.PlayerKind.Player3:
+        //        DotPonText = GameObject.Find("P3DOTPON");
+        //        DOTPONDursbleUI = GameObject.Find("P3Dursble");
+        //        break;
+        //    case Player.PlayerKind.Player4:
+        //        DotPonText = GameObject.Find("P4DOTPON");
+        //        DOTPONDursbleUI = GameObject.Find("P4Dursble");
+        //        break;
+        //}
+        foreach(Transform child in DotPonText.transform)
+        {
+            if(child.gameObject.name == "Pizza")
+            {
+                pizza = child.gameObject.GetComponent<Pizza>();
+            }
         }
         //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
         createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
         value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
-        DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[0].GetComponent<Weapon>().parametor.necessaryDot);
+        //DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[0].GetComponent<Weapon>().parametor.necessaryDot);
     }
     private void Update()
     {
@@ -88,7 +109,8 @@ public class WeaponCreate : MonoBehaviour
                     trigger = false;
                     player.isAction = true;
                     StartCoroutine(player.ActionWait(2.5f));
-                    DOTPONDursbleUI.GetComponent<DOTPONDursble>().SetDursble(value);
+                    //DOTPONDursbleUI.GetComponent<DOTPONDursble>().SetDursble(value);
+                    pizza.PizzaUI(weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 }
                 else
                 {
@@ -116,7 +138,7 @@ public class WeaponCreate : MonoBehaviour
                                 break;
                         }
                     }
-                    DOTPONDursbleUI.GetComponent<DOTPONDursble>().ResetDursble();
+                    //DOTPONDursbleUI.GetComponent<DOTPONDursble>().ResetDursble();
                 }
                 break;     
                 
@@ -131,6 +153,7 @@ public class WeaponCreate : MonoBehaviour
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
                 DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,true);
                 DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                pizza.PizzaChange(PlayerDot(), weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
                 Debug.Log(weaponType);
                 break;
@@ -150,9 +173,28 @@ public class WeaponCreate : MonoBehaviour
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
                 DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,false);
                 DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                pizza.PizzaChange(PlayerDot(), weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
                 createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
                 break;
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    private int PlayerDot()
+    {
+        switch (player.own)
+        {
+            case Player.PlayerKind.Player1:
+                return MultiPlayerManager.instance.P1Dot;
+            case Player.PlayerKind.Player2:
+                return MultiPlayerManager.instance.P2Dot;
+            case Player.PlayerKind.Player3:
+                return MultiPlayerManager.instance.P3Dot;
+            case Player.PlayerKind.Player4:
+                return MultiPlayerManager.instance.P4Dot;
+            default:return 0;
         }
     }
 
@@ -222,7 +264,7 @@ public class WeaponCreate : MonoBehaviour
             Debug.Log("残り耐久値 = " + value);
         }
         DOTPONDursbleUI.GetComponent<DOTPONDursble>().DownDursbleUI();
-        DOTPONDursbleUI.GetComponent<DOTPONDursble>().PizzaUI(nowWeapon.GetComponent<Weapon>().parametor.durableValue);
+        pizza.PizzaUI(nowWeapon.GetComponent<Weapon>().parametor.durableValue);
     }
 
     //死んだときに武器を初期化

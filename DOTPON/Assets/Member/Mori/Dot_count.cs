@@ -27,7 +27,6 @@ public class Dot_count : MonoBehaviour
     {
         count = 10;
         Dot_Text = GetComponent<Text>();
-        Debug.Log(Dot_Text);
     }
 
     // Update is called once per frame

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : SingletonMonoBehaviour<UIManager>
+public class UIManager : MonoBehaviour
 {
     int playerNumber; // プレイヤーの数を補完
     // プレイヤーのキャンバス
@@ -12,7 +12,7 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     // Canvasの位置
     List<Vector2> canvasPosis = new List<Vector2>();
     // 出したキャンバスを保存する場所
-    List<GameObject> saveCanvas = new List<GameObject>();
+    public List<GameObject> saveCanvas = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
