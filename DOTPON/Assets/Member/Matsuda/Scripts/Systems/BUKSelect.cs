@@ -27,7 +27,7 @@ public class BUKSelect : MonoBehaviour
     public player playerNum = 0;
     int padNum ;
 
-    [HideInInspector] public SelectedUI selectedObj;
+    public SelectedUI selectedObj;
     List<GameObject> objs = new List<GameObject>();
     public List<int> weapons = new List<int>();
     [SerializeField]

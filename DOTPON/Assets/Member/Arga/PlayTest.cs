@@ -16,7 +16,7 @@ public class PlayTest : MonoBehaviour
     [SerializeField]
     GameObject selectObj;
     [SerializeField]
-    GameObject selectedObj;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -84,57 +84,88 @@ public class PlayTest : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    objs[i].GetComponent<BUKSelect>().playerNum = BUKSelect.player.player1;
+                    objs[i].GetComponentInChildren<BUKSelect>().playerNum = BUKSelect.player.player1;
                     break;
                 case 1:
-                    objs[i].GetComponent<BUKSelect>().playerNum = BUKSelect.player.player2;
+                    objs[i].GetComponentInChildren<BUKSelect>().playerNum = BUKSelect.player.player2;
                     break;
                 case 2:
-                    objs[i].GetComponent<BUKSelect>().playerNum = BUKSelect.player.player3;
+                    objs[i].GetComponentInChildren<BUKSelect>().playerNum = BUKSelect.player.player3;
                     break;
                 case 3:
-                    objs[i].GetComponent<BUKSelect>().playerNum = BUKSelect.player.player4;
+                    objs[i].GetComponentInChildren<BUKSelect>().playerNum = BUKSelect.player.player4;
                     break;
             }
             objs[i].transform.parent = GameObject.Find("WeaponPanel").transform;
             objs[i].GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
-            selectObjs.Add(Instantiate(selectedObj));
+            selectObjs.Add(objs[i].GetComponentInChildren<ChangeDOTPON>().gameObject);
             selectObjs[i].name = "P" + i + "Select";
-            selectObjs[i].transform.parent = GameObject.Find("WeaponPanel").transform;
-            objs[i].GetComponent<BUKSelect>().selectedObj = selectObjs[i].GetComponent<SelectedUI>();
+            objs[i].GetComponentInChildren<BUKSelect>().selectedObj = objs[i].GetComponentInChildren<SelectedUI>();
         }
         switch (players)
         {
             case 1:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(0, screenY * 2 / 3 - screenY / 2, 0);
-                selectObjs[0].GetComponent<RectTransform>().localPosition = new Vector3(0, screenY * 4 / 5 -screenY / 2, 0);
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(0, 50, 0);
+                Instantiate(player, new Vector3(0, 1, 0), Quaternion.identity).name = "Player1";
                 break;
             case 2:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 4 - screenX / 2, 100, 0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 4 + screenX / 2, 100, 0);
-                
-                selectObjs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 4 - screenX / 2, 200, 0);
-                selectObjs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 4 + screenX / 2, 200, 0);
+
+                var obj1 = Instantiate(player, new Vector3(2f,1, 0), Quaternion.identity);
+                var obj2 = Instantiate(player, new Vector3(-2f, 1, 0), Quaternion.identity);
+                obj1.name = "Player1";
+                obj2.name = "Player2";
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj1.transform.position).x - screenX / 2, 50, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj2.transform.position).x - screenX / 2, 50, 0);
+                Debug.Log(Camera.main.WorldToScreenPoint(obj1.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj1.transform.position));
+                Debug.Log(Camera.main.WorldToScreenPoint(obj2.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj2.transform.position));
                 break;
             case 3:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 5 - screenX / 2,100 , 0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(0, 100, 0);
-                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 5 + screenX / 2, 100, 0);
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 5,50 , 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(0, 50, 0);
+                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 5, 50, 0);
+                objs[0].transform.localScale = objs[0].transform.localScale * 0.8f;
+                objs[1].transform.localScale = objs[1].transform.localScale * 0.8f;
+                objs[2].transform.localScale = objs[2].transform.localScale * 0.8f;
 
-                selectObjs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 5 - screenX / 2, 200, 0);
-                selectObjs[1].GetComponent<RectTransform>().localPosition = new Vector3(0, 200, 0);
-                selectObjs[2].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 5 + screenX / 2, 200, 0);
+                var obj3 = Instantiate(player, new Vector3(3f, 1, 0), Quaternion.identity);
+                var obj4 = Instantiate(player, new Vector3(0, 1, 0), Quaternion.identity);
+                var obj5 = Instantiate(player, new Vector3(-3f, 1, 0), Quaternion.identity);
+                obj3.name = "Player1";
+                obj4.name = "Player2";
+                obj5.name = "Player3";
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj3.transform.position).x - screenX / 2, 50, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj4.transform.position).x - screenX / 2, 50, 0);
+                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj5.transform.position).x - screenX / 2, 50, 0);
+                Debug.Log(Camera.main.WorldToScreenPoint(obj3.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj3.transform.position));
+                Debug.Log(Camera.main.WorldToScreenPoint(obj4.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj4.transform.position));
+                Debug.Log(Camera.main.WorldToScreenPoint(obj5.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj5.transform.position));
                 break;
             case 4:
-                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 8 - screenX / 2, 100, 0);
-                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX * 5 / 8 + screenX / 2, 100, 0);
-                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(screenX * 5 / 8 - screenX / 2, 100, 0);
-                objs[3].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 8 + screenX / 2, 100, 0);
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 8, 50, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX * 5 / 8, 50, 0);
+                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(screenX * 5 / 8, 50, 0);
+                objs[3].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 8, 50, 0);
+                objs[0].transform.localScale = objs[0].transform.localScale * 0.6f;
+                objs[1].transform.localScale = objs[1].transform.localScale * 0.6f;
+                objs[2].transform.localScale = objs[2].transform.localScale * 0.6f;
+                objs[3].transform.localScale = objs[3].transform.localScale * 0.6f;
 
-                selectObjs[0].GetComponent<RectTransform>().localPosition = new Vector3(screenX / 8 - screenX / 2, 300, 0);
-                selectObjs[1].GetComponent<RectTransform>().localPosition = new Vector3(-screenX * 5 / 8 + screenX / 2, 300, 0);
-                selectObjs[2].GetComponent<RectTransform>().localPosition = new Vector3(screenX * 5 / 8 - screenX / 2, 300, 0);
-                selectObjs[3].GetComponent<RectTransform>().localPosition = new Vector3(-screenX / 8 + screenX / 2, 300, 0);
+                var obj6 = Instantiate(player, new Vector3(3f, 1, 0), Quaternion.identity);
+                var obj7 = Instantiate(player, new Vector3(1, 1, 0), Quaternion.identity);
+                var obj8 = Instantiate(player, new Vector3(-1f, 1, 0), Quaternion.identity);
+                var obj9 = Instantiate(player, new Vector3(-3, 1, 0), Quaternion.identity);
+                obj6.name = "Player1";
+                obj7.name = "Player2";
+                obj8.name = "Player3";
+                obj9.name = "Player4";
+                objs[0].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj6.transform.position).x - screenX / 2, 50, 0);
+                objs[1].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj7.transform.position).x - screenX / 2, 50, 0);
+                objs[2].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj8.transform.position).x - screenX / 2, 50, 0);
+                objs[3].GetComponent<RectTransform>().localPosition = new Vector3(Camera.main.WorldToScreenPoint(obj9.transform.position).x - screenX / 2, 50, 0);
+                Debug.Log(Camera.main.WorldToScreenPoint(obj6.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj6.transform.position));
+                Debug.Log(Camera.main.WorldToScreenPoint(obj7.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj7.transform.position));
+                Debug.Log(Camera.main.WorldToScreenPoint(obj8.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj8.transform.position));
+                Debug.Log(Camera.main.WorldToScreenPoint(obj9.transform.position) + " & " + Camera.main.ScreenToWorldPoint(obj9.transform.position));
                 break;
         }
     }
