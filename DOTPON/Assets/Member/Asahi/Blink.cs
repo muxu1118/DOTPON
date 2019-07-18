@@ -11,13 +11,13 @@ public class Blink : MonoBehaviour
     [SerializeField]
     float blinkTime = 10.0f;
     //点滅させる画像
-    SpriteRenderer blinkImage;
+    Image blinkImage;
     
 
     // Start is called before the first frame update
     void Start(){
         //spriteを取得して透明にする
-        blinkImage = this.gameObject.GetComponent<SpriteRenderer>();
+        blinkImage = this.gameObject.GetComponent<Image>();
         blinkImage.color = new Color(255, 255, 255, 0);
         //Timerタグのついたobjectからtimerを取得する
         if(!GameObject.FindGameObjectWithTag("Timer")){ Debug.LogError("timerがないぞ！"); return; }
