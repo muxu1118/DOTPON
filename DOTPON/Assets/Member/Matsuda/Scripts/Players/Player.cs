@@ -135,21 +135,25 @@ public class Player : MonoBehaviour
                 case PlayerKind.Player1:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P1Star++;
+                    StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P2Star++;
+                    StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P3Star++;
+                    StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P4Star++;
+                    StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
                 default:
@@ -188,11 +192,49 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && trigger)
         {
-            
+            // Towerでスターの生成
+            switch (own)
+            {
+                case PlayerKind.Player1:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    MultiPlayerManager.instance.P1Star++;
+                    StarInit();
+                    //Debug.Log(MultiPlayerManager.instance.P1Dot);
+                    break;
+                case PlayerKind.Player2:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    MultiPlayerManager.instance.P2Star++;
+                    StarInit();
+                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                    break;
+                case PlayerKind.Player3:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    MultiPlayerManager.instance.P3Star++;
+                    StarInit();
+                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                    break;
+                case PlayerKind.Player4:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    MultiPlayerManager.instance.P4Star++;
+                    StarInit();
+                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                    break;
+                default:
+                    Debug.LogError("よばれちゃいけんのやぞ");
+                    break;
+            }
         }
     }
+    private void StarInit()
+    {
+        GameObject obj = StarManager.instance.InstanceStar();
+        obj.GetComponent<Move>().enabled = false;
+        obj.GetComponent<Star>().DestroyObject(this.transform);
+    }
+
+
     /// <summary>
     /// プレイヤーがダメージを受けた時の処理
     /// </summary>
@@ -364,7 +406,7 @@ public class Player : MonoBehaviour
             }
             other.GetComponent<Dot>().DestroyObject();
         }
-        if (other.gameObject.name == "Star")
+        if (other.gameObject.tag == "Star")
         {
             switch (own)
             {
@@ -388,11 +430,11 @@ public class Player : MonoBehaviour
                     Debug.LogError("よばれちゃいけんのやぞ");
                     break;
             }
-            other.GetComponent<Star>().DestroyObject();
+            other.GetComponent<Move>().enabled = false;
+            other.GetComponent<Star>().DestroyObject(this.transform);
         }
         if (other.gameObject.tag == "Tower")
         {
-
             trigger = true;
         }
     }

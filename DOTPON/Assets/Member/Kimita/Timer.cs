@@ -22,17 +22,21 @@ public class Timer : MonoBehaviour
     // サブ時間
     float subTime = 0;
 
+    //最初のカウントダウン用bool
+    bool isCountDown = true;
+
     // Start is called before the first frame update
     void Start()
     {
         textTime = GetComponent<Text>();
         textTime.text = "残り時間 " + ((int)(timeCount/60)).ToString()+":"+ ((int)(timeCount % 60)).ToString("00");
-        
+        StartCoroutine(CountDown());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isCountDown) return;
         // 毎秒数える
         timeCount -= Time.deltaTime;
         subTime += Time.deltaTime;
@@ -57,15 +61,31 @@ public class Timer : MonoBehaviour
         if (limitTime >= timeCount)
         {
             // ゲーム終了
+            var i = GameObject.Find("EndImage");
+            i.GetComponent<EndGame>().EndMainGame();
             // リザルト画面に移動
             StartCoroutine(EndCorutine());
         }
     }
 
+    IEnumerator CountDown()
+    {
+        textTime.text = "3";
+        yield return new WaitForSeconds(1);
+        textTime.text = "2";
+        yield return new WaitForSeconds(1);
+        textTime.text = "1";
+        yield return new WaitForSeconds(1);
+        textTime.text = "Start!!";
+        yield return new WaitForSeconds(1);
+        isCountDown = false;
+    }
+
     IEnumerator EndCorutine()
     {
         textTime.text = "GameSet!!";
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(2);
+        yield return new WaitForSeconds(3.5f);
+        FadeManager.Instance.LoadScene("ResultScene", 1.0f);
+        Destroy(this);
     }
 }

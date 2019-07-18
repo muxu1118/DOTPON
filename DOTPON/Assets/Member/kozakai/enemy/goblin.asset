@@ -15,6 +15,7 @@ MonoBehaviour:
   HP: 2
   dropDot: 4
   attackPow: 1
+  attackWait: 3
   speed: 3
   rotateTime: 2
   rotateAngle: 90
