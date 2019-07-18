@@ -248,6 +248,7 @@ public class WeaponCreate : MonoBehaviour
             Debug.Log("残り耐久値 = " + value);
         }
         DOTPONDursbleUI.GetComponent<DOTPONDursble>().DownDursbleUI();
+        DOTPONDursbleUI.GetComponent<DOTPONDursble>().PizzaUI(nowWeapon.GetComponent<Weapon>().parametor.durableValue);
     }
 
     //死んだときに武器を初期化

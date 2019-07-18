@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class DOTPONDursble : MonoBehaviour
 {
     int Dursble;
+    int[] DotPonDuesbleParamater = new int[10];
     [SerializeField]RawImage[] DursbleUI;
+    [SerializeField]
+    Image pizza;//　ピザのUI
     public void SetDursble(int i)
     {
         Dursble = i;
@@ -21,6 +24,13 @@ public class DOTPONDursble : MonoBehaviour
         {
             raw.color = new Color(1, 1, 1, 0);
         }
+    }
+
+    public void PizzaUI(int n)
+    {
+        Dursble = n;
+        pizza.fillAmount =1-( 1 / Dursble);
+
     }
 
     public void DownDursbleUI()
