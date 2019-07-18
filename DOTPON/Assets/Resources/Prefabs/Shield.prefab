@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5148757791764298396}
   - component: {fileID: 8596513981787053484}
   m_Layer: 0
-  m_Name: shield
+  m_Name: Shield
   m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,8 +140,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Size: {x: 1, y: 1, z: 0.21345082}
+  m_Center: {x: 0, y: 0, z: 0.043274596}
 --- !u!114 &8596513981787053484
 MonoBehaviour:
   m_ObjectHideFlags: 0
