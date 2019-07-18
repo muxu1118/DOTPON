@@ -137,6 +137,7 @@ MonoBehaviour:
   - {fileID: 9084008112476981755}
   - {fileID: 8762632198228029179}
   - {fileID: 6884955107443824092}
+  pizza: {fileID: 0}
 --- !u!1 &2815794926292222360
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ GameObject:
   - component: {fileID: 5227745154854548855}
   - component: {fileID: 4344751752469567769}
   m_Layer: 5
-  m_Name: P1StarText
+  m_Name: StarText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,7 +460,7 @@ GameObject:
   - component: {fileID: 7135882152293991445}
   - component: {fileID: 8688339352506279285}
   m_Layer: 5
-  m_Name: P1DotText
+  m_Name: DotText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Dot_count : MonoBehaviour
 {
-    enum DotText
+    public enum DotText
     {
-        P1Text,
+        P1Text = 0,
         P2Text,
         P3Text,
         P4Text,
@@ -16,8 +16,7 @@ public class Dot_count : MonoBehaviour
         P3Star,
         P4Star
     }
-    [SerializeField]
-    DotText dotText;
+    public DotText dotText;
 
     private Text Dot_Text;
     

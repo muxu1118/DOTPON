@@ -31,10 +31,30 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         else
         {
             for (int i=0; i < playerNumber;i++) {
+               
                 saveCanvas.Add(Instantiate(playerCanvas, canvasPosis[i], Quaternion.identity));
                 saveCanvas[i].transform.parent = gameObject.transform;
                 saveCanvas[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(canvasPosis[i].x, canvasPosis[i].y, 0);
                 saveCanvas[i].transform.localScale = new Vector3(0.5f,0.5f,1);
+                // プレイヤーごとにドットとスターを設定する
+                foreach (Transform Child in saveCanvas[i].transform)
+                {
+                    foreach (Transform child in Child.transform)
+                    {
+                        if (null != child.GetComponent<Dot_count>())
+                        {
+                            if (child.gameObject.name == "DotText")
+                            {
+                                child.GetComponent<Dot_count>().dotText = (Dot_count.DotText)i;
+
+                            }
+                            else if (child.gameObject.name == "StarText")
+                            {
+                                child.GetComponent<Dot_count>().dotText = (Dot_count.DotText)(i + 4);
+                            }
+                        }
+                    }
+                }
             }
         }
         //switch (playerNumber)
