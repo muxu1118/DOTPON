@@ -285,6 +285,7 @@ public class Player : MonoBehaviour
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
             animator.SetTrigger("Hit");
+            //animator.SetBool("Trigger" ,isAction);
             //shieldCheck = false;
         }
     }
@@ -309,9 +310,9 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator AttackWait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.3f);
         isAction = false;
@@ -324,7 +325,7 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator FarAttackWait(GameObject obj)
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.65f);
         obj.GetComponent<FarAttack>().PosMove2(farAtkDistance);
         isAction = false;
     }
