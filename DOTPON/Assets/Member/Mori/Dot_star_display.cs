@@ -48,16 +48,16 @@ public class Dot_star_display : MonoBehaviour
         switch (starText)
         {
             case StarText.P1Text:
-                Star_Text.text = "×" + MultiPlayerManager.instance.P1Star.ToString("0");
+                Star_Text.text = MultiPlayerManager.instance.P1Star.ToString("0");
                 break;
             case StarText.P2Text:
-                Star_Text.text = "×" + MultiPlayerManager.instance.P2Star.ToString("0");
+                Star_Text.text = MultiPlayerManager.instance.P2Star.ToString("0");
                 break;
             case StarText.P3Text:
-                Star_Text.text = "×" + MultiPlayerManager.instance.P3Star.ToString("0");
+                Star_Text.text = MultiPlayerManager.instance.P3Star.ToString("0");
                 break;
             case StarText.P4Text:
-                Star_Text.text = "×" + MultiPlayerManager.instance.P4Star.ToString("0");
+                Star_Text.text = MultiPlayerManager.instance.P4Star.ToString("0");
                 break;
         }
     }
