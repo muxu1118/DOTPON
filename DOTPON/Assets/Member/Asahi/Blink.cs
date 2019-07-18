@@ -26,7 +26,7 @@ public class Blink : MonoBehaviour
 
     // Update is called once per frame
     private void LateUpdate(){
-        if (timer.timeCount <= blinkTime){
+        if (timer.timeCount <= blinkTime && blinkTime > 0){
             blinkTime -= 1.0f;
             StartCoroutine(BlinkCoroutine());
         }
