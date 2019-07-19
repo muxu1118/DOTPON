@@ -8,8 +8,6 @@ public class DOTPONDursble : MonoBehaviour
     int Dursble;
     int[] DotPonDuesbleParamater = new int[10];
     [SerializeField]RawImage[] DursbleUI;
-    [SerializeField]
-    Image pizza;//　ピザのUI
     public void SetDursble(int i)
     {
         Dursble = i;
@@ -26,12 +24,7 @@ public class DOTPONDursble : MonoBehaviour
         }
     }
 
-    public void PizzaUI(int n)
-    {
-        Dursble = n;
-        pizza.fillAmount =1-( 1 / Dursble);
-
-    }
+    
 
     public void DownDursbleUI()
     {
