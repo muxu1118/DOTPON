@@ -22,8 +22,8 @@ public class Dragon : Enemy
         {
             isAction = true;
             //回転のコルーチンを呼び出す
-            StartCoroutine(Rotating(parameter.rotateAngle /parameter.rotateTime, parameter.rotateTime * 60));
-            StartCoroutine(WaitTime(parameter.rotateTime));
+            StartCoroutine(Rotating(parameter.rotateAngle /parameter.rotateTime, parameter.rotateTime));
+            StartCoroutine(WaitTime(parameter.rotateTime,false));
             time = 0;
         }
         vector = transform.forward;
@@ -50,14 +50,14 @@ public class Dragon : Enemy
             //スタンプ攻撃
             bukiObj[0].SetActive(true);
             bukiObj[0].GetComponent<Animator>().SetTrigger("Attack");
-            StartCoroutine(WaitTime(1.5f));
+            StartCoroutine(WaitTime(1.5f,false));
         }
         else if (dis <= parameter.distance)
         {
             //ブレス攻撃
             bukiObj[1].SetActive(true);
             bukiObj[1].GetComponent<Animator>().SetTrigger("Attack2");
-            StartCoroutine(WaitTime(2f));
+            StartCoroutine(WaitTime(2f,false));
         }
         StartCoroutine(Active(1.5f));
     }

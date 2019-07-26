@@ -38,15 +38,15 @@ public class Goburin : Enemy
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
         if (isAction || transform.localPosition.y >= 0 ) return;
+        time += Time.deltaTime;
         this.transform.localPosition += vector * parameter.speed / 100;
         if (time > parameter.lookAngleChangeTime && !isLooking)
         {
             isAction = true;
             //回転のコルーチンを呼び出す
-            StartCoroutine(Rotating(parameter.rotateAngle,parameter.rotateTime * 60));
-            StartCoroutine(WaitTime(parameter.rotateTime));
+            StartCoroutine(Rotating(parameter.rotateAngle,parameter.rotateTime));
+            StartCoroutine(WaitTime(parameter.rotateTime,false));
             time = 0;
         }
         vector = transform.forward;
@@ -92,7 +92,7 @@ public class Goburin : Enemy
             {
                 isAction = true;
                 Attack();
-                StartCoroutine(WaitTime(parameter.attackWait));
+                StartCoroutine(WaitTime(parameter.attackWait,false));
             }else if (dis <= parameter.distance * 2)
             {
                 stayLooking = true;
