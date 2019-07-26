@@ -118,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5128620980534086081}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17401746, y: 0.536, z: -2.29}
+  m_LocalPosition: {x: 0.17401746, y: 1.26, z: -2.29}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 5128620979251811404}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 5208159603985359965}
   m_Layer: 0
   m_Name: buki
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,10 +402,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5128620980534384033}
     m_Modifications:
-    - target: {fileID: 100004, guid: 9200852514119c643a26acce32d69510, type: 3}
-      propertyPath: m_Name
-      value: goburin_walk
-      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 9200852514119c643a26acce32d69510, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -449,6 +445,10 @@ PrefabInstance:
     - target: {fileID: 400004, guid: 9200852514119c643a26acce32d69510, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9200852514119c643a26acce32d69510, type: 3}
+      propertyPath: m_Name
+      value: goburin_walk
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9200852514119c643a26acce32d69510, type: 3}

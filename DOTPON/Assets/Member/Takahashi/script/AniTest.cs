@@ -32,14 +32,15 @@ public class AniTest : MonoBehaviour
         hash = Animator.StringToHash("NotMove");
         //farAttack = this.gameObject.GetComponent<FarAttack>();
         //farAttack.PosMove2();
-        sph = GetComponent<SphereCollider>();
-        sph.radius = 1.5f;
+        //sph = GetComponent<SphereCollider>();
+        //sph.radius = 1.5f;
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.LogWarning("こいつが出たらヤバイ");
         //攻撃ボタンを押したときの処理
         if(Input.GetKeyDown(KeyCode.A))
         {
@@ -60,25 +61,38 @@ public class AniTest : MonoBehaviour
             }            
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
+        if (Input.GetKeyDown(KeyCode.S))
         {
+            //anim.speed = 2.0f;
             anim.SetTrigger("ShieldAttack");
         }
-        if (Input.GetKeyDown(KeyCode.D) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
+        if (Input.GetKeyUp(KeyCode.S))
         {
+            anim.SetTrigger("ShieldGuard");
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            //anim.SetFloat("X", 1);
             anim.SetTrigger("Create");
         }
-        if (Input.GetKeyDown(KeyCode.F) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            anim.SetTrigger("Hit");
+            //anim.SetTrigger("AxAttack");
+            anim.SetFloat("Speed", 0.4f);
         }
-        if (Input.GetKeyDown(KeyCode.G) && anim.GetCurrentAnimatorStateInfo(0).tagHash != hash)
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            //anim.SetTrigger("AxAttack");
+            anim.SetFloat("Speed", 0.8f);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
         {
             anim.SetTrigger("SwordAttack");
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            anim.SetTrigger("AxAttack");
+            //anim.SetTrigger("AxAttack");
         }        
     }
 }

@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     //プレイヤーを攻撃する関数
     protected void Attack()
     {
-
+        
         if (gameObject.name == "golem" || gameObject.name == "Dragom(clone)")
         {
             buki.GetComponent<Animator>().SetTrigger("Attack");
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
         if(this.gameObject.name == "slime")
         {
             var slime = GetComponentInChildren<MeshRenderer>();
-            slime.material.color = new Color(0, 0, 0);
+            //slime.material.color = new Color(0, 0, 0);
         }
         else if(this.gameObject.name == "goburin")
         {
@@ -115,11 +115,11 @@ public class Enemy : MonoBehaviour
     public IEnumerator WaitTime(float time)
     {
         yield return new WaitForSeconds(time);
-        isAction = false; if (this.gameObject.name == "slime")
+        if (this.gameObject.name == "")
         {
             GetComponentInChildren<MeshRenderer>().material.color = new Color(1,1,1);
         }
-        else if (this.gameObject.name == "goburin")
+        else if (this.gameObject.name == "goburin" || this.gameObject.name == "slime")
         {
             SkinnedMeshRenderer[] gob = GetComponentsInChildren<SkinnedMeshRenderer>();
             foreach (SkinnedMeshRenderer skin in gob)
@@ -127,6 +127,7 @@ public class Enemy : MonoBehaviour
                 skin.material.color = new Color(1,1,1);
             }
         }
+        isAction = false;
         yield break;
     }
 }

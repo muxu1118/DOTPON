@@ -31,14 +31,13 @@ public class Player : MonoBehaviour
     int farAtkDistance = 3;
 
     public bool isAction;
+    bool shieldCheck = false;  //盾を構えているか構えていないかのフラグ
 
     // コントローラーに対応する番号
     int padNum;
 
     Animator animator;
-
     WeaponCreate create;
-
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +96,20 @@ public class Player : MonoBehaviour
             PlayerMove(new Vector3(5, 0, 0));
         }
         */
+        //盾を構えてい時ボタンを離したらIdlingに戻す
+        if(shieldCheck == true)
+        {
+            if (Input.GetKeyUp("joystick " + padNum + " button 1"))
+            {
+                shieldCheck = false;
+                GetComponent<MoveController>().shieldStart(false);
+                animator.SetTrigger("ShieldGuard");
+            }            
+        }        
+        if (Input.GetKeyUp("joystick " + padNum + " button 1"))
+        {
+            animator.SetTrigger("ShieldGuard");
+        }
         if (Input.GetKeyDown("joystick " + padNum + " button 1"))
         {
             AttackColliderOn();
@@ -122,21 +135,25 @@ public class Player : MonoBehaviour
                 case PlayerKind.Player1:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P1Star++;
+                    StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P2Star++;
+                    StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P3Star++;
+                    StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P4Star++;
+                    StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
                 default:
@@ -175,11 +192,49 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && trigger)
         {
-            
+            // Towerでスターの生成
+            switch (own)
+            {
+                case PlayerKind.Player1:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    MultiPlayerManager.instance.P1Star++;
+                    StarInit();
+                    //Debug.Log(MultiPlayerManager.instance.P1Dot);
+                    break;
+                case PlayerKind.Player2:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    MultiPlayerManager.instance.P2Star++;
+                    StarInit();
+                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                    break;
+                case PlayerKind.Player3:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    MultiPlayerManager.instance.P3Star++;
+                    StarInit();
+                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                    break;
+                case PlayerKind.Player4:
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    MultiPlayerManager.instance.P4Star++;
+                    StarInit();
+                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                    break;
+                default:
+                    Debug.LogError("よばれちゃいけんのやぞ");
+                    break;
+            }
         }
     }
+    private void StarInit()
+    {
+        GameObject obj = StarManager.instance.InstanceStar();
+        obj.GetComponent<Move>().enabled = false;
+        obj.GetComponent<Star>().DestroyObject(this.transform);
+    }
+
+
     /// <summary>
     /// プレイヤーがダメージを受けた時の処理
     /// </summary>
@@ -230,6 +285,8 @@ public class Player : MonoBehaviour
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
             animator.SetTrigger("Hit");
+            //animator.SetBool("Trigger" ,isAction);
+            //shieldCheck = false;
         }
     }
     /// <summary>
@@ -253,9 +310,9 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator AttackWait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.3f);
         isAction = false;
@@ -268,7 +325,7 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator FarAttackWait(GameObject obj)
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.65f);
         obj.GetComponent<FarAttack>().PosMove2(farAtkDistance);
         isAction = false;
     }
@@ -297,7 +354,11 @@ public class Player : MonoBehaviour
                 obj.transform.parent = this.gameObject.transform;
                 StartCoroutine(FarAttackWait(obj));
                 break;
-            case "shield":animator.SetTrigger("ShiledAttack"); break;
+            case "Shield":
+                shieldCheck = true;
+                GetComponent<MoveController>().shieldStart(true);
+                animator.SetTrigger("ShieldAttack");                
+                break;
             default: animator.SetTrigger("SwordAttack"); break;
 
         }
@@ -316,7 +377,7 @@ public class Player : MonoBehaviour
             return;
         }
         StartCoroutine(AttackWait());
-    }
+    }    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -346,7 +407,7 @@ public class Player : MonoBehaviour
             }
             other.GetComponent<Dot>().DestroyObject();
         }
-        if (other.gameObject.name == "Star")
+        if (other.gameObject.tag == "Star")
         {
             switch (own)
             {
@@ -370,11 +431,11 @@ public class Player : MonoBehaviour
                     Debug.LogError("よばれちゃいけんのやぞ");
                     break;
             }
-            other.GetComponent<Star>().DestroyObject();
+            other.GetComponent<Move>().enabled = false;
+            other.GetComponent<Star>().DestroyObject(this.transform);
         }
         if (other.gameObject.tag == "Tower")
         {
-
             trigger = true;
         }
     }
