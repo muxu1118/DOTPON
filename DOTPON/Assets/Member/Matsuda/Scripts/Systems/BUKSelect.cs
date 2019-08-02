@@ -36,9 +36,13 @@ public class BUKSelect : MonoBehaviour
     Texture[] textures;
     int num;
     bool isChange;
+
+    [SerializeField]GameObject[] bukis;
+    GameObject instantedBuki;
     private void Start()
     {
         padNum = (int)playerNum + 1;
+        InstanceBuki();
     }
 
     private void Update()
@@ -79,15 +83,29 @@ public class BUKSelect : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (nowWeapon == weapon.bomb) nowWeapon = weapon.axe;
-            nowWeapon++;
+            if (nowWeapon == weapon.bomb)
+            {
+                nowWeapon = weapon.axe;
+            }
+            else
+            {
+                nowWeapon++;
+            }
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon,true);
+            InstanceBuki();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (nowWeapon == weapon.axe) nowWeapon = weapon.bomb;
-            nowWeapon--;
+            if (nowWeapon == weapon.axe)
+            {
+                nowWeapon = weapon.bomb;
+            }
+            else
+            {
+                nowWeapon--;
+            }
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, false);
+            InstanceBuki();
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -120,6 +138,13 @@ public class BUKSelect : MonoBehaviour
             Debug.Log(num);
         }
     }
-    
+    private void InstanceBuki()
+    {
+        if (instantedBuki != null)
+        {
+            instantedBuki = null;
+        }
+        instantedBuki = Instantiate(bukis[(int)nowWeapon], Vector3.zero, Quaternion.identity);
+    }
     
 }

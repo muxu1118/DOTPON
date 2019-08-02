@@ -55,6 +55,7 @@ public class ChangeDOTPON : MonoBehaviour
         if (num6 > 5) num6 = 0;
         float tim = 0;
         explanation.SetExplanation(num);
+        Debug.Log("center is " + num);
         while (tim < 10)
         {
             tim++;
