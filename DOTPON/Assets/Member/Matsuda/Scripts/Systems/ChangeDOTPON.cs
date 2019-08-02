@@ -14,10 +14,13 @@ public class ChangeDOTPON : MonoBehaviour
     int[] numbers = new int[3];
     [SerializeField]Texture[] textures = new Texture[6];
     [SerializeField] Text text;
+    //説明用のscript
+    [SerializeField] DOTPONExplanation explanation;
     // Start is called before the first frame update
     void Start()
     {
         i = 15;
+        explanation.SetExplanation(0);
     }
     
     public void SetTexture(List<int> texNum)
@@ -51,6 +54,7 @@ public class ChangeDOTPON : MonoBehaviour
         int num6 = num5 + 1;
         if (num6 > 5) num6 = 0;
         float tim = 0;
+        explanation.SetExplanation(num);
         while (tim < 10)
         {
             tim++;
