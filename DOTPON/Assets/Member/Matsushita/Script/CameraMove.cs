@@ -39,7 +39,7 @@ public class CameraMove : MonoBehaviour
     {
         //Axisの位置をplayerの位置+axisPosできめる
         transform.position = player.transform.position + axisPos;
-        Debug.Log(Input.GetAxis("CameraMoveX"));
+        //Debug.Log(Input.GetAxis("CameraMoveX"));
         //Debug.Log(Input.GetAxis("CameraMoveY"));
         // GetAxisの誤差は返す
         if (Input.GetAxis("CameraMoveY") >= -0.001f && Input.GetAxis("CameraMoveY") <= 0.001f) return;
@@ -61,6 +61,7 @@ public class CameraMove : MonoBehaviour
         }
         //Math.Clamp(値、最小値、最大値)でx軸の値を制限する
         transform.eulerAngles = new Vector3(angleX, transform.eulerAngles.y, transform.eulerAngles.z);
+
     }
     
 }

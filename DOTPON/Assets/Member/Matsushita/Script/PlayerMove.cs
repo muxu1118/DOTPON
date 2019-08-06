@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    //[SerializeField]
+    //private float WalkSpeed = 5f; //歩く速度
+    //[SerializeField]
+    //private float RunSpeed = 10f; //走る速度
+
+    float inputHorizontal;
+    float inputVertical;
+
     [SerializeField]
-    private float WalkSpeed = 5f; //歩く速度
-    [SerializeField]
-    private float RunSpeed = 10f; //走る速度
+    float moveSpeed = 3;
 
-    private Vector3 Player_pos;
-    private Rigidbody rb;
+    Vector3 Player_pos;
+    Rigidbody rb;
 
-    [SerializeField]
-    Transform cam;
+    //[SerializeField]
+    //Transform cam;
 
-    float moveX = 0.0f;
-    float moveZ = 0.0f;
-
-    
     //private float RotationSpeed = 100f; //向きを変える速度
     // Start is called before the first frame update
     void Start()
@@ -30,10 +32,37 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         //Move();
-        moveX = Input.GetAxisRaw("Mouse X") * WalkSpeed;
-        moveZ = Input.GetAxisRaw("Mouse Y") * WalkSpeed;
-        Vector3 direction = new Vector3(moveX, 0, moveZ);
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        //Debug.Log(Input.GetAxis("Horizontal"));
+        inputVertical = Input.GetAxisRaw("Vertical");
+        //Debug.Log(Input.GetAxis("Vertical"));
+        //Vector3 direction = new Vector3(moveX, 0, moveZ);
+
+        if (Input.GetAxis("Horizontal") >= -0.001f && Input.GetAxis("Horizontal") <= 0.001f) return;
+        if (Input.GetAxis("Vertical") >= -0.001f && Input.GetAxis("Vertical") <= 0.001f) return;
+
     }
+    void FixedUpdate()
+    {
+        //rb.velocity = new Vector3(moveX, 0, moveZ);
+        //カメラの方向から、X-Z平面の単位ベクトルを取得
+        Vector3 cameraFoward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+        //方向キーの入力値とカメラの向きから、移動方向を決定
+        Vector3 moveForward = cameraFoward * inputVertical + Camera.main.transform.right * inputHorizontal;
+
+        //
+        rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
+
+        //
+
+        if (moveForward != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveForward);
+        }
+
+    }
+
     /*
     void Move()
     {
@@ -89,24 +118,6 @@ public class PlayerMove : MonoBehaviour
           
     }
         */
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector3(moveX, 0, -moveZ);
-        //カメラの方向から、X-Z平面の単位ベクトルを取得
-        Vector3 cameraFoward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-
-        //方向キーの入力値とカメラの向きから、移動方向を決定
-        Vector3 moveForward = cameraFoward * moveX + Camera.main.transform.right * moveZ;
-
-        //
-        rb.velocity = moveForward * WalkSpeed + new Vector3(0, rb.velocity.y, 0);
-
-        //
-        if (moveForward != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(moveForward);
-        }
-    }
 
 
 
