@@ -17,10 +17,10 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         playerNumber = MultiPlayerManager.instance.totalPlayer;
-        canvasPosis.Add(new Vector2(-200, 120));
-        canvasPosis.Add(new Vector2(200, 120));
-        canvasPosis.Add(new Vector2(-200, -100));
-        canvasPosis.Add(new Vector2(200, -100));
+        canvasPosis.Add(new Vector2(-200, 115));
+        canvasPosis.Add(new Vector2(200, 115));
+        canvasPosis.Add(new Vector2(-200, -110));
+        canvasPosis.Add(new Vector2(200, -110));
         if(playerNumber == 1)
         {
             saveCanvas.Add(Instantiate(playerCanvas, Vector3.zero, Quaternion.identity));
