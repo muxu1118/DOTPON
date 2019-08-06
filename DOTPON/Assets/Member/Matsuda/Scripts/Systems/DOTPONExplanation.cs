@@ -13,7 +13,6 @@ public class DOTPONExplanation : MonoBehaviour
         attack.text = "攻撃力：" + objs[num].parametor.attackDamage;
         dursble.text = "耐久値：" + objs[num].parametor.durableValue;
         cost.text = "作成コスト：" + objs[num].parametor.dotNum;
-        //まだ作成していない
-        explanation.text = "未作成";//objs[num].parametor.説明用変数;
+        explanation.text = objs[num].parametor.Commentary;//説明用変数;
     }
 }

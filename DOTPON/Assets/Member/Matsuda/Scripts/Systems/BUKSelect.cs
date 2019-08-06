@@ -142,9 +142,9 @@ public class BUKSelect : MonoBehaviour
     {
         if (instantedBuki != null)
         {
-            instantedBuki = null;
+            Destroy(instantedBuki);
         }
-        instantedBuki = Instantiate(bukis[(int)nowWeapon], Vector3.zero, Quaternion.identity);
+        instantedBuki = Instantiate(bukis[(int)nowWeapon], new Vector3(0,2,0), Quaternion.identity);
     }
     
 }

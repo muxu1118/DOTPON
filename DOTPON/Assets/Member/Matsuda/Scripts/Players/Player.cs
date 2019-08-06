@@ -39,9 +39,13 @@ public class Player : MonoBehaviour
     Animator animator;
     WeaponCreate create;
 
+    //colorScriptにアタッチ
+    ColorScript colorScript;
+
     // Start is called before the first frame update
     void Start()
     {
+        colorScript = GetComponent<ColorScript>();
         animator = GetComponent<Animator>();
         switch (own)
         {
@@ -284,6 +288,7 @@ public class Player : MonoBehaviour
             isDamage = true;
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
+            colorScript.DamagedOn();
             animator.SetTrigger("Hit");
             //animator.SetBool("Trigger" ,isAction);
             //shieldCheck = false;
