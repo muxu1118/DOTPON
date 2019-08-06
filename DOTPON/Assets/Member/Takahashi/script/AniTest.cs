@@ -1,29 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AniTest : MonoBehaviour
 {
     Animator anim;
     string weaponName;
     Weapon weapon;
-
     FarAttack farAttack;
-
     SphereCollider sph;
+
+    [SerializeField]
+    GameObject[] Weapon;
+    int weaponNumber;
+    bool trigger;
+    int weaponType = 0;
+    public GameObject nowWeapon;
+
     //[SerializeField]
     //GameObject capga;
 
     private int hash;
-    
-    enum attackMeans
-    {
-        ken,
-        ax,
-        bomb,
-        shield,
-        fist
-    }
 
     void Start()
     {
@@ -34,15 +32,15 @@ public class AniTest : MonoBehaviour
         //farAttack.PosMove2();
         //sph = GetComponent<SphereCollider>();
         //sph.radius = 1.5f;
-        
+
+        weaponNumber = Weapon.Length;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Debug.LogWarning("こいつが出たらヤバイ");
         //攻撃ボタンを押したときの処理
-        if(Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             //weapon.TagGet(weaponName);
             Debug.Log(weaponName);
@@ -58,7 +56,7 @@ public class AniTest : MonoBehaviour
                     anim.SetTrigger("ShieldAttack");
 
                     break;
-            }            
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -93,6 +91,59 @@ public class AniTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             //anim.SetTrigger("AxAttack");
-        }        
+        }
+    }
+
+    public void WeaponChoice(string str)
+    {
+        switch (str)
+        {
+            case "a":
+                if (trigger)
+                {
+
+                    GetComponent<Animator>().SetTrigger("Create");
+                    Weapon[6].SetActive(false);
+                    Weapon[weaponType].SetActive(true);
+                    nowWeapon = Weapon[weaponType];
+                    if (nowWeapon != Weapon[5])
+                    {
+                        nowWeapon.GetComponent<BoxCollider>().enabled = false;
+                    }                    
+                }
+                else
+                {
+                    //作成した武器を破棄
+                    nowWeapon.SetActive(false);
+                    Weapon[6].SetActive(true);
+                    nowWeapon = Weapon[6];
+                    //value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
+                    trigger = true;
+                }
+                break;
+
+            //作成する武器の切り替え
+            case "s":
+                weaponType += 1;
+                if (weaponType == weaponNumber - 1)
+                {
+                    weaponType = 0;
+                }                               
+                break;
+
+            //作成する武器の切り替え
+            case "d":
+                if (weaponType > 0)
+                {
+                    weaponType -= 1;
+                    Debug.Log(weaponType);
+                }
+                else if (weaponType == 0)
+                {
+                    weaponType = weaponNumber - 2;
+                    Debug.Log(weaponType);
+                }
+                break;
+        }
     }
 }
