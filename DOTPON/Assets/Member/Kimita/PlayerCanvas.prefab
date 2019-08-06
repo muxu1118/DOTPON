@@ -1574,13 +1574,14 @@ MonoBehaviour:
   - {fileID: 7311961106339516895}
   i: 1
   textures:
-  - {fileID: 2800000, guid: d88ce52ceaf3f3a478d16574f48f5b96, type: 3}
-  - {fileID: 2800000, guid: 53b85c43781a4144f9527668915cea99, type: 3}
+  - {fileID: 2800000, guid: 1de6f7f7100db72448fd5523ea9b9c89, type: 3}
+  - {fileID: 2800000, guid: b2ac7228456941c4a8def710aab2c2ef, type: 3}
   - {fileID: 2800000, guid: 574b8fad39ddc6444a8183a401842755, type: 3}
-  - {fileID: 2800000, guid: fdea63d6ce7e9ae459a02274b025ee5b, type: 3}
+  - {fileID: 2800000, guid: 8553a3e80387cf94a8329598ada5e8fa, type: 3}
   - {fileID: 2800000, guid: 6fd021599b048e5478ddde0233467ae4, type: 3}
   - {fileID: 2800000, guid: 42e61f6068955f147a0d4cfd2a25771a, type: 3}
   text: {fileID: 2755173378114126744}
+  explanation: {fileID: 0}
 --- !u!1 &8591284249317835555
 GameObject:
   m_ObjectHideFlags: 0

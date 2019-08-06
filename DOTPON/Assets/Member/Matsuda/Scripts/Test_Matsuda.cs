@@ -7,6 +7,7 @@ public class Test_Matsuda : MonoBehaviour
     [SerializeField]GameObject[] player;
     [SerializeField] GameObject[] buki;
     bool tri;
+    Camera camera;
     // Start is called before the first frame update
     void Start()
     {

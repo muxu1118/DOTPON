@@ -52,7 +52,7 @@ public class StartGame : MonoBehaviour
             //カメラのオブジェクトを探して参照させる
             //cameras[i].transform.parent = playerObj.transform;
             cameras[i].GetComponent<CameraMove>().Setting(playerObj);
-        
+            //GameObject.Find("P" + i + 1 + "DOTPON").GetComponent<ChangeDOTPON>().SetTexture(MultiPlayerManager.instance.P1Weapon);
             //if(i>=1)
             //kyokaisen[i/2].gameObject.SetActive(true);
         }

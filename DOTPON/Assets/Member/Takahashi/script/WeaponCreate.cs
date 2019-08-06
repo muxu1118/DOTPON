@@ -8,7 +8,9 @@ public class WeaponCreate : MonoBehaviour
     [SerializeField]
     GameObject[] weapon; //武器を格納
     [SerializeField]
-    string[] weaponName = new string[3];
+    GameObject[] usedWeapon = new GameObject[3];
+    [SerializeField]
+    GameObject Punch;
         
     bool trigger = true; //武器の作成と破棄の切り替え 
     int weaponNumber;    //武器の種類
@@ -30,14 +32,33 @@ public class WeaponCreate : MonoBehaviour
     void Start()
     {
         player = GetComponent<Player>();
-        weaponNumber = weapon.Length;
+        weaponNumber = 3;
         List<GameObject> UI = new List<GameObject>();
-        UI = GameObject.Find("Canvas").GetComponent<UIManager>().saveCanvas;
+        UI = GameObject.Find("PlayerCanvas").GetComponent<UIManager>().saveCanvas;
         foreach (Transform child in UI[(int)player.own].transform)
         {
             if(child.gameObject.name == "P1DOTPON")
             {
                 DotPonText = child.gameObject;
+                switch (player.own)
+                {
+                    case Player.PlayerKind.Player1:
+                        DotPonText.GetComponent<ChangeDOTPON>().SetTexture(MultiPlayerManager.instance.P1Weapon);
+                        UsedWeapon(MultiPlayerManager.instance.P1Weapon);
+                        break;
+                    case Player.PlayerKind.Player2:
+                        DotPonText.GetComponent<ChangeDOTPON>().SetTexture(MultiPlayerManager.instance.P2Weapon);
+                        UsedWeapon(MultiPlayerManager.instance.P2Weapon);
+                        break;
+                    case Player.PlayerKind.Player3:
+                        DotPonText.GetComponent<ChangeDOTPON>().SetTexture(MultiPlayerManager.instance.P3Weapon);
+                        UsedWeapon(MultiPlayerManager.instance.P3Weapon);
+                        break;
+                    case Player.PlayerKind.Player4:
+                        DotPonText.GetComponent<ChangeDOTPON>().SetTexture(MultiPlayerManager.instance.P4Weapon);
+                        UsedWeapon(MultiPlayerManager.instance.P4Weapon);
+                        break;
+                }
             }
             if (child.gameObject.name == "P1Dursble")
             {
@@ -71,7 +92,7 @@ public class WeaponCreate : MonoBehaviour
             }
         }
         //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
-        createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
+        createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
         value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
         //DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[0].GetComponent<Weapon>().parametor.necessaryDot);
     }
@@ -98,9 +119,9 @@ public class WeaponCreate : MonoBehaviour
                 {
 
                     GetComponent<Animator>().SetTrigger("Create");
-                    weapon[6].SetActive(false);
-                    weapon[weaponType].SetActive(true);
-                    nowWeapon = weapon[weaponType];
+                    nowWeapon.SetActive(false);
+                    usedWeapon[weaponType].SetActive(true);
+                    nowWeapon = usedWeapon[weaponType];
                     if (nowWeapon != weapon[5])
                     {
                         nowWeapon.GetComponent<BoxCollider>().enabled = false;
@@ -110,17 +131,17 @@ public class WeaponCreate : MonoBehaviour
                     player.isAction = true;
                     StartCoroutine(player.ActionWait(2.5f));
                     //DOTPONDursbleUI.GetComponent<DOTPONDursble>().SetDursble(value);
-                    pizza.PizzaUI(weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                    pizza.PizzaUI(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 }
                 else
                 {
                     //作成した武器を破棄
                     nowWeapon.SetActive(false);
-                    weapon[6].SetActive(true);
-                    nowWeapon = weapon[6];
+                    Punch.SetActive(true);
+                    nowWeapon = Punch;
                     value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
                     trigger = true;
-                    if (nowWeapon != weapon[6])
+                    if (nowWeapon != Punch)
                     {
                         switch (player.own)
                         {
@@ -145,15 +166,15 @@ public class WeaponCreate : MonoBehaviour
             //作成する武器の切り替え
             case "s":
                 weaponType += 1;
-                if (weaponType == weaponNumber - 1)
+                if (weaponType == weaponNumber)
                 {
                     weaponType = 0;
                 }
-                createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
+                createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
-                DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,true);
-                DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
-                pizza.PizzaChange(PlayerDot(), weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheelS(weaponType,true);
+                DotPonText.GetComponent<ChangeDOTPON>().DrubleText(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                //pizza.PizzaChange(PlayerDot(), weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
                 Debug.Log(weaponType);
                 break;
@@ -167,15 +188,15 @@ public class WeaponCreate : MonoBehaviour
                 }
                 else if (weaponType == 0)
                 {
-                    weaponType = weaponNumber - 2;
+                    weaponType = weaponNumber-1;
                     Debug.Log(weaponType);
                 }
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
-                DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheel(weaponType,false);
-                DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
-                pizza.PizzaChange(PlayerDot(), weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheelS(weaponType,false);
+                DotPonText.GetComponent<ChangeDOTPON>().DrubleText(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                //pizza.PizzaChange(PlayerDot(), weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
-                createNum = weapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
+                createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
                 break;
         }
     }
@@ -204,13 +225,13 @@ public class WeaponCreate : MonoBehaviour
     public void CreateWeapon(){
         if (trigger)
         {
-            weapon[weaponNumber].SetActive(true);
+            usedWeapon[weaponNumber].SetActive(true);
             trigger = false;
         }
         else
         {
             //作成した武器を破棄
-            weapon[weaponNumber].SetActive(false);
+            usedWeapon[weaponNumber].SetActive(false);
             trigger = true;
         }
     }
@@ -249,13 +270,13 @@ public class WeaponCreate : MonoBehaviour
     /// </summary>
     public void DownDursble()
     {
-        if (nowWeapon == weapon[6]) return;
+        if (nowWeapon == Punch) return;
         value--;
         if (value <= 0)
         {
             nowWeapon.SetActive(false);
-            nowWeapon = weapon[6];
-            weapon[6].SetActive(true);
+            nowWeapon = Punch;
+            Punch.SetActive(true);
             Debug.Log("こわれた");
             value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
         }
@@ -271,9 +292,16 @@ public class WeaponCreate : MonoBehaviour
     public void ResetWeapon()
     {
         nowWeapon.SetActive(false);
-        weapon[6].SetActive(true);
-        nowWeapon = weapon[6];
+        Punch.SetActive(true);
+        nowWeapon = Punch;
         value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
         trigger = true;
+    }
+    private void UsedWeapon(List<int> num)
+    {
+        for (int i = 0;i < num.Count;i++)
+        {
+            usedWeapon[i] = weapon[num[i]];
+        }
     }
 }
