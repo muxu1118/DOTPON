@@ -273,6 +273,7 @@ public class Player : MonoBehaviour
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
+        hp = 10;
         DotManager.instance.EnemyDeadDotPop(damage,transform.position);
         Debug.Log(hp);
         if (hp <= 0)
