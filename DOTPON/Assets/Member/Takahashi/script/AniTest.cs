@@ -64,12 +64,12 @@ public class AniTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             //anim.speed = 2.0f;
-            anim.SetTrigger("SwordAttack");
+            anim.SetTrigger("ShieldAttack");
         }
-        //if(Input.GetKeyUp(KeyCode.S))
-        //{
-        //    anim.SetTrigger("ShieldGuard");
-        //}
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            anim.SetTrigger("ShieldGuard");
+        }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -78,11 +78,17 @@ public class AniTest : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            anim.SetTrigger("AxAttack");
+            //anim.SetTrigger("AxAttack");
+            anim.SetFloat("Speed", 0.4f);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            //anim.SetTrigger("AxAttack");
+            anim.SetFloat("Speed", 0.8f);
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            anim.SetTrigger("ShieldAttack");
+            anim.SetTrigger("SwordAttack");
         }
         if (Input.GetKeyDown(KeyCode.H))
         {

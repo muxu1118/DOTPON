@@ -11,13 +11,6 @@ public class StartGame : MonoBehaviour
     //プレイヤーのプレハブ
     [SerializeField]
     GameObject playerPrefab;
-
-    //ドット保持表示のテキスト
-    [SerializeField]
-    GameObject[] DotTextObj;
-    //スター保持表示のテキスト
-    [SerializeField]
-    GameObject[] StarTextObj;
     //選択武器表示のUI
     [SerializeField]
     GameObject[] BukiUIObj;
@@ -59,11 +52,9 @@ public class StartGame : MonoBehaviour
             //カメラのオブジェクトを探して参照させる
             //cameras[i].transform.parent = playerObj.transform;
             cameras[i].GetComponent<CameraMove>().Setting(playerObj);
-            BukiUIObj[i].SetActive(true);
-            DursbleUI[i].SetActive(true);
-        
-            if(i>=1)
-            kyokaisen[i/2].gameObject.SetActive(true);
+            //GameObject.Find("P" + i + 1 + "DOTPON").GetComponent<ChangeDOTPON>().SetTexture(MultiPlayerManager.instance.P1Weapon);
+            //if(i>=1)
+            //kyokaisen[i/2].gameObject.SetActive(true);
         }
         //text.text = screenController.cameras[0].name + " + " + screenController.cameras[1].name + " + " + screenController.cameras[2].name + " + " + screenController.cameras[3].name;
         StartCoroutine(GameStartCoroutine());
@@ -91,16 +82,8 @@ public class StartGame : MonoBehaviour
     /// </summary>
     IEnumerator GameStartCoroutine()
     {
-        text.text = "3";
-        yield return new WaitForSeconds(1f);
-        text.text = "2";
-        yield return new WaitForSeconds(1f);
-        text.text = "1";
-        yield return new WaitForSeconds(1f);
-        text.text = "GO!!";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
         SpownClass.enabled = true;
-        timer.enabled = true;
         for (int i = 0;i < players.Count;i++)
         {
             players[i].GetComponent<Player>().isAction = false;

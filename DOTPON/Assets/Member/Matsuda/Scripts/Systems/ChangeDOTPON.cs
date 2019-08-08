@@ -14,10 +14,14 @@ public class ChangeDOTPON : MonoBehaviour
     int[] numbers = new int[3];
     [SerializeField]Texture[] textures = new Texture[6];
     [SerializeField] Text text;
+    //説明用のscript
+    [SerializeField] DOTPONExplanation explanation;
     // Start is called before the first frame update
     void Start()
     {
         i = 15;
+        if (explanation == null) return;
+        explanation.SetExplanation(0);
     }
     
     public void SetTexture(List<int> texNum)
@@ -51,6 +55,8 @@ public class ChangeDOTPON : MonoBehaviour
         int num6 = num5 + 1;
         if (num6 > 5) num6 = 0;
         float tim = 0;
+        explanation.SetExplanation(num);
+        Debug.Log("center is " + num);
         while (tim < 10)
         {
             tim++;
@@ -158,6 +164,7 @@ public class ChangeDOTPON : MonoBehaviour
                 Objects[numbers[1]].transform.position = Vector3.MoveTowards(Objects[numbers[1]].transform.position, positions[1].position, i);
                 Objects[numbers[1]].transform.localScale = Vector3.Lerp(Objects[numbers[1]].transform.localScale, new Vector3(0.8f, 0.8f, 0), Time.deltaTime * 20);
             }
+            text.transform.SetAsLastSibling();
             yield return null;
         }
         Debug.Log("END");

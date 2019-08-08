@@ -36,14 +36,18 @@ public class BUKSelect : MonoBehaviour
     Texture[] textures;
     int num;
     bool isChange;
+
+    [SerializeField]GameObject[] bukis;
+    GameObject instantedBuki;
     private void Start()
     {
         padNum = (int)playerNum + 1;
+        InstanceBuki();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown("joystick " + padNum + " button 1"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 0"))
         {
             if (weapons.Count <= 0) return;
             weapons.RemoveAt(weapons.Count - 1);
@@ -65,29 +69,55 @@ public class BUKSelect : MonoBehaviour
             selectedObj.ChangeTextureUp(weapons.Count, textures[(int)nowWeapon]);
             isChange = false;
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 5"))
         {
-            if (nowWeapon == weapon.bomb) nowWeapon = weapon.axe;
-            nowWeapon++;
+            if (nowWeapon == weapon.bomb)
+            {
+                nowWeapon = weapon.axe;
+            }
+            else
+            {
+                nowWeapon++;
+            }
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, true);
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 0"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 4"))
         {
-            if (nowWeapon == weapon.axe) nowWeapon = weapon.bomb;
-            nowWeapon--;
+            if (nowWeapon == weapon.axe)
+            {
+                nowWeapon = weapon.bomb;
+            }
+            else
+            {
+                nowWeapon--;
+            }
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, false);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (nowWeapon == weapon.bomb) nowWeapon = weapon.axe;
-            nowWeapon++;
+            if (nowWeapon == weapon.bomb)
+            {
+                nowWeapon = weapon.axe;
+            }
+            else
+            {
+                nowWeapon++;
+            }
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon,true);
+            InstanceBuki();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (nowWeapon == weapon.axe) nowWeapon = weapon.bomb;
-            nowWeapon--;
+            if (nowWeapon == weapon.axe)
+            {
+                nowWeapon = weapon.bomb;
+            }
+            else
+            {
+                nowWeapon--;
+            }
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, false);
+            InstanceBuki();
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -120,6 +150,13 @@ public class BUKSelect : MonoBehaviour
             Debug.Log(num);
         }
     }
-    
+    private void InstanceBuki()
+    {
+        if (instantedBuki != null)
+        {
+            Destroy(instantedBuki);
+        }
+        instantedBuki = Instantiate(bukis[(int)nowWeapon], new Vector3(0,2,0), Quaternion.identity);
+    }
     
 }

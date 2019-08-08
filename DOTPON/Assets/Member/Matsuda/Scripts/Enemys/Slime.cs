@@ -46,8 +46,8 @@ public class Slime : Enemy
         {
             isAction = true;
             //回転のコルーチンを呼び出す
-            StartCoroutine(Rotating(parameter.rotateAngle, parameter.rotateTime * 60));
-            StartCoroutine(WaitTime(parameter.rotateTime / 2));
+            StartCoroutine(Rotating(parameter.rotateAngle, parameter.rotateTime));
+            StartCoroutine(WaitTime(parameter.rotateTime / 2,false));
             time = 0;
         }
         vector = transform.forward;
@@ -88,7 +88,7 @@ public class Slime : Enemy
         obj.GetComponent<FarAttack>().pow = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
         obj.transform.parent = this.gameObject.transform;
         buki = obj;
-        StartCoroutine(WaitTime(parameter.attackWait));
+        StartCoroutine(WaitTime(parameter.attackWait,false));
     }
 }
 

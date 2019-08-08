@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : SingletonMonoBehaviour<UIManager>
+public class UIManager : MonoBehaviour
 {
     int playerNumber; // プレイヤーの数を補完
     // プレイヤーのキャンバス
@@ -12,15 +12,15 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
     // Canvasの位置
     List<Vector2> canvasPosis = new List<Vector2>();
     // 出したキャンバスを保存する場所
-    List<GameObject> saveCanvas = new List<GameObject>();
+    public List<GameObject> saveCanvas = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         playerNumber = MultiPlayerManager.instance.totalPlayer;
-        canvasPosis.Add(new Vector2(-200, 120));
-        canvasPosis.Add(new Vector2(200, 120));
-        canvasPosis.Add(new Vector2(-200, -100));
-        canvasPosis.Add(new Vector2(200, -100));
+        canvasPosis.Add(new Vector2(-200, 115));
+        canvasPosis.Add(new Vector2(200, 115));
+        canvasPosis.Add(new Vector2(-200, -110));
+        canvasPosis.Add(new Vector2(200, -110));
         if(playerNumber == 1)
         {
             saveCanvas.Add(Instantiate(playerCanvas, Vector3.zero, Quaternion.identity));
@@ -32,11 +32,31 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         else
         {
             for (int i=0; i < playerNumber;i++) {
+               
                 saveCanvas.Add(Instantiate(playerCanvas, canvasPosis[i], Quaternion.identity));
                 saveCanvas[i].transform.parent = gameObject.transform;
                 saveCanvas[i].name = "P" +  (i+1).ToString() + "PlayerCanvas";
                 saveCanvas[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(canvasPosis[i].x, canvasPosis[i].y, 0);
                 saveCanvas[i].transform.localScale = new Vector3(0.5f,0.5f,1);
+                // プレイヤーごとにドットとスターを設定する
+                foreach (Transform Child in saveCanvas[i].transform)
+                {
+                    foreach (Transform child in Child.transform)
+                    {
+                        if (null != child.GetComponent<Dot_count>())
+                        {
+                            if (child.gameObject.name == "DotText")
+                            {
+                                child.GetComponent<Dot_count>().dotText = (Dot_count.DotText)i;
+
+                            }
+                            else if (child.gameObject.name == "StarText")
+                            {
+                                child.GetComponent<Dot_count>().dotText = (Dot_count.DotText)(i + 4);
+                            }
+                        }
+                    }
+                }
             }
         }
         //switch (playerNumber)

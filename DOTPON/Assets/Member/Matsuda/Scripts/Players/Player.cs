@@ -39,9 +39,13 @@ public class Player : MonoBehaviour
     Animator animator;
     WeaponCreate create;
 
+    //colorScriptにアタッチ
+    ColorScript colorScript;
+
     // Start is called before the first frame update
     void Start()
     {
+        colorScript = GetComponent<ColorScript>();
         animator = GetComponent<Animator>();
         switch (own)
         {
@@ -99,7 +103,7 @@ public class Player : MonoBehaviour
         //盾を構えてい時ボタンを離したらIdlingに戻す
         if(shieldCheck == true)
         {
-            if (Input.GetKeyUp("joystick " + padNum + " button 1"))
+            if (Input.GetKeyUp("joystick " + padNum + " button 0"))
             {
                 shieldCheck = false;
                 GetComponent<MoveController>().shieldStart(false);
@@ -110,20 +114,20 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("ShieldGuard");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 1"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
         {
             AttackColliderOn();
             Debug.Log("At");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
         {
             create.WeaponChoice("a");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 4"))
         {
             create.WeaponChoice("s");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 0"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 5"))
         {
             create.WeaponChoice("d"); 
         }
@@ -134,25 +138,25 @@ public class Player : MonoBehaviour
             {
                 case PlayerKind.Player1:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
-                    MultiPlayerManager.instance.P1Star++;
+                    //MultiPlayerManager.instance.P1Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
-                    MultiPlayerManager.instance.P2Star++;
+                    //MultiPlayerManager.instance.P2Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
-                    MultiPlayerManager.instance.P3Star++;
+                    //MultiPlayerManager.instance.P3Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
-                    MultiPlayerManager.instance.P4Star++;
+                    //MultiPlayerManager.instance.P4Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
@@ -284,7 +288,9 @@ public class Player : MonoBehaviour
             isDamage = true;
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
+            colorScript.DamagedOn();
             animator.SetTrigger("Hit");
+            //animator.SetBool("Trigger" ,isAction);
             //shieldCheck = false;
         }
     }
@@ -309,9 +315,9 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator AttackWait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.3f);
         isAction = false;
@@ -324,7 +330,7 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator FarAttackWait(GameObject obj)
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(0.65f);
         obj.GetComponent<FarAttack>().PosMove2(farAtkDistance);
         isAction = false;
     }
@@ -347,7 +353,9 @@ public class Player : MonoBehaviour
         switch (create.nowWeapon.name)
         {
             case "Axe": animator.SetTrigger("AxAttack"); break;
+            case "hammer": animator.SetTrigger("hammerAttack"); break;
             case "sword": animator.SetTrigger("SwordAttack"); break;
+            case "Katana": animator.SetTrigger("KatanaAttack"); break;
             case "bomb":animator.SetTrigger("BombAttack");
                 var obj = Instantiate(create.nowWeapon, this.transform.position, Quaternion.identity);
                 obj.transform.parent = this.gameObject.transform;
