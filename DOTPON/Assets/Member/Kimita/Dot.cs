@@ -5,7 +5,15 @@ using UnityEngine;
 public class Dot : MonoBehaviour
 {
     private float lostTime = 10.0f;
-    
+    public enum DotColor
+    {
+        Red = 0,
+        Blue,
+        Green,
+        Yellow,
+        White
+    }
+    public DotColor ownColor;
     public float LostTime
     {
         get { return LostTime; }
@@ -49,10 +57,30 @@ public class Dot : MonoBehaviour
     /// <summary>
     /// DotのMaterialを変える
     /// </summary>
-    public void MaterialChange(int num)
+    public void MaterialChange(int num,GameObject obj)
     {
+        ownColor = (DotColor)num;
         // 1赤2青3緑4黄
-        gameObject.GetComponent<Renderer>().material.color = (num==0)?Color.red:(num==1)?Color.blue:(num==2)? Color.green:Color.yellow;
+        switch (num)
+        {
+            case 0:
+                obj.GetComponent<Renderer>().material.color = Color.red;
+                break;
+            case 1:
+                obj.GetComponent<Renderer>().material.color = Color.blue ;
+                break;
+            case 2:
+                obj.GetComponent<Renderer>().material.color = Color.green;
+                break;
+            case 3:
+                obj.GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+            default:
+                obj.GetComponent<Renderer>().material.color = Color.white;
+                break;
+
+        }
+        
 
     }
 }

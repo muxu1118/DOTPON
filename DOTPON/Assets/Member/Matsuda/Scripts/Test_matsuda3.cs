@@ -79,7 +79,7 @@ public class Test_matsuda3 : MonoBehaviour
         obj.GetComponent<Animator>().SetTrigger("SwordAttack");
         yield return new WaitForSeconds(1.6f);
         player[1].GetComponent<Animator>().SetTrigger("Hit");
-        player[1].GetComponent<Player>().Damage(4);
+        //player[1].GetComponent<Player>().Damage(4);
         vect = obj.transform.forward * -1;
     }
     IEnumerator Animation(GameObject player)

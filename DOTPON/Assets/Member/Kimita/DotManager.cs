@@ -44,9 +44,11 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         int count = SendDot();
         // 指定の数まで繰り返し
         while (count > 0) {
-            dotObj.GetComponent<Dot>().MaterialChange(num);
+            
             // ドットの出現(位置はランダム)
-            Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity).name = "Dot";
+            GameObject target =  Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
+            target.name = "Dot";
+            dotObj.GetComponent<Dot>().MaterialChange(num,target);
             count--;
         }
     }
@@ -78,9 +80,11 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         // 指定の数まで繰り返し
         while (count > 0)
         {
-            dotObj.GetComponent<Dot>().MaterialChange(num);
             // ドットの出現(位置はランダム)
-            Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity).name = "Dot";
+
+            GameObject target = Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
+            target.name = "Dot";
+            dotObj.GetComponent<Dot>().MaterialChange(num,target);
             Debug.Log("ドット生成");
             count--;
         }

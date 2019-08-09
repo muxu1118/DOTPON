@@ -243,7 +243,7 @@ public class Player : MonoBehaviour
     /// プレイヤーがダメージを受けた時の処理
     /// </summary>
     /// <param name="damage">ダメージ量</param>
-    public void Damage(int damage)
+    public void Damage(int damage,int playerNum)
     {
         if (isDamage) return;
         int hp = 0;
@@ -274,7 +274,7 @@ public class Player : MonoBehaviour
                 break;
         }
         hp = 10;
-        DotManager.instance.EnemyDeadDotPop(damage,transform.position);
+        DotManager.instance.EnemyDeadDotPop(damage,transform.position, playerNum);
         Debug.Log(hp);
         if (hp <= 0)
         {
@@ -391,29 +391,33 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.name == "Dot")
         {
-            switch (own)
+            if ((int)other.gameObject.GetComponent<Dot>().ownColor == 4 || (int)other.gameObject.GetComponent<Dot>().ownColor == (int)own)
             {
-                case PlayerKind.Player1:
-                    hp = MultiPlayerManager.instance.P1Dot++;
-                    //Debug.Log(MultiPlayerManager.instance.P1Dot);
-                    break;
-                case PlayerKind.Player2:
-                    hp = MultiPlayerManager.instance.P2Dot++;
-                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
-                    break;
-                case PlayerKind.Player3:
-                    hp = MultiPlayerManager.instance.P3Dot++;
-                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
-                    break;
-                case PlayerKind.Player4:
-                    hp = MultiPlayerManager.instance.P4Dot++;
-                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
-                    break;
-                default:
-                    Debug.LogError("よばれちゃいけんのやぞ");
-                    break;
+
+                switch (own)
+                {
+                    case PlayerKind.Player1:
+                        hp = MultiPlayerManager.instance.P1Dot++;
+                        //Debug.Log(MultiPlayerManager.instance.P1Dot);
+                        break;
+                    case PlayerKind.Player2:
+                        hp = MultiPlayerManager.instance.P2Dot++;
+                        //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                        break;
+                    case PlayerKind.Player3:
+                        hp = MultiPlayerManager.instance.P3Dot++;
+                        //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                        break;
+                    case PlayerKind.Player4:
+                        hp = MultiPlayerManager.instance.P4Dot++;
+                        //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                        break;
+                    default:
+                        Debug.LogError("よばれちゃいけんのやぞ");
+                        break;
+                }
+                other.GetComponent<Dot>().DestroyObject();
             }
-            other.GetComponent<Dot>().DestroyObject();
         }
         if (other.gameObject.tag == "Star")
         {

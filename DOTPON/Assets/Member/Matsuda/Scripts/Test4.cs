@@ -50,7 +50,7 @@ public class Test4 : MonoBehaviour
         tagertObj[1].GetComponent<Animator>().SetTrigger("SwordAttack");
         yield return new WaitForSeconds(0.7f);
         tagertObj[0].SetActive(false);
-        DotManager.instance.EnemyDeadDotPop(4,tagertObj[0].transform.position);
+        //DotManager.instance.EnemyDeadDotPop(4,tagertObj[0].transform.position);
         yield return new WaitForSeconds(0.8f);
         bool gyaku = false;
         while(true)
