@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    //public Parametor parametor;    
+    public Parametor parametor;    
 
     public void OnTriggerEnter(Collider other)
     {        

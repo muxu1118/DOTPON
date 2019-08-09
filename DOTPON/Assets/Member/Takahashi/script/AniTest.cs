@@ -8,13 +8,13 @@ public class AniTest : MonoBehaviour
     Animator anim;
     string weaponName;
     Weapon weapon;
-    FarAttack farAttack;
+    //FarAttack farAttack;
     SphereCollider sph;
 
     [SerializeField]
     GameObject[] Weapon;
     int weaponNumber;
-    bool trigger;
+    bool trigger = true;
     int weaponType = 0;
     public GameObject nowWeapon;
 
@@ -24,7 +24,7 @@ public class AniTest : MonoBehaviour
     private int hash;
 
     void Start()
-    {
+    {        
         anim = GetComponent<Animator>();
         weapon = GetComponent<Weapon>();
         hash = Animator.StringToHash("NotMove");
@@ -34,64 +34,66 @@ public class AniTest : MonoBehaviour
         //sph.radius = 1.5f;
 
         weaponNumber = Weapon.Length;
+
+        //StartCoroutine(DownPlayer());
     }
 
     void Update()
     {
         //Debug.LogWarning("こいつが出たらヤバイ");
         //攻撃ボタンを押したときの処理
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            //weapon.TagGet(weaponName);
-            Debug.Log(weaponName);
-            switch (weaponName)
-            {
-                case "sword":
-                    anim.SetTrigger("SwordAttack");
-                    break;
-                case "ax":
-                    anim.SetTrigger("AxAttack");
-                    break;
-                case "shield":
-                    anim.SetTrigger("ShieldAttack");
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    //weapon.TagGet(weaponName);
+        //    Debug.Log(weaponName);
+        //    switch (weaponName)
+        //    {
+        //        case "sword":
+        //            anim.SetTrigger("SwordAttack");
+        //            break;
+        //        case "ax":
+        //            anim.SetTrigger("AxAttack");
+        //            break;
+        //        case "shield":
+        //            anim.SetTrigger("ShieldAttack");
 
-                    break;
-            }
-        }
+        //            break;
+        //    }
+        //}
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            //anim.speed = 2.0f;
-            anim.SetTrigger("ShieldAttack");
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            anim.SetTrigger("ShieldGuard");
-        }
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    //anim.speed = 2.0f;
+        //    anim.SetTrigger("ShieldAttack");
+        //}
+        //if (Input.GetKeyUp(KeyCode.S))
+        //{
+        //    anim.SetTrigger("ShieldGuard");
+        //}
 
         if (Input.GetKeyDown(KeyCode.D))
-        {
-            //anim.SetFloat("X", 1);
-            anim.SetTrigger("Create");
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            //anim.SetTrigger("AxAttack");
-            anim.SetFloat("Speed", 0.4f);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            //anim.SetTrigger("AxAttack");
-            anim.SetFloat("Speed", 0.8f);
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
+        {            
             anim.SetTrigger("SwordAttack");
         }
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            //anim.SetTrigger("AxAttack");
+            anim.SetTrigger("Create");
         }
+
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    //anim.SetTrigger("SwordAttack");
+        //    WeaponChoice("d");
+        //}
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    //anim.SetTrigger("AxAttack");
+        //    anim.SetFloat("Speed", 0.8f);
+        //}        
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    //anim.SetTrigger("AxAttack");
+        //}
     }
 
     public void WeaponChoice(string str)
@@ -99,27 +101,21 @@ public class AniTest : MonoBehaviour
         switch (str)
         {
             case "a":
-                if (trigger)
+                if (trigger == true)
                 {
-
-                    GetComponent<Animator>().SetTrigger("Create");
-                    Weapon[6].SetActive(false);
+                    anim.SetTrigger("Create");
+                    //GetComponent<Animator>().SetTrigger("Create");
+                    //Weapon[5].SetActive(false);
                     Weapon[weaponType].SetActive(true);
                     nowWeapon = Weapon[weaponType];
-                    if (nowWeapon != Weapon[5])
-                    {
-                        nowWeapon.GetComponent<BoxCollider>().enabled = false;
-                    }                    
+                    trigger = false;
                 }
                 else
-                {
-                    //作成した武器を破棄
-                    nowWeapon.SetActive(false);
-                    Weapon[6].SetActive(true);
-                    nowWeapon = Weapon[6];
-                    //value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
+                {                    
+                    Weapon[weaponType].SetActive(false);
                     trigger = true;
                 }
+                
                 break;
 
             //作成する武器の切り替え
@@ -145,5 +141,11 @@ public class AniTest : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    IEnumerator DownPlayer()
+    {
+        anim.SetTrigger("Down");
+        yield return new WaitForSeconds(0.5f);
     }
 }
