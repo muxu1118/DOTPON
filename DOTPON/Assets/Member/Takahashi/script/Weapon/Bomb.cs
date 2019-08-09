@@ -61,7 +61,7 @@ public class Bomb : MonoBehaviour
         {
             if(obj.gameObject.tag == "player")
             {
-                obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage);
+                obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage, (int)transform.root.gameObject.GetComponent<Player>().own);
             }
             else if(obj.gameObject.tag == "enemy")
             {

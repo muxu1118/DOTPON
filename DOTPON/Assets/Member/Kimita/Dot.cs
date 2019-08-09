@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dot : MonoBehaviour
 {
     private float lostTime = 10.0f;
+    
     public float LostTime
     {
         get { return LostTime; }
@@ -43,5 +44,15 @@ public class Dot : MonoBehaviour
     public void DestroyObject()
     {
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// DotのMaterialを変える
+    /// </summary>
+    public void MaterialChange(int num)
+    {
+        // 1赤2青3緑4黄
+        gameObject.GetComponent<Renderer>().material.color = (num==0)?Color.red:(num==1)?Color.blue:(num==2)? Color.green:Color.yellow;
+
     }
 }

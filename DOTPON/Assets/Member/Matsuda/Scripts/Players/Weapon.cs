@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
             case "player":
                 if (other.gameObject.GetComponent<Player>().isDamage) return;
                 //Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
-                other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage));
+                other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), (int)transform.root.gameObject.GetComponent<Player>().own);
                 if (this.gameObject.tag == "player")
                 {
                     transform.root.GetComponent<WeaponCreate>().DownDursble();
