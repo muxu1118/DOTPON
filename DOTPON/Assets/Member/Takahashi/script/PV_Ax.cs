@@ -17,6 +17,7 @@ public class PV_Ax : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             anim.SetTrigger("AxAttack");
+            Debug.Log("おーのー");
         }
     }
 }

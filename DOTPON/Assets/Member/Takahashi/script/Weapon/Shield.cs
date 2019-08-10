@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    public Parametor parametor;    
+    //public Parametor parametor;    
 
     public void OnTriggerEnter(Collider other)
     {        
@@ -19,8 +19,12 @@ public class Shield : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     IEnumerator shieldGuard()
-    {     
-        transform.root.gameObject.GetComponent<BoxCollider>().enabled = false;
+    {
+        GameObject Obj;
+        Obj = transform.root.gameObject;
+        Debug.Log(Obj);
+        //transform.root.gameObject.GetComponent<BoxCollider>().enabled = false;
+        Obj.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.3f);
         Debug.Log(gameObject.name);
         transform.root.gameObject.GetComponent<BoxCollider>().enabled = true;
