@@ -29,6 +29,7 @@ public class Test_Matsuda : MonoBehaviour
             camera.transform.rotation = Quaternion.Euler(cameraVec[0]);
         }
         playerLeng = 0;
+
     }
 
     // Update is called once per frame

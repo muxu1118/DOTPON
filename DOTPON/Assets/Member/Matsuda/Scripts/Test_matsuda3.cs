@@ -30,9 +30,13 @@ public class Test_matsuda3 : MonoBehaviour
         //    leng[0] = -1; leng[1] = -2; leng[2] = 2;
         //}
         //playerLeng = 0;
+        player[0].transform.LookAt(Vector3.zero);
         player[0].GetComponent<Animator>().SetTrigger("Create");
         player[0].GetComponent<Animator>().SetTrigger("BombAttack");
         StartCoroutine(Bomb());
+        //bomb
+        player[1].GetComponent<MoveSample>().speed = 0;
+        player[2].GetComponent<MoveSample>().speed = 0;
     }
 
     // Update is called once per frame
@@ -93,9 +97,30 @@ public class Test_matsuda3 : MonoBehaviour
 
     IEnumerator Bomb()
     {
-        yield return new WaitForSeconds(2.9f);
-        var Bomb = Instantiate(bomb,new Vector3(5.5f,1.2f,-4.5f),Quaternion.identity);
-        Bomb.transform.eulerAngles = new Vector3(0,-45,0);
+        yield return new WaitForSeconds(1f);
+        player[1].GetComponent<MoveSample>().speed = 4;
+        player[2].GetComponent<MoveSample>().speed = 2f;
+        yield return new WaitForSeconds(1.9f);
+        var Bomb = Instantiate(bomb,new Vector3(-6f,1.4f,6f),Quaternion.identity);
+        Bomb.transform.parent = player[0].transform;
+        Bomb.transform.eulerAngles = new Vector3(0,135,0);
         Bomb.GetComponent<FarAttack>().PosMove2(6.5f);
+        StartCoroutine(Move());
+        yield return new WaitForSeconds(1f);
+        player[1].GetComponent<Animator>().SetTrigger("PunchAttack");
+        player[2].GetComponent<Animator>().SetTrigger("PunchAttack");
+        player[2].GetComponent<MoveSample>().speed = 3;
+        yield return new WaitForSeconds(0.7f);
+        player[1].GetComponent<MoveSample>().speed = 0;
+        player[2].GetComponent<MoveSample>().speed = 0;
+    }
+
+    IEnumerator Move()
+    {
+        for (int i= 0;i < 60;i++)
+        {
+            player[0].transform.localPosition += -player[0].transform.forward * 0 * Time.deltaTime;
+            yield return null;
+        }
     }
 }

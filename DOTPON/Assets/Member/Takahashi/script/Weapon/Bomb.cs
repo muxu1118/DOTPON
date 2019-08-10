@@ -23,7 +23,7 @@ public class Bomb : MonoBehaviour
     public void ExplotionCoroutine()
     {
         Destroy(obj);
-        transform.parent = null;
+        //transform.parent = null;
         StartCoroutine(bomExplosion());
     }
 
@@ -61,7 +61,9 @@ public class Bomb : MonoBehaviour
         {
             if(obj.gameObject.tag == "player")
             {
+                if (obj.gameObject.GetComponent<Player>().isDamage == true) return;
                 obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage, (int)transform.root.gameObject.GetComponent<Player>().own);
+                Debug.Log("bm");
             }
             else if(obj.gameObject.tag == "enemy")
             {
