@@ -39,9 +39,13 @@ public class Player : MonoBehaviour
     Animator animator;
     WeaponCreate create;
 
+    //colorScriptにアタッチ
+    ColorScript colorScript;
+
     // Start is called before the first frame update
     void Start()
     {
+        colorScript = GetComponent<ColorScript>();
         animator = GetComponent<Animator>();
         switch (own)
         {
@@ -99,7 +103,7 @@ public class Player : MonoBehaviour
         //盾を構えてい時ボタンを離したらIdlingに戻す
         if(shieldCheck == true)
         {
-            if (Input.GetKeyUp("joystick " + padNum + " button 1"))
+            if (Input.GetKeyUp("joystick " + padNum + " button 0"))
             {
                 shieldCheck = false;
                 GetComponent<MoveController>().shieldStart(false);
@@ -110,20 +114,20 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("ShieldGuard");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 1"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
         {
             AttackColliderOn();
             Debug.Log("At");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
         {
             create.WeaponChoice("a");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 4"))
         {
             create.WeaponChoice("s");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 0"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 5"))
         {
             create.WeaponChoice("d"); 
         }
@@ -134,25 +138,25 @@ public class Player : MonoBehaviour
             {
                 case PlayerKind.Player1:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
-                    MultiPlayerManager.instance.P1Star++;
+                    //MultiPlayerManager.instance.P1Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
-                    MultiPlayerManager.instance.P2Star++;
+                    //MultiPlayerManager.instance.P2Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
-                    MultiPlayerManager.instance.P3Star++;
+                    //MultiPlayerManager.instance.P3Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
-                    MultiPlayerManager.instance.P4Star++;
+                    //MultiPlayerManager.instance.P4Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P4Dot);
                     break;
@@ -239,7 +243,7 @@ public class Player : MonoBehaviour
     /// プレイヤーがダメージを受けた時の処理
     /// </summary>
     /// <param name="damage">ダメージ量</param>
-    public void Damage(int damage)
+    public void Damage(int damage,int playerNum)
     {
         if (isDamage) return;
         int hp = 0;
@@ -269,7 +273,8 @@ public class Player : MonoBehaviour
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
-        DotManager.instance.EnemyDeadDotPop(damage,transform.position);
+        hp = 10;
+        DotManager.instance.EnemyDeadDotPop(damage,transform.position, playerNum);
         Debug.Log(hp);
         if (hp <= 0)
         {
@@ -284,6 +289,7 @@ public class Player : MonoBehaviour
             isDamage = true;
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
+            colorScript.DamagedOn();
             animator.SetTrigger("Hit");
             //animator.SetBool("Trigger" ,isAction);
             //shieldCheck = false;
@@ -385,29 +391,33 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.name == "Dot")
         {
-            switch (own)
+            if ((int)other.gameObject.GetComponent<Dot>().ownColor == 4 || (int)other.gameObject.GetComponent<Dot>().ownColor == (int)own)
             {
-                case PlayerKind.Player1:
-                    hp = MultiPlayerManager.instance.P1Dot++;
-                    //Debug.Log(MultiPlayerManager.instance.P1Dot);
-                    break;
-                case PlayerKind.Player2:
-                    hp = MultiPlayerManager.instance.P2Dot++;
-                    //Debug.Log(MultiPlayerManager.instance.P2Dot);
-                    break;
-                case PlayerKind.Player3:
-                    hp = MultiPlayerManager.instance.P3Dot++;
-                    //Debug.Log(MultiPlayerManager.instance.P3Dot);
-                    break;
-                case PlayerKind.Player4:
-                    hp = MultiPlayerManager.instance.P4Dot++;
-                    //Debug.Log(MultiPlayerManager.instance.P4Dot);
-                    break;
-                default:
-                    Debug.LogError("よばれちゃいけんのやぞ");
-                    break;
+
+                switch (own)
+                {
+                    case PlayerKind.Player1:
+                        hp = MultiPlayerManager.instance.P1Dot++;
+                        //Debug.Log(MultiPlayerManager.instance.P1Dot);
+                        break;
+                    case PlayerKind.Player2:
+                        hp = MultiPlayerManager.instance.P2Dot++;
+                        //Debug.Log(MultiPlayerManager.instance.P2Dot);
+                        break;
+                    case PlayerKind.Player3:
+                        hp = MultiPlayerManager.instance.P3Dot++;
+                        //Debug.Log(MultiPlayerManager.instance.P3Dot);
+                        break;
+                    case PlayerKind.Player4:
+                        hp = MultiPlayerManager.instance.P4Dot++;
+                        //Debug.Log(MultiPlayerManager.instance.P4Dot);
+                        break;
+                    default:
+                        Debug.LogError("よばれちゃいけんのやぞ");
+                        break;
+                }
+                other.GetComponent<Dot>().DestroyObject();
             }
-            other.GetComponent<Dot>().DestroyObject();
         }
         if (other.gameObject.tag == "Star")
         {

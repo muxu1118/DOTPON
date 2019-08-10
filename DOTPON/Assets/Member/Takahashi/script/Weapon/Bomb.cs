@@ -40,7 +40,7 @@ public class Bomb : MonoBehaviour
 
         //爆発の範囲
         int i = 0;        
-        while (i < 30)
+        while (i < 90)
         {
             gameObject.transform.localScale += new Vector3(1,1,1) * range * Time.deltaTime;
             i++;
@@ -61,7 +61,7 @@ public class Bomb : MonoBehaviour
         {
             if(obj.gameObject.tag == "player")
             {
-                obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage);
+                obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage, (int)transform.root.gameObject.GetComponent<Player>().own);
             }
             else if(obj.gameObject.tag == "enemy")
             {

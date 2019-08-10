@@ -49,12 +49,12 @@ public class CameraMove : MonoBehaviour
         //Axisの位置をplayerの位置+axisPosできめる
         transform.position = player.transform.position + axisPos;
         //Debug.Log(Input.GetAxis("CameraMoveY"));
-        // GetAxisの誤差は返す
-        if (Input.GetAxis("Horizontal" + ControllerNum + "_right") >= -0.001f && Input.GetAxis("Horizontal" + ControllerNum + "_right") <= 0.001f) return;
-        if (Input.GetAxis("Vertical" + ControllerNum + "_right") >= -0.001f && Input.GetAxis("Vertical" + ControllerNum + "_right") <= 0.001f) return;
+        //// GetAxisの誤差は返す
+        //if (Input.GetAxis("Horizontal" + ControllerNum + "_right") >= -0.001f && Input.GetAxis("Horizontal" + ControllerNum + "_right") <= 0.001f) return;
+        //if (Input.GetAxis("Vertical" + ControllerNum + "_right") >= -0.001f && Input.GetAxis("Vertical" + ControllerNum + "_right") <= 0.001f) return;
 
         //Cameraの角度にRスティックからとった値を入れる
-        transform.eulerAngles += new Vector3(Input.GetAxis("Horizontal" + ControllerNum + "_right") * rotateSpeed, Input.GetAxis("Horizontal" + ControllerNum + "_right") * rotateSpeed, 0);
+        transform.eulerAngles += new Vector3(Input.GetAxis("Vertical" + ControllerNum + "_right") * rotateSpeed, Input.GetAxis("Horizontal" + ControllerNum + "_right") * rotateSpeed, 0);
        
         //x軸の角度
         float angleX = transform.eulerAngles.x;

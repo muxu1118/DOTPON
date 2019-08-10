@@ -45,8 +45,8 @@ public class Golem : Enemy
         {
             isAction = true;
             //回転のコルーチンを呼び出す
-            StartCoroutine(Rotating(parameter.rotateAngle, parameter.rotateTime * 60));
-            StartCoroutine(WaitTime(parameter.rotateTime));
+            StartCoroutine(Rotating(parameter.rotateAngle, parameter.rotateTime));
+            StartCoroutine(WaitTime(parameter.rotateTime,false));
             time = 0;
         }
         vector = transform.forward;
@@ -76,7 +76,7 @@ public class Golem : Enemy
             {
                 isAction = true;
                 Attack();
-                StartCoroutine(WaitTime(1.5f));
+                StartCoroutine(WaitTime(1.5f,false));
             }
         }
     }

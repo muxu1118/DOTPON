@@ -18,7 +18,7 @@ public class SceneChange : MonoBehaviour
 
     public void SwitchScene()
     {
-        StartCoroutine(DropDot());
+        //StartCoroutine(DropDot());
     }
 
     IEnumerator DropDot()

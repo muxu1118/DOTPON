@@ -15,7 +15,8 @@ public class Pizza : MonoBehaviour
     }
     public void PizzaUI(int n)
     {
-        pizza.fillAmount = 1 - (1 / n);
+
+        pizza.fillAmount =(n != 0)? 1 - (1 / n):0;
 
     }
 
