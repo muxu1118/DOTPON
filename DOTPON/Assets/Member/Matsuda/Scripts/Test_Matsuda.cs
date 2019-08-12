@@ -49,20 +49,26 @@ public class Test_Matsuda : MonoBehaviour
             playerLeng++;
             switch (playerLeng)
             {
-                case 1:
+                case 0:
                     player[playerLeng + 1].SetActive(false);
-                    leng[0] = -1; leng[1] = 1; leng[2] = 1;
+                    player[playerLeng + 2].SetActive(false);
+                    leng[0] = 0; leng[1] = -2; leng[2] = 1;
+                    camera.transform.rotation = Quaternion.Euler(cameraVec[0]);
+                    break;
+                case 1:
+                    player[playerLeng].SetActive(true);
+                    player[playerLeng + 1].SetActive(false);
+                    player[playerLeng - 1].SetActive(false);
+                    leng[0] = 1; leng[1] = -3; leng[2] = 1;
                     camera.transform.rotation = Quaternion.Euler(cameraVec[1]);
                     break;
                 case 2:
                     player[playerLeng].SetActive(true);
+                    player[playerLeng - 2].SetActive(false);
+                    player[playerLeng - 1].SetActive(false);
                     Destroy(player[playerLeng-1]);
                     leng[0] = 1; leng[1] = 1; leng[2] = 0;
                     camera.transform.rotation = Quaternion.Euler(cameraVec[2]);
-                    break;
-                case 0:
-                    leng[0] = 0; leng[1] = -2; leng[2] = 1;
-                    camera.transform.rotation = Quaternion.Euler(cameraVec[0]);
                     break;
             }
             time = 0;
