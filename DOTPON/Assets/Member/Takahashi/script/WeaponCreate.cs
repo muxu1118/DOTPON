@@ -120,7 +120,7 @@ public class WeaponCreate : MonoBehaviour
 
                     GetComponent<Animator>().SetTrigger("Create");
                     nowWeapon.SetActive(false);
-                    usedWeapon[weaponType].SetActive(true);
+                    StartCoroutine(CreateWait());
                     nowWeapon = usedWeapon[weaponType];
                     if (nowWeapon != weapon[5])
                     {
@@ -303,5 +303,11 @@ public class WeaponCreate : MonoBehaviour
         {
             usedWeapon[i] = weapon[num[i]];
         }
+    }
+
+    IEnumerator CreateWait()
+    {
+        yield return new WaitForSeconds(0.5f);
+        usedWeapon[weaponType].SetActive(true);
     }
 }

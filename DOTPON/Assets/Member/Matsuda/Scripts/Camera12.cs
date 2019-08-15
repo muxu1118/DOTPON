@@ -41,7 +41,7 @@ public class Camera12 : MonoBehaviour
 
     IEnumerator Cre()
     {
-        Instantiate(efe, hnd.transform.position, Quaternion.identity).transform.parent = hnd.transform;
+        var ef = Instantiate(efe, transform.localPosition + new Vector3(0,2,0) + transform.right /2, Quaternion.identity).transform.parent = transform;
         yield return new WaitForSeconds(1.5f);
         //GetComponent<Animator>().SetTrigger("Create");
         yield return new WaitForSeconds(0.4f);
