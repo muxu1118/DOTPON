@@ -1,0 +1,434 @@
+fileFormatVersion: 2
+guid: 2d8fa03d133fefb41b6ffb14d2bb1a8f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Chin
+    100002: Chin 1
+    100004: dragon_0726:ago
+    100006: dragon_0726:body
+    100008: dragon_0726:body_p
+    100010: dragon_0726:claw2
+    100012: dragon_0726:claw2_H_L
+    100014: dragon_0726:claw3_H_L
+    100016: dragon_0726:claw_H_L
+    100018: dragon_0726:claw_H_R
+    100020: dragon_0726:claw_H_R1
+    100022: dragon_0726:claw_H_R2
+    100024: dragon_0726:claw_L
+    100026: dragon_0726:claw_L1
+    100028: dragon_0726:claw_R
+    100030: dragon_0726:claw_R1
+    100032: dragon_0726:claw_R2
+    100034: dragon_0726:dragon1
+    100036: dragon_0726:horn_R
+    100038: dragon_0726:hprn_L
+    100040: dragon_0726:j_H_L
+    100042: dragon_0726:j_H_L1
+    100044: dragon_0726:j_H_R
+    100046: dragon_0726:j_H_R1
+    100048: dragon_0726:j_head
+    100050: dragon_0726:j_L
+    100052: dragon_0726:j_L1
+    100054: dragon_0726:j_R
+    100056: dragon_0726:j_R1
+    100058: dragon_0726:leg_H_L
+    100060: dragon_0726:leg_H_L1
+    100062: dragon_0726:leg_H_L2
+    100064: dragon_0726:leg_H_R
+    100066: dragon_0726:leg_H_R1
+    100068: dragon_0726:leg_H_R2
+    100070: dragon_0726:leg_L
+    100072: dragon_0726:leg_L1
+    100074: dragon_0726:leg_L2
+    100076: dragon_0726:leg_R
+    100078: dragon_0726:leg_R1
+    100080: dragon_0726:leg_R2
+    100082: dragon_0726:toge
+    100084: dragon_0726:toge1
+    100086: dragon_0726:toge10
+    100088: dragon_0726:toge11
+    100090: dragon_0726:toge12
+    100092: dragon_0726:toge2
+    100094: dragon_0726:toge3
+    100096: dragon_0726:toge4
+    100098: dragon_0726:toge5
+    100100: dragon_0726:toge6
+    100102: dragon_0726:toge7
+    100104: dragon_0726:toge8
+    100106: dragon_0726:toge9
+    100108: dragon_0726:toge_tale
+    100110: //RootNode
+    100112: Hip
+    100114: Hip 1
+    100116: IKGP
+    100118: LeftBackFoot
+    100120: LeftBackIK
+    100122: LeftBackKnee
+    100124: LeftBackLeg
+    100126: LeftBackLeg 1
+    100128: LeftBackLegPole
+    100130: LeftFrontFoot
+    100132: LeftFrontIK
+    100134: LeftFrontKnee
+    100136: LeftFrontLeg
+    100138: LeftFrontLeg 1
+    100140: LeftFrontLegPole
+    100142: LeftWing
+    100144: LeftWing 1
+    100146: LeftWing1
+    100148: LeftWing2
+    100150: LeftWing3
+    100152: LeftWing4
+    100154: LeftWingFilm
+    100156: LeftWingfilm
+    100158: LeftWingTip
+    100160: Main
+    100162: Neck1
+    100164: Neck1 1
+    100166: Neck2
+    100168: Neck2 1
+    100170: Neck3
+    100172: Neck3 1
+    100174: Neck4
+    100176: Neck4 1
+    100178: Neck5
+    100180: Neck5 1
+    100182: RightBackFoot
+    100184: RightBackIK
+    100186: RightBackKnee
+    100188: RightBackLeg
+    100190: RightBackLeg 1
+    100192: RightBackLegPole
+    100194: RightFrontFoot
+    100196: RightFrontIK
+    100198: RightFrontKnee
+    100200: RightFrontLeg
+    100202: RightFrontLeg 1
+    100204: RightFrontLegPole
+    100206: RightWing
+    100208: RightWing 1
+    100210: RightWing1
+    100212: RightWing2
+    100214: RightWing3
+    100216: RightWing4
+    100218: RightWingFilm
+    100220: RightWingfilm
+    100222: RightWingTip
+    100224: Spine1
+    100226: Spine1 1
+    100228: Spine2
+    100230: Spine2 1
+    100232: Tale1
+    100234: Tale1 1
+    100236: Tale2
+    100238: Tale2 1
+    100240: Tale3
+    100242: Tale3 1
+    100244: Tale4
+    100246: Tale4 1
+    400000: Chin
+    400002: Chin 1
+    400004: dragon_0726:ago
+    400006: dragon_0726:body
+    400008: dragon_0726:body_p
+    400010: dragon_0726:claw2
+    400012: dragon_0726:claw2_H_L
+    400014: dragon_0726:claw3_H_L
+    400016: dragon_0726:claw_H_L
+    400018: dragon_0726:claw_H_R
+    400020: dragon_0726:claw_H_R1
+    400022: dragon_0726:claw_H_R2
+    400024: dragon_0726:claw_L
+    400026: dragon_0726:claw_L1
+    400028: dragon_0726:claw_R
+    400030: dragon_0726:claw_R1
+    400032: dragon_0726:claw_R2
+    400034: dragon_0726:dragon1
+    400036: dragon_0726:horn_R
+    400038: dragon_0726:hprn_L
+    400040: dragon_0726:j_H_L
+    400042: dragon_0726:j_H_L1
+    400044: dragon_0726:j_H_R
+    400046: dragon_0726:j_H_R1
+    400048: dragon_0726:j_head
+    400050: dragon_0726:j_L
+    400052: dragon_0726:j_L1
+    400054: dragon_0726:j_R
+    400056: dragon_0726:j_R1
+    400058: dragon_0726:leg_H_L
+    400060: dragon_0726:leg_H_L1
+    400062: dragon_0726:leg_H_L2
+    400064: dragon_0726:leg_H_R
+    400066: dragon_0726:leg_H_R1
+    400068: dragon_0726:leg_H_R2
+    400070: dragon_0726:leg_L
+    400072: dragon_0726:leg_L1
+    400074: dragon_0726:leg_L2
+    400076: dragon_0726:leg_R
+    400078: dragon_0726:leg_R1
+    400080: dragon_0726:leg_R2
+    400082: dragon_0726:toge
+    400084: dragon_0726:toge1
+    400086: dragon_0726:toge10
+    400088: dragon_0726:toge11
+    400090: dragon_0726:toge12
+    400092: dragon_0726:toge2
+    400094: dragon_0726:toge3
+    400096: dragon_0726:toge4
+    400098: dragon_0726:toge5
+    400100: dragon_0726:toge6
+    400102: dragon_0726:toge7
+    400104: dragon_0726:toge8
+    400106: dragon_0726:toge9
+    400108: dragon_0726:toge_tale
+    400110: //RootNode
+    400112: Hip
+    400114: Hip 1
+    400116: IKGP
+    400118: LeftBackFoot
+    400120: LeftBackIK
+    400122: LeftBackKnee
+    400124: LeftBackLeg
+    400126: LeftBackLeg 1
+    400128: LeftBackLegPole
+    400130: LeftFrontFoot
+    400132: LeftFrontIK
+    400134: LeftFrontKnee
+    400136: LeftFrontLeg
+    400138: LeftFrontLeg 1
+    400140: LeftFrontLegPole
+    400142: LeftWing
+    400144: LeftWing 1
+    400146: LeftWing1
+    400148: LeftWing2
+    400150: LeftWing3
+    400152: LeftWing4
+    400154: LeftWingFilm
+    400156: LeftWingfilm
+    400158: LeftWingTip
+    400160: Main
+    400162: Neck1
+    400164: Neck1 1
+    400166: Neck2
+    400168: Neck2 1
+    400170: Neck3
+    400172: Neck3 1
+    400174: Neck4
+    400176: Neck4 1
+    400178: Neck5
+    400180: Neck5 1
+    400182: RightBackFoot
+    400184: RightBackIK
+    400186: RightBackKnee
+    400188: RightBackLeg
+    400190: RightBackLeg 1
+    400192: RightBackLegPole
+    400194: RightFrontFoot
+    400196: RightFrontIK
+    400198: RightFrontKnee
+    400200: RightFrontLeg
+    400202: RightFrontLeg 1
+    400204: RightFrontLegPole
+    400206: RightWing
+    400208: RightWing 1
+    400210: RightWing1
+    400212: RightWing2
+    400214: RightWing3
+    400216: RightWing4
+    400218: RightWingFilm
+    400220: RightWingfilm
+    400222: RightWingTip
+    400224: Spine1
+    400226: Spine1 1
+    400228: Spine2
+    400230: Spine2 1
+    400232: Tale1
+    400234: Tale1 1
+    400236: Tale2
+    400238: Tale2 1
+    400240: Tale3
+    400242: Tale3 1
+    400244: Tale4
+    400246: Tale4 1
+    2100000: dragon_0726_dragon_tex
+    4300000: dragon_0726:j_head
+    4300002: dragon_0726:ago
+    4300004: dragon_0726:body_p
+    4300006: dragon_0726:j_R
+    4300008: dragon_0726:leg_R1
+    4300010: dragon_0726:j_R1
+    4300012: dragon_0726:leg_R2
+    4300014: dragon_0726:claw_R
+    4300016: dragon_0726:claw_R1
+    4300018: dragon_0726:claw_R2
+    4300020: dragon_0726:leg_H_R1
+    4300022: dragon_0726:j_H_R1
+    4300024: dragon_0726:leg_H_R2
+    4300026: dragon_0726:j_H_R
+    4300028: dragon_0726:claw_H_R
+    4300030: dragon_0726:claw_H_R1
+    4300032: dragon_0726:claw_H_R2
+    4300034: dragon_0726:j_L
+    4300036: dragon_0726:leg_L1
+    4300038: dragon_0726:leg_L2
+    4300040: dragon_0726:j_L1
+    4300042: dragon_0726:claw_L
+    4300044: dragon_0726:claw_L1
+    4300046: dragon_0726:claw2
+    4300048: dragon_0726:j_H_L
+    4300050: dragon_0726:leg_H_L1
+    4300052: dragon_0726:j_H_L1
+    4300054: dragon_0726:leg_H_L2
+    4300056: dragon_0726:claw_H_L
+    4300058: dragon_0726:claw2_H_L
+    4300060: dragon_0726:claw3_H_L
+    4300062: dragon_0726:toge
+    4300064: dragon_0726:toge1
+    4300066: dragon_0726:toge2
+    4300068: dragon_0726:toge3
+    4300070: dragon_0726:toge4
+    4300072: dragon_0726:toge5
+    4300074: dragon_0726:toge6
+    4300076: dragon_0726:toge7
+    4300078: dragon_0726:toge8
+    4300080: dragon_0726:toge9
+    4300082: dragon_0726:toge10
+    4300084: dragon_0726:toge11
+    4300086: dragon_0726:toge12
+    4300088: dragon_0726:horn_R
+    4300090: dragon_0726:hprn_L
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: dragon_0726:ago
+    13700002: dragon_0726:body_p
+    13700004: dragon_0726:claw2
+    13700006: dragon_0726:claw2_H_L
+    13700008: dragon_0726:claw3_H_L
+    13700010: dragon_0726:claw_H_L
+    13700012: dragon_0726:claw_H_R
+    13700014: dragon_0726:claw_H_R1
+    13700016: dragon_0726:claw_H_R2
+    13700018: dragon_0726:claw_L
+    13700020: dragon_0726:claw_L1
+    13700022: dragon_0726:claw_R
+    13700024: dragon_0726:claw_R1
+    13700026: dragon_0726:claw_R2
+    13700028: dragon_0726:horn_R
+    13700030: dragon_0726:hprn_L
+    13700032: dragon_0726:j_H_L
+    13700034: dragon_0726:j_H_L1
+    13700036: dragon_0726:j_H_R
+    13700038: dragon_0726:j_H_R1
+    13700040: dragon_0726:j_head
+    13700042: dragon_0726:j_L
+    13700044: dragon_0726:j_L1
+    13700046: dragon_0726:j_R
+    13700048: dragon_0726:j_R1
+    13700050: dragon_0726:leg_H_L1
+    13700052: dragon_0726:leg_H_L2
+    13700054: dragon_0726:leg_H_R1
+    13700056: dragon_0726:leg_H_R2
+    13700058: dragon_0726:leg_L1
+    13700060: dragon_0726:leg_L2
+    13700062: dragon_0726:leg_R1
+    13700064: dragon_0726:leg_R2
+    13700066: dragon_0726:toge
+    13700068: dragon_0726:toge1
+    13700070: dragon_0726:toge10
+    13700072: dragon_0726:toge11
+    13700074: dragon_0726:toge12
+    13700076: dragon_0726:toge2
+    13700078: dragon_0726:toge3
+    13700080: dragon_0726:toge4
+    13700082: dragon_0726:toge5
+    13700084: dragon_0726:toge6
+    13700086: dragon_0726:toge7
+    13700088: dragon_0726:toge8
+    13700090: dragon_0726:toge9
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

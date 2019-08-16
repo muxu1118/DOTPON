@@ -11,7 +11,8 @@ public class WeaponCreate : MonoBehaviour
     GameObject[] usedWeapon = new GameObject[3];
     [SerializeField]
     GameObject Punch;
-        
+
+    [SerializeField]GameObject efe;
     bool trigger = true; //武器の作成と破棄の切り替え 
     int weaponNumber;    //武器の種類
     int weaponType = 0;  //武器を指定するための数値
@@ -117,7 +118,7 @@ public class WeaponCreate : MonoBehaviour
             case "a":
                 if(trigger && DotManager.instance.DotPonCreate(player,createNum ))
                 {
-
+                    Instantiate(efe, transform.localPosition + new Vector3(0, 2, 0) + transform.right / 2, Quaternion.identity).transform.parent = transform;
                     GetComponent<Animator>().SetTrigger("Create");
                     nowWeapon.SetActive(false);
                     StartCoroutine(CreateWait());
@@ -131,7 +132,7 @@ public class WeaponCreate : MonoBehaviour
                     player.isAction = true;
                     StartCoroutine(player.ActionWait(2.5f));
                     //DOTPONDursbleUI.GetComponent<DOTPONDursble>().SetDursble(value);
-                    pizza.PizzaUI(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                    //pizza.PizzaUI(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 }
                 else
                 {
@@ -284,8 +285,8 @@ public class WeaponCreate : MonoBehaviour
         {
             Debug.Log("残り耐久値 = " + value);
         }
-        DOTPONDursbleUI.GetComponent<DOTPONDursble>().DownDursbleUI();
-        pizza.PizzaUI(nowWeapon.GetComponent<Weapon>().parametor.durableValue);
+        //DOTPONDursbleUI.GetComponent<DOTPONDursble>().DownDursbleUI();
+        //pizza.PizzaUI(nowWeapon.GetComponent<Weapon>().parametor.durableValue);
     }
 
     //死んだときに武器を初期化
