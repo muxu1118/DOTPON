@@ -47,16 +47,14 @@ public class Dragon : Enemy
         isAction = true;
         if(dis <= parameter.distance / 2)
         {
-            //スタンプ攻撃
-            bukiObj[0].SetActive(true);
-            bukiObj[0].GetComponent<Animator>().SetTrigger("Attack");
+            //スタンプ攻撃0
+            GetComponent<Animator>().SetTrigger("Attack");
             StartCoroutine(WaitTime(1.5f,false));
         }
         else if (dis <= parameter.distance)
         {
             //ブレス攻撃
-            bukiObj[1].SetActive(true);
-            bukiObj[1].GetComponent<Animator>().SetTrigger("Attack2");
+            GetComponent<Animator>().SetTrigger("Attack2");
             StartCoroutine(WaitTime(2f,false));
         }
         StartCoroutine(Active(1.5f));
@@ -65,9 +63,5 @@ public class Dragon : Enemy
     IEnumerator Active(float num)
     {
         yield return new WaitForSeconds(num);
-        for (int i = 0;i < 2; i++)
-        {
-            bukiObj[i].SetActive(false);
-        }
     }
 }
