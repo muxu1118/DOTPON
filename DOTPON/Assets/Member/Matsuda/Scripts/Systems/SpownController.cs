@@ -13,17 +13,19 @@ public class SpownController : MonoBehaviour
     [SerializeField] float spownDelay;
     [SerializeField] int MaxSpown;
     [SerializeField] Timer timer;
-    int MaxTime;
+    [SerializeField]int MaxTime;
     [SerializeField] int oneTimeSpownNum;
+    [SerializeField] GameObject effect;
     // Start is called before the first frame update
     void Start()
     {
         List<int> createdPos = new List<int>() {-1 };
         for (int i = 0; i < oneTimeSpownNum; i++)
         {
-            createdPos.Add(CreateEnemy(createdPos));
+            createdPos.Add(PosSet(createdPos));
         }
         MaxTime = (int)timer.timeCount;
+        spownDelay -= 3;
     }
 
     // Update is called once per frame
@@ -33,25 +35,27 @@ public class SpownController : MonoBehaviour
         //制限時間/2<=timeだったら
         if (MaxTime / 2 <= time && !isDragonSpown)
         {
+            int rng = Random.Range(4, 8);
             Debug.Log("ドラゴンスポーン");
             isDragonSpown = true;
-            return;
-            Instantiate(dragonObj, positions[Random.Range(0, 4)], Quaternion.identity);
+            Instantiate(effect,positions[rng],Quaternion.identity);
+            StartCoroutine(CreateDragon(rng));
         }
         List<int> createdPos = new List<int>() { -1 };
-        if (time /  spownDelay>= 1)
+        if (time /  spownDelay >= 1)
         {
             for (int i = 0;i < oneTimeSpownNum;i++)
             {
                 if(NowSpown < MaxSpown)
                 {
-                    createdPos.Add(CreateEnemy(createdPos));
+                    createdPos.Add(PosSet(createdPos));
                 }
             }
-            time = 0;
+            spownDelay += spownDelay - 3;
         }
     }
-    int CreateEnemy(List<int> createdPos)
+
+    int PosSet(List<int> createdPos)
     {
         bool isCreated = true;
         int posNum = 0;
@@ -86,7 +90,18 @@ public class SpownController : MonoBehaviour
             }
         }
         //ランダムでどれかのEnemyがスポーンする
-        switch (Random.Range(0,2))
+        for (int i = 0;i < 2;i++)
+        {
+            Instantiate(effect, positions[posNum], Quaternion.identity);
+        }
+        StartCoroutine(CreateEnemy(posNum));
+        return posNum;
+    }
+
+    IEnumerator CreateEnemy(int posNum)
+    {
+        yield return new WaitForSeconds(3);
+        switch (Random.Range(0, 2))
         {
             case 0:
                 GameObject parentObject = new GameObject("GoburinFlock");
@@ -107,7 +122,7 @@ public class SpownController : MonoBehaviour
                 break;
             case 1:
                 GameObject slime = Instantiate(obj[1], positions[posNum], Quaternion.identity);
-                slime.name = slime.name.Replace("(Clone)","");
+                slime.name = slime.name.Replace("(Clone)", "");
                 NowSpown++;
                 break;
             case 2:
@@ -118,6 +133,11 @@ public class SpownController : MonoBehaviour
             default:
                 break;
         }
-        return posNum;
+    }
+
+    IEnumerator CreateDragon(int num)
+    {
+        yield return new WaitForSeconds(3);
+        Instantiate(dragonObj, positions[num], Quaternion.identity).transform.LookAt(Vector3.zero);
     }
 }
