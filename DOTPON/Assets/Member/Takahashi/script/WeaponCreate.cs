@@ -308,7 +308,7 @@ public class WeaponCreate : MonoBehaviour
 
     IEnumerator CreateWait()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         usedWeapon[weaponType].SetActive(true);
     }
 }

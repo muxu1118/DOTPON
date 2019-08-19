@@ -511,7 +511,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &171501105
 BoxCollider:
@@ -1329,7 +1329,8 @@ MonoBehaviour:
   spownDelay: 25
   MaxSpown: 10
   timer: {fileID: 47353736}
-  oneTimeSpownNum: 2
+  MaxTime: 0
+  oneTimeSpownNum: 0
   effect: {fileID: 2130418012208993468, guid: 5913828fbaaf99e40be09382558f6a28, type: 3}
 --- !u!4 &656611928
 Transform:

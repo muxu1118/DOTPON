@@ -8,6 +8,8 @@ public class Camera12 : MonoBehaviour
     [SerializeField] GameObject hnd;
     [SerializeField] GameObject buki;
     bool trg = true;
+    [SerializeField] GameObject star;
+    [SerializeField] GameObject cmr;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,11 @@ public class Camera12 : MonoBehaviour
             ScreenCapture.CaptureScreenshot("field.png");
             Debug.Log("screenshot");
         }
+        if (Input.GetKeyDown("joystick 1 button 7"))
+        {
+            GetComponent<Animator>().SetTrigger("Create");
+            StartCoroutine(Star());
+        }
     }
 
     IEnumerator Cre()
@@ -47,5 +54,16 @@ public class Camera12 : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         //buki.SetActive(true);
 
+    }
+    IEnumerator Star()
+    {
+        cmr = GameObject.Find("P1Cam");
+        cmr.transform.eulerAngles = new Vector3(0, 180, 0);
+        yield return new WaitForSeconds(0.6f);
+        var obj = Instantiate(star, transform.localPosition + new Vector3(0.5f,2.5f,0), Quaternion.identity);
+        obj.GetComponent<Move>().enabled = false;
+        obj.GetComponent<Star>().enabled = false;
+        yield return new WaitForSeconds(1f);
+        Destroy(obj);
     }
 }

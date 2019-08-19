@@ -233,7 +233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180316639711667733}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eaee70dc094ef0c41ac3ecb80f11c017, type: 3}
   m_Name: 
@@ -241,6 +241,7 @@ MonoBehaviour:
   efe: {fileID: 901223875067202681, guid: 7b7965ad8ff7d7b438ddc8390779c5d0, type: 3}
   hnd: {fileID: 1180316639711667761}
   buki: {fileID: 3124048909495137071}
+  star: {fileID: 1737330964004318407, guid: c24240e8b43c25645b6109b0bed1c4c5, type: 3}
 --- !u!114 &7065100066500674255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2619,11 +2620,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1453264195924920546, guid: 58f528e32f8833c4b942685bb0d606bb,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7142809957321371334, guid: 58f528e32f8833c4b942685bb0d606bb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2693,6 +2689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453264195924920546, guid: 58f528e32f8833c4b942685bb0d606bb,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6264037851564855669, guid: 58f528e32f8833c4b942685bb0d606bb,
         type: 3}

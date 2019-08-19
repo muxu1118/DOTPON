@@ -6,10 +6,11 @@ public class Fiest : MonoBehaviour
 {
     [SerializeField] GameObject[] player;
     [SerializeField] GameObject cmr;
-    [SerializeField] GameObject[] light;
+    [SerializeField] GameObject light;
     [SerializeField] Material mat;
     [SerializeField] Vector3[] pos;
-    // Start is called before the first frame update
+    [SerializeField] Vector3[] lightPos;
+     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0;i< 4;i++)
@@ -27,7 +28,7 @@ public class Fiest : MonoBehaviour
     IEnumerator Move()
     {
         yield return new WaitForSeconds(1f);
-        light[1].SetActive(true);
+        //light.transform.localPosition = lightPos[0];
         yield return new WaitForSeconds(1f);
         player[0].GetComponent<Animator>().SetTrigger("Walk");
         for (int i = 0; i < 100; i++)
@@ -69,12 +70,15 @@ public class Fiest : MonoBehaviour
         //    yield return null;
         //}
 
-        //player[0].GetComponent<Animator>().SetFloat("Speed", 0f);
-        light[0].SetActive(true);
-        light[1].SetActive(false);
+        ////player[0].GetComponent<Animator>().SetFloat("Speed", 0f);
+        //light.transform.localScale = new Vector3(1.2f, 1, 1.2f);
+        //light.transform.parent = null;
+        //light.transform.position = lightPos[1];
+        //light[0].SetActive(true);
+        //light[1].SetActive(false);
         //light[1].transform.localPosition += new Vector3(0,45,25);
         //light[1].GetComponent<Light>().intensity = 0.5f;
-        //RenderSettings.skybox = mat;
+        RenderSettings.skybox = mat;
         yield return new WaitForSeconds(1);
         for (int i = 0; i < 60; i++)
         {
