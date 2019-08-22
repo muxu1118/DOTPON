@@ -86,9 +86,9 @@ public class Test_matsuda2 : MonoBehaviour
             for (int i = 0; i < 60; i++)
             {
                 camera.transform.eulerAngles += new Vector3(0.1f, 1, 0);
-                camera.transform.localPosition = Vector3.MoveTowards(camera.transform.position,
-                                                         new Vector3(player[j].transform.position.x * 2, player[j].transform.position.y + 0.5f, player[j].transform.position.z * 2),
-                                                                     1 * Time.deltaTime);
+                //camera.transform.localPosition = Vector3.MoveTowards(camera.transform.position,
+                //                                         new Vector3(player[j].transform.position.x * 2, player[j].transform.position.y + 0.5f, player[j].transform.position.z * 2),
+                //                                                     1 * Time.deltaTime);
                 yield return null;
             }
             yield return new WaitForSeconds(1);

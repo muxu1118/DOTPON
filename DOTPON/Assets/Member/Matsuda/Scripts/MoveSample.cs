@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class MoveSample : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] public float speed;
+    public Vector3 vec;
     // Update is called once per frame
     private void Start()
     {
-        speed = speed / 100;
+        vec = transform.forward;
     }
     void Update()
     {
-        transform.position += new Vector3(0, 0, -1) * speed;
+        if (speed <= 0)
+        {
+            GetComponent<Animator>().SetFloat("Speed", 0.1f);
+        } else
+        {
+            transform.position += vec * speed * Time.deltaTime;
+            GetComponent<Animator>().SetFloat("Speed", 0.5f);
+        }
     }
 }

@@ -27,16 +27,16 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            EnemyDeadDotPop(5,Vector3.zero);
+            //EnemyDeadDotPop(5,Vector3.zero);
         }
     }
 
     /// <summary>
-    /// ドットを出現される (出現される時間と場所)
+    /// ドットを出現される (出現される時間と場所とどのプレイヤーか)
     /// </summary>
     /// <param name="time"></param>
     /// <param name="vec3"></param>
-    public void InstanceDot(float time,Vector3 vec3)
+    public void InstanceDot(float time,Vector3 vec3,int num)
     {
         // dotObjのスクリプトを読み込み出現に時間を加える
         // DotScript Dot = dotObj.GetCompoment<DotScript>();
@@ -44,8 +44,11 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         int count = SendDot();
         // 指定の数まで繰り返し
         while (count > 0) {
+            
             // ドットの出現(位置はランダム)
-            Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity).name = "Dot";
+            GameObject target =  Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
+            target.name = "Dot";
+            dotObj.GetComponent<Dot>().MaterialChange(num,target);
             count--;
         }
     }
@@ -68,7 +71,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     /// 敵が死んだらドットをドロップ
     /// </summary>
     /// <param name="rank"></param>
-    public void EnemyDeadDotPop(int rank, Vector3 vec3)
+    public void EnemyDeadDotPop(int rank, Vector3 vec3,int num)
     {
 
         // 敵によって落とす数の変更
@@ -78,7 +81,10 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         while (count > 0)
         {
             // ドットの出現(位置はランダム)
-            Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity).name = "Dot";
+
+            GameObject target = Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
+            target.name = "Dot";
+            dotObj.GetComponent<Dot>().MaterialChange(num,target);
             Debug.Log("ドット生成");
             count--;
         }

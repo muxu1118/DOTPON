@@ -59,7 +59,7 @@ public class Slime : Enemy
         if (other.gameObject.tag == "player")
         {
             //パッて向く
-            transform.LookAt(other.transform.position);
+            //transform.LookAt(other.transform.position);
             //すーっと向く
             //ターゲットの方向ベクトルを取得
             Vector3 relativePos = other.transform.position - this.gameObject.transform.position;
@@ -72,7 +72,6 @@ public class Slime : Enemy
             isLooking = true;
             if (isAction) return;
             isAction = true;
-            Attack();
             StartCoroutine(AttackWait(other));
         }
     }
@@ -82,6 +81,8 @@ public class Slime : Enemy
     }
     IEnumerator AttackWait(Collider other)
     {
+        yield return new WaitForSeconds(0.5f);
+        Attack();
         yield return new WaitForSeconds(0.5f);
         var obj = Instantiate(bukiObj, transform.localPosition, Quaternion.identity);
         //遠距離攻撃の距離を自分とプレイヤーの距離に
