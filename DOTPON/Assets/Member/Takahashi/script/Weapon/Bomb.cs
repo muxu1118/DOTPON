@@ -40,7 +40,7 @@ public class Bomb : MonoBehaviour
 
         //爆発の範囲
         int i = 0;        
-        while (i < 90)
+        while (i < 30)
         {
             gameObject.transform.localScale += new Vector3(1,1,1) * range * Time.deltaTime;
             i++;
