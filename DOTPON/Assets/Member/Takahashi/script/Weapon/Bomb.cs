@@ -33,16 +33,12 @@ public class Bomb : MonoBehaviour
     /// <returns></returns>
     ///
     IEnumerator bomExplosion()
-    {
-
-        //エフェクトを再生させる
-        //audioManager.playSfx(3);
-
+    {       
         //爆発の範囲
         int i = 0;        
-        while (i < 60)
+        while (i < 40)
         {
-            gameObject.transform.localScale += new Vector3(1,1,1) * range * Time.deltaTime;
+            gameObject.transform.localScale += new Vector3(1.3f,1.3f,1.3f) * range * Time.deltaTime;
             i++;
             BombAttack();
             yield return null;
