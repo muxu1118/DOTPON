@@ -511,7 +511,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &171501105
 BoxCollider:
@@ -1323,13 +1323,15 @@ MonoBehaviour:
   - {x: 6, y: 1, z: -6}
   - {x: -6, y: 1, z: 6}
   - {x: -6, y: 1, z: -6}
-  dragonObj: {fileID: 897962232566034707, guid: ec6693d88e7513540ac3c2c01c2e2c60,
+  dragonObj: {fileID: 6007393710565873051, guid: 5dbbe8ef9352f2c429264b9a4f578ce0,
     type: 3}
   NowSpown: 0
   spownDelay: 25
   MaxSpown: 10
   timer: {fileID: 47353736}
-  oneTimeSpownNum: 2
+  MaxTime: 0
+  oneTimeSpownNum: 0
+  effect: {fileID: 2130418012208993468, guid: 5913828fbaaf99e40be09382558f6a28, type: 3}
 --- !u!4 &656611928
 Transform:
   m_ObjectHideFlags: 0

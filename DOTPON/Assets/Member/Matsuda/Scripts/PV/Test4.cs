@@ -19,7 +19,8 @@ public class Test4 : MonoBehaviour
         //vec = tagertObj[0].transform.forward;
         //StartCoroutine(Move());
         //StartCoroutine(Attack());
-        StartCoroutine(Create()); StartCoroutine(Move());
+        StartCoroutine(Create());
+        StartCoroutine(Move());
         vec = tagertObj[0].transform.forward;
     }
 
@@ -104,7 +105,7 @@ public class Test4 : MonoBehaviour
         tagertObj[1].GetComponent<Animator>().SetFloat("Speed", 0.1f);
         tagertObj[1].GetComponent<MoveSample>().speed = -3;
         tagertObj[1].GetComponent<Animator>().SetTrigger("Hit");
-        DotManager.instance.EnemyDeadDotPop(4, tagertObj[1].transform.position, 4);
+        DotManager.instance.EnemyDeadDotPop(4, tagertObj[1].transform.position, 0);
         //buki.SetActive(true);
         yield return null;
     }

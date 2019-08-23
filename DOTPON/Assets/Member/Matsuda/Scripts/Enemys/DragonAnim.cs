@@ -17,16 +17,10 @@ public class DragonAnim : MonoBehaviour
     {
         time += Time.deltaTime;
         if (time <= 1) return;
-        switch (Random.Range(0, 6) + Random.Range(0, 6)) {
-            case 3:
-                Tall();
-                break;
-            case 9:
-                Head();
-                break;
-            case 5:
-                Leg();
-                break;
+        int i = Random.Range(0, 6) + Random.Range(0, 6);
+        if (i == 6)
+        {
+            animator.SetTrigger("Change");
         }
         time = 0;
 
