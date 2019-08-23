@@ -205,7 +205,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180316639711667733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f63ca76d8806894eb83b15851cf8646, type: 3}
   m_Name: 
@@ -242,6 +242,7 @@ MonoBehaviour:
   hnd: {fileID: 1180316639711667761}
   buki: {fileID: 3124048909495137071}
   star: {fileID: 1737330964004318407, guid: c24240e8b43c25645b6109b0bed1c4c5, type: 3}
+  cmr: {fileID: 0}
 --- !u!114 &7065100066500674255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,12 +250,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180316639711667733}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c10c50a8e34966a48943bea530007efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 7
+  playerNum: 
 --- !u!1 &1180316639711667735
 GameObject:
   m_ObjectHideFlags: 0
