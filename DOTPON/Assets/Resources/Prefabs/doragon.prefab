@@ -9279,8 +9279,9 @@ MonoBehaviour:
   - {fileID: 6007393709297076951}
   - {fileID: 6007393710056307558}
   bukiObj:
+  - {fileID: 7987777920382662891, guid: 6c27f11dd37cfeb47b37c72631dcb95f, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
+  headObj: {fileID: 6007393710248430101}
 --- !u!54 &7800218587367675323
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12138,11 +12139,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6007393710565873050}
     m_Modifications:
-    - target: {fileID: 2559760820216617479, guid: 36d785ccd360a884197a8c0eabbeba09,
-        type: 3}
-      propertyPath: m_Name
-      value: dragon 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2559760820216972839, guid: 36d785ccd360a884197a8c0eabbeba09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12212,6 +12208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559760820216617479, guid: 36d785ccd360a884197a8c0eabbeba09,
+        type: 3}
+      propertyPath: m_Name
+      value: dragon 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36d785ccd360a884197a8c0eabbeba09, type: 3}

@@ -9,10 +9,30 @@ public class Dragon : Enemy
     float time;
     float lookingAngle;
     [SerializeField] GameObject[] bukiObj;
+
+    [SerializeField] GameObject headObj;
     void Start()
     {
+        //パラメータの値を変数に格納
+        vector = transform.forward;
         HP = parameter.HP;
-        
+        lookingAngle = parameter.lookingAngle / 2;
+        for (int i = 0; i < 3; i++)
+        {
+            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, transform.localScale.x / 5, lookingAngle);
+            switch (i)
+            {
+                case 0:
+                    lookingCollider[i].transform.localPosition = new Vector3(0, 1, parameter.lookingAngle);
+                    break;
+                case 1:
+                    lookingCollider[i].transform.localPosition = new Vector3(parameter.lookingAngle, 1, 0);
+                    break;
+                case 2:
+                    lookingCollider[i].transform.localPosition = new Vector3(-parameter.lookingAngle, 1, 0);
+                    break;
+            }
+        }
     }
     void Update()
     {
@@ -55,13 +75,22 @@ public class Dragon : Enemy
         {
             //ブレス攻撃
             GetComponent<Animator>().SetTrigger("Attack2");
-            StartCoroutine(WaitTime(2f,false));
+            StartCoroutine(Bless());
+            StartCoroutine(WaitTime(2.5f,false));
         }
-        StartCoroutine(Active(1.5f));
     }
 
     IEnumerator Active(float num)
     {
         yield return new WaitForSeconds(num);
+    }
+
+    IEnumerator Bless()
+    {
+        yield return new WaitForSeconds(1.3f);
+        bukiObj[0].SetActive(true);
+        var particl = bukiObj[0].GetComponent<ParticleSystem>();
+        yield return new WaitWhile(() => particl.IsAlive(true));
+        bukiObj[0].SetActive(false);
     }
 }

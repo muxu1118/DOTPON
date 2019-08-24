@@ -9,17 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faab0f66c7ec8341a48f0894c54cc70, type: 3}
-  m_Name: dragomParameter
+  m_Script: {fileID: 11500000, guid: 571faecb276e2ca41a3a158b951de40a, type: 3}
+  m_Name: dragonBless
   m_EditorClassIdentifier: 
-  HP: 50
-  dropDot: 60
-  attackPow: 5
-  attackWait: 0
-  speed: 0
-  rotateTime: 2
-  rotateAngle: 90
-  lookingAngle: 15
-  distance: 20
-  lookSpeed: 0.1
-  lookAngleChangeTime: 10
+  attackSpeed: 0
+  attackDamage: 1
+  necessaryDot: 0
+  durableValue: 0
+  dotNum: 0
+  weapon: {fileID: 0}
+  Commentary: 
