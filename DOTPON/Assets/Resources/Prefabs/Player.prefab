@@ -144,7 +144,8 @@ MonoBehaviour:
   farAtkWeapon: {fileID: 2693526001938932166, guid: bf5352f4445c9e74198ad3b5f1284c8c,
     type: 3}
   isAction: 1
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: a2d5e7e46edbab348b2e9a05ce7a654b, type: 3}
 --- !u!54 &3868961739573896224
 Rigidbody:
   m_ObjectHideFlags: 0
