@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
                 shieldCheck = false;
                 GetComponent<MoveController>().shieldStart(false);
                 animator.SetTrigger("ShieldGuard");
+                Debug.LogError("ちゃんときた");
             }            
         }        
         if (Input.GetKeyUp("joystick " + padNum + " button 1"))
@@ -281,10 +282,9 @@ public class Player : MonoBehaviour
         DotManager.instance.EnemyDeadDotPop(damage,transform.position, playerNum);
         Debug.Log(hp);
         if (hp <= 0)
-        {            
-            StartCoroutine(DownPlayer());
-            //HPが0になったとき
-            isAction = false;            
+        {
+            //HPが0になったとき            
+            StartCoroutine(DownPlayer());                       
                         
             //create.ResetWeapon();
             //StarManager.instance.DeadStarDrop(transform.position, own);
@@ -298,6 +298,10 @@ public class Player : MonoBehaviour
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
             colorScript.DamagedOn();
+
+            shieldCheck = false;
+            GetComponent<MoveController>().shieldStart(false);
+
             animator.SetTrigger("Hit");
             animator.SetBool("HoldingWeapon", isAction); //武器を持っているか持っていないかの判定
             //animator.SetBool("Trigger" ,isAction);
@@ -305,19 +309,18 @@ public class Player : MonoBehaviour
         }
     }
     /// <summary>
-    /// ダウンした時のアニメーション再生
+    /// ダウンした時の処理
     /// </summary>
     /// <returns></returns>
     IEnumerator DownPlayer()
     {
         yield return new WaitForSeconds(0.1f);
         animator.SetTrigger("Down");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f);        
+        isAction = false;
         create.ResetWeapon();
         StarManager.instance.DeadStarDrop(transform.position, own);
         GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
-
-        Debug.Log("死ぬ演出");
     }
     /// <summary>
     /// ダメージを受けた時の無敵時間
@@ -378,7 +381,7 @@ public class Player : MonoBehaviour
         switch (create.nowWeapon.name)
         {
             case "Axe": animator.SetTrigger("AxAttack"); break;
-            case "hammer": animator.SetTrigger("hammerAttack"); break;
+            case "hammer": animator.SetTrigger("HammerAttack"); break;
             case "sword": animator.SetTrigger("SwordAttack"); break;
             case "Katana": animator.SetTrigger("KatanaAttack"); break;
             case "bomb":animator.SetTrigger("BombAttack");

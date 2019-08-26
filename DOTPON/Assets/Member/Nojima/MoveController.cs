@@ -82,7 +82,7 @@ public class MoveController : MonoBehaviour
         if(notMove == false)
         {
             if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.7)
-            {
+            {                
                 if (anim.GetCurrentAnimatorStateInfo(0).tagHash == animatorHash)
                 {
                     run /= 2;

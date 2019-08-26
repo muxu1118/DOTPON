@@ -90,10 +90,10 @@ public class AniTest : MonoBehaviour
         //    //anim.SetTrigger("AxAttack");
         //    anim.SetFloat("Speed", 0.8f);
         //}        
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    //anim.SetTrigger("AxAttack");
-        //}
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            anim.SetTrigger("Down");
+        }
     }
 
     public void WeaponChoice(string str)

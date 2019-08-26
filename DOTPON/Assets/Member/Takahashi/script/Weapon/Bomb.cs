@@ -10,7 +10,8 @@ public class Bomb : MonoBehaviour
     SphereCollider sph;
     [SerializeField]
     GameObject obj;
-    [SerializeField]float range;
+    [SerializeField]
+    float range;
     
     void Start()
     {
@@ -36,7 +37,7 @@ public class Bomb : MonoBehaviour
     {       
         //爆発の範囲
         int i = 0;        
-        while (i < 40)
+        while (i < 30)
         {
             gameObject.transform.localScale += new Vector3(1.3f,1.3f,1.3f) * range * Time.deltaTime;
             i++;
