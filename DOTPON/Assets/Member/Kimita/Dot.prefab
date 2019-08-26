@@ -105,6 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7496a37707d4cb43b695db9345507de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setTime: 3
+  m_target: {fileID: 0}
+  m_speed: 5
+  m_attenuation: 0.5
   ownColor: 0
 --- !u!114 &3084894949085583463
 MonoBehaviour:

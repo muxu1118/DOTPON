@@ -17,7 +17,7 @@ public class Move : MonoBehaviour
     private Vector3 speed; //上下の速度の処理（予定）
 
     BoxCollider collider = new BoxCollider();
-
+    public bool enable = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,22 +28,24 @@ public class Move : MonoBehaviour
             collider.enabled = false;
         }
         StartCoroutine(PosMove(new Vector3(Random.Range(gameObject.transform.position.x - Range, gameObject.transform.position.x + Range),gameObject.transform.position.y, Random.Range(gameObject.transform.position.z - Range, gameObject.transform.position.z + Range))));
-        
+        enable = true;
 
     }
 
     void Update()
     {
-        transform.position = (new Vector3(defaultPos.x, defaultPos.y + Mathf.PingPong(0.6f * Time.time, 0.6f), defaultPos.z));
-        if (thisObj == objKind.Star)
+        if (enable)
         {
-            transform.Rotate(new Vector3(0, 90, 10) * Time.deltaTime, Space.World);
+            transform.position = (new Vector3(defaultPos.x, defaultPos.y + Mathf.PingPong(0.6f * Time.time, 0.6f), defaultPos.z));
+            if (thisObj == objKind.Star)
+            {
+                transform.Rotate(new Vector3(0, 90, 10) * Time.deltaTime, Space.World);
+            }
+            else
+            {
+                transform.Rotate(new Vector3(65.0f, 65.0f, -35.0f) * Time.deltaTime);
+            }
         }
-        else
-        {
-            transform.Rotate(new Vector3(65.0f, 65.0f, -35.0f) * Time.deltaTime);
-        }
-        
         //回転の処理
     }
     /// <summary>
