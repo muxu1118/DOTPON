@@ -21,10 +21,10 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 1; i <= 4; i++)
-        {
-            playerObj.Add(GameObject.Find("Player" + i));
-        }
+        //for (int i = 1; i <= 4; i++)
+        //{
+        //    playerObj.Add(GameObject.Find("Player" + i));
+        //}
     }
 
     // Update is called once per frame
@@ -90,7 +90,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
             GameObject target = Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
             target.name = "Dot";
             dotObj.GetComponent<Dot>().MaterialChange(num,target);
-            Debug.Log("ドット生成");
+            //Debug.Log("ドット生成");
             count--;
         }
     }

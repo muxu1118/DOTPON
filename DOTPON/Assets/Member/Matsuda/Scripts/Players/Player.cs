@@ -278,7 +278,6 @@ public class Player : MonoBehaviour
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
-        hp = 10;
         DotManager.instance.EnemyDeadDotPop(damage,transform.position, playerNum);
         Debug.Log(hp);
         if (hp <= 0)
@@ -286,8 +285,8 @@ public class Player : MonoBehaviour
             //HPが0になったとき
             isAction = false;
             create.ResetWeapon();
-            //StarManager.instance.DeadStarDrop(transform.position,own);
-            //GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
+            StarManager.instance.DeadStarDrop(transform.position, own);
+            GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
         }
         else
         {

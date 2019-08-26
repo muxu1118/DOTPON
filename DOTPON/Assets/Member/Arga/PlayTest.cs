@@ -16,10 +16,14 @@ public class PlayTest : MonoBehaviour
     [SerializeField]
     GameObject selectObj;
     [SerializeField]
+    GameObject back;
+    [SerializeField]
     GameObject player;
     [SerializeField]
     GameObject hand;
     [SerializeField] float[] poss;
+
+    
 
     int playerNumber;
     List<Vector2> canvasPosis = new List<Vector2>();
@@ -40,15 +44,25 @@ public class PlayTest : MonoBehaviour
     {
         if (Input.GetKeyDown("joystick 1 button 9"))
         {
-            if (StartPanel.active)
+            if(SceneManager.GetActiveScene().name == "StartScene")
             {
-                StartButton();
-            }else if (SelectPanel.active)
+
+                if (StartPanel.active)
+                {
+                    StartButton();
+                }
+                else if (SelectPanel.active)
+                {
+                    PlayerNum();
+                }
+                else if (WeaponPanel.active)
+                {
+                    GameStartButton();
+                }
+            }
+            else
             {
-                PlayerNum();
-            }else if (WeaponPanel.active)
-            {
-                GameStartButton();
+                backButton();
             }
         }
         else if (Input.GetAxisRaw("Vertical1_left") > 0.9f)

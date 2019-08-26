@@ -1431,7 +1431,7 @@ MonoBehaviour:
   MaxSpown: 10
   timer: {fileID: 47353736}
   MaxTime: 0
-  oneTimeSpownNum: 0
+  oneTimeSpownNum: 3
   effect: {fileID: 2130418012208993468, guid: 5913828fbaaf99e40be09382558f6a28, type: 3}
 --- !u!4 &656611928
 Transform:
@@ -3393,6 +3393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dotObj: {fileID: 227017182040677646, guid: 3d2291c5ca40f15439f043c470752c45, type: 3}
+  playerObj: []
 --- !u!4 &1376702209
 Transform:
   m_ObjectHideFlags: 0
