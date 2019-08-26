@@ -37,6 +37,7 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DotManager.instance.playerObj.Clear();
         //人数分の回数まわす
         for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
         {
@@ -53,7 +54,6 @@ public class StartGame : MonoBehaviour
             //cameras[i].transform.parent = playerObj.transform;
             cameras[i].GetComponent<CameraMove>().Setting(playerObj);
             playerObj.GetComponent<PlayerMove>().cmr = cameras[i].GetComponentInChildren<Camera>();
-            DotManager.instance.playerObj.Clear();
             DotManager.instance.playerObj.Add(playerObj);
             //GameObject.Find("P" + i + 1 + "DOTPON").GetComponent<ChangeDOTPON>().SetTexture(MultiPlayerManager.instance.P1Weapon);
             //if(i>=1)

@@ -284,6 +284,7 @@ public class WeaponCreate : MonoBehaviour
             Punch.SetActive(true);
             Debug.Log("こわれた");
             value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
+            trigger = true;
         }
         else
         {

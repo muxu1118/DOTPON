@@ -50,9 +50,7 @@ public class Camera12 : MonoBehaviour
     {
         var ef = Instantiate(efe, transform.localPosition + new Vector3(0,2,0) + transform.right /2, Quaternion.identity).transform.parent = transform;
         yield return new WaitForSeconds(1.5f);
-        //GetComponent<Animator>().SetTrigger("Create");
         yield return new WaitForSeconds(0.4f);
-        //buki.SetActive(true);
 
     }
     IEnumerator Star()

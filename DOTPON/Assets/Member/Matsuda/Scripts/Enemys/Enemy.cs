@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
                     Debug.LogError("よばれちゃいけんのやぞ");
                     break;
             }
-            for (int i = 0;i < 4;i++)
+            for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
             {
                 DotManager.instance.EnemyDeadDotPop(GetComponent<Dragon>().damageInstance[i], obj.transform.position, i);
             }
