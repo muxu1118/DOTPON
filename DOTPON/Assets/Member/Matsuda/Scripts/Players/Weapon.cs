@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
 
     private string tagName;
 
+    AudioSource audio;
 
     void Start()
     {
@@ -33,6 +34,8 @@ public class Weapon : MonoBehaviour
             case "player":
                 if (other.gameObject.GetComponent<Player>().isDamage) return;
                 Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
+                audio.clip = parametor.clip;
+                audio.Play();
                 other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), (int)transform.root.GetComponent<Player>().own);
                 if (this.gameObject.tag == "player")
                 {
@@ -42,6 +45,8 @@ public class Weapon : MonoBehaviour
             case "enemy":
                 if (gameObject.transform.root.tag == "enemy") return;
                 //Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
+                audio.clip = parametor.clip;
+                audio.Play();
                 other.gameObject.GetComponent<Enemy>().Damage(GetAttackPower(parametor.attackDamage), transform.root.gameObject);
                 if (this.gameObject.name == "bomb(Clone)") return;
                 transform.root.GetComponent<WeaponCreate>().DownDursble();

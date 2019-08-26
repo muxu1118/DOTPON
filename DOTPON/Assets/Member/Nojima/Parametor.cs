@@ -32,5 +32,9 @@ public class Parametor : ScriptableObject
     [SerializeField]
     [HeaderAttribute("武器の説明")]
     public string Commentary; //説明文を記載
+
+    [SerializeField]
+    [HeaderAttribute("攻撃の効果音")]
+    public AudioClip clip;
 }
  
