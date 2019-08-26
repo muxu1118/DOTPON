@@ -110,7 +110,34 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
         // RankStatsList.Clear();
         // SortedList.Clear();
     }
-
+    /// <summary>
+    /// ランキングのドットの数を配列にして出す
+    /// </summary>
+    /// <returns></returns>
+    public int[] RankingDotNumber()
+    {
+        int[] temp = new int[4];
+        int[] dot = { P1Dot, P2Dot, P3Dot, P4Dot };
+        temp[0] = dot[Int32.Parse(Ranking1)-1];
+        temp[1] = dot[Int32.Parse(Ranking2)-1];
+        temp[2] = dot[Int32.Parse(Ranking3)-1];
+        temp[3] = dot[Int32.Parse(Ranking4)-1];
+        return temp;
+    }
+    /// <summary>
+    /// ランキングのスターの数を配列にして出す
+    /// </summary>
+    /// <returns></returns>
+    public int[] RankingStarNumber()
+    {
+        int[] temp = new int[4];
+        int[] star = { P1Star, P2Star, P3Star, P4Star };
+        temp[0] = star[Int32.Parse(Ranking1)-1];
+        temp[1] = star[Int32.Parse(Ranking2)-1];
+        temp[2] = star[Int32.Parse(Ranking3)-1];
+        temp[3] = star[Int32.Parse(Ranking4)-1];
+        return temp;
+    }
 }
 
 struct PlayerStats

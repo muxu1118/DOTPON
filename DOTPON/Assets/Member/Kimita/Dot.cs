@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Dot : MonoBehaviour
 {
-    private float lostTime = 10.0f;
+    //集まる時間
+    [SerializeField]
+    private float setTime = 10.0f;
     public enum DotColor
     {
         Red = 0,
@@ -19,21 +21,40 @@ public class Dot : MonoBehaviour
         get { return LostTime; }
         set { LostTime = value; }
     }
+    private BoxCollider box;
+    int playerNum;//Playerの番号の保存
 
    
 
     private void Start()
     {
-        StartCoroutine(LostDot());
+        box = GetComponent<BoxCollider>();
+        box.enabled = false;
+        StartCoroutine(SetDot());
        
     }
 
-    IEnumerator LostDot()
+    IEnumerator SetDot()
     {
-        yield return new WaitForSeconds(lostTime);
-     
-        Destroy(gameObject);
+        yield return new WaitForSeconds(setTime);
+        StartCoroutine(MoveSetDot(PlayerPositionCatch(playerNum)));
     }
+    /// <summary>
+    /// ドットがプレイヤーに向かって集まる
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator MoveSetDot(Vector3 vec3)
+    {
+        yield return new WaitForSeconds(Time.deltaTime);
+    }
+    /// <summary>
+    /// プレイヤーの位置を引数から見つける
+    /// </summary>
+    /// <returns></returns>
+    private Vector3 PlayerPositionCatch(int num)
+    {
+        return GameObject.Find("Player" + num.ToString()).transform.position;
+    } 
 
     /// <summary>
     /// 当たった時にドットを取得する
@@ -60,6 +81,7 @@ public class Dot : MonoBehaviour
     public void MaterialChange(int num,GameObject obj)
     {
         ownColor = (DotColor)num;
+        playerNum = num;
         // 1赤2青3緑4黄
         switch (num)
         {
