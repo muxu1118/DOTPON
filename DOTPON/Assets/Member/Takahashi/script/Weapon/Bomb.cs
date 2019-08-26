@@ -45,6 +45,7 @@ public class Bomb : MonoBehaviour
         }
         sph.radius = 1f;
         Destroy(gameObject);
+        Debug.Log(gameObject.name);
     }
 
     /// <summary>

@@ -143,9 +143,17 @@ public class AniTest : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// プレイヤーがダウンした時のアニメーション
+    /// Player関数の体力がゼロになったときの場所に入れる
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DownPlayer()
     {
         anim.SetTrigger("Down");
         yield return new WaitForSeconds(0.5f);
+
+        //Player関数のHitのあとに入れる
+        //animator.SetBool("HoldingWeapon", isAction);
     }
 }
