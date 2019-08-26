@@ -42,9 +42,14 @@ public class Player : MonoBehaviour
     //colorScriptにアタッチ
     ColorScript colorScript;
 
+    //SE類
+    [SerializeField]AudioClip[] clips;
+    AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         colorScript = GetComponent<ColorScript>();
         animator = GetComponent<Animator>();
         switch (own)
@@ -287,6 +292,8 @@ public class Player : MonoBehaviour
         else
         {
             isDamage = true;
+            audio.clip = clips[0];
+            audio.Play();
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
             colorScript.DamagedOn();

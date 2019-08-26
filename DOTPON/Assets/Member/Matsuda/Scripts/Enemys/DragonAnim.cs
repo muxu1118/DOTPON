@@ -16,7 +16,7 @@ public class DragonAnim : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (time <= 1) return;
+        if (time <= 1 || GetComponent<Dragon>().isAction) return;
         int i = Random.Range(0, 6) + Random.Range(0, 6);
         if (i == 6)
         {

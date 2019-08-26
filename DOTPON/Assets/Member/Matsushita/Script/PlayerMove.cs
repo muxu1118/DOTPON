@@ -18,10 +18,13 @@ public class PlayerMove : MonoBehaviour
     Vector3 Player_pos;
     Rigidbody rb;
 
-    string playerNum;
+    [SerializeField]string playerNum;
 
     //[SerializeField]
     //Transform cam;
+
+    public Camera cmr;
+    Animator anim;
 
     //private float RotationSpeed = 100f; //向きを変える速度
     // Start is called before the first frame update
@@ -29,6 +32,7 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerNum = this.gameObject.name.Substring(6);
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,9 +40,9 @@ public class PlayerMove : MonoBehaviour
     {
         //Move();
         inputHorizontal = Input.GetAxisRaw("Horizontal" + playerNum + "_left");
-        //Debug.Log(Input.GetAxis("Horizontal"));
+        //Debug.Log(inputHorizontal);
         inputVertical = Input.GetAxisRaw("Vertical" + playerNum + "_left");
-        //Debug.Log(Input.GetAxis("Vertical"));
+        //Debug.Log(inputVertical);
         //Vector3 direction = new Vector3(moveX, 0, moveZ);
 
         //if (Input.GetAxis("Horizontal" + playerNum + "_left") >= -0.001f && Input.GetAxis("Horizontal" + playerNum + "_left") <= 0.001f) return;
@@ -49,11 +53,10 @@ public class PlayerMove : MonoBehaviour
     {
         //rb.velocity = new Vector3(moveX, 0, moveZ);
         //カメラの方向から、X-Z平面の単位ベクトルを取得
-        Vector3 cameraFoward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-
+        Vector3 cameraFoward = Vector3.Scale(cmr.transform.forward, new Vector3(1, 0, 1)).normalized;
+        
         //方向キーの入力値とカメラの向きから、移動方向を決定
-        Vector3 moveForward = cameraFoward * inputVertical + Camera.main.transform.right * inputHorizontal;
-
+        Vector3 moveForward = cameraFoward * inputVertical + cmr.transform.right * inputHorizontal;
         //
         rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
 
@@ -63,6 +66,7 @@ public class PlayerMove : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(moveForward);
         }
+        anim.SetFloat("Speed", Mathf.Abs(inputHorizontal) + Mathf.Abs(inputVertical));
 
     }
 

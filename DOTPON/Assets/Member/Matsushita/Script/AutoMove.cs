@@ -5,27 +5,24 @@ using UnityEngine;
 public class AutoMove : MonoBehaviour
 {
     [SerializeField]
-    float Speed = 1.0f;
+    float Speed = 0.01f;
 
-    float px = 0;
-    float pz = 0;
+    [SerializeField]
+    float hight = 30;
     // Start is called before the first frame update
     void Start()
     {
-        px = Random.Range(-5.0f, 5.0f);
-        pz = Random.Range(-5.0f, 5.0f);
-
-        transform.position = new Vector3(px, 10, pz);
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Speed * Time.deltaTime;
+        transform.Translate(0, 0, Speed);
 
-        if (transform.position.z >= 25.0f)
+        if(transform.position.z>=70)
         {
-            transform.position = new Vector3(px, 10, pz);
+            transform.position = new Vector3(Random.Range(-60, 60), hight, Random.Range(-60, 60));
         }
     }
 }

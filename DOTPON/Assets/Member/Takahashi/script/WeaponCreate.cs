@@ -29,9 +29,11 @@ public class WeaponCreate : MonoBehaviour
 
     Player player;
 
-
+    AudioSource audio;
+    [SerializeField]AudioClip[] clips;
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         player = GetComponent<Player>();
         weaponNumber = 3;
         List<GameObject> UI = new List<GameObject>();
@@ -131,6 +133,7 @@ public class WeaponCreate : MonoBehaviour
                     trigger = false;
                     player.isAction = true;
                     StartCoroutine(player.ActionWait(2.5f));
+                    SEOn(clips[0]);
                     //DOTPONDursbleUI.GetComponent<DOTPONDursble>().SetDursble(value);
                     //pizza.PizzaUI(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 }
@@ -160,6 +163,7 @@ public class WeaponCreate : MonoBehaviour
                                 break;
                         }
                     }
+                    SEOn(clips[1]);
                     //DOTPONDursbleUI.GetComponent<DOTPONDursble>().ResetDursble();
                 }
                 break;     
@@ -310,5 +314,11 @@ public class WeaponCreate : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         usedWeapon[weaponType].SetActive(true);
+    }
+
+    private void SEOn(AudioClip clip)
+    {
+        audio.clip = clip;
+        audio.Play();
     }
 }
