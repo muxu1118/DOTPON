@@ -19,3 +19,4 @@ MonoBehaviour:
   dotNum: 10
   weapon: {fileID: 0}
   Commentary: "\u306F\u3093\u307E\u30FC"
+  clip: {fileID: 8300000, guid: 8e5fde539104af542b8665df9cf08261, type: 3}

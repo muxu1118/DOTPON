@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         //    _attackSpeed = parametor.attackSpeed;
         //    _attackDamage = parametor.attackDamage;
         //    _necessaryDot = parametor.necessaryDot;
@@ -36,7 +37,14 @@ public class Weapon : MonoBehaviour
                 Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
                 audio.clip = parametor.clip;
                 audio.Play();
-                other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), (int)transform.root.GetComponent<Player>().own);
+                if (this.transform.root.gameObject.tag == "player")
+                {
+                    other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), (int)transform.root.GetComponent<Player>().own);
+                }
+                else
+                {
+                    other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), 4);
+                }
                 if (this.gameObject.tag == "player")
                 {
                     transform.root.GetComponent<WeaponCreate>().DownDursble();
