@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         //    _attackSpeed = parametor.attackSpeed;
         //    _attackDamage = parametor.attackDamage;
         //    _necessaryDot = parametor.necessaryDot;

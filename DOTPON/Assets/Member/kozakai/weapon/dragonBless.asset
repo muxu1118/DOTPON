@@ -19,3 +19,4 @@ MonoBehaviour:
   dotNum: 0
   weapon: {fileID: 0}
   Commentary: 
+  clip: {fileID: 8300000, guid: 7f853fed81a218f4cb6e87df06e8bb9f, type: 3}
