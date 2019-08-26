@@ -278,15 +278,16 @@ public class Player : MonoBehaviour
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
-        hp = 10;
         DotManager.instance.EnemyDeadDotPop(damage,transform.position, playerNum);
         Debug.Log(hp);
         if (hp <= 0)
-        {
+        {            
+            StartCoroutine(DownPlayer());
             //HPが0になったとき
-            isAction = false;
-            create.ResetWeapon();
-            //StarManager.instance.DeadStarDrop(transform.position,own);
+            isAction = false;            
+                        
+            //create.ResetWeapon();
+            //StarManager.instance.DeadStarDrop(transform.position, own);
             //GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
         }
         else
@@ -298,9 +299,25 @@ public class Player : MonoBehaviour
             StartCoroutine(DamegeWait());
             colorScript.DamagedOn();
             animator.SetTrigger("Hit");
+            animator.SetBool("HoldingWeapon", isAction); //武器を持っているか持っていないかの判定
             //animator.SetBool("Trigger" ,isAction);
             //shieldCheck = false;
         }
+    }
+    /// <summary>
+    /// ダウンした時のアニメーション再生
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator DownPlayer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        animator.SetTrigger("Down");
+        yield return new WaitForSeconds(1.5f);
+        create.ResetWeapon();
+        StarManager.instance.DeadStarDrop(transform.position, own);
+        GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
+
+        Debug.Log("死ぬ演出");
     }
     /// <summary>
     /// ダメージを受けた時の無敵時間
