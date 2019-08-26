@@ -7,6 +7,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     public GameObject dotObj;
     // Dotの持ってる数 配列はプレイヤーの数
     private int[] dotHave = new int[4];
+    public List<GameObject> playerObj = new List<GameObject>();
     // 読み取り用
     public int[] DotHave
     {
@@ -20,6 +21,10 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 1; i <= 4; i++)
+        {
+            playerObj.Add(GameObject.Find("Player" + i));
+        }
     }
 
     // Update is called once per frame

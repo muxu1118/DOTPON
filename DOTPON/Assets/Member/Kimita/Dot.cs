@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Dot : MonoBehaviour
 {
+    //集まる時間
+    [SerializeField]
+    private float setTime = 3.0f;
+    [SerializeField]
     private float lostTime = 10.0f;
+    public Transform m_target = null;
+    public float m_speed = 5;
+    public float m_attenuation = 0.5f;
+
+    private Vector3 m_velocity;
     public enum DotColor
     {
         Red = 0,
@@ -19,21 +28,57 @@ public class Dot : MonoBehaviour
         get { return LostTime; }
         set { LostTime = value; }
     }
-
+    private BoxCollider box;
+    int playerNum;//Playerの番号の保存
+    [SerializeField]
+    bool enable = false;
    
 
     private void Start()
     {
-        StartCoroutine(LostDot());
+        MaterialChange((int)ownColor, this.gameObject);
+        box = GetComponent<BoxCollider>();
+        box.enabled = false;
+        if (ownColor == DotColor.White) {
+            StartCoroutine(LostDot());
+            return;
+        }
+        StartCoroutine(SetDot());
        
     }
-
+    private void Update()
+    {
+        if (enable)
+        {
+            m_velocity += (m_target.position - transform.position) * m_speed;
+            m_velocity *= m_attenuation;
+            transform.position += m_velocity *= Time.deltaTime;
+            m_target = DotManager.instance.playerObj[(int)ownColor].transform;
+            m_attenuation += Time.deltaTime;
+        }
+    }
     IEnumerator LostDot()
     {
         yield return new WaitForSeconds(lostTime);
-     
         Destroy(gameObject);
     }
+    IEnumerator SetDot()
+    {
+        yield return new WaitForSeconds(setTime);
+        m_target = DotManager.instance.playerObj[(int)ownColor].transform;
+        box.enabled = true;
+        enable = true;
+        GetComponent<Move>().enable = false;
+        yield return null;
+    }
+    /// <summary>
+    /// プレイヤーの位置を引数から見つける
+    /// </summary>
+    /// <returns></returns>
+    private Vector3 PlayerPositionCatch(int num)
+    {
+        return DotManager.instance.playerObj[num].transform.position;
+    } 
 
     /// <summary>
     /// 当たった時にドットを取得する
@@ -60,6 +105,7 @@ public class Dot : MonoBehaviour
     public void MaterialChange(int num,GameObject obj)
     {
         ownColor = (DotColor)num;
+        
         // 1赤2青3緑4黄
         switch (num)
         {
