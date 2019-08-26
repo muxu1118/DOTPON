@@ -42,7 +42,7 @@ public class Camera12 : MonoBehaviour
         if (Input.GetKeyDown("joystick 1 button 7"))
         {
             GetComponent<Animator>().SetTrigger("Create");
-            StartCoroutine(Star());
+            //StartCoroutine(Star());
         }
     }
 
@@ -57,8 +57,6 @@ public class Camera12 : MonoBehaviour
     }
     IEnumerator Star()
     {
-        cmr = GameObject.Find("P1Cam");
-        cmr.transform.eulerAngles = new Vector3(0, 180, 0);
         yield return new WaitForSeconds(0.6f);
         var obj = Instantiate(star, transform.localPosition + new Vector3(0.5f,2.5f,0), Quaternion.identity);
         obj.GetComponent<Move>().enabled = false;

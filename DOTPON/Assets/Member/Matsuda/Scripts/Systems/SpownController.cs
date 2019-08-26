@@ -138,6 +138,8 @@ public class SpownController : MonoBehaviour
     IEnumerator CreateDragon(int num)
     {
         yield return new WaitForSeconds(3);
-        Instantiate(dragonObj, positions[num], Quaternion.identity).transform.LookAt(Vector3.zero);
+        var obj = Instantiate(dragonObj, positions[num], Quaternion.identity);
+        obj.transform.LookAt(Vector3.zero);
+        obj.name = "Doragon";
     }
 }

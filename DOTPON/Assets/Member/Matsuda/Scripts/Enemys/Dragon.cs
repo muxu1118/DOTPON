@@ -11,6 +11,8 @@ public class Dragon : Enemy
     [SerializeField] GameObject[] bukiObj;
 
     [SerializeField] GameObject headObj;
+
+    [HideInInspector]public int[] damageInstance = {0,0,0,0};
     void Start()
     {
         //パラメータの値を変数に格納
@@ -78,6 +80,13 @@ public class Dragon : Enemy
             StartCoroutine(Bless());
             StartCoroutine(WaitTime(2.5f,false));
         }
+    }
+
+    public void PlayerAttackCount(GameObject player,int pow)
+    {
+        int i = pow * 3;
+        damageInstance[(int)player.GetComponent<Player>().own] += i;
+        Debug.Log("1p = "+damageInstance[0]+" 2p = "+damageInstance[1]+" 3p = "+damageInstance[2]+"4p = "+damageInstance[3]);
     }
 
     IEnumerator Active(float num)

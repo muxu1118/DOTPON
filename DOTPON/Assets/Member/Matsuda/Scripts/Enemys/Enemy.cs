@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("しんだ");
         GetComponent<Animator>().SetTrigger("Down");
         //ドラゴンが死んだ場合、最後の攻撃者にstarを与える
-        if (obj.name == "dragon(Clone)")
+        if (obj.name == "dragon")
         {
             switch (parentObj.GetComponent<Player>().own)
             {
@@ -55,10 +55,17 @@ public class Enemy : MonoBehaviour
                     Debug.LogError("よばれちゃいけんのやぞ");
                     break;
             }
+            for (int i = 0;i < 4;i++)
+            {
+                DotManager.instance.EnemyDeadDotPop(GetComponent<Dragon>().damageInstance[i], obj.transform.position, i);
+            }
+        }
+        else
+        {
+            DotManager.instance.EnemyDeadDotPop(kazu, obj.transform.position, (int)parentObj.GetComponent<Player>().own);
         }
         GameObject.Find("SpownController").GetComponent<SpownController>().NowSpown--;
-        DotManager.instance.EnemyDeadDotPop(kazu, obj.transform.position, (int)parentObj.GetComponent<Player>().own);
-        
+
         //enemyの消去
         Destroy(obj);
     }
@@ -80,6 +87,10 @@ public class Enemy : MonoBehaviour
         else if(this.gameObject.name == "goburin")
         {
             GetComponent<Animator>().SetTrigger("Down");
+        }
+        else if (this.gameObject.name == "dragon")
+        {
+            GetComponent<Dragon>().PlayerAttackCount(obj,At);
         }
         Debug.Log(this.gameObject.name + "のHPは" + HP + "です");
     }

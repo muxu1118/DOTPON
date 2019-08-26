@@ -1431,7 +1431,7 @@ MonoBehaviour:
   MaxSpown: 10
   timer: {fileID: 47353736}
   MaxTime: 0
-  oneTimeSpownNum: 5
+  oneTimeSpownNum: 0
   effect: {fileID: 2130418012208993468, guid: 5913828fbaaf99e40be09382558f6a28, type: 3}
 --- !u!4 &656611928
 Transform:
