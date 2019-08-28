@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     int padNum;
 
     Animator animator;
+    AnimatorStateInfo animInfo;
     WeaponCreate create;
 
     //colorScriptにアタッチ
@@ -346,9 +347,8 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(time1);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(0.5f);
-        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(time2);
+        create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         isAction = false;
         yield break;
     }
@@ -407,6 +407,8 @@ public class Player : MonoBehaviour
         //    //上段切りみたいなの
         //    GetComponent<Animator>().SetTrigger("Attack2");
         //}*/
+        animInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (animInfo.normalizedTime > 1.0f) return;
         if (create.nowWeapon.name == "bomb")
         {
             create.DownDursble();

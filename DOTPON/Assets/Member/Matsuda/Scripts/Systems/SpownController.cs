@@ -37,10 +37,10 @@ public class SpownController : MonoBehaviour
         //制限時間/2<=timeだったら
         if (MaxTime / 2 <= time && !isDragonSpown)
         {
-            int rng = Random.Range(0, 5);
+            int rng = Random.Range(0, 4);
             Debug.Log("ドラゴンスポーン");
             isDragonSpown = true;
-            var obj = Instantiate(effect,positions[rng],Quaternion.identity);
+            var obj = Instantiate(effect,dragonPos[rng],Quaternion.identity);
             StartCoroutine(EndEffect(obj));
             StartCoroutine(CreateDragon(rng));
         }
@@ -146,8 +146,8 @@ public class SpownController : MonoBehaviour
     }
     IEnumerator EndEffect(GameObject obj)
     {
-        var particl = obj.GetComponent<ParticleSystem>();
-        yield return new WaitForSeconds(3f);
+        var particl = obj.GetComponentsInChildren<ParticleSystem>();
+        yield return new WaitWhile(() => particl[1].IsAlive(true));
         Destroy(obj);
     }
 }
