@@ -101,8 +101,9 @@ public class SpownController : MonoBehaviour
 
     IEnumerator CreateEnemy(int posNum)
     {
+        Debug.Log(positions[posNum]);
         yield return new WaitForSeconds(3);
-        switch (Random.Range(0, 2))
+        switch (Random.Range(0, 3))
         {
             case 0:
                 GameObject parentObject = new GameObject("GoburinFlock");
