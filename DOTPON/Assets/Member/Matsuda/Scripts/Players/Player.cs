@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
                 shieldCheck = false;
                 GetComponent<MoveController>().shieldStart(false);
                 animator.SetTrigger("ShieldGuard");
+                Debug.LogError("ちゃんときた");
             }            
         }        
         if (Input.GetKeyUp("joystick " + padNum + " button 1"))
@@ -169,7 +170,6 @@ public class Player : MonoBehaviour
                     Debug.LogError("よばれちゃいけんのやぞ");
                     break;
             }
-            animator.SetTrigger("Create");
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -283,11 +283,12 @@ public class Player : MonoBehaviour
         Debug.Log(hp);
         if (hp <= 0)
         {
-            //HPが0になったとき
-            isAction = false;
-            create.ResetWeapon();
-            StarManager.instance.DeadStarDrop(transform.position, own);
-            GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
+            //HPが0になったとき            
+            StartCoroutine(DownPlayer());                       
+                        
+            //create.ResetWeapon();
+            //StarManager.instance.DeadStarDrop(transform.position, own);
+            //GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
         }
         else
         {
@@ -297,10 +298,29 @@ public class Player : MonoBehaviour
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
             colorScript.DamagedOn();
+
+            shieldCheck = false;
+            GetComponent<MoveController>().shieldStart(false);
+
             animator.SetTrigger("Hit");
+            animator.SetBool("HoldingWeapon", isAction); //武器を持っているか持っていないかの判定
             //animator.SetBool("Trigger" ,isAction);
             //shieldCheck = false;
         }
+    }
+    /// <summary>
+    /// ダウンした時の処理
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator DownPlayer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        animator.SetTrigger("Down");
+        yield return new WaitForSeconds(1.5f);        
+        isAction = false;
+        create.ResetWeapon();
+        StarManager.instance.DeadStarDrop(transform.position, own);
+        GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
     }
     /// <summary>
     /// ダメージを受けた時の無敵時間
@@ -321,11 +341,11 @@ public class Player : MonoBehaviour
     /// 攻撃したときの待機時間
     /// </summary>
     /// <returns></returns>
-    IEnumerator AttackWait(float time,float time2)
+    IEnumerator AttackWait()
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(time2);
+        yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.3f);
         isAction = false;
@@ -389,16 +409,9 @@ public class Player : MonoBehaviour
         if (create.nowWeapon.name == "bomb")
         {
             create.DownDursble();
-            StartCoroutine(FarAttackWait(create.nowWeapon));
             return;
-        }else if (create.nowWeapon.name == "hummer" || create.nowWeapon.name == "Axe")
-        {
-            StartCoroutine(AttackWait(1f,0.8f));
         }
-        else
-        {
-            StartCoroutine(AttackWait(0.5f,0.5f));
-        }
+        StartCoroutine(AttackWait());
     }    
 
     private void OnTriggerEnter(Collider other)

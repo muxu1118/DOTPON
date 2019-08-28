@@ -90,10 +90,10 @@ public class AniTest : MonoBehaviour
         //    //anim.SetTrigger("AxAttack");
         //    anim.SetFloat("Speed", 0.8f);
         //}        
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    //anim.SetTrigger("AxAttack");
-        //}
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            anim.SetTrigger("Down");
+        }
     }
 
     public void WeaponChoice(string str)
@@ -143,9 +143,17 @@ public class AniTest : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// プレイヤーがダウンした時のアニメーション
+    /// Player関数の体力がゼロになったときの場所に入れる
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DownPlayer()
     {
         anim.SetTrigger("Down");
         yield return new WaitForSeconds(0.5f);
+
+        //Player関数のHitのあとに入れる
+        //animator.SetBool("HoldingWeapon", isAction);
     }
 }
