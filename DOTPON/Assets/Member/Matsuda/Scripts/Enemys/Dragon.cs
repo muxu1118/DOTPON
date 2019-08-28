@@ -102,4 +102,15 @@ public class Dragon : Enemy
         yield return new WaitWhile(() => particl.IsAlive(true));
         bukiObj[0].SetActive(false);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "enemy")
+        {
+            collision.gameObject.GetComponent<Enemy>().Damage(99,collision.gameObject);
+        }else if (collision.gameObject.tag == "player")
+        {
+            //collision.gameObject.transform.position += Vector3.back * 5;
+        }
+    }
 }

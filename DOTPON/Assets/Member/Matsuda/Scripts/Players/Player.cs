@@ -303,7 +303,8 @@ public class Player : MonoBehaviour
             GetComponent<MoveController>().shieldStart(false);
 
             animator.SetTrigger("Hit");
-            animator.SetBool("HoldingWeapon", isAction); //武器を持っているか持っていないかの判定
+            bool getWeapon = create.nowWeapon.name == "punch";
+            animator.SetBool("HoldingWeapon",getWeapon ); //武器を持っているか持っていないかの判定
             //animator.SetBool("Trigger" ,isAction);
             //shieldCheck = false;
         }
@@ -341,13 +342,13 @@ public class Player : MonoBehaviour
     /// 攻撃したときの待機時間
     /// </summary>
     /// <returns></returns>
-    IEnumerator AttackWait()
+    IEnumerator AttackWait(float time1,float time2)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(time1);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(0.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(time2);
         isAction = false;
         yield break;
     }
@@ -394,7 +395,7 @@ public class Player : MonoBehaviour
                 GetComponent<MoveController>().shieldStart(true);
                 animator.SetTrigger("ShieldAttack");                
                 break;
-            default: animator.SetTrigger("SwordAttack"); break;
+            default: animator.SetTrigger("PunchAttack"); break;
 
         }
         //if (true/*create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch"*/)
@@ -410,8 +411,14 @@ public class Player : MonoBehaviour
         {
             create.DownDursble();
             return;
+        }else if (create.nowWeapon.name == "Hammmer" || create.nowWeapon.name == "Axe")
+        {
+            StartCoroutine(AttackWait(0.8f,0.4f));
         }
-        StartCoroutine(AttackWait());
+        else
+        {
+            StartCoroutine(AttackWait(0.5f,0.3f));
+        }
     }    
 
     private void OnTriggerEnter(Collider other)

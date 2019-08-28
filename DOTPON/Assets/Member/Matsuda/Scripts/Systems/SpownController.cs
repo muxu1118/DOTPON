@@ -16,6 +16,8 @@ public class SpownController : MonoBehaviour
     [SerializeField]int MaxTime;
     [SerializeField] int oneTimeSpownNum;
     [SerializeField] GameObject effect;
+
+    [SerializeField] Vector3[] dragonPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +37,11 @@ public class SpownController : MonoBehaviour
         //制限時間/2<=timeだったら
         if (MaxTime / 2 <= time && !isDragonSpown)
         {
-            int rng = Random.Range(4, 8);
+            int rng = Random.Range(0, 5);
             Debug.Log("ドラゴンスポーン");
             isDragonSpown = true;
-            Instantiate(effect,positions[rng],Quaternion.identity);
+            var obj = Instantiate(effect,positions[rng],Quaternion.identity);
+            StartCoroutine(EndEffect(obj));
             StartCoroutine(CreateDragon(rng));
         }
         List<int> createdPos = new List<int>() { -1 };
@@ -90,10 +93,8 @@ public class SpownController : MonoBehaviour
             }
         }
         //ランダムでどれかのEnemyがスポーンする
-        for (int i = 0;i < 2;i++)
-        {
-            Instantiate(effect, positions[posNum], Quaternion.identity);
-        }
+        var obj = Instantiate(effect, positions[posNum], Quaternion.identity);
+        StartCoroutine(EndEffect(obj));
         StartCoroutine(CreateEnemy(posNum));
         return posNum;
     }
@@ -138,8 +139,14 @@ public class SpownController : MonoBehaviour
     IEnumerator CreateDragon(int num)
     {
         yield return new WaitForSeconds(3);
-        var obj = Instantiate(dragonObj, positions[num], Quaternion.identity);
+        var obj = Instantiate(dragonObj, dragonPos[num], Quaternion.identity);
         obj.transform.LookAt(Vector3.zero);
         obj.name = "Doragon";
+    }
+    IEnumerator EndEffect(GameObject obj)
+    {
+        var particl = obj.GetComponent<ParticleSystem>();
+        yield return new WaitForSeconds(3f);
+        Destroy(obj);
     }
 }
