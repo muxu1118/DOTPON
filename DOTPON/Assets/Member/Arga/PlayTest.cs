@@ -290,7 +290,7 @@ public class PlayTest : MonoBehaviour
                 }
             }
         }
-        if (trigger.Count == 4)
+        if (trigger.Count == MultiPlayerManager.instance.totalPlayer)
         {
             Cursor.visible = false;
             FadeManager.Instance.LoadScene("Main",1.0f);
