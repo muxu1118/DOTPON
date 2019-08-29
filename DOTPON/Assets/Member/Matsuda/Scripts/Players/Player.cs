@@ -503,18 +503,21 @@ public class Player : MonoBehaviour
     /// <param name="n"></param>
     public void CrownActive()
     {
-        int n = 0;
-        int bit = MultiPlayerManager.instance.FindFirstPlayer(n);
+        int[] bit = MultiPlayerManager.instance.FindFirstPlayer();
 
+        Debug.Log("人数" + bit[0]);
+        Debug.Log("bit" + System.Convert.ToString(bit[1], 2));
+        Debug.Log(own+"シフト" + System.Convert.ToString(((1 << ((int)own + 1))),2));
         // 自分のクラウンがセルフだったらまず見えなくする
         if (crown.activeSelf)crown.SetActive(false);
         // 一位の人間の人数によって操作を変える
-        switch (bit)
+        switch (bit[0])
         {
-            case 1: if (n != (int)own) return; break;
-            case 2: if ((n & (int)own) != (int)own) return; break;
-            case 3: if ((n & (int)own) != (int)own) return; break;
-            case 4: if ((n & (int)own) != (int)own) return; break;
+            case 1: if (bit[1] != (int)own + 1) return; break;
+            case 2: if ((bit[1] & 1 << ((int)own)) != 1 << (int)own) return; break;
+            case 3: if ((bit[1] & 1 << ((int)own)) != 1 << (int)own) return; break;
+            case 4:break;
+            default:Debug.Log("おかしいぞ");break;
         }
         crown.SetActive(true);
     }
