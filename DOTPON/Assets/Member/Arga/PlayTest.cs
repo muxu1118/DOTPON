@@ -23,6 +23,8 @@ public class PlayTest : MonoBehaviour
     GameObject hand;
     [SerializeField] float[] poss;
 
+    [SerializeField]
+    GameObject cameraObj;
     
 
     int playerNumber;
@@ -116,8 +118,8 @@ public class PlayTest : MonoBehaviour
         MultiPlayerManager.instance.totalPlayer = 2;
         WeaponPanel.SetActive(true);
         SelectPanel.SetActive(false);
-        canvasPosis.Add(new Vector2(0, 100));
-        canvasPosis.Add(new Vector2(0, -100));
+        canvasPosis.Add(new Vector2(200, 100));
+        canvasPosis.Add(new Vector2(-200, 100));
         SetSelectUI();
     } 
 
@@ -128,7 +130,7 @@ public class PlayTest : MonoBehaviour
         SelectPanel.SetActive(false);
         canvasPosis.Add(new Vector2(-200, 140));
         canvasPosis.Add(new Vector2(200, 140));
-        canvasPosis.Add(new Vector2(-200, -80));
+        canvasPosis.Add(new Vector2(-200, -50));
         SetSelectUI();
     } 
 
@@ -139,8 +141,8 @@ public class PlayTest : MonoBehaviour
         SelectPanel.SetActive(false);
         canvasPosis.Add(new Vector2(-200, 140));
         canvasPosis.Add(new Vector2(200, 140));
-        canvasPosis.Add(new Vector2(-200, -80));
-        canvasPosis.Add(new Vector2(200, -80));
+        canvasPosis.Add(new Vector2(-200, -50));
+        canvasPosis.Add(new Vector2(200, -50));
         SetSelectUI();
     } 
     private void PlayerNum()
@@ -153,19 +155,19 @@ public class PlayTest : MonoBehaviour
                 canvasPosis.Add(new Vector2(0, 0));
                 break;
             case 2:
-                canvasPosis.Add(new Vector2(0, 100));
-                canvasPosis.Add(new Vector2(0, -100));
+                canvasPosis.Add(new Vector2(-200, 100));
+                canvasPosis.Add(new Vector2(200, 100));
                 break;
             case 3:
                 canvasPosis.Add(new Vector2(-200, 140));
                 canvasPosis.Add(new Vector2(200, 140));
-                canvasPosis.Add(new Vector2(-200, -80));
+                canvasPosis.Add(new Vector2(-200, -65));
                 break;
             case 4:
                 canvasPosis.Add(new Vector2(-200, 140));
                 canvasPosis.Add(new Vector2(200, 140));
-                canvasPosis.Add(new Vector2(-200, -80));
-                canvasPosis.Add(new Vector2(200, -80));
+                canvasPosis.Add(new Vector2(-200, -65));
+                canvasPosis.Add(new Vector2(200, -65));
                 break;
             default:
                 break;
@@ -207,7 +209,7 @@ public class PlayTest : MonoBehaviour
             objs[i].transform.localScale = new Vector3(0.8f, 0.8f, 1);
             if (playerNumber == 2)
             {
-                objs[i].transform.localScale = new Vector3(0.45f, 0.45f, 1);
+                objs[i].transform.localScale = new Vector3(0.4f, 0.4f, 1);
             }else if(playerNumber >= 3)
             {
                 objs[i].transform.localScale = new Vector3(0.4f, 0.4f, 1);
@@ -216,50 +218,61 @@ public class PlayTest : MonoBehaviour
         switch (playerNumber)
         {
             case 1:
-                var obj = Instantiate(player, new Vector3(2.5f, 1, 2), Quaternion.identity);
+                var obj = Instantiate(player, new Vector3(2.5f, 0.5f, 2), Quaternion.identity);
+                obj.transform.Rotate(0, -30.49f, 0);
                 obj.name = "Player1";
                 break;
             case 2:
 
-                var obj1 = Instantiate(player, new Vector3(3f, 2, 0), Quaternion.identity);
-                var obj2 = Instantiate(player, new Vector3(-1f, 2, 0), Quaternion.identity);
+                var obj1 = Instantiate(player, new Vector3(4f, 0.5f, 1.2f), Quaternion.identity);
+                var obj2 = Instantiate(player, new Vector3(-4f, 0.5f, 1.2f), Quaternion.identity);
+                obj1.transform.Rotate(0, -41.01f, 0);
+                obj2.transform.Rotate(0, 41.01f, 0);
                 obj1.name = "Player1";
                 obj2.name = "Player2";
                 break;
             case 3:
 
-                var obj3 = Instantiate(player, new Vector3(5f, 1.5f, 0), Quaternion.identity);
-                var obj4 = Instantiate(player, new Vector3(-1f, 1.5f, 0), Quaternion.identity);
-                var obj5 = Instantiate(player, new Vector3(2.5f, 0, 3), Quaternion.identity);
+                var obj3 = Instantiate(player, new Vector3(5f, 1.8f, 0), Quaternion.identity);
+                var obj4 = Instantiate(player, new Vector3(-1f, 1.8f, 0), Quaternion.identity);
+                var obj5 = Instantiate(player, new Vector3(2.5f, 0.5f, 3), Quaternion.identity);
+                obj3.transform.Rotate(0, -39, 0);
+                obj4.transform.Rotate(0, 6.13f, 0);
+                obj5.transform.Rotate(0, -39.38f, 0);
                 obj3.name = "Player1";
                 obj4.name = "Player2";
                 obj5.name = "Player3";
-                obj5.transform.localScale = new Vector3(0.6f, 0.6f, 1);
+                obj5.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 break;
             case 4:
 
-                var obj6 = Instantiate(player, new Vector3(5f, 1.5f, 0), Quaternion.identity);
-                var obj7 = Instantiate(player, new Vector3(-1f,1.5f,0), Quaternion.identity);
-                var obj8 = Instantiate(player, new Vector3(2.8f, 0, 3f), Quaternion.identity);
-                var obj9 = Instantiate(player, new Vector3(-0.7f, 0, 3f), Quaternion.identity);
+                var obj6 = Instantiate(player, new Vector3(5f, 1.8f, 0), Quaternion.identity);
+                var obj7 = Instantiate(player, new Vector3(-1f,1.8f,0), Quaternion.identity);
+                var obj8 = Instantiate(player, new Vector3(2.6f, 0.5f, 2.8f), Quaternion.identity);
+                var obj9 = Instantiate(player, new Vector3(-0.7f, 0.5f, 2.6f), Quaternion.identity);
+                obj6.transform.Rotate(0, -39, 0);
+                obj7.transform.Rotate(0, 6.13f, 0);
+                obj8.transform.Rotate(0, -39.38f, 0);
+                obj9.transform.Rotate(0, 8.95f, 0);
                 obj6.name = "Player1";
                 obj7.name = "Player2";
                 obj8.name = "Player3";
                 obj9.name = "Player4";
-                obj8.transform.localScale = new Vector3(0.6f, 0.6f, 1);
-                obj9.transform.localScale = new Vector3(0.6f, 0.6f, 1);
+                obj8.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                obj9.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 break;
         }
     }
 
     public void GameStartButton()
     {
-        bool trigger = false;
+        List<int> trigger = new List<int>();
         BUKSelect[] select = WeaponPanel.GetComponentsInChildren<BUKSelect>();
         for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
         {
-            if (select[i].weapons.Count == 3) {
-                trigger = true;
+            if (select[i].weapons.Count == 3)
+            {
+                trigger.Add(1);
                 switch (i)
                 {
                     case 0:
@@ -277,7 +290,7 @@ public class PlayTest : MonoBehaviour
                 }
             }
         }
-        if (trigger)
+        if (trigger.Count == 4)
         {
             Cursor.visible = false;
             FadeManager.Instance.LoadScene("Main",1.0f);

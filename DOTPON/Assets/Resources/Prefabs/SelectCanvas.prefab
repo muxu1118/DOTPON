@@ -860,6 +860,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
+      propertyPath: pos.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos2.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
       propertyPath: selectedObj
       value: 
       objectReference: {fileID: 1238763574844034350}
@@ -914,6 +924,96 @@ PrefabInstance:
       propertyPath: textures.Array.data[0]
       value: 
       objectReference: {fileID: 2800000, guid: 1de6f7f7100db72448fd5523ea9b9c89, type: 3}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos2.Array.data[0].y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos2.Array.data[1].y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos2.Array.data[0].z
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos2.Array.data[1].z
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos2.Array.data[0].x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos2.Array.data[1].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[0].x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[0].y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[0].z
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[1].y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[1].z
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[1].x
+      value: -3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[2].x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[2].z
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[3].x
+      value: -3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[3].z
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[2].y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: pos.Array.data[3].y
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 289534091312231720, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
       propertyPath: textures.Array.data[0]

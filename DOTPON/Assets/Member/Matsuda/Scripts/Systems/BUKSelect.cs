@@ -36,6 +36,8 @@ public class BUKSelect : MonoBehaviour
     Texture[] textures;
     int num;
     bool isChange;
+    [SerializeField] Vector3[] pos;
+    [SerializeField] Vector3[] pos2;
 
     [SerializeField]GameObject[] bukis;
     GameObject instantedBuki;
@@ -43,6 +45,7 @@ public class BUKSelect : MonoBehaviour
     {
         padNum = (int)playerNum + 1;
         InstanceBuki();
+        StartCoroutine(RotateBuki());
     }
 
     private void Update()
@@ -80,6 +83,7 @@ public class BUKSelect : MonoBehaviour
                 nowWeapon++;
             }
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, true);
+            InstanceBuki();
         }
         if (Input.GetKeyDown("joystick " + padNum + " button 4"))
         {
@@ -92,6 +96,7 @@ public class BUKSelect : MonoBehaviour
                 nowWeapon--;
             }
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, false);
+            InstanceBuki();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -156,7 +161,32 @@ public class BUKSelect : MonoBehaviour
         {
             Destroy(instantedBuki);
         }
-        instantedBuki = Instantiate(bukis[(int)nowWeapon], new Vector3(0,2,0), Quaternion.identity);
+        switch (MultiPlayerManager.instance.totalPlayer)
+        {
+            case 1:
+                instantedBuki = Instantiate(bukis[(int)nowWeapon], new Vector3(-2,1.3f,3), Quaternion.identity);
+                break;
+            case 2:
+                instantedBuki = Instantiate(bukis[(int)nowWeapon], pos2[padNum-1], Quaternion.identity);
+                break;
+            case 3:
+                instantedBuki = Instantiate(bukis[(int)nowWeapon], pos[padNum-1], Quaternion.identity);
+                break;
+            case 4:
+                instantedBuki = Instantiate(bukis[(int)nowWeapon], pos[padNum-1], Quaternion.identity);
+                break;
+        }
+
     }
-    
+    IEnumerator RotateBuki()
+    {
+        while (true)
+        {
+            if (instantedBuki != null)
+            {
+                instantedBuki.transform.Rotate(0, 30 * Time.deltaTime, 0);
+            }
+            yield return null;
+        }
+    }
 }
