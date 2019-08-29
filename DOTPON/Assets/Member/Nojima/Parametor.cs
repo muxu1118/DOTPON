@@ -36,5 +36,9 @@ public class Parametor : ScriptableObject
     [SerializeField]
     [HeaderAttribute("攻撃の効果音")]
     public AudioClip clip;
+
+    [SerializeField]
+    [HeaderAttribute("エフェクト")]
+    public GameObject effect;
 }
  

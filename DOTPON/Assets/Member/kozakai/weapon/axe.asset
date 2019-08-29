@@ -20,3 +20,4 @@ MonoBehaviour:
   weapon: {fileID: 5713209274112605249, guid: 41b25c2da8813de47acde624b07bd409, type: 3}
   Commentary: "\u3042\u3063\u304F\u3059"
   clip: {fileID: 8300000, guid: 8324e8cf55c4e7b43bcb05cb4b5786ba, type: 3}
+  effect: {fileID: 4622522299321996903, guid: 2a541ee672cb8aa4ba3666dc42f424a1, type: 3}
