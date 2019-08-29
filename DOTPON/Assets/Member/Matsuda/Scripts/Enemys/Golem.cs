@@ -8,13 +8,14 @@ public class Golem : Enemy
     [SerializeField] GameObject[] lookingCollider;
     float time;
     float lookingAngle;
+    [SerializeField] GameObject buki2;
     // Start is called before the first frame update
     void Start()
     {
         //パラメータの値を変数に格納
         vector = transform.forward;
         HP = parameter.HP;
-        lookingAngle = parameter.lookingAngle / 2;
+        lookingAngle = parameter.lookingAngle;
         //視野のcollider3つを配置するループ
         float scale = transform.localScale.x * 2;
         for (int i = 0; i < 3; i++)
@@ -23,13 +24,13 @@ public class Golem : Enemy
             switch (i)
             {
                 case 0:
-                    lookingCollider[i].transform.localPosition = new Vector3(0, 0, CantLookPos(lookingAngle) / scale);
+                    lookingCollider[i].transform.localPosition = new Vector3(0, -1.5f, CantLookPos(lookingAngle) / scale);
                     break;
                 case 1:
-                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle) / scale, 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle) / scale, -1.5f, 0);
                     break;
                 case 2:
-                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle) / scale, 0, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle) / scale, -1.5f, 0);
                     break;
             }
         }
@@ -76,12 +77,21 @@ public class Golem : Enemy
             {
                 isAction = true;
                 Attack();
-                StartCoroutine(WaitTime(1.5f,false));
+                StartCoroutine(WaitTime(3,false));
+                StartCoroutine(GolemAttack());
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
         isLooking = false;
+    }
+
+    IEnumerator GolemAttack()
+    {
+        yield return new WaitForSeconds(1);
+        buki.SetActive(true); buki2.SetActive(true);
+        yield return new WaitForSeconds(0.7f);
+        buki.SetActive(false); buki2.SetActive(false);
     }
 }

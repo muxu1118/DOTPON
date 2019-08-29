@@ -15,10 +15,11 @@ MonoBehaviour:
   HP: 50
   dropDot: 60
   attackPow: 5
+  attackWait: 0
   speed: 0
   rotateTime: 2
   rotateAngle: 90
   lookingAngle: 15
-  distance: 10
+  distance: 20
   lookSpeed: 0.1
   lookAngleChangeTime: 10

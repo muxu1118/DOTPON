@@ -37,14 +37,20 @@ public class Player : MonoBehaviour
     int padNum;
 
     Animator animator;
+    AnimatorStateInfo animInfo;
     WeaponCreate create;
 
     //colorScriptにアタッチ
     ColorScript colorScript;
 
+    //SE類
+    [SerializeField]AudioClip[] clips;
+    AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         colorScript = GetComponent<ColorScript>();
         animator = GetComponent<Animator>();
         switch (own)
@@ -108,6 +114,7 @@ public class Player : MonoBehaviour
                 shieldCheck = false;
                 GetComponent<MoveController>().shieldStart(false);
                 animator.SetTrigger("ShieldGuard");
+                Debug.LogError("ちゃんときた");
             }            
         }        
         if (Input.GetKeyUp("joystick " + padNum + " button 1"))
@@ -204,7 +211,7 @@ public class Player : MonoBehaviour
                 case PlayerKind.Player1:
                     if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
                     MultiPlayerManager.instance.P1Star++;
-                    StarInit();
+                    //StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
@@ -273,27 +280,49 @@ public class Player : MonoBehaviour
                 Debug.LogError("よばれちゃいけんのやぞ");
                 break;
         }
-        hp = 10;
         DotManager.instance.EnemyDeadDotPop(damage,transform.position, playerNum);
         Debug.Log(hp);
         if (hp <= 0)
         {
-            //HPが0になったとき
-            isAction = false;
-            create.ResetWeapon();
-            StarManager.instance.DeadStarDrop(transform.position,own);
-            GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
+            //HPが0になったとき            
+            StartCoroutine(DownPlayer());                       
+                        
+            //create.ResetWeapon();
+            //StarManager.instance.DeadStarDrop(transform.position, own);
+            //GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
         }
         else
         {
             isDamage = true;
+            audio.clip = clips[0];
+            audio.Play();
             Debug.Log(this.gameObject.name + "が" + damage + "ダメージ受けた\nのこり体力" + hp);
             StartCoroutine(DamegeWait());
             colorScript.DamagedOn();
+
+            shieldCheck = false;
+            GetComponent<MoveController>().shieldStart(false);
+
             animator.SetTrigger("Hit");
+            bool getWeapon = create.nowWeapon.name == "punch";
+            animator.SetBool("HoldingWeapon",getWeapon ); //武器を持っているか持っていないかの判定
             //animator.SetBool("Trigger" ,isAction);
             //shieldCheck = false;
         }
+    }
+    /// <summary>
+    /// ダウンした時の処理
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator DownPlayer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        animator.SetTrigger("Down");
+        yield return new WaitForSeconds(1.5f);        
+        isAction = false;
+        create.ResetWeapon();
+        StarManager.instance.DeadStarDrop(transform.position, own);
+        GameObject.Find("PlayerSetting").GetComponent<StartGame>().RespornPlayer(this.gameObject);
     }
     /// <summary>
     /// ダメージを受けた時の無敵時間
@@ -314,13 +343,12 @@ public class Player : MonoBehaviour
     /// 攻撃したときの待機時間
     /// </summary>
     /// <returns></returns>
-    IEnumerator AttackWait()
+    IEnumerator AttackWait(float time1,float time2)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(time1);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(time2);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(0.3f);
         isAction = false;
         yield break;
     }
@@ -354,7 +382,7 @@ public class Player : MonoBehaviour
         switch (create.nowWeapon.name)
         {
             case "Axe": animator.SetTrigger("AxAttack"); break;
-            case "hammer": animator.SetTrigger("hammerAttack"); break;
+            case "hammer": animator.SetTrigger("HammerAttack"); break;
             case "sword": animator.SetTrigger("SwordAttack"); break;
             case "Katana": animator.SetTrigger("KatanaAttack"); break;
             case "bomb":animator.SetTrigger("BombAttack");
@@ -367,7 +395,7 @@ public class Player : MonoBehaviour
                 GetComponent<MoveController>().shieldStart(true);
                 animator.SetTrigger("ShieldAttack");                
                 break;
-            default: animator.SetTrigger("SwordAttack"); break;
+            default: animator.SetTrigger("PunchAttack"); break;
 
         }
         //if (true/*create.nowWeapon.name == "Axe" || create.nowWeapon.name == "punch"*/)
@@ -379,12 +407,20 @@ public class Player : MonoBehaviour
         //    //上段切りみたいなの
         //    GetComponent<Animator>().SetTrigger("Attack2");
         //}*/
+        animInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (animInfo.normalizedTime > 1.0f) return;
         if (create.nowWeapon.name == "bomb")
         {
             create.DownDursble();
             return;
+        }else if (create.nowWeapon.name == "Hammmer" || create.nowWeapon.name == "Axe")
+        {
+            StartCoroutine(AttackWait(0.8f,0.4f));
         }
-        StartCoroutine(AttackWait());
+        else
+        {
+            StartCoroutine(AttackWait(0.5f,0.3f));
+        }
     }    
 
     private void OnTriggerEnter(Collider other)

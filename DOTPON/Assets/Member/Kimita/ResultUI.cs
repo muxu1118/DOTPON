@@ -35,6 +35,7 @@ public class ResultUI : MonoBehaviour
             {
                 int num;
                 num = MultiPlayerManager.instance.RankingDotNumber()[i];
+                num = (num >= 100) ? 99 : num;
                 if (child.gameObject.name == "Number1")
                 {
                     child.gameObject.GetComponent<Image>().sprite = numbers[(num / 10)];

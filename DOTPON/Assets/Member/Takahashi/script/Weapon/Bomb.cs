@@ -10,7 +10,8 @@ public class Bomb : MonoBehaviour
     SphereCollider sph;
     [SerializeField]
     GameObject obj;
-    [SerializeField]float range;
+    [SerializeField]
+    float range;
     
     void Start()
     {
@@ -33,22 +34,19 @@ public class Bomb : MonoBehaviour
     /// <returns></returns>
     ///
     IEnumerator bomExplosion()
-    {
-
-        //エフェクトを再生させる
-        //audioManager.playSfx(3);
-
+    {       
         //爆発の範囲
         int i = 0;        
-        while (i < 90)
+        while (i < 30)
         {
-            gameObject.transform.localScale += new Vector3(1,1,1) * range * Time.deltaTime;
+            gameObject.transform.localScale += new Vector3(1.3f,1.3f,1.3f) * range * Time.deltaTime;
             i++;
             BombAttack();
             yield return null;
         }
         sph.radius = 1f;
         Destroy(gameObject);
+        Debug.Log(gameObject.name);
     }
 
     /// <summary>

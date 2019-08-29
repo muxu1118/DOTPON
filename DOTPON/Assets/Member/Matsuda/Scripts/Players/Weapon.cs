@@ -16,9 +16,11 @@ public class Weapon : MonoBehaviour
 
     private string tagName;
 
+    AudioSource audio;
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         //    _attackSpeed = parametor.attackSpeed;
         //    _attackDamage = parametor.attackDamage;
         //    _necessaryDot = parametor.necessaryDot;
@@ -32,8 +34,18 @@ public class Weapon : MonoBehaviour
         {
             case "player":
                 if (other.gameObject.GetComponent<Player>().isDamage) return;
-                //Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
-                other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), 4);
+                Debug.Log(gameObject.transform.root.name + "に攻撃された！" + parametor.attackDamage + "ダメージ！");
+                audio.clip = parametor.clip;
+                audio.Play();
+                StartCoroutine(Effect(other.gameObject.transform));
+                if (this.transform.root.gameObject.tag == "player")
+                {
+                    other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), (int)transform.root.GetComponent<Player>().own);
+                }
+                else
+                {
+                    other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), 4);
+                }
                 if (this.gameObject.tag == "player")
                 {
                     transform.root.GetComponent<WeaponCreate>().DownDursble();
@@ -42,6 +54,9 @@ public class Weapon : MonoBehaviour
             case "enemy":
                 if (gameObject.transform.root.tag == "enemy") return;
                 //Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
+                audio.clip = parametor.clip;
+                audio.Play();
+                StartCoroutine(Effect(other.gameObject.transform));
                 other.gameObject.GetComponent<Enemy>().Damage(GetAttackPower(parametor.attackDamage), transform.root.gameObject);
                 if (this.gameObject.name == "bomb(Clone)") return;
                 transform.root.GetComponent<WeaponCreate>().DownDursble();
@@ -60,5 +75,14 @@ public class Weapon : MonoBehaviour
     {
         weaponName = gameObject.tag;
         Debug.Log(tagName);
+    }
+
+    IEnumerator Effect(Transform pos)
+    {
+        Debug.Log("pos");
+        var effect = Instantiate(parametor.effect,pos.position + new Vector3(0,1.5f,0),Quaternion.identity);
+        var particl = effect.GetComponentInChildren<ParticleSystem>();
+        yield return new WaitWhile(() => particl.IsAlive(true));
+        Destroy(effect);
     }
 }

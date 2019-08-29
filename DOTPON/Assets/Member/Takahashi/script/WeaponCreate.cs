@@ -11,7 +11,8 @@ public class WeaponCreate : MonoBehaviour
     GameObject[] usedWeapon = new GameObject[3];
     [SerializeField]
     GameObject Punch;
-        
+
+    [SerializeField]GameObject efe;
     bool trigger = true; //武器の作成と破棄の切り替え 
     int weaponNumber;    //武器の種類
     int weaponType = 0;  //武器を指定するための数値
@@ -28,9 +29,11 @@ public class WeaponCreate : MonoBehaviour
 
     Player player;
 
-
+    AudioSource audio;
+    [SerializeField]AudioClip[] clips;
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         player = GetComponent<Player>();
         weaponNumber = 3;
         List<GameObject> UI = new List<GameObject>();
@@ -117,7 +120,7 @@ public class WeaponCreate : MonoBehaviour
             case "a":
                 if(trigger && DotManager.instance.DotPonCreate(player,createNum ))
                 {
-
+                    Instantiate(efe, transform.localPosition + new Vector3(0, 2, 0) + transform.right / 2, Quaternion.identity).transform.parent = transform;
                     GetComponent<Animator>().SetTrigger("Create");
                     nowWeapon.SetActive(false);
                     StartCoroutine(CreateWait());
@@ -130,8 +133,9 @@ public class WeaponCreate : MonoBehaviour
                     trigger = false;
                     player.isAction = true;
                     StartCoroutine(player.ActionWait(2.5f));
+                    SEOn(clips[0]);
                     //DOTPONDursbleUI.GetComponent<DOTPONDursble>().SetDursble(value);
-                    pizza.PizzaUI(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
+                    //pizza.PizzaUI(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 }
                 else
                 {
@@ -159,6 +163,7 @@ public class WeaponCreate : MonoBehaviour
                                 break;
                         }
                     }
+                    SEOn(clips[1]);
                     //DOTPONDursbleUI.GetComponent<DOTPONDursble>().ResetDursble();
                 }
                 break;     
@@ -279,13 +284,14 @@ public class WeaponCreate : MonoBehaviour
             Punch.SetActive(true);
             Debug.Log("こわれた");
             value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
+            trigger = true;
         }
         else
         {
             Debug.Log("残り耐久値 = " + value);
         }
-        DOTPONDursbleUI.GetComponent<DOTPONDursble>().DownDursbleUI();
-        pizza.PizzaUI(nowWeapon.GetComponent<Weapon>().parametor.durableValue);
+        //DOTPONDursbleUI.GetComponent<DOTPONDursble>().DownDursbleUI();
+        //pizza.PizzaUI(nowWeapon.GetComponent<Weapon>().parametor.durableValue);
     }
 
     //死んだときに武器を初期化
@@ -307,7 +313,13 @@ public class WeaponCreate : MonoBehaviour
 
     IEnumerator CreateWait()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         usedWeapon[weaponType].SetActive(true);
+    }
+
+    private void SEOn(AudioClip clip)
+    {
+        audio.clip = clip;
+        audio.Play();
     }
 }

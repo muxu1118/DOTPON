@@ -18,3 +18,6 @@ MonoBehaviour:
   durableValue: 0
   dotNum: 0
   weapon: {fileID: 0}
+  Commentary: 
+  clip: {fileID: 8300000, guid: a0c73512b23070f438bc5f169bfa5143, type: 3}
+  effect: {fileID: 4622522299321996903, guid: 2a541ee672cb8aa4ba3666dc42f424a1, type: 3}

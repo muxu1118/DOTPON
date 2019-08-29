@@ -37,6 +37,7 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DotManager.instance.playerObj.Clear();
         //人数分の回数まわす
         for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
         {
@@ -44,7 +45,7 @@ public class StartGame : MonoBehaviour
             var playerObj = Instantiate(playerPrefab, spownPos[i],Quaternion.identity);
             players.Add(playerObj);
             moveControllers.Add(playerObj.GetComponent<MoveController>());
-            playerObj.GetComponent<MoveController>().enabled = false;
+            playerObj.GetComponent<PlayerMove>().enabled = false;
             playerObj.transform.LookAt(new Vector3(0,0,0));
             playerObj.name = "Player" + (i + 1);
             //ぷれいやーのenumをそれぞれに対応させる
@@ -52,6 +53,8 @@ public class StartGame : MonoBehaviour
             //カメラのオブジェクトを探して参照させる
             //cameras[i].transform.parent = playerObj.transform;
             cameras[i].GetComponent<CameraMove>().Setting(playerObj);
+            playerObj.GetComponent<PlayerMove>().cmr = cameras[i].GetComponentInChildren<Camera>();
+            DotManager.instance.playerObj.Add(playerObj);
             //GameObject.Find("P" + i + 1 + "DOTPON").GetComponent<ChangeDOTPON>().SetTexture(MultiPlayerManager.instance.P1Weapon);
             //if(i>=1)
             //kyokaisen[i/2].gameObject.SetActive(true);
@@ -87,7 +90,7 @@ public class StartGame : MonoBehaviour
         for (int i = 0;i < players.Count;i++)
         {
             players[i].GetComponent<Player>().isAction = false;
-            moveControllers[i].GetComponent<MoveController>().enabled = true;
+            moveControllers[i].GetComponent<PlayerMove>().enabled = true;
         }
     }
 

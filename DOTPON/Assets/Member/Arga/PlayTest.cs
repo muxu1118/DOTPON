@@ -16,23 +16,80 @@ public class PlayTest : MonoBehaviour
     [SerializeField]
     GameObject selectObj;
     [SerializeField]
+    GameObject back;
+    [SerializeField]
     GameObject player;
+    [SerializeField]
+    GameObject hand;
+    [SerializeField] float[] poss;
+
+    
 
     int playerNumber;
     List<Vector2> canvasPosis = new List<Vector2>();
     List<GameObject> saveCanvas = new List<GameObject>();
     float screenX, screenY;
+
+    bool tri;
     // Start is called before the first frame update
     void Start()
     {
         screenX = Screen.width;
         screenY = Screen.height;
+        MultiPlayerManager.instance.totalPlayer = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("joystick 1 button 9"))
+        {
+            if(SceneManager.GetActiveScene().name == "StartScene")
+            {
+
+                if (StartPanel.active)
+                {
+                    StartButton();
+                }
+                else if (SelectPanel.active)
+                {
+                    PlayerNum();
+                }
+                else if (WeaponPanel.active)
+                {
+                    GameStartButton();
+                }
+            }
+            else
+            {
+                backButton();
+            }
+        }
+        else if (Input.GetAxisRaw("Vertical1_left") > 0.9f)
+        {
+            if (MultiPlayerManager.instance.totalPlayer == 1 || tri) return;
+            MultiPlayerManager.instance.totalPlayer--;
+            Debug.Log(MultiPlayerManager.instance.totalPlayer);
+            tri = true;
+            HandMove();
+        }
+        else if (Input.GetAxisRaw("Vertical1_left") < -0.9f)
+        {
+            if (MultiPlayerManager.instance.totalPlayer == 4 || tri) return;
+            MultiPlayerManager.instance.totalPlayer++;
+            Debug.Log(MultiPlayerManager.instance.totalPlayer);
+            tri = true;
+            HandMove();
+        }else if (Input.GetAxisRaw("Vertical1_left") > -0.9f && Input.GetAxisRaw("Vertical1_left") < 0.9f)
+        {
+            tri = false;
+        }
         //  number.text = MultiPlayerManager.instance.TotalPlayer.ToString();
+    }
+
+    private void HandMove()
+    {
+        hand.transform.localPosition = new Vector3(60,poss[MultiPlayerManager.instance.totalPlayer -1],0);
     }
 
     public void PlusPl()
@@ -86,6 +143,35 @@ public class PlayTest : MonoBehaviour
         canvasPosis.Add(new Vector2(200, -80));
         SetSelectUI();
     } 
+    private void PlayerNum()
+    {
+        WeaponPanel.SetActive(true);
+        SelectPanel.SetActive(false);
+        switch (MultiPlayerManager.instance.totalPlayer)
+        {
+            case 1:
+                canvasPosis.Add(new Vector2(0, 0));
+                break;
+            case 2:
+                canvasPosis.Add(new Vector2(0, 100));
+                canvasPosis.Add(new Vector2(0, -100));
+                break;
+            case 3:
+                canvasPosis.Add(new Vector2(-200, 140));
+                canvasPosis.Add(new Vector2(200, 140));
+                canvasPosis.Add(new Vector2(-200, -80));
+                break;
+            case 4:
+                canvasPosis.Add(new Vector2(-200, 140));
+                canvasPosis.Add(new Vector2(200, 140));
+                canvasPosis.Add(new Vector2(-200, -80));
+                canvasPosis.Add(new Vector2(200, -80));
+                break;
+            default:
+                break;
+        }
+        SetSelectUI();
+    }
 
     public void SetSelectUI()
     {
@@ -193,6 +279,7 @@ public class PlayTest : MonoBehaviour
         }
         if (trigger)
         {
+            Cursor.visible = false;
             FadeManager.Instance.LoadScene("Main",1.0f);
         }
     }

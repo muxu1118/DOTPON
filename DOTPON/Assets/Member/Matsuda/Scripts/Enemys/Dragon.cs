@@ -9,10 +9,32 @@ public class Dragon : Enemy
     float time;
     float lookingAngle;
     [SerializeField] GameObject[] bukiObj;
+
+    [SerializeField] GameObject headObj;
+
+    [HideInInspector]public int[] damageInstance = {0,0,0,0};
     void Start()
     {
+        //パラメータの値を変数に格納
+        vector = transform.forward;
         HP = parameter.HP;
-        
+        lookingAngle = parameter.lookingAngle / 2;
+        for (int i = 0; i < 3; i++)
+        {
+            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, transform.localScale.x / 5, lookingAngle);
+            switch (i)
+            {
+                case 0:
+                    lookingCollider[i].transform.localPosition = new Vector3(0, 1, parameter.lookingAngle);
+                    break;
+                case 1:
+                    lookingCollider[i].transform.localPosition = new Vector3(parameter.lookingAngle, 1, 0);
+                    break;
+                case 2:
+                    lookingCollider[i].transform.localPosition = new Vector3(-parameter.lookingAngle, 1, 0);
+                    break;
+            }
+        }
     }
     void Update()
     {
@@ -47,27 +69,48 @@ public class Dragon : Enemy
         isAction = true;
         if(dis <= parameter.distance / 2)
         {
-            //スタンプ攻撃
-            bukiObj[0].SetActive(true);
-            bukiObj[0].GetComponent<Animator>().SetTrigger("Attack");
+            //スタンプ攻撃0
+            GetComponent<Animator>().SetTrigger("Attack");
             StartCoroutine(WaitTime(1.5f,false));
         }
         else if (dis <= parameter.distance)
         {
             //ブレス攻撃
-            bukiObj[1].SetActive(true);
-            bukiObj[1].GetComponent<Animator>().SetTrigger("Attack2");
-            StartCoroutine(WaitTime(2f,false));
+            GetComponent<Animator>().SetTrigger("Attack2");
+            StartCoroutine(Bless());
+            StartCoroutine(WaitTime(2.5f,false));
         }
-        StartCoroutine(Active(1.5f));
+    }
+
+    public void PlayerAttackCount(GameObject player,int pow)
+    {
+        int i = pow * 3;
+        damageInstance[(int)player.GetComponent<Player>().own] += i;
+        Debug.Log("1p = "+damageInstance[0]+" 2p = "+damageInstance[1]+" 3p = "+damageInstance[2]+"4p = "+damageInstance[3]);
     }
 
     IEnumerator Active(float num)
     {
         yield return new WaitForSeconds(num);
-        for (int i = 0;i < 2; i++)
+    }
+
+    IEnumerator Bless()
+    {
+        yield return new WaitForSeconds(1.3f);
+        bukiObj[0].SetActive(true);
+        var particl = bukiObj[0].GetComponent<ParticleSystem>();
+        yield return new WaitWhile(() => particl.IsAlive(true));
+        bukiObj[0].SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "enemy")
         {
-            bukiObj[i].SetActive(false);
+            collision.gameObject.GetComponent<Enemy>().Damage(99,collision.gameObject);
+        }else if (collision.gameObject.tag == "player")
+        {
+            //collision.gameObject.transform.position += Vector3.back * 5;
         }
     }
 }

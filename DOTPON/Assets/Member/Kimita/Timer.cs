@@ -114,6 +114,7 @@ public class Timer : MonoBehaviour
         }
         yield return new WaitForSeconds(3.5f);
         FadeManager.Instance.LoadScene("ResultScene", 1.0f);
+        Cursor.visible = true;
         Destroy(this);
     }
 }

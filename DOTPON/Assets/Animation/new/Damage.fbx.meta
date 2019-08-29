@@ -146,7 +146,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Damage
       takeName: Take 001
-      firstFrame: 5
+      firstFrame: 2.5
       lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
