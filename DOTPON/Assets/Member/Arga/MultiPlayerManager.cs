@@ -138,6 +138,49 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
         temp[3] = star[Int32.Parse(Ranking4)-1];
         return temp;
     }
+    
+    public int FindFirstPlayer(int n)
+    {
+        List<RankStats> RankStatsList = new List<RankStats>(4)
+        {
+            new RankStats (1,P1Dot,P1Star),
+            new RankStats (2,P2Dot,P2Star),
+            new RankStats (3,P3Dot,P3Star),
+            new RankStats (4,P4Dot,P4Star),
+        };
+        var SortedList = RankStatsList.OrderByDescending(starX => starX.rStar).ThenByDescending(dx => dx.rDot).ToList();
+        
+        if(SortedList[0].rDot == SortedList[3].rDot&& SortedList[0].rStar == SortedList[3].rStar)
+        {
+            n = 15;
+            return 4;
+        }else if(SortedList[0].rDot == SortedList[2].rDot && SortedList[0].rStar == SortedList[2].rStar)
+        {
+            int temp = 0;
+            int bit = 1;
+            for(int i = 0; i < 3; i++)
+            {
+                temp += bit << (SortedList[i].rPlay - 1);
+                bit = 1;
+            }
+            n = temp;
+            return 3;
+        }else if(SortedList[0].rDot == SortedList[1].rDot && SortedList[0].rStar == SortedList[1].rStar)
+        {
+            int temp = 0;
+            int bit = 1;
+            for (int i = 0; i < 2; i++)
+            {
+                temp += bit << (SortedList[i].rPlay - 1);
+                bit = 1;
+            }
+            n = temp;
+            return 2;
+        }
+        n = SortedList[0].rPlay;
+        return 1;
+
+    }
 }
 
 struct PlayerStats

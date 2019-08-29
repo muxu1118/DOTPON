@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     //SE類
     [SerializeField]AudioClip[] clips;
     AudioSource audio;
+    [SerializeField]
+    GameObject crown;
 
     // Start is called before the first frame update
     void Start()
@@ -82,8 +84,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         KeyInout();
+        CrownActive();
         //Move();
-        
+
     }
     void KeyInout()
     {
@@ -493,6 +496,27 @@ public class Player : MonoBehaviour
         {
             trigger = false;
         }
+    }
+    /// <summary>
+    /// クラウンをアクティブにする
+    /// </summary>
+    /// <param name="n"></param>
+    public void CrownActive()
+    {
+        int n = 0;
+        int bit = MultiPlayerManager.instance.FindFirstPlayer(n);
+
+        // 自分のクラウンがセルフだったらまず見えなくする
+        if (crown.activeSelf)crown.SetActive(false);
+        // 一位の人間の人数によって操作を変える
+        switch (bit)
+        {
+            case 1: if (n != (int)own) return; break;
+            case 2: if ((n & (int)own) != (int)own) return; break;
+            case 3: if ((n & (int)own) != (int)own) return; break;
+            case 4: if ((n & (int)own) != (int)own) return; break;
+        }
+        crown.SetActive(true);
     }
 
 }
