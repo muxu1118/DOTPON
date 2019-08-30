@@ -27,7 +27,7 @@ public class ResultUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
         {
             objs[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(668,GetComponent<RectTransform>().anchoredPosition.y, 0) ;
             objAnim[i] = objs[i].GetComponent<Animator>();
