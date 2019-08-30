@@ -13,18 +13,18 @@ public class Bomb : MonoBehaviour
     [SerializeField]
     float range;
     
+    public MeshRenderer rend;
+    
     void Start()
     {
-        
-        //audioManager = GameObject.Find("Manager").GetComponent<AudioManager>();
-
+        rend = GetComponent<MeshRenderer>();
+        //audioManager = GameObject.Find("Manager").GetComponent<AudioManager>();        
         //StartCoroutine("bomExplosion");
     }
 
     public void ExplotionCoroutine()
-    {
-        Destroy(obj);
-        //transform.parent = null;
+    {        
+        //transform.parent = null;        
         StartCoroutine(bomExplosion());
     }
 
@@ -34,8 +34,9 @@ public class Bomb : MonoBehaviour
     /// <returns></returns>
     ///
     IEnumerator bomExplosion()
-    {       
-        //爆発の範囲
+    {
+        rend.enabled = true;
+        //爆発の範囲の設定
         int i = 0;        
         while (i < 30)
         {
@@ -46,7 +47,10 @@ public class Bomb : MonoBehaviour
         }
         sph.radius = 1f;
         Destroy(gameObject);
+        Destroy(obj);
         Debug.Log(gameObject.name);
+        yield return new WaitForSeconds(2.5f);
+        rend.enabled = false;
     }
 
     /// <summary>

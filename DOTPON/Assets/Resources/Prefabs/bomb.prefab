@@ -53,7 +53,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2693526001938932166}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -148,6 +148,7 @@ MonoBehaviour:
   sph: {fileID: 2693526001938932164}
   obj: {fileID: 264224749844925536}
   range: 7
+  rend: {fileID: 2693526001938932187}
 --- !u!82 &2455936186125316519
 AudioSource:
   m_ObjectHideFlags: 0
@@ -251,6 +252,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2693526001938932185}
     m_Modifications:
+    - target: {fileID: 100004, guid: f9c9849e8e131d24d84362a25b5b7b49, type: 3}
+      propertyPath: m_Name
+      value: Boom
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: f9c9849e8e131d24d84362a25b5b7b49, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f9c9849e8e131d24d84362a25b5b7b49, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f9c9849e8e131d24d84362a25b5b7b49, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -306,14 +319,6 @@ PrefabInstance:
     - target: {fileID: 400004, guid: f9c9849e8e131d24d84362a25b5b7b49, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: f9c9849e8e131d24d84362a25b5b7b49, type: 3}
-      propertyPath: m_Name
-      value: Boom
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: f9c9849e8e131d24d84362a25b5b7b49, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9c9849e8e131d24d84362a25b5b7b49, type: 3}
