@@ -410,8 +410,8 @@ public class Player : MonoBehaviour
         //    //上段切りみたいなの
         //    GetComponent<Animator>().SetTrigger("Attack2");
         //}*/
-        animInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (animInfo.normalizedTime > 1.0f) return;
+        //animInfo = animator.GetCurrentAnimatorStateInfo(0);
+        //if (animInfo.normalizedTime > 1.0f) return;
         if (create.nowWeapon.name == "bomb")
         {
             create.DownDursble();

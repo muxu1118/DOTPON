@@ -668,16 +668,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8984786248916373649}
     m_Modifications:
-    - target: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
-        type: 3}
-      propertyPath: m_Name
-      value: DOTPON
-      objectReference: {fileID: 0}
-    - target: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 289534091312231723, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -792,6 +782,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: m_Name
+      value: DOTPON
+      objectReference: {fileID: 0}
+    - target: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 289534090101818725, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
@@ -947,12 +947,12 @@ PrefabInstance:
     - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
       propertyPath: pos2.Array.data[0].x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
       propertyPath: pos2.Array.data[1].x
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}

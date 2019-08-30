@@ -12,7 +12,7 @@ public class DOTPONExplanation : MonoBehaviour
         DotponName.text = objs[num].gameObject.name;
         attack.text = "攻撃力：" + objs[num].parametor.attackDamage;
         dursble.text = "耐久値：" + objs[num].parametor.durableValue;
-        cost.text = "作成コスト：" + objs[num].parametor.dotNum;
+        cost.text = "作成コスト：" + objs[num].parametor.necessaryDot;
         explanation.text = objs[num].parametor.Commentary;//説明用変数;
     }
 }

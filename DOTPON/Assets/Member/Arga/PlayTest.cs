@@ -44,7 +44,7 @@ public class PlayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("joystick 1 button 9"))
+        if (Input.GetKeyDown("joystick 1 button 9") || Input.GetKeyDown("joystick 2 button 9") || Input.GetKeyDown("joystick 3 button 9") || Input.GetKeyDown("joystick 4 button 9"))
         {
             if(SceneManager.GetActiveScene().name == "StartScene")
             {
@@ -67,7 +67,7 @@ public class PlayTest : MonoBehaviour
                 backButton();
             }
         }
-        else if (Input.GetAxisRaw("Vertical1_left") > 0.9f)
+        else if (Input.GetAxisRaw("Vertical1_left") > 0.9f || Input.GetAxisRaw("Vertical2_left") > 0.9f || Input.GetAxisRaw("Vertical3_left") > 0.9f || Input.GetAxisRaw("Vertical4_left") > 0.9f)
         {
             if (MultiPlayerManager.instance.totalPlayer == 1 || tri) return;
             MultiPlayerManager.instance.totalPlayer--;
@@ -75,14 +75,14 @@ public class PlayTest : MonoBehaviour
             tri = true;
             HandMove();
         }
-        else if (Input.GetAxisRaw("Vertical1_left") < -0.9f)
+        else if (Input.GetAxisRaw("Vertical1_left") < -0.9f || Input.GetAxisRaw("Vertical2_left") < -0.9f || Input.GetAxisRaw("Vertical3_left") < -0.9f || Input.GetAxisRaw("Vertical4_left") < -0.9f)
         {
             if (MultiPlayerManager.instance.totalPlayer == 4 || tri) return;
             MultiPlayerManager.instance.totalPlayer++;
             Debug.Log(MultiPlayerManager.instance.totalPlayer);
             tri = true;
             HandMove();
-        }else if (Input.GetAxisRaw("Vertical1_left") > -0.9f && Input.GetAxisRaw("Vertical1_left") < 0.9f)
+        }else if (Input.GetAxisRaw("Vertical1_left") > -0.9f && Input.GetAxisRaw("Vertical1_left") < 0.9f || Input.GetAxisRaw("Vertical2_left") > -0.9f && Input.GetAxisRaw("Vertical2_left") < 0.9f || Input.GetAxisRaw("Vertical3_left") > -0.9f && Input.GetAxisRaw("Vertical3_left") < 0.9f || Input.GetAxisRaw("Vertical4_left") > -0.9f && Input.GetAxisRaw("Vertical4_left") < 0.9f)
         {
             tri = false;
         }
