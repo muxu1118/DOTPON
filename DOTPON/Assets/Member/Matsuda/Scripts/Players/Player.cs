@@ -387,7 +387,7 @@ public class Player : MonoBehaviour
             case "Axe": animator.SetTrigger("AxAttack"); break;
             case "hammer": animator.SetTrigger("HammerAttack"); break;
             case "sword": animator.SetTrigger("SwordAttack"); break;
-            case "Katana": animator.SetTrigger("KatanaAttack"); break;
+            case "katana": animator.SetTrigger("KatanaAttack"); break;
             case "bomb":animator.SetTrigger("BombAttack");
                 var obj = Instantiate(create.nowWeapon, this.transform.position, Quaternion.identity);
                 obj.transform.parent = this.gameObject.transform;
