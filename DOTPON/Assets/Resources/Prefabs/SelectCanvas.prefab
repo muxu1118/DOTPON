@@ -947,12 +947,12 @@ PrefabInstance:
     - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
       propertyPath: pos2.Array.data[0].x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
       propertyPath: pos2.Array.data[1].x
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}

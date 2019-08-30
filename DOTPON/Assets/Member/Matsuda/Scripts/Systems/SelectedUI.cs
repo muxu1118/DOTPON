@@ -9,19 +9,17 @@ public class SelectedUI : MonoBehaviour
     {
         switch (i)
         {
+            case 0:
+                rawImages[0].GetComponentInChildren<RawImage>().texture = texture;
+                rawImages[0].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
+                break;
             case 1:
-                rawImages[0].texture = texture;
-                rawImages[0].color = new Color(1, 1, 1, 1);
-                rawImages[1].color = new Color(1, 1, 1, 0);
+                rawImages[1].GetComponentInChildren<RawImage>().texture = texture;
+                rawImages[1].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
                 break;
             case 2:
-                rawImages[1].texture = texture;
-                rawImages[1].color = new Color(1, 1, 1, 1);
-                rawImages[2].color = new Color(1, 1, 1, 0);
-                break;
-            case 3:
-                rawImages[2].texture = texture;
-                rawImages[2].color = new Color(1, 1, 1, 1);
+                rawImages[2].GetComponentInChildren<RawImage>().texture = texture;
+                rawImages[2].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
                 break;
             default:
                 rawImages[0].color = new Color(1, 1, 1, 0);
@@ -32,20 +30,28 @@ public class SelectedUI : MonoBehaviour
     {
         switch (i)
         {
+            case 0:
+                rawImages[0].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
+                break;
             case 1:
-                rawImages[0].color = new Color(1, 1, 1, 1);
-                rawImages[1].color = new Color(1, 1, 1, 0);
+                rawImages[1].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
                 break;
             case 2:
-                rawImages[1].color = new Color(1, 1, 1, 1);
-                rawImages[2].color = new Color(1, 1, 1, 0);
-                break;
-            case 3:
-                rawImages[2].color = new Color(1, 1, 1, 1);
+                rawImages[2].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
                 break;
             default:
                 rawImages[0].color = new Color(1, 1, 1, 0);
                 break;
         }
+    }
+
+    public void BoxChange(int num)
+    {
+        for (int i = 0;i < 3;i++)
+        {
+            if(rawImages[i].color == new Color(1, 1, 0))
+            rawImages[i].color = new Color(1,1,1);
+        }
+        rawImages[num].color = new Color(1, 1, 0);
     }
 }

@@ -23,12 +23,17 @@ public class ResultUI : MonoBehaviour
     // Bannerの位置
     List<Vector2> bannerPosis = new List<Vector2>();
     Animator[] objAnim = new Animator[4];
-
+    [SerializeField]
+    Sprite[] playerPic = new Sprite[4];
+    [SerializeField]
+    GameObject[] Face = new GameObject[4];
     // Start is called before the first frame update
     void Start()
     {
+        
         for (int i = 0; i < 4; i++)
         {
+            Face[i].GetComponent<Image>().sprite = playerPic[MultiPlayerManager.instance.Ranking[i]-1];
             objs[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(668,GetComponent<RectTransform>().anchoredPosition.y, 0) ;
             objAnim[i] = objs[i].GetComponent<Animator>();
             foreach(Transform child in dots[i].transform)
@@ -58,9 +63,14 @@ public class ResultUI : MonoBehaviour
                     child.gameObject.GetComponent<Image>().sprite = numbers[num - (num / 10 * 10)];
                 }
             }
+            if(MultiPlayerManager.instance.totalPlayer < i)
+            {
+                objs[i].gameObject.SetActive(false);
+            }
         }
         
         StartCoroutine(AnimBanner());
+
         bannerPosis.Add(new Vector2(47, 88));
         bannerPosis.Add(new Vector2(15, 25));
         bannerPosis.Add(new Vector2(-15, -36));
@@ -73,9 +83,8 @@ public class ResultUI : MonoBehaviour
     }
     private IEnumerator AnimBanner()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
         {
-            
             objAnim[i].SetTrigger("BannerTrigger" + (i+1).ToString());
             yield return new WaitForSeconds(0.5f);
             // アニメーターを止める

@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     //SE類
     [SerializeField]AudioClip[] clips;
     AudioSource audio;
+    [SerializeField]
+    GameObject crown;
 
     // Start is called before the first frame update
     void Start()
@@ -82,8 +84,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         KeyInout();
+        CrownActive();
         //Move();
-        
+
     }
     void KeyInout()
     {
@@ -384,7 +387,7 @@ public class Player : MonoBehaviour
             case "Axe": animator.SetTrigger("AxAttack"); break;
             case "hammer": animator.SetTrigger("HammerAttack"); break;
             case "sword": animator.SetTrigger("SwordAttack"); break;
-            case "Katana": animator.SetTrigger("KatanaAttack"); break;
+            case "katana": animator.SetTrigger("KatanaAttack"); break;
             case "bomb":animator.SetTrigger("BombAttack");
                 var obj = Instantiate(create.nowWeapon, this.transform.position, Quaternion.identity);
                 obj.transform.parent = this.gameObject.transform;
@@ -407,8 +410,8 @@ public class Player : MonoBehaviour
         //    //上段切りみたいなの
         //    GetComponent<Animator>().SetTrigger("Attack2");
         //}*/
-        animInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (animInfo.normalizedTime > 1.0f) return;
+        //animInfo = animator.GetCurrentAnimatorStateInfo(0);
+        //if (animInfo.normalizedTime > 1.0f) return;
         if (create.nowWeapon.name == "bomb")
         {
             create.DownDursble();
@@ -493,6 +496,33 @@ public class Player : MonoBehaviour
         {
             trigger = false;
         }
+    }
+    /// <summary>
+    /// クラウンをアクティブにする
+    /// </summary>
+    /// <param name="n"></param>
+    public void CrownActive()
+    {
+        // bit[0] 人数 bit[1] 二進数にした時に一位の人に1がつく
+        int[] bit = MultiPlayerManager.instance.FindFirstPlayer();
+        
+        // 自分のクラウンがセルフだったらまず見えなくする
+        if (crown.activeSelf)crown.SetActive(false);
+        // 一位の人間の人数によって操作を変える
+        switch (bit[0])
+        {
+            // 人数一人の時 bitの数が自分の番号と一緒だったら
+            case 1: if (bit[1] != (int)own + 1) return; break;
+            // 人数二人の時 bitと自分の番号分シフトした値が一緒だったら
+            case 2: if ((bit[1] & 1 << ((int)own)) != 1 << (int)own) return; break;
+            // 人数三人の時 人数二人と一緒
+            case 3: if ((bit[1] & 1 << ((int)own)) != 1 << (int)own) return; break;
+            // 問答無用でOK
+            case 4:break;
+            // エラー用 DebugErrorでも可
+            default:Debug.Log("おかしいぞ");break;
+        }
+        crown.SetActive(true);
     }
 
 }

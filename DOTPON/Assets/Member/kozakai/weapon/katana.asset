@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571faecb276e2ca41a3a158b951de40a, type: 3}
   m_Name: katana
   m_EditorClassIdentifier: 
-  attackSpeed: 4
-  attackDamage: 1
-  necessaryDot: 4
-  durableValue: 4
-  dotNum: 4
+  attackSpeed: 6
+  attackDamage: 2
+  necessaryDot: 7
+  durableValue: 7
+  dotNum: 7
   weapon: {fileID: 8874533862748424919, guid: dda1d90d873ce3b4182955aa501fa57b, type: 3}
-  Commentary: "\u304B\u305F\u306A"
+  Commentary: "\u8010\u4E45\u5024\u304C\u591A\u304F\u653B\u6483\u901F\u5EA6\u304C\u901F\u3044"
   clip: {fileID: 8300000, guid: b36c01dab81be914086d519a4f4089ff, type: 3}
   effect: {fileID: 4622522299321996903, guid: 2a541ee672cb8aa4ba3666dc42f424a1, type: 3}

@@ -62,6 +62,7 @@ public class WeaponCreate : MonoBehaviour
                         UsedWeapon(MultiPlayerManager.instance.P4Weapon);
                         break;
                 }
+                DotPonText.GetComponent<ChangeDOTPON>().DrubleText(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
             }
             if (child.gameObject.name == "P1Dursble")
             {

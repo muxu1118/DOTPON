@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: golem
   m_EditorClassIdentifier: 
   attackSpeed: 0
-  attackDamage: 1
+  attackDamage: 4
   necessaryDot: 0
   durableValue: 0
   dotNum: 0
