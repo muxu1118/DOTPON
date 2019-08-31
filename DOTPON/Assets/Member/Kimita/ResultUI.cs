@@ -7,6 +7,7 @@ public class ResultUI : MonoBehaviour
 {
     public static bool isCutIn; // カットインの間true
     private float cutinCount; // カットインを数える変数
+    private int player;
     
     Animator anim;// アニメーター
     // バナーのオブジェクト
@@ -27,20 +28,28 @@ public class ResultUI : MonoBehaviour
     Sprite[] playerPic = new Sprite[4];
     [SerializeField]
     GameObject[] Face = new GameObject[4];
+    [SerializeField]
+    Sprite[] dotColors = new Sprite[4];
     // Start is called before the first frame update
     void Start()
     {
-        
-        for (int i = 0; i < 4; i++)
+        player = MultiPlayerManager.instance.totalPlayer;
+        for (int i = 0; i < player; i++)
         {
             Face[i].GetComponent<Image>().sprite = playerPic[MultiPlayerManager.instance.Ranking[i]-1];
             objs[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(668,GetComponent<RectTransform>().anchoredPosition.y, 0) ;
             objAnim[i] = objs[i].GetComponent<Animator>();
+
             foreach(Transform child in dots[i].transform)
             {
                 int num;
                 num = MultiPlayerManager.instance.RankingDotNumber()[i];
-                num = (num >= 100) ? 99 : num;
+                num = (num >= 100) ? 99 : (num < 0) ? 0 : num;
+                
+                if(child.gameObject.name == "DotImage")
+                {
+                    child.gameObject.GetComponent<Image>().sprite = dotColors[MultiPlayerManager.instance.Ranking[i]-1];
+                }
                 if (child.gameObject.name == "Number1")
                 {
                     child.gameObject.GetComponent<Image>().sprite = numbers[(num / 10)];
@@ -83,8 +92,11 @@ public class ResultUI : MonoBehaviour
     }
     private IEnumerator AnimBanner()
     {
-        for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
+
+        Debug.Log("現在の人数"+MultiPlayerManager.instance.totalPlayer);
+        for (int i = 0; i < player; i++)
         {
+            Debug.Log(MultiPlayerManager.instance.totalPlayer);
             objAnim[i].SetTrigger("BannerTrigger" + (i+1).ToString());
             yield return new WaitForSeconds(0.5f);
             // アニメーターを止める

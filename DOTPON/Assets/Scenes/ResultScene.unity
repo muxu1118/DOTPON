@@ -146,8 +146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -301.88, y: 0}
-  m_SizeDelta: {x: 62.06, y: 62.06}
+  m_AnchoredPosition: {x: -253.3, y: 0.0000023842}
+  m_SizeDelta: {x: 88.23, y: 88.233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5345725
 MonoBehaviour:
@@ -388,8 +388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -301.88, y: 0}
-  m_SizeDelta: {x: 62.06, y: 62.06}
+  m_AnchoredPosition: {x: -253.3, y: 0.0000023842}
+  m_SizeDelta: {x: 88.23, y: 88.233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &27920509
 MonoBehaviour:
@@ -1374,8 +1374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -298.9, y: 0}
-  m_SizeDelta: {x: 62.06, y: 62.06}
+  m_AnchoredPosition: {x: -253.3, y: 0.0000023842}
+  m_SizeDelta: {x: 88.23, y: 88.233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415291013
 MonoBehaviour:
@@ -2108,7 +2108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75.000015, y: 7}
+  m_AnchoredPosition: {x: 75.00002, y: 7}
   m_SizeDelta: {x: 100, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792059274
@@ -3850,8 +3850,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -299.90002, y: 0}
-  m_SizeDelta: {x: 62.06, y: 62.06}
+  m_AnchoredPosition: {x: -253.3, y: 0.0000023842}
+  m_SizeDelta: {x: 88.23, y: 88.233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1270791446
 MonoBehaviour:
@@ -4784,6 +4784,11 @@ MonoBehaviour:
   - {fileID: 1535362745}
   - {fileID: 360370067}
   - {fileID: 1371841738}
+  dotColors:
+  - {fileID: 21300000, guid: 6f28c6cdcdccd164588bde796329b763, type: 3}
+  - {fileID: 21300000, guid: 57440ef1fb2a8b14398d01d4d7edc6cc, type: 3}
+  - {fileID: 21300000, guid: 32d12f7e19ffe61428f9b064f561e6bf, type: 3}
+  - {fileID: 21300000, guid: f4e50219d5364484098e102d17ed35a4, type: 3}
 --- !u!1 &1420257240
 GameObject:
   m_ObjectHideFlags: 0

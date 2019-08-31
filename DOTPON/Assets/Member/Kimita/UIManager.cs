@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class UIManager : MonoBehaviour
     List<Vector2> canvasPosis = new List<Vector2>();
     // 出したキャンバスを保存する場所
     public List<GameObject> saveCanvas = new List<GameObject>();
+    [SerializeField]
+    Sprite[] sprites = new Sprite[4];
     // Start is called before the first frame update
     void Start()
     {
@@ -41,12 +45,32 @@ public class UIManager : MonoBehaviour
                 // プレイヤーごとにドットとスターを設定する
                 foreach (Transform Child in saveCanvas[i].transform)
                 {
+
+                    if (Child.name == "Dot" && i < 4 && i >= 0)
+                    {
+                        Child.GetComponent<Image>().sprite = sprites[i];
+                    }
                     foreach (Transform child in Child.transform)
                     {
                         if (null != child.GetComponent<Dot_count>())
                         {
                             if (child.gameObject.name == "DotText")
                             {
+                                switch (i)
+                                {
+                                    case 0:
+                                        child.gameObject.GetComponent<Text>().color = Color.red;
+                                        break;
+                                    case 1:
+                                        child.gameObject.GetComponent<Text>().color = Color.blue;
+                                        break;
+                                    case 2:
+                                        child.gameObject.GetComponent<Text>().color = Color.green;
+                                        break;
+                                    case 3:
+                                        child.gameObject.GetComponent<Text>().color = Color.yellow;
+                                        break;
+                                }
                                 child.GetComponent<Dot_count>().dotText = (Dot_count.DotText)i;
 
                             }

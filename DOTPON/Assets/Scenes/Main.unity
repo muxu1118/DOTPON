@@ -2903,6 +2903,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 88720141933990758, guid: c77d05c7e797fbb4c997c629a7e2b500,
         type: 3}
+    - target: {fileID: 8900615233393637577, guid: afad57cd7c4b6f2438aa3a49e8d15384,
+        type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f28c6cdcdccd164588bde796329b763,
+        type: 3}
+    - target: {fileID: 8900615233393637577, guid: afad57cd7c4b6f2438aa3a49e8d15384,
+        type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 57440ef1fb2a8b14398d01d4d7edc6cc,
+        type: 3}
+    - target: {fileID: 8900615233393637577, guid: afad57cd7c4b6f2438aa3a49e8d15384,
+        type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 32d12f7e19ffe61428f9b064f561e6bf,
+        type: 3}
+    - target: {fileID: 8900615233393637577, guid: afad57cd7c4b6f2438aa3a49e8d15384,
+        type: 3}
+      propertyPath: sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: f4e50219d5364484098e102d17ed35a4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afad57cd7c4b6f2438aa3a49e8d15384, type: 3}
 --- !u!1 &936425804 stripped
