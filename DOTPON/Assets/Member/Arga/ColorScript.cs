@@ -7,9 +7,11 @@ public class ColorScript : MonoBehaviour
     [SerializeField]
     float damageOnTime = 0.2f;
     GameObject mainOb;
-    Renderer cloakColor,headColor;
+    Renderer cloakColor,headColor,bodyColor;
     Renderer[] allRenderer;
     string colorType;
+    public Texture[] textures;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class ColorScript : MonoBehaviour
         allRenderer = mainOb.GetComponentsInChildren<Renderer>();
         cloakColor = this.transform.Find("Charcter/manto").gameObject.GetComponent<Renderer>();
         headColor = this.transform.Find("Charcter/hood").gameObject.GetComponent<Renderer>();
+        bodyColor = this.transform.Find("Charcter/body").gameObject.GetComponent<Renderer>();
         colorType = this.name;
 
         switch (colorType)
@@ -24,18 +27,22 @@ public class ColorScript : MonoBehaviour
             case "Player1":
                 cloakColor.material = MultiPlayerManager.instance.mat1;
                 headColor.material = MultiPlayerManager.instance.mat1;
+                bodyColor.material.mainTexture = textures[0];
                 break;
             case "Player2":
                 cloakColor.material = MultiPlayerManager.instance.mat2;
                 headColor.material = MultiPlayerManager.instance.mat2;
+                bodyColor.material.mainTexture = textures[1];
                 break;
             case "Player3":
                 cloakColor.material = MultiPlayerManager.instance.mat3;
                 headColor.material = MultiPlayerManager.instance.mat3;
+                bodyColor.material.mainTexture = textures[2];
                 break;
             case "Player4":
                 cloakColor.material = MultiPlayerManager.instance.mat4;
                 headColor.material = MultiPlayerManager.instance.mat4;
+                bodyColor.material.mainTexture = textures[3];
                 break;
             default:
                 Debug.LogError("error");
