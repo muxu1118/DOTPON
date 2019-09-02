@@ -18,6 +18,8 @@ public class AniTest : MonoBehaviour
     int weaponType = 0;
     public GameObject nowWeapon;
 
+    AnimatorStateInfo info;
+
     //[SerializeField]
     //GameObject capga;
 
@@ -36,6 +38,9 @@ public class AniTest : MonoBehaviour
         weaponNumber = Weapon.Length;
 
         //StartCoroutine(DownPlayer());
+
+        
+        
     }
 
     void Update()
@@ -73,11 +78,11 @@ public class AniTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {            
-            anim.SetTrigger("SwordAttack");
+            anim.SetTrigger("PV1");
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            anim.SetTrigger("Create");
+            anim.SetTrigger("PV2");
         }
 
         //if (Input.GetKeyDown(KeyCode.G))
@@ -92,8 +97,30 @@ public class AniTest : MonoBehaviour
         //}        
         if (Input.GetKeyDown(KeyCode.H))
         {
-            anim.SetTrigger("Down");
+            //anim.SetTrigger("Down");            
+            StartCoroutine("AttackAnimationFlow");
+            Debug.Log(info.length);
         }
+    }
+
+    IEnumerator AttackAnimationFlow()
+    {
+        //アニメーションの情報を取得可能に
+        //info = anim.GetCurrentAnimatorStateInfo(0);
+        //anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+        anim.SetTrigger("PunchAttack");
+        yield return null;
+        yield return new WaitForAnimation(anim, 0);
+
+        //アニメーションが再生されて終わったら再生
+        //    if (info.length > 1)
+        //    {
+        //        anim.SetTrigger("Down");
+        //        Debug.Log(info.length);
+        //    }
+        //}
+        anim.SetTrigger("Down");
     }
 
     public void WeaponChoice(string str)
