@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DOTPONDursble : MonoBehaviour
 {
     int Dursble;
+    int[] DotPonDuesbleParamater = new int[10];
     [SerializeField]RawImage[] DursbleUI;
     public void SetDursble(int i)
     {
@@ -22,6 +23,8 @@ public class DOTPONDursble : MonoBehaviour
             raw.color = new Color(1, 1, 1, 0);
         }
     }
+
+    
 
     public void DownDursbleUI()
     {

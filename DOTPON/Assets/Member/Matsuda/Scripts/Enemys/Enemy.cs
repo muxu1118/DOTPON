@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     //プレイヤーを攻撃する関数
     protected void Attack()
     {
-
+        
         if (gameObject.name == "golem" || gameObject.name == "Dragom(clone)")
         {
             buki.GetComponent<Animator>().SetTrigger("Attack");
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
             }
         }
         GameObject.Find("SpownController").GetComponent<SpownController>().NowSpown--;
-        DotManager.instance.EnemyDeadDotPop(kazu, obj.transform.position);
+        DotManager.instance.EnemyDeadDotPop(kazu, obj.transform.position, (int)parentObj.GetComponent<Player>().own);
         
         //enemyの消去
         Destroy(obj);
@@ -71,11 +71,11 @@ public class Enemy : MonoBehaviour
         HP -= At;
         DropDot(this.gameObject,parameter.dropDot,obj);
         isAction = true;
-        StartCoroutine(WaitTime(1));
+        StartCoroutine(WaitTime(1,true));
         if(this.gameObject.name == "slime")
         {
             var slime = GetComponentInChildren<MeshRenderer>();
-            slime.material.color = new Color(0, 0, 0);
+            //slime.material.color = new Color(0, 0, 0);
         }
         else if(this.gameObject.name == "goburin")
         {
@@ -92,9 +92,9 @@ public class Enemy : MonoBehaviour
     public IEnumerator Rotating(float rotate,float time)
     {
         if (isLooking) yield break;
-        for(int i = 0;i < time; i++)
+        for(int i = 0;i <= time * 60; i++)
         {
-            transform.Rotate(new Vector3(0, rotate, 0) * Time.deltaTime);
+            transform.Rotate(new Vector3(0, rotate  / time, 0) * Time.deltaTime);
             yield return null;
         }
         yield break;
@@ -112,21 +112,30 @@ public class Enemy : MonoBehaviour
     }
 
     //行動しない時間
-    public IEnumerator WaitTime(float time)
+    public IEnumerator WaitTime(float time,bool isDamage)
     {
-        yield return new WaitForSeconds(time);
-        isAction = false; if (this.gameObject.name == "slime")
-        {
-            GetComponentInChildren<MeshRenderer>().material.color = new Color(1,1,1);
-        }
-        else if (this.gameObject.name == "goburin")
+        if (isDamage)
         {
             SkinnedMeshRenderer[] gob = GetComponentsInChildren<SkinnedMeshRenderer>();
-            foreach (SkinnedMeshRenderer skin in gob)
+            for (int i = 0; i < 2; i++)
             {
-                skin.material.color = new Color(1,1,1);
+                foreach (SkinnedMeshRenderer skin in gob)
+                {
+                    skin.material.color = new Color(0, 0, 0);
+                }
+                yield return new WaitForSeconds(time / 4);
+                foreach (SkinnedMeshRenderer skin in gob)
+                {
+                    skin.material.color = new Color(1, 1, 1);
+                }
+                yield return new WaitForSeconds(time / 4);
             }
         }
+        else
+        {
+            yield return new WaitForSeconds(time);
+        }
+        isAction = false;
         yield break;
     }
 }

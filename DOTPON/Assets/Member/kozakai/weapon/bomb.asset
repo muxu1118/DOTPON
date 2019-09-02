@@ -18,3 +18,4 @@ MonoBehaviour:
   durableValue: 4
   dotNum: 3
   weapon: {fileID: 0}
+  Commentary: "\u3070\u304F\u3060\u3093"

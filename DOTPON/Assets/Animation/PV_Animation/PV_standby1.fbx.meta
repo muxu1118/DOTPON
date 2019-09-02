@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: ccf2df7395bf0f344ac97dc68de484fd
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arem_R1
+    100002: body
+    100004: Character
+    100006: Charcter
+    100008: Cloak
+    100010: Cloak 1
+    100012: futo_L
+    100014: futo_R
+    100016: hand_R
+    100018: hand_R1
+    100020: Head
+    100022: head
+    100024: Head 1
+    100026: Hip
+    100028: Hip 1
+    100030: hood
+    100032: Katana:pCylinder2
+    100034: LeftArm
+    100036: LeftArm 1
+    100038: LeftHand
+    100040: LeftHand 1
+    100042: LeftHandLocator
+    100044: LeftLeg
+    100046: LeftLeg 1
+    100048: Main
+    100050: manto
+    100052: nekc
+    100054: OrientControl
+    100056: //RootNode
+    100058: Rarm_shol_R
+    100060: RightArm
+    100062: RightArm 1
+    100064: RightHand
+    100066: RightHand 1
+    100068: RightHandLocator
+    100070: RightLeg
+    100072: RightLeg 1
+    100074: Spine
+    100076: wrist_R
+    100078: wrist_R1
+    400000: arem_R1
+    400002: body
+    400004: Character
+    400006: Charcter
+    400008: Cloak
+    400010: Cloak 1
+    400012: futo_L
+    400014: futo_R
+    400016: hand_R
+    400018: hand_R1
+    400020: Head
+    400022: head
+    400024: Head 1
+    400026: Hip
+    400028: Hip 1
+    400030: hood
+    400032: Katana:pCylinder2
+    400034: LeftArm
+    400036: LeftArm 1
+    400038: LeftHand
+    400040: LeftHand 1
+    400042: LeftHandLocator
+    400044: LeftLeg
+    400046: LeftLeg 1
+    400048: Main
+    400050: manto
+    400052: nekc
+    400054: OrientControl
+    400056: //RootNode
+    400058: Rarm_shol_R
+    400060: RightArm
+    400062: RightArm 1
+    400064: RightHand
+    400066: RightHand 1
+    400068: RightHandLocator
+    400070: RightLeg
+    400072: RightLeg 1
+    400074: Spine
+    400076: wrist_R
+    400078: wrist_R1
+    2100000: lambert5
+    2100002: lambert4
+    2100004: Katana_lambert2
+    2300000: Katana:pCylinder2
+    3300000: Katana:pCylinder2
+    4300000: wrist_R
+    4300002: head
+    4300004: hand_R
+    4300006: Rarm_shol_R
+    4300008: manto
+    4300010: futo_R
+    4300012: futo_L
+    4300014: wrist_R1
+    4300016: nekc
+    4300018: hood
+    4300020: hand_R1
+    4300022: arem_R1
+    4300024: body
+    4300026: Katana:pCylinder2
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: arem_R1
+    13700002: body
+    13700004: futo_L
+    13700006: futo_R
+    13700008: hand_R
+    13700010: hand_R1
+    13700012: head
+    13700014: hood
+    13700016: manto
+    13700018: nekc
+    13700020: Rarm_shol_R
+    13700022: wrist_R
+    13700024: wrist_R1
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

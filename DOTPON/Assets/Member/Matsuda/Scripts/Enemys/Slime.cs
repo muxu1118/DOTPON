@@ -46,8 +46,8 @@ public class Slime : Enemy
         {
             isAction = true;
             //回転のコルーチンを呼び出す
-            StartCoroutine(Rotating(parameter.rotateAngle, parameter.rotateTime * 60));
-            StartCoroutine(WaitTime(parameter.rotateTime));
+            StartCoroutine(Rotating(parameter.rotateAngle, parameter.rotateTime));
+            StartCoroutine(WaitTime(parameter.rotateTime / 2,false));
             time = 0;
         }
         vector = transform.forward;
@@ -72,17 +72,24 @@ public class Slime : Enemy
             isLooking = true;
             if (isAction) return;
             isAction = true;
-            var obj = Instantiate(bukiObj, transform.localPosition, Quaternion.identity);
-            //遠距離攻撃の距離を自分とプレイヤーの距離に
-            obj.GetComponent<FarAttack>().pow = Vector3.Distance(this.transform.position,other.gameObject.transform.position);
-            obj.transform.parent = this.gameObject.transform;
-            buki = obj;
-            StartCoroutine(WaitTime(1.5f));
+            StartCoroutine(AttackWait(other));
         }
     }
     private void OnTriggerExit(Collider other)
     {
         isLooking = false;
+    }
+    IEnumerator AttackWait(Collider other)
+    {
+        yield return new WaitForSeconds(0.5f);
+        Attack();
+        yield return new WaitForSeconds(0.5f);
+        var obj = Instantiate(bukiObj, transform.localPosition, Quaternion.identity);
+        //遠距離攻撃の距離を自分とプレイヤーの距離に
+        obj.GetComponent<FarAttack>().pow = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
+        obj.transform.parent = this.gameObject.transform;
+        buki = obj;
+        StartCoroutine(WaitTime(parameter.attackWait,false));
     }
 }
 

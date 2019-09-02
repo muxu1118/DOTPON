@@ -63,6 +63,27 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
         set { ps4.star = value; CountRanking();}
     }
 
+    public List<int> P1Weapon
+    {
+        get { return ps1.weapon; }
+        set { ps1.weapon = value; }
+    }
+    public List<int>P2Weapon
+    {
+        get { return ps2.weapon; }
+        set { ps2.weapon = value; }
+    }
+    public List<int> P3Weapon
+    {
+        get { return ps3.weapon; }
+        set { ps3.weapon = value; }
+    }
+    public List<int> P4Weapon
+    {
+        get { return ps3.weapon; }
+        set { ps3.weapon = value; }
+    }
+
     void CountRanking()
     {
 
@@ -89,13 +110,104 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
         // RankStatsList.Clear();
         // SortedList.Clear();
     }
+    /// <summary>
+    /// ランキングのドットの数を配列にして出す
+    /// </summary>
+    /// <returns></returns>
+    public int[] RankingDotNumber()
+    {
+        int[] temp = new int[4];
+        int[] dot = { P1Dot, P2Dot, P3Dot, P4Dot };
+        temp[0] = dot[Int32.Parse(Ranking1)-1];
+        temp[1] = dot[Int32.Parse(Ranking2)-1];
+        temp[2] = dot[Int32.Parse(Ranking3)-1];
+        temp[3] = dot[Int32.Parse(Ranking4)-1];
+        return temp;
+    }
+    /// <summary>
+    /// ランキングのスターの数を配列にして出す
+    /// </summary>
+    /// <returns></returns>
+    public int[] RankingStarNumber()
+    {
+        int[] temp = new int[4];
+        int[] star = { P1Star, P2Star, P3Star, P4Star };
+        temp[0] = star[Int32.Parse(Ranking1)-1];
+        temp[1] = star[Int32.Parse(Ranking2)-1];
+        temp[2] = star[Int32.Parse(Ranking3)-1];
+        temp[3] = star[Int32.Parse(Ranking4)-1];
+        return temp;
+    }
 
+    /// <summary>
+    /// 一位の人を検索する 返す値 [0]は王冠のつく人数 [1]は二進数にした時に一位の人に1がつく値
+    /// </summary>
+    /// <returns></returns>
+    public int[] FindFirstPlayer()
+    {
+        // 構造体RankStatsの配列
+        List<RankStats> RankStatsList = new List<RankStats>(4)
+        {
+            new RankStats (1,P1Dot,P1Star),
+            new RankStats (2,P2Dot,P2Star),
+            new RankStats (3,P3Dot,P3Star),
+            new RankStats (4,P4Dot,P4Star),
+        };
+        // ランキングのソート Linq使用
+        var SortedList = RankStatsList.OrderByDescending(starX => starX.rStar).ThenByDescending(dx => dx.rDot).ToList();
+        // 返す値用配列
+        int[] ary  = new int[2];
+        // 一位と四位のスターとドットの値が一緒だったら
+        if(SortedList[0].rDot == SortedList[3].rDot&& SortedList[0].rStar == SortedList[3].rStar)
+        {
+            ary[0] = 4;
+            // 全員だから15 二進数表記で1111になるから
+            ary[1] = 15;
+            return ary;
+        }else if(SortedList[0].rDot == SortedList[2].rDot && SortedList[0].rStar == SortedList[2].rStar) // 一位と三位スターとドットの値が一緒だったら
+        {
+            // 二進数保管庫
+            int temp = 0;
+            int bit = 1;
+            // 上位三位の配列をループ
+            for(int i = 0; i < 3; i++)
+            {
+                // プレイヤー番号をシフトして保管庫に保管
+                temp += (bit << (SortedList[i].rPlay - 1));
+                // ここいるのか分からない シフトの勉強不足
+                bit = 1;
+            }
+            ary[0] = 3;
+            // 二進数保管庫を返す [例] プレイヤー134が一位だったら 返す値は[1101]
+            ary[1] = temp;
+            return ary;
+        }else if(SortedList[0].rDot == SortedList[1].rDot && SortedList[0].rStar == SortedList[1].rStar) // 一位と二位スターとドットの値が一緒だったら 三位とやり方は一緒
+        {
+            int temp = 0;
+            int bit = 1;
+            for (int i = 0; i < 2; i++)
+            {
+                temp += (bit << (SortedList[i].rPlay - 1));
+                bit = 1;
+            }
+            ary[0] = 2;
+            ary[1] = temp;
+            return ary;
+        }
+        // 一人だったら
+        ary[0] = 1;
+        // 1位のプレイヤーの番号を返す
+        ary[1] = SortedList[0].rPlay;
+        return ary;
+
+    }
 }
 
 struct PlayerStats
 {
     public int dot;
     public int star;
+    public List<int> weapon;
 }
 
 struct RankStats

@@ -8,6 +8,7 @@ public class Goburin : Enemy
     [SerializeField]GameObject[] lookingCollider;
     float time;
     float lookingAngle;
+    bool stayLooking;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,18 +38,33 @@ public class Goburin : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (isAction || transform.localPosition.y >= 0 ) return;
         time += Time.deltaTime;
-        if (isAction) return;
         this.transform.localPosition += vector * parameter.speed / 100;
         if (time > parameter.lookAngleChangeTime && !isLooking)
         {
             isAction = true;
             //回転のコルーチンを呼び出す
-            StartCoroutine(Rotating(parameter.rotateAngle,parameter.rotateTime * 60));
-            StartCoroutine(WaitTime(parameter.rotateTime));
+            StartCoroutine(Rotating(parameter.rotateAngle,parameter.rotateTime));
+            StartCoroutine(WaitTime(parameter.rotateTime,false));
             time = 0;
         }
         vector = transform.forward;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "goburin" && stayLooking)
+        {
+            isAction = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (stayLooking)
+        {
+            isAction = false;
+            stayLooking = false;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -62,11 +78,11 @@ public class Goburin : Enemy
             //ターゲットの方向ベクトルを取得
             Vector3 relativePos = other.transform.position - this.gameObject.transform.position;
             //方向を回転情報に変換
-            Quaternion rotation = Quaternion.LookRotation(relativePos);
+            Quaternion rotation = Quaternion.LookRotation(new Vector3(relativePos.x, 0, relativePos.z));
             //現在の回転情報と、ターゲットの回転情報を補完する
             transform.rotation = Quaternion.Slerp(this.transform.rotation, rotation, parameter.lookSpeed);
             //進む方向を自分の前に変更
-            vector = transform.forward;
+            vector = new Vector3(transform.forward.x,0, transform.forward.z);
             isLooking = true;
             if (isAction) return;
             //自分とプレイヤーの距離の取得
@@ -76,12 +92,16 @@ public class Goburin : Enemy
             {
                 isAction = true;
                 Attack();
-                StartCoroutine(WaitTime(1.5f));
+                StartCoroutine(WaitTime(parameter.attackWait,false));
+            }else if (dis <= parameter.distance * 2)
+            {
+                stayLooking = true;
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.tag != "player") return;
         isLooking = false;
     }
 }
