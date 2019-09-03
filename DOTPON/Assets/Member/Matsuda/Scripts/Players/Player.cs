@@ -507,7 +507,19 @@ public class Player : MonoBehaviour
         int[] bit = MultiPlayerManager.instance.FindFirstPlayer();
         
         // 自分のクラウンがセルフだったらまず見えなくする
-        if (crown.activeSelf)crown.SetActive(false);
+        if (crown.activeSelf) crown.SetActive(false);
+
+        for (int i = 0;i < 4; i++)
+        {
+            if (MultiPlayerManager.instance.Ranking[i] == (int)own+1)
+            {
+                if (MultiPlayerManager.instance.RankingStarNumber()[i] == 0)
+                {
+                    crown.SetActive(false);
+                    return;
+                }
+            }
+        }
         // 一位の人間の人数によって操作を変える
         switch (bit[0])
         {
