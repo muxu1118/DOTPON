@@ -806,6 +806,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2cb7c0bd1df7841a7ca2d8b2f8221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageOnTime: 0.2
+  texture:
+  - {fileID: 2800000, guid: ad930f759665f2148ab8d3aef224fe33, type: 3}
+  - {fileID: 2800000, guid: ad930f759665f2148ab8d3aef224fe33, type: 3}
+  - {fileID: 2800000, guid: ad930f759665f2148ab8d3aef224fe33, type: 3}
+  - {fileID: 2800000, guid: ad930f759665f2148ab8d3aef224fe33, type: 3}
 --- !u!1 &4098183702200525620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,6 +2058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca66dd5ac9e436d41a6dba57bd189cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shield: {fileID: 0}
 --- !u!1001 &117495114376401831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2068,11 +2075,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1453264195924920546, guid: 58f528e32f8833c4b942685bb0d606bb,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7142809957321371334, guid: 58f528e32f8833c4b942685bb0d606bb,
         type: 3}
@@ -2143,6 +2145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453264195924920546, guid: 58f528e32f8833c4b942685bb0d606bb,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6264037851564855669, guid: 58f528e32f8833c4b942685bb0d606bb,
         type: 3}

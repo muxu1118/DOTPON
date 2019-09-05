@@ -186,17 +186,25 @@ public class BUKSelect : MonoBehaviour
         switch (MultiPlayerManager.instance.totalPlayer)
         {
             case 1:
-                instantedBuki = Instantiate(bukis[(int)nowWeapon], new Vector3(-2,1.3f,3), Quaternion.identity);
+                instantedBuki = Instantiate(bukis[(int)nowWeapon], new Vector3(-3.75f,0f,3), Quaternion.identity);
+                instantedBuki.transform.localScale = instantedBuki.transform.localScale * 2.3f;
                 break;
             case 2:
                 instantedBuki = Instantiate(bukis[(int)nowWeapon], pos2[padNum-1], Quaternion.identity);
+                instantedBuki.transform.localScale = instantedBuki.transform.localScale * 2.3f;
                 break;
             case 3:
                 instantedBuki = Instantiate(bukis[(int)nowWeapon], pos[padNum-1], Quaternion.identity);
+                instantedBuki.transform.localScale = instantedBuki.transform.localScale * 1.8f;
                 break;
             case 4:
                 instantedBuki = Instantiate(bukis[(int)nowWeapon], pos[padNum-1], Quaternion.identity);
+                instantedBuki.transform.localScale = instantedBuki.transform.localScale * 1.8f;
                 break;
+        }
+        if(instantedBuki.name == "Axe(Clone)")
+        {
+            instantedBuki.transform.localPosition += new Vector3(0,-0.5f,0);
         }
 
     }

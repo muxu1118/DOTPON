@@ -31,7 +31,8 @@ public class PlayTest : MonoBehaviour
     List<Vector2> canvasPosis = new List<Vector2>();
     List<GameObject> saveCanvas = new List<GameObject>();
     float screenX, screenY;
-
+    [SerializeField]
+    GameObject[] kyokaisen;
 
     BUKSelect[] select;
     [SerializeField]GameObject text;
@@ -86,7 +87,7 @@ public class PlayTest : MonoBehaviour
             }
         }
        
-        if (Input.GetKeyDown("joystick 1 button 9") || Input.GetKeyDown("joystick 2 button 9") || Input.GetKeyDown("joystick 3 button 9") || Input.GetKeyDown("joystick 4 button 9"))
+        if (Input.GetKeyDown("joystick 1 button 9") || Input.GetKeyDown("joystick 2 button 9") || Input.GetKeyDown("joystick 3 button 9") || Input.GetKeyDown("joystick 4 button 9") || Input.GetKeyDown(KeyCode.Space))
         {
             if(SceneManager.GetActiveScene().name == "StartScene")
             {
@@ -225,7 +226,7 @@ public class PlayTest : MonoBehaviour
         Debug.Log(screenX+"+"+screenY);
         for (int i = 0; i < playerNumber; i++)
         {
-            objs.Add(Instantiate(selectObj,canvasPosis[i],Quaternion.identity));
+            objs.Add(Instantiate(selectObj,canvasPosis[i],Quaternion.identity, GameObject.Find("WeaponPanel").transform));
             switch (i)
             {
                 case 0:
@@ -241,8 +242,8 @@ public class PlayTest : MonoBehaviour
                     objs[i].GetComponentInChildren<BUKSelect>().playerNum = BUKSelect.player.player4;
                     break;
             }
-            objs[i].transform.parent = GameObject.Find("WeaponPanel").transform;
             objs[i].GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+            objs[i].GetComponent<RectTransform>().localRotation = new Quaternion(0, 0, 0,0);
             selectObjs.Add(objs[i].GetComponentInChildren<ChangeDOTPON>().gameObject);
             selectObjs[i].name = "P" + i + "Select";
             objs[i].GetComponentInChildren<BUKSelect>().selectedObj = objs[i].GetComponentInChildren<SelectedUI>();
@@ -252,59 +253,49 @@ public class PlayTest : MonoBehaviour
             if (playerNumber == 2)
             {
                 objs[i].transform.localScale = new Vector3(0.4f, 0.4f, 1);
-            }else if(playerNumber >= 3)
+                kyokaisen[0].SetActive(true);
+            }
+            else if(playerNumber >= 3)
             {
                 objs[i].transform.localScale = new Vector3(0.4f, 0.4f, 1);
+                kyokaisen[0].SetActive(true);
+                kyokaisen[1].SetActive(true);
             }
+             
         }
         switch (playerNumber)
         {
             case 1:
-                var obj = Instantiate(player, new Vector3(2.5f, 0.5f, 2), Quaternion.identity);
-                obj.transform.Rotate(0, -30.49f, 0);
-                obj.name = "Player1";
+                Vector3[] vec = { new Vector3(3.75f, -1.2f, 2) };
+                SetPlayerInstance(1,vec);
                 break;
             case 2:
-
-                var obj1 = Instantiate(player, new Vector3(4f, 0.5f, 1.2f), Quaternion.identity);
-                var obj2 = Instantiate(player, new Vector3(-4f, 0.5f, 1.2f), Quaternion.identity);
-                obj1.transform.Rotate(0, -41.01f, 0);
-                obj2.transform.Rotate(0, 41.01f, 0);
-                obj1.name = "Player1";
-                obj2.name = "Player2";
+                Vector3[] vec2 = { new Vector3(4f, -1.2f, 1.2f), new Vector3(-4f, -1.2f, 1.2f) };
+                SetPlayerInstance(2,vec2);
                 break;
             case 3:
-
-                var obj3 = Instantiate(player, new Vector3(5f, 1.8f, 0), Quaternion.identity);
-                var obj4 = Instantiate(player, new Vector3(-1f, 1.8f, 0), Quaternion.identity);
-                var obj5 = Instantiate(player, new Vector3(2.5f, 0.5f, 3), Quaternion.identity);
-                obj3.transform.Rotate(0, -39, 0);
-                obj4.transform.Rotate(0, 6.13f, 0);
-                obj5.transform.Rotate(0, -39.38f, 0);
-                obj3.name = "Player1";
-                obj4.name = "Player2";
-                obj5.name = "Player3";
-                obj5.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                Vector3[] vec3 = { new Vector3(5f, 1.8f, 0), new Vector3(-1f, 1.8f, 0), new Vector3(5f, -1.47f, 0) };
+                SetPlayerInstance(3,vec3);
                 break;
             case 4:
-
-                var obj6 = Instantiate(player, new Vector3(5f, 1.8f, 0), Quaternion.identity);
-                var obj7 = Instantiate(player, new Vector3(-1f,1.8f,0), Quaternion.identity);
-                var obj8 = Instantiate(player, new Vector3(2.6f, 0.5f, 2.8f), Quaternion.identity);
-                var obj9 = Instantiate(player, new Vector3(-0.7f, 0.5f, 2.6f), Quaternion.identity);
-                obj6.transform.Rotate(0, -39, 0);
-                obj7.transform.Rotate(0, 6.13f, 0);
-                obj8.transform.Rotate(0, -39.38f, 0);
-                obj9.transform.Rotate(0, 8.95f, 0);
-                obj6.name = "Player1";
-                obj7.name = "Player2";
-                obj8.name = "Player3";
-                obj9.name = "Player4";
-                obj8.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                obj9.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                Vector3[] vec4 = { new Vector3(5f, 1.8f, 0), new Vector3(-1f, 1.8f, 0), new Vector3(5f, -1.47f, 0), new Vector3(-1f, -1.47f, 0) };
+                SetPlayerInstance(4, vec4);
                 break;
         }
         select = WeaponPanel.GetComponentsInChildren<BUKSelect>();
+    }
+    private void SetPlayerInstance(int num,Vector3[] vec)
+    {
+        List<GameObject> playerObjs = new List<GameObject>();
+        for (int i = 0; i < num; i++)
+        {
+            playerObjs.Add(Instantiate(player, vec[i], Quaternion.identity));
+            playerObjs[i].name = "Player" + i;
+            if(num <= 2)
+            {
+                playerObjs[i].transform.localScale = playerObjs[i].transform.localScale * 1.5f;
+            }
+        }
     }
 
     public void GameStartButton()
