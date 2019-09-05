@@ -7,28 +7,38 @@ public class Shield : MonoBehaviour
     //public Parametor parametor;  
     [SerializeField]
     GameObject shield;
+    Animator anim;
 
-    public void OnTriggerEnter(Collider other)
-    {        
-        if(other.gameObject.tag == "weapon")
-        {            
-            StartCoroutine(shieldGuard());
-        }
+    public void Start()
+    {
+        anim = GetComponent<Animator>();        
     }
+
+    //public void OnTriggerEnter(Collider other)
+    //{        
+    //    if(other.gameObject.tag == "weapon")
+    //    {            
+    //        StartCoroutine(shieldGuard());
+    //    }
+    //}
 
     /// <summary>
     /// 盾に武器が当たったらプレイヤーの当たり判定を失くす
     /// </summary>
     /// <returns></returns>
-    IEnumerator shieldGuard()
+    IEnumerator WaitAnimation(int DamegUP)
     {
-        shield = transform.root.gameObject;
-        Debug.Log(shield);        
-        shield.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(0.3f);
-        Debug.Log(gameObject.name);
-        shield.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(0.1f);
+        anim.SetTrigger("Stun");
+
+        yield return null;
+        yield return new WaitForAnimation(anim, 0);
+        DamegUP = 1;       
+
         Debug.LogWarning("守れた？");
     }        
+
+    public void StunStart(int DamegUP)
+    {
+        StartCoroutine(WaitAnimation(DamegUP));
+    }
 }

@@ -103,6 +103,10 @@ public class AniTest : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// アニメーションが再生されているときだけ
+    /// </summary>
+    /// <returns></returns>
     IEnumerator AttackAnimationFlow()
     {
         //アニメーションの情報を取得可能に
@@ -113,13 +117,7 @@ public class AniTest : MonoBehaviour
         yield return null;
         yield return new WaitForAnimation(anim, 0);
 
-        //アニメーションが再生されて終わったら再生
-        //    if (info.length > 1)
-        //    {
-        //        anim.SetTrigger("Down");
-        //        Debug.Log(info.length);
-        //    }
-        //}
+        
         anim.SetTrigger("Down");
     }
 

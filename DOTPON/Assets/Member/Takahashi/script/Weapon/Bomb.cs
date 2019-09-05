@@ -29,14 +29,12 @@ public class Bomb : MonoBehaviour
     }
 
     /// <summary>
-    /// 爆弾の爆発
+    /// 爆弾の爆発の処理
     /// </summary>
-    /// <returns></returns>
-    ///
     IEnumerator bomExplosion()
     {
         rend.enabled = true;
-        //爆発の範囲の設定
+        //爆風が出ている間ダメージが入る
         int i = 0;        
         while (i < 30)
         {
@@ -48,7 +46,6 @@ public class Bomb : MonoBehaviour
         sph.radius = 1f;
         Destroy(gameObject);
         Destroy(obj);
-        Debug.Log(gameObject.name);
         yield return new WaitForSeconds(2.5f);
         rend.enabled = false;
     }
