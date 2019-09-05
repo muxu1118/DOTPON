@@ -181,7 +181,9 @@ public class MultiPlayerManager : SingletonMonoBehaviour<MultiPlayerManager>
             // 二進数保管庫を返す [例] プレイヤー134が一位だったら 返す値は[1101]
             ary[1] = temp;
             return ary;
-        }else if(SortedList[0].rDot == SortedList[1].rDot && SortedList[0].rStar == SortedList[1].rStar) // 一位と二位スターとドットの値が一緒だったら 三位とやり方は一緒
+        }
+        // 一位と二位スターとドットの値が一緒だったら 三位とやり方は一緒
+        else if (SortedList[0].rDot == SortedList[1].rDot && SortedList[0].rStar == SortedList[1].rStar) 
         {
             int temp = 0;
             int bit = 1;

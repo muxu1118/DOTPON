@@ -32,7 +32,12 @@ public class PlayTest : MonoBehaviour
     List<GameObject> saveCanvas = new List<GameObject>();
     float screenX, screenY;
 
+
+    BUKSelect[] select;
+    [SerializeField]GameObject text;
     bool tri;
+
+    bool startTrigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +49,43 @@ public class PlayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (WeaponPanel.active)
+        {
+            List<int> trigger = new List<int>();
+            for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
+            {
+                if (select[i].weapons.Count == 3)
+                {
+                    trigger.Add(1);
+                    switch (i)
+                    {
+                        case 0:
+                            MultiPlayerManager.instance.P1Weapon = select[i].weapons;
+                            break;
+                        case 1:
+                            MultiPlayerManager.instance.P2Weapon = select[i].weapons;
+                            break;
+                        case 2:
+                            MultiPlayerManager.instance.P3Weapon = select[i].weapons;
+                            break;
+                        case 3:
+                            MultiPlayerManager.instance.P4Weapon = select[i].weapons;
+                            break;
+                    }
+                }
+            }
+            if (trigger.Count == MultiPlayerManager.instance.totalPlayer)
+            {
+                startTrigger = true;
+                text.SetActive(true);
+            }
+            else
+            {
+                startTrigger = false;
+                text.SetActive(false);
+            }
+        }
+       
         if (Input.GetKeyDown("joystick 1 button 9") || Input.GetKeyDown("joystick 2 button 9") || Input.GetKeyDown("joystick 3 button 9") || Input.GetKeyDown("joystick 4 button 9"))
         {
             if(SceneManager.GetActiveScene().name == "StartScene")
@@ -130,7 +172,7 @@ public class PlayTest : MonoBehaviour
         SelectPanel.SetActive(false);
         canvasPosis.Add(new Vector2(-200, 140));
         canvasPosis.Add(new Vector2(200, 140));
-        canvasPosis.Add(new Vector2(-200, -50));
+        canvasPosis.Add(new Vector2(-200, -80));
         SetSelectUI();
     } 
 
@@ -141,8 +183,8 @@ public class PlayTest : MonoBehaviour
         SelectPanel.SetActive(false);
         canvasPosis.Add(new Vector2(-200, 140));
         canvasPosis.Add(new Vector2(200, 140));
-        canvasPosis.Add(new Vector2(-200, -50));
-        canvasPosis.Add(new Vector2(200, -50));
+        canvasPosis.Add(new Vector2(-200, -80));
+        canvasPosis.Add(new Vector2(200, -80));
         SetSelectUI();
     } 
     private void PlayerNum()
@@ -161,13 +203,13 @@ public class PlayTest : MonoBehaviour
             case 3:
                 canvasPosis.Add(new Vector2(-200, 140));
                 canvasPosis.Add(new Vector2(200, 140));
-                canvasPosis.Add(new Vector2(-200, -65));
+                canvasPosis.Add(new Vector2(-200, -80));
                 break;
             case 4:
                 canvasPosis.Add(new Vector2(-200, 140));
                 canvasPosis.Add(new Vector2(200, 140));
-                canvasPosis.Add(new Vector2(-200, -65));
-                canvasPosis.Add(new Vector2(200, -65));
+                canvasPosis.Add(new Vector2(-200, -80));
+                canvasPosis.Add(new Vector2(200, -80));
                 break;
             default:
                 break;
@@ -262,38 +304,15 @@ public class PlayTest : MonoBehaviour
                 obj9.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 break;
         }
+        select = WeaponPanel.GetComponentsInChildren<BUKSelect>();
     }
 
     public void GameStartButton()
     {
-        List<int> trigger = new List<int>();
-        BUKSelect[] select = WeaponPanel.GetComponentsInChildren<BUKSelect>();
-        for (int i = 0;i < MultiPlayerManager.instance.totalPlayer;i++)
-        {
-            if (select[i].weapons.Count == 3)
-            {
-                trigger.Add(1);
-                switch (i)
-                {
-                    case 0:
-                        MultiPlayerManager.instance.P1Weapon = select[i].weapons;
-                        break;
-                    case 1:
-                        MultiPlayerManager.instance.P2Weapon = select[i].weapons;
-                        break;
-                    case 2:
-                        MultiPlayerManager.instance.P3Weapon = select[i].weapons;
-                        break;
-                    case 3:
-                        MultiPlayerManager.instance.P4Weapon = select[i].weapons;
-                        break;
-                }
-            }
-        }
-        if (trigger.Count == MultiPlayerManager.instance.totalPlayer)
+        if (startTrigger)
         {
             Cursor.visible = false;
-            FadeManager.Instance.LoadScene("Main",1.0f);
+            FadeManager.Instance.LoadScene("Main", 1.0f);
         }
     }
 

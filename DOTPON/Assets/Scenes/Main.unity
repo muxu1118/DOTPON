@@ -2682,6 +2682,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Timer
       objectReference: {fileID: 0}
+    - target: {fileID: 2218328021950522433, guid: 8f62c6308e9e36548b53f309f5c7b40e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 227618963f6a46b4cb189356fd40b216,
+        type: 3}
+    - target: {fileID: 2218328021363342433, guid: 8f62c6308e9e36548b53f309f5c7b40e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 227618963f6a46b4cb189356fd40b216,
+        type: 3}
+    - target: {fileID: 2218328022353865179, guid: 8f62c6308e9e36548b53f309f5c7b40e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 227618963f6a46b4cb189356fd40b216,
+        type: 3}
+    - target: {fileID: 6258148607818016374, guid: 8f62c6308e9e36548b53f309f5c7b40e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 227618963f6a46b4cb189356fd40b216,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f62c6308e9e36548b53f309f5c7b40e, type: 3}
 --- !u!114 &803185659 stripped
