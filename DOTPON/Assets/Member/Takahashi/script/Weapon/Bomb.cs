@@ -64,8 +64,7 @@ public class Bomb : MonoBehaviour
             if(obj.gameObject.tag == "player")
             {
                 if (obj.gameObject.GetComponent<Player>().isDamage == true) return;
-                obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage, (int)transform.root.gameObject.GetComponent<Player>().own);
-                Debug.Log("bm");
+                obj.gameObject.GetComponent<Player>().Damage(parametor.attackDamage, (int)transform.root.gameObject.GetComponent<Player>().own);                
             }
             else if(obj.gameObject.tag == "enemy")
             {
