@@ -234,9 +234,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageOnTime: 0.2
   texture:
-  - {fileID: 2800000, guid: ad930f759665f2148ab8d3aef224fe33, type: 3}
-  - {fileID: 2800000, guid: ad930f759665f2148ab8d3aef224fe33, type: 3}
-  - {fileID: 2800000, guid: ad930f759665f2148ab8d3aef224fe33, type: 3}
+  - {fileID: 2800000, guid: 5b44bb68e9ec6a140a2b0345614fd53f, type: 3}
+  - {fileID: 2800000, guid: 177ec5c869bad494d98defad7c57035c, type: 3}
+  - {fileID: 2800000, guid: 5a7e2845d4ab2284c8176c9d3da1291a, type: 3}
   - {fileID: 2800000, guid: ad930f759665f2148ab8d3aef224fe33, type: 3}
 --- !u!114 &7065100066500674255
 MonoBehaviour:

@@ -290,7 +290,7 @@ public class PlayTest : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             playerObjs.Add(Instantiate(player, vec[i], Quaternion.identity));
-            playerObjs[i].name = "Player" + i;
+            playerObjs[i].name = "Player" + (i + 1);
             if(num <= 2)
             {
                 playerObjs[i].transform.localScale = playerObjs[i].transform.localScale * 1.5f;
