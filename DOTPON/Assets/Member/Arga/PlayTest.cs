@@ -53,24 +53,33 @@ public class PlayTest : MonoBehaviour
         if (WeaponPanel.active)
         {
             List<int> trigger = new List<int>();
+            List<int> list = new List<int>();
+            bool trig = true;
             for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
             {
-                if (select[i].weapons.Count == 3)
+                for (int j = 0; j < 3; j++)
+                {
+                    list.Add(select[i].weapons[j]);
+                    if (list[j] == -1) trig = false;
+                }
+                Debug.Log(list[0] + " " + list[1] + " " + list[2]);
+                if (list[0] != list[1] && list[0] != list[2] && list[1] != list[2] && trig)
                 {
                     trigger.Add(1);
                     switch (i)
                     {
                         case 0:
-                            MultiPlayerManager.instance.P1Weapon = select[i].weapons;
+                            
+                            MultiPlayerManager.instance.P1Weapon = list;
                             break;
                         case 1:
-                            MultiPlayerManager.instance.P2Weapon = select[i].weapons;
+                            MultiPlayerManager.instance.P2Weapon = list;
                             break;
                         case 2:
-                            MultiPlayerManager.instance.P3Weapon = select[i].weapons;
+                            MultiPlayerManager.instance.P3Weapon = list;
                             break;
                         case 3:
-                            MultiPlayerManager.instance.P4Weapon = select[i].weapons;
+                            MultiPlayerManager.instance.P4Weapon = list;
                             break;
                     }
                 }

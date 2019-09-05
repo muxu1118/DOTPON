@@ -553,6 +553,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8984786248916373649}
     m_Modifications:
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ParentObjs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ChildObjs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ParentObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4237683438596653999}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ParentObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4237683439318649732}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ParentObjs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4237683440038368513}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ChildObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4237683438868020239}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ChildObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4237683440170001590}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ChildObjs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4237683439155859556}
     - target: {fileID: 2825820881518053, guid: a2561ad93740c9b46a4a9ab6296d8650, type: 3}
       propertyPath: m_Name
       value: SelectDOTPON
@@ -643,6 +683,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2561ad93740c9b46a4a9ab6296d8650, type: 3}
+--- !u!114 &4237683439155859556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2825821276266086, guid: a2561ad93740c9b46a4a9ab6296d8650,
+    type: 3}
+  m_PrefabInstance: {fileID: 4234875358243851778}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4237683440038368513 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2825820148390659, guid: a2561ad93740c9b46a4a9ab6296d8650,
+    type: 3}
+  m_PrefabInstance: {fileID: 4234875358243851778}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4237683440170001590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2825820276878004, guid: a2561ad93740c9b46a4a9ab6296d8650,
+    type: 3}
+  m_PrefabInstance: {fileID: 4234875358243851778}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4237683439318649732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2825820901655942, guid: a2561ad93740c9b46a4a9ab6296d8650,
+    type: 3}
+  m_PrefabInstance: {fileID: 4234875358243851778}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4237683438868020239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2825821528437261, guid: a2561ad93740c9b46a4a9ab6296d8650,
+    type: 3}
+  m_PrefabInstance: {fileID: 4234875358243851778}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4237683438596653999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2825821793422765, guid: a2561ad93740c9b46a4a9ab6296d8650,
+    type: 3}
+  m_PrefabInstance: {fileID: 4234875358243851778}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1238763574844034350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
@@ -870,6 +982,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
+      propertyPath: weapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
       propertyPath: selectedObj
       value: 
       objectReference: {fileID: 1238763574844034350}
@@ -1013,6 +1130,21 @@ PrefabInstance:
         type: 3}
       propertyPath: pos.Array.data[3].y
       value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: weapons.Array.data[1]
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616301572395209697, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: weapons.Array.data[2]
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 289534091312231720, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}

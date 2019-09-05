@@ -4,43 +4,45 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SelectedUI : MonoBehaviour
 {
-    [SerializeField]RawImage[] rawImages;
+    [SerializeField]RawImage[] ParentObjs;
+    [SerializeField] RawImage[] ChildObjs;
     public void ChangeTextureUp(int i,Texture texture)
     {
         switch (i)
         {
             case 0:
-                rawImages[0].GetComponentInChildren<RawImage>().texture = texture;
-                rawImages[0].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
+                ChildObjs[0].GetComponentInChildren<RawImage>().texture = texture;
+                ChildObjs[0].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
                 break;
             case 1:
-                rawImages[1].GetComponentInChildren<RawImage>().texture = texture;
-                rawImages[1].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
+                ChildObjs[1].GetComponentInChildren<RawImage>().texture = texture;
+                ChildObjs[1].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
                 break;
             case 2:
-                rawImages[2].GetComponentInChildren<RawImage>().texture = texture;
-                rawImages[2].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
+                ChildObjs[2].GetComponentInChildren<RawImage>().texture = texture;
+                ChildObjs[2].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 1);
                 break;
             default:
-                rawImages[0].color = new Color(1, 1, 1, 0);
+                ChildObjs[0].color = new Color(1, 1, 1, 0);
                 break;
         }
     }
     public void ChangeTextureDown(int i)
     {
+        ChildObjs[i].GetComponentInChildren<RawImage>().texture = null;
         switch (i)
         {
             case 0:
-                rawImages[0].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
+                ChildObjs[0].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
                 break;
             case 1:
-                rawImages[1].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
+                ChildObjs[1].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
                 break;
             case 2:
-                rawImages[2].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
+                ChildObjs[2].GetComponentInChildren<RawImage>().color = new Color(1, 1, 1, 0);
                 break;
             default:
-                rawImages[0].color = new Color(1, 1, 1, 0);
+                ChildObjs[0].color = new Color(1, 1, 1, 0);
                 break;
         }
     }
@@ -49,9 +51,8 @@ public class SelectedUI : MonoBehaviour
     {
         for (int i = 0;i < 3;i++)
         {
-            if(rawImages[i].color == new Color(1, 1, 0))
-            rawImages[i].color = new Color(1,1,1);
+            ParentObjs[i].color = new Color(1,1,1);
         }
-        rawImages[num].color = new Color(1, 1, 0);
+        ParentObjs[num].color = new Color(1, 1, 0);
     }
 }
