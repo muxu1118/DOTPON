@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpownController : MonoBehaviour
@@ -24,6 +25,7 @@ public class SpownController : MonoBehaviour
         List<int> createdPos = new List<int>() {-1 };
         for (int i = 0; i < oneTimeSpownNum; i++)
         {
+            ShowListContentsInTheDebugLog(createdPos);
             createdPos.Add(PosSet(createdPos));
         }
         MaxTime = (int)timer.timeCount;
@@ -64,15 +66,18 @@ public class SpownController : MonoBehaviour
         int posNum = 0;
         while (isCreated)
         {
+            posNum = Random.Range(0, positions.Length);
             //同じ場所からスポーンしないようにする処理
-            posNum = Random.Range(0,positions.Length);
             if (createdPos[0] == -1)
             {
                 createdPos.RemoveAt(0);
                 break;
             }
+            //回数分回して片方が違くても、もう片方でループ抜ける処理に入っちゃってる
+            //一つでもある場合のみループが続くようにするべき
             for (int i = 0;i < createdPos.Count; i++)
             {
+                Debug.Log(posNum + " " + createdPos[i]);
                 if (posNum != createdPos[i])
                 {
                     Collider[] colliders = Physics.OverlapSphere(positions[posNum], 1);
@@ -81,6 +86,7 @@ public class SpownController : MonoBehaviour
                     {
                         if(colliders[j].gameObject.tag == "enemy")
                         {
+                            Debug.Log("out");
                             trigger = true;
                             break;
                         }
@@ -89,6 +95,9 @@ public class SpownController : MonoBehaviour
                     {
                         isCreated = false;
                     }
+                }else
+                {
+                    Debug.Log("2out");
                 }
             }
         }
@@ -149,5 +158,21 @@ public class SpownController : MonoBehaviour
         var particl = obj.GetComponentsInChildren<ParticleSystem>();
         yield return new WaitWhile(() => particl[1].IsAlive(true));
         Destroy(obj);
+    }
+
+    //でバック用
+    public void ShowListContentsInTheDebugLog<T>(List<T> list)
+    {
+        string log = "";
+
+        foreach (var content in list.Select((val, idx) => new { val, idx }))
+        {
+            if (content.idx == list.Count - 1)
+                log += content.val.ToString();
+            else
+                log += content.val.ToString() + ", ";
+        }
+
+        Debug.Log(log);
     }
 }

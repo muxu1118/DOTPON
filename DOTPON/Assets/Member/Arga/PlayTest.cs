@@ -50,51 +50,7 @@ public class PlayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (WeaponPanel.active)
-        {
-            List<int> trigger = new List<int>();
-            List<int> list = new List<int>();
-            bool trig = true;
-            for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    list.Add(select[i].weapons[j]);
-                    if (list[j] == -1) trig = false;
-                }
-                Debug.Log(list[0] + " " + list[1] + " " + list[2]);
-                if (list[0] != list[1] && list[0] != list[2] && list[1] != list[2] && trig)
-                {
-                    trigger.Add(1);
-                    switch (i)
-                    {
-                        case 0:
-                            
-                            MultiPlayerManager.instance.P1Weapon = list;
-                            break;
-                        case 1:
-                            MultiPlayerManager.instance.P2Weapon = list;
-                            break;
-                        case 2:
-                            MultiPlayerManager.instance.P3Weapon = list;
-                            break;
-                        case 3:
-                            MultiPlayerManager.instance.P4Weapon = list;
-                            break;
-                    }
-                }
-            }
-            if (trigger.Count == MultiPlayerManager.instance.totalPlayer)
-            {
-                startTrigger = true;
-                text.SetActive(true);
-            }
-            else
-            {
-                startTrigger = false;
-                text.SetActive(false);
-            }
-        }
+        
        
         if (Input.GetKeyDown("joystick 1 button 9") || Input.GetKeyDown("joystick 2 button 9") || Input.GetKeyDown("joystick 3 button 9") || Input.GetKeyDown("joystick 4 button 9") || Input.GetKeyDown(KeyCode.Space))
         {
@@ -139,11 +95,56 @@ public class PlayTest : MonoBehaviour
             tri = false;
         }
         //  number.text = MultiPlayerManager.instance.TotalPlayer.ToString();
+        if (WeaponPanel.active)
+        {
+            List<int> trigger = new List<int>();
+            List<int> list = new List<int>();
+            bool trig = true;
+            for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    list.Add(select[i].weapons[j]);
+                    if (list[j] == -1) trig = false;
+                }
+
+                if (list[0] != list[1] && list[0] != list[2] && list[1] != list[2] && trig)
+                {
+                    trigger.Add(1);
+                    switch (i)
+                    {
+                        case 0:
+
+                            MultiPlayerManager.instance.P1Weapon = list;
+                            break;
+                        case 1:
+                            MultiPlayerManager.instance.P2Weapon = list;
+                            break;
+                        case 2:
+                            MultiPlayerManager.instance.P3Weapon = list;
+                            break;
+                        case 3:
+                            MultiPlayerManager.instance.P4Weapon = list;
+                            break;
+                    }
+                }
+            }
+            if (trigger.Count == MultiPlayerManager.instance.totalPlayer)
+            {
+                startTrigger = true;
+                text.SetActive(true);
+            }
+            else
+            {
+                startTrigger = false;
+                text.SetActive(false);
+            }
+        }
     }
 
     private void HandMove()
     {
-        hand.transform.localPosition = new Vector3(60,poss[MultiPlayerManager.instance.totalPlayer -1],0);
+        hand.transform.localPosition = new Vector3(45,poss[MultiPlayerManager.instance.totalPlayer -1],0);
     }
 
     public void PlusPl()
@@ -182,7 +183,7 @@ public class PlayTest : MonoBehaviour
         SelectPanel.SetActive(false);
         canvasPosis.Add(new Vector2(-200, 140));
         canvasPosis.Add(new Vector2(200, 140));
-        canvasPosis.Add(new Vector2(-200, -80));
+        canvasPosis.Add(new Vector2(-200, -100));
         SetSelectUI();
     } 
 
@@ -193,8 +194,8 @@ public class PlayTest : MonoBehaviour
         SelectPanel.SetActive(false);
         canvasPosis.Add(new Vector2(-200, 140));
         canvasPosis.Add(new Vector2(200, 140));
-        canvasPosis.Add(new Vector2(-200, -80));
-        canvasPosis.Add(new Vector2(200, -80));
+        canvasPosis.Add(new Vector2(-200, -100));
+        canvasPosis.Add(new Vector2(200, -100));
         SetSelectUI();
     } 
     private void PlayerNum()
@@ -213,13 +214,13 @@ public class PlayTest : MonoBehaviour
             case 3:
                 canvasPosis.Add(new Vector2(-200, 140));
                 canvasPosis.Add(new Vector2(200, 140));
-                canvasPosis.Add(new Vector2(-200, -80));
+                canvasPosis.Add(new Vector2(-200, -100));
                 break;
             case 4:
                 canvasPosis.Add(new Vector2(-200, 140));
                 canvasPosis.Add(new Vector2(200, 140));
-                canvasPosis.Add(new Vector2(-200, -80));
-                canvasPosis.Add(new Vector2(200, -80));
+                canvasPosis.Add(new Vector2(-200, -100));
+                canvasPosis.Add(new Vector2(200, -100));
                 break;
             default:
                 break;

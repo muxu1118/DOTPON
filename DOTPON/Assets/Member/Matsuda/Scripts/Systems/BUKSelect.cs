@@ -64,7 +64,7 @@ public class BUKSelect : MonoBehaviour
         {
             foreach (int i in weapons)
             {
-                Debug.Log(i + " + " + (int)nowWeapon);
+                //SDebug.Log(i + " + " + (int)nowWeapon);
                 if (i == (int)nowWeapon) isChange = true;
             }
             if (isChange)
@@ -170,13 +170,21 @@ public class BUKSelect : MonoBehaviour
             weapons[BoxNum] = -1;
             selectedObj.ChangeTextureDown(BoxNum);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Debug.Log(num);
+            if (!tri) return;
+            if (BoxNum == 2) { BoxNum = -1; }
+            BoxNum++;
+            selectedObj.BoxChange(BoxNum);
+            tri = false;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log(num);
+            if (!tri) return;
+            if (BoxNum == 0) { BoxNum = 3; }
+            BoxNum--;
+            selectedObj.BoxChange(BoxNum);
+            tri = false;
         }
     }
     private void InstanceBuki()
