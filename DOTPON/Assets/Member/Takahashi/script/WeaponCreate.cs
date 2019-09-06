@@ -28,11 +28,13 @@ public class WeaponCreate : MonoBehaviour
     int value;
 
     Player player;
+    Animator animator;
 
     AudioSource audio;
     [SerializeField]AudioClip[] clips;
     void Start()
     {
+        animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
         player = GetComponent<Player>();
         weaponNumber = 3;
@@ -122,7 +124,8 @@ public class WeaponCreate : MonoBehaviour
                 if(trigger && DotManager.instance.DotPonCreate(player,createNum ))
                 {
                     Instantiate(efe, transform.localPosition + new Vector3(0, 2, 0) + transform.right / 2, Quaternion.identity).transform.parent = transform;
-                    GetComponent<Animator>().SetTrigger("Create");
+                    //GetComponent<Animator>().SetTrigger("Create");
+                    animator.SetTrigger("Create");
                     nowWeapon.SetActive(false);
                     StartCoroutine(CreateWait());
                     nowWeapon = usedWeapon[weaponType];
@@ -141,6 +144,7 @@ public class WeaponCreate : MonoBehaviour
                 else
                 {
                     //作成した武器を破棄
+                    animator.SetBool("HoldingWeapon", true);
                     nowWeapon.SetActive(false);
                     Punch.SetActive(true);
                     nowWeapon = Punch;
