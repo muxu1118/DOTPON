@@ -53,7 +53,7 @@ public class Dragon : Enemy
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "player") return;
+        if (other.gameObject.tag != "player" || isAction) return;
         //ターゲットの方向ベクトルを取得
         Vector3 relativePos = other.transform.position - this.gameObject.transform.position;
         //方向を回転情報に変換
@@ -63,7 +63,6 @@ public class Dragon : Enemy
         //進む方向を自分の前に変更
         vector = transform.forward;
         isLooking = true;
-        if (isAction) return;
         //自分とプレイヤーの距離の取得
         float dis = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
         isAction = true;
@@ -71,14 +70,15 @@ public class Dragon : Enemy
         {
             //スタンプ攻撃0
             GetComponent<Animator>().SetTrigger("Attack");
-            StartCoroutine(WaitTime(1.5f,false));
+            StartCoroutine(Stomp());
+            StartCoroutine(WaitTime(2f,false));
         }
         else if (dis <= parameter.distance)
         {
             //ブレス攻撃
             GetComponent<Animator>().SetTrigger("Attack2");
             StartCoroutine(Bless());
-            StartCoroutine(WaitTime(2.5f,false));
+            StartCoroutine(WaitTime(5f,false));
         }
     }
 
@@ -101,6 +101,14 @@ public class Dragon : Enemy
         var particl = bukiObj[0].GetComponent<ParticleSystem>();
         yield return new WaitWhile(() => particl.IsAlive(true));
         bukiObj[0].SetActive(false);
+    }
+
+    IEnumerator Stomp()
+    {
+        yield return new WaitForSeconds(1.5f);
+        bukiObj[1].SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        bukiObj[1].SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)

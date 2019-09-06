@@ -137,7 +137,15 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(time / 4);
                 foreach (SkinnedMeshRenderer skin in gob)
                 {
-                    skin.material.color = new Color(1, 1, 1);
+                    if (this.transform.root.name == "golem")
+                    {
+                        skin.material.color = new Color(197 / 255, 160 / 255, 100 / 255);
+                    }
+                    else
+                    {
+                        skin.material.color = new Color(1, 1, 1);
+                    }
+
                 }
                 yield return new WaitForSeconds(time / 4);
             }

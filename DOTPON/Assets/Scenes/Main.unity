@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cceefa7f32cfa40be8522355bec1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCount: 10
+  timeCount: 60
   textTime:
   - {fileID: 47353737}
   - {fileID: 723089089}
