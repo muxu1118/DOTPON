@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faab0f66c7ec8341a48f0894c54cc70, type: 3}
   m_Name: goblin
   m_EditorClassIdentifier: 
-  HP: 2
+  HP: 4
   dropDot: 4
   attackPow: 1
   attackWait: 3

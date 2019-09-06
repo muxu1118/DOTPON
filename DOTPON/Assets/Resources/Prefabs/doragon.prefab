@@ -167,8 +167,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15, y: 15, z: 15}
-  m_Center: {x: 0, y: 7.5, z: 0}
+  m_Size: {x: 15, y: 10, z: 15}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!114 &5125194554832721011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8692790631739224543
 Transform:
   m_ObjectHideFlags: 0
@@ -252,8 +252,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 1, z: 5}
-  m_Center: {x: 0, y: 0, z: 3.5}
+  m_Size: {x: 10, y: 2, z: 5}
+  m_Center: {x: 0, y: 2, z: 3.5}
 --- !u!65 &8003866186384894897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -265,8 +265,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 1, z: 7.5}
-  m_Center: {x: 0, y: 0, z: -3}
+  m_Size: {x: 20, y: 2, z: 7.5}
+  m_Center: {x: 0, y: 2, z: -3}
 --- !u!114 &639200473330883976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +284,7 @@ MonoBehaviour:
   _attackDamage: 0
   _necessaryDot: 0
   _durableValue: 0
+  damegUP: 1
 --- !u!82 &7551077149999489877
 AudioSource:
   m_ObjectHideFlags: 0
@@ -532,11 +533,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 0091a523112d1ac48bc9a07bb50ffc5e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 0091a523112d1ac48bc9a07bb50ffc5e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 0091a523112d1ac48bc9a07bb50ffc5e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -589,15 +590,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 158673574782599472}
     m_Modifications:
-    - target: {fileID: 2711624858662711968, guid: 6908f1a5d48617047817a87655d72d27,
-        type: 3}
-      propertyPath: m_Name
-      value: bless_02
-      objectReference: {fileID: 0}
     - target: {fileID: 8931366728316809344, guid: 6908f1a5d48617047817a87655d72d27,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711624858662711968, guid: 6908f1a5d48617047817a87655d72d27,
+        type: 3}
+      propertyPath: m_Name
+      value: bless_02
       objectReference: {fileID: 0}
     - target: {fileID: 5439087972289674910, guid: 6908f1a5d48617047817a87655d72d27,
         type: 3}

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5faab0f66c7ec8341a48f0894c54cc70, type: 3}
   m_Name: golem
   m_EditorClassIdentifier: 
-  HP: 10
-  dropDot: 18
-  attackPow: 3
-  attackWait: 5
+  HP: 16
+  dropDot: 20
+  attackPow: 4
+  attackWait: 4
   speed: 0.5
   rotateTime: 5
   rotateAngle: 45
