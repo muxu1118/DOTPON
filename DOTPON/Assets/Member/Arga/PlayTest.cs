@@ -128,7 +128,6 @@ public class PlayTest : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(trigger.Count);
             if (trigger.Count == MultiPlayerManager.instance.totalPlayer)
             {
                 startTrigger = true;

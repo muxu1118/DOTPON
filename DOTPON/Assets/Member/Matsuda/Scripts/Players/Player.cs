@@ -348,10 +348,24 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator AttackWait(float time1,float time2)
     {
-        yield return new WaitForSeconds(time1);
+        AnimatorStateInfo stateInfo;
+        bool trig = false; float leng = 0;
+        while (!trig)
+        {
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.loop == false)
+            {
+                trig = true;
+                leng = stateInfo.length;
+            }
+            yield return null;
+        }
+        Debug.Log(leng);
+        yield return new WaitForSeconds(leng / 3);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(time2);
+        yield return new WaitForSeconds(leng / 1.5f);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
         isAction = false;
         yield break;
     }

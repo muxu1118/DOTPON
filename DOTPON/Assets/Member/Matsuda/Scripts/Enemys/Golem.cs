@@ -77,7 +77,7 @@ public class Golem : Enemy
             {
                 isAction = true;
                 Attack();
-                StartCoroutine(WaitTime(3,false));
+                StartCoroutine(WaitTime(parameter.attackWait,false));
                 StartCoroutine(GolemAttack());
             }
         }
@@ -90,8 +90,8 @@ public class Golem : Enemy
     IEnumerator GolemAttack()
     {
         yield return new WaitForSeconds(1);
-        buki.SetActive(true); buki2.SetActive(true);
+        buki.SetActive(true);
         yield return new WaitForSeconds(0.7f);
-        buki.SetActive(false); buki2.SetActive(false);
+        buki.SetActive(false);
     }
 }

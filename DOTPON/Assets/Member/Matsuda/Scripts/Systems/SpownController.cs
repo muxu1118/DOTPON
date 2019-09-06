@@ -157,6 +157,7 @@ public class SpownController : MonoBehaviour
     {
         var particl = obj.GetComponentsInChildren<ParticleSystem>();
         yield return new WaitWhile(() => particl[1].IsAlive(true));
+        Debug.Log("END");
         Destroy(obj);
     }
 
