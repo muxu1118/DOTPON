@@ -45,7 +45,7 @@ public class Weapon : MonoBehaviour
                 StartCoroutine(Effect(other.gameObject.transform));
                 if (this.transform.root.gameObject.tag == "player")
                 {
-                    other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage), (int)transform.root.GetComponent<Player>().own);
+                    other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage * damegUP), (int)transform.root.GetComponent<Player>().own);
                 }
                 else
                 {
@@ -67,12 +67,10 @@ public class Weapon : MonoBehaviour
                 transform.root.GetComponent<WeaponCreate>().DownDursble();
                 break;
             case "Shield":
-                if (gameObject.transform.name == "Shield")
-                {
-                    Debug.Log("盾に" + gameObject.transform.root.name + "が攻撃した");
-                    StartCoroutine("WaitAnimation");
-                    other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage * damegUP), (int)transform.root.GetComponent<Player>().own);
-                }
+                if (gameObject.transform.root.tag == "enemy") return;
+                Debug.Log("盾に" + gameObject.transform.root.name + "が攻撃した");
+                gameObject.transform.root.GetComponent<Animator>().SetTrigger("Stun");
+                StartCoroutine("WaitAnimation");
                 break;
         }
     }
@@ -100,7 +98,6 @@ public class Weapon : MonoBehaviour
     }
     IEnumerator WaitAnimation()
     {
-        animator.SetTrigger("Stun");
         damegUP = 2;
 
         yield return null;
