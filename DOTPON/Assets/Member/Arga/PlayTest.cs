@@ -95,7 +95,7 @@ public class PlayTest : MonoBehaviour
             tri = false;
         }
         //  number.text = MultiPlayerManager.instance.TotalPlayer.ToString();
-        if (WeaponPanel.active)
+        if (SceneManager.GetActiveScene().name != "ResultScene" && WeaponPanel.active)
         {
             List<int> trigger = new List<int>();
             bool trig = true;
