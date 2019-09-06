@@ -29,7 +29,7 @@ public class BUKSelect : MonoBehaviour
 
     public SelectedUI selectedObj;
     List<GameObject> objs = new List<GameObject>();
-    public List<int> weapons = new List<int>();
+    public int[] weapons;
     [SerializeField]
     RawImage[] rawImages;
     [SerializeField]
@@ -56,23 +56,23 @@ public class BUKSelect : MonoBehaviour
     {
         if (Input.GetKeyDown("joystick " + padNum + " button 0"))
         {
-            if (weapons.Count <= 0) return;
-            weapons.RemoveAt(weapons.Count - 1);
+            if (weapons.Length <= 0) return;
+            weapons[BoxNum] = -1;
             selectedObj.ChangeTextureDown(BoxNum);
         }
         if (Input.GetKeyDown("joystick " + padNum + " button 2"))
         {
             foreach (int i in weapons)
             {
-                Debug.Log(i + " + " + (int)nowWeapon);
+                //SDebug.Log(i + " + " + (int)nowWeapon);
                 if (i == (int)nowWeapon) isChange = true;
             }
-            if (weapons.Count >= 3 || isChange)
+            if (isChange)
             {
                 isChange = false;
                 return;
             }
-            weapons.Add((int)nowWeapon);
+            weapons[BoxNum] = ((int)nowWeapon);
             selectedObj.ChangeTextureUp(BoxNum, textures[(int)nowWeapon]);
             isChange = false;
         }
@@ -102,15 +102,17 @@ public class BUKSelect : MonoBehaviour
             GetComponent<ChangeDOTPON>().DOTPONWheel((int)nowWeapon, false);
             InstanceBuki();
         }
-        if (Input.GetAxisRaw("Horizontal" + padNum + "_left") > 0.9f && tri)
+        if (Input.GetAxisRaw("Horizontal" + padNum + "_left") < -0.9f)
         {
-            if (BoxNum == 2) BoxNum = -1;
+            if (!tri) return;
+            if (BoxNum == 2) { BoxNum = -1; }
             BoxNum++;
             selectedObj.BoxChange(BoxNum);
             tri = false;
-        }else if (Input.GetAxisRaw("Horizontal" + padNum + "_left") < -0.9f && tri)
+        }else if (Input.GetAxisRaw("Horizontal" + padNum + "_left") > 0.9f)
         {
-            if (BoxNum == 0) BoxNum = 3;
+            if (!tri) return;
+            if (BoxNum == 0) { BoxNum = 3; }
             BoxNum--;
             selectedObj.BoxChange(BoxNum);
             tri = false;
@@ -153,28 +155,36 @@ public class BUKSelect : MonoBehaviour
                 Debug.Log(i + " + " + (int)nowWeapon);
                 if (i == (int)nowWeapon) isChange = true;
             }
-            if (weapons.Count >= 3 || isChange)
+            if (isChange)
             {
                 isChange = false;
                 return;
             }
-            weapons.Add((int)nowWeapon);
-            selectedObj.ChangeTextureUp(weapons.Count,textures[(int)nowWeapon]);
+            weapons[BoxNum] = ((int)nowWeapon);
+            selectedObj.ChangeTextureUp(BoxNum, textures[(int)nowWeapon]);
             isChange = false;
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (weapons.Count <= 0) return;
-            weapons.RemoveAt(weapons.Count-1);
-            selectedObj.ChangeTextureDown(weapons.Count);
+            if (weapons.Length <= 0) return;
+            weapons[BoxNum] = -1;
+            selectedObj.ChangeTextureDown(BoxNum);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Debug.Log(num);
+            if (!tri) return;
+            if (BoxNum == 2) { BoxNum = -1; }
+            BoxNum++;
+            selectedObj.BoxChange(BoxNum);
+            tri = false;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log(num);
+            if (!tri) return;
+            if (BoxNum == 0) { BoxNum = 3; }
+            BoxNum--;
+            selectedObj.BoxChange(BoxNum);
+            tri = false;
         }
     }
     private void InstanceBuki()
