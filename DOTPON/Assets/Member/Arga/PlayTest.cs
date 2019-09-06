@@ -98,14 +98,14 @@ public class PlayTest : MonoBehaviour
         if (WeaponPanel.active)
         {
             List<int> trigger = new List<int>();
-            List<int> list = new List<int>();
             bool trig = true;
             for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
             {
+                List<int> list = new List<int>();
                 for (int j = 0; j < 3; j++)
                 {
                     list.Add(select[i].weapons[j]);
-                    if (list[j] == -1) trig = false;
+                    if (list[j] == -1) { trig = false; }
                 }
 
                 if (list[0] != list[1] && list[0] != list[2] && list[1] != list[2] && trig)
@@ -114,7 +114,6 @@ public class PlayTest : MonoBehaviour
                     switch (i)
                     {
                         case 0:
-
                             MultiPlayerManager.instance.P1Weapon = list;
                             break;
                         case 1:
@@ -129,6 +128,7 @@ public class PlayTest : MonoBehaviour
                     }
                 }
             }
+            Debug.Log(trigger.Count);
             if (trigger.Count == MultiPlayerManager.instance.totalPlayer)
             {
                 startTrigger = true;
@@ -171,8 +171,8 @@ public class PlayTest : MonoBehaviour
         MultiPlayerManager.instance.totalPlayer = 2;
         WeaponPanel.SetActive(true);
         SelectPanel.SetActive(false);
-        canvasPosis.Add(new Vector2(200, 100));
         canvasPosis.Add(new Vector2(-200, 100));
+        canvasPosis.Add(new Vector2(200, 100));
         SetSelectUI();
     } 
 
