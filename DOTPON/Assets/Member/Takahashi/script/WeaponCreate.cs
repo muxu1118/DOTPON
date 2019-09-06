@@ -284,6 +284,7 @@ public class WeaponCreate : MonoBehaviour
         value--;
         if (value <= 0)
         {
+            animator.SetBool("HoldingWeapon", true);
             nowWeapon.SetActive(false);
             nowWeapon = Punch;
             Punch.SetActive(true);

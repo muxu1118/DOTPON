@@ -5,8 +5,8 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     //public Parametor parametor;  
-    [SerializeField]
-    GameObject shield;
+    //[SerializeField]
+    //GameObject shield;
     Animator anim;
 
     public void Start()

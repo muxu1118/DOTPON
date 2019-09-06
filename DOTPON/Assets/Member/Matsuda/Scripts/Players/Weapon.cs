@@ -66,9 +66,10 @@ public class Weapon : MonoBehaviour
                 if (this.gameObject.name == "bomb(Clone)") return;
                 transform.root.GetComponent<WeaponCreate>().DownDursble();
                 break;
-            case "Shild":
-                if (gameObject.transform.name == "Shild")
+            case "Shield":
+                if (gameObject.transform.name == "Shield")
                 {
+                    Debug.Log("盾に" + gameObject.transform.root.name + "が攻撃した");
                     StartCoroutine("WaitAnimation");
                     other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage * damegUP), (int)transform.root.GetComponent<Player>().own);
                 }
