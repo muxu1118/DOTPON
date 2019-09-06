@@ -6,6 +6,7 @@ public class SelectedUI : MonoBehaviour
 {
     [SerializeField]RawImage[] ParentObjs;
     [SerializeField] RawImage[] ChildObjs;
+    [SerializeField] Transform imageObj;
     public void ChangeTextureUp(int i,Texture texture)
     {
         switch (i)
@@ -53,6 +54,7 @@ public class SelectedUI : MonoBehaviour
         {
             ParentObjs[i].color = new Color(1,1,1);
         }
+        imageObj.transform.localPosition = ParentObjs[num].transform.localPosition;
         ParentObjs[num].color = new Color(1, 1, 0);
     }
 }

@@ -593,6 +593,11 @@ PrefabInstance:
       propertyPath: ChildObjs.Array.data[2]
       value: 
       objectReference: {fileID: 4237683439155859556}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: imageObj
+      value: 
+      objectReference: {fileID: 7507767930889339906}
     - target: {fileID: 2825820881518053, guid: a2561ad93740c9b46a4a9ab6296d8650, type: 3}
       propertyPath: m_Name
       value: SelectDOTPON
@@ -755,6 +760,12 @@ MonoBehaviour:
   m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &7507767930889339906 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5977894725809900032, guid: a2561ad93740c9b46a4a9ab6296d8650,
+    type: 3}
+  m_PrefabInstance: {fileID: 4234875358243851778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1238763574844034350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
