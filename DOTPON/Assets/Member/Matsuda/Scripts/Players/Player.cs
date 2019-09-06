@@ -409,7 +409,7 @@ public class Player : MonoBehaviour
                 break;
             case "Shield":
                 shieldCheck = true;
-                GetComponent<MoveController>().shieldStart(true);
+                //GetComponent<MoveController>().shieldStart(true);
                 animator.SetTrigger("ShieldAttack");                
                 break;
             default: animator.SetTrigger("PunchAttack"); break;

@@ -12,6 +12,7 @@ public class Bomb : MonoBehaviour
     GameObject obj;
     [SerializeField]
     float range;
+    float ko;
     
     public MeshRenderer rend;
     
@@ -22,11 +23,11 @@ public class Bomb : MonoBehaviour
         //StartCoroutine("bomExplosion");
     }
 
-    public void ExplotionCoroutine()
-    {        
-        //transform.parent = null;        
-        StartCoroutine(bomExplosion());
-    }
+    //public void ExplotionCoroutine()
+    //{        
+    //    //transform.parent = null;        
+    //    StartCoroutine(bomExplosion());
+    //}
 
     /// <summary>
     /// 爆弾の爆発の処理
@@ -36,17 +37,20 @@ public class Bomb : MonoBehaviour
         rend.enabled = true;
         //爆風が出ている間ダメージが入る
         int i = 0;        
-        while (i < 30)
+        while (i < 20)
         {
-            gameObject.transform.localScale += new Vector3(1.3f,1.3f,1.3f) * range * Time.deltaTime;
+            ko += Time.deltaTime;
+            gameObject.transform.localScale += new Vector3(1,1,1) * range * Time.deltaTime;
             i++;
             BombAttack();
+            Destroy(obj);
             yield return null;
         }
+        Debug.Log(range);
+        Debug.Log(i);
         sph.radius = 1f;
         Destroy(gameObject);
-        Destroy(obj);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         rend.enabled = false;
     }
 
@@ -67,6 +71,14 @@ public class Bomb : MonoBehaviour
             {
                 obj.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,obj.gameObject);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Ground")
+        {
+            StartCoroutine(bomExplosion());
         }
     }
 }

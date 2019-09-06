@@ -28,17 +28,15 @@ public class FarAttack : MonoBehaviour
         }                                                                            
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PosMove2(float pow2)
     {
         Vector3 vecter2 = this.gameObject.transform.root.forward;
         vecter2 = new Vector3(vecter2.x * pow2 + this.gameObject.transform.position.x, 0, vecter2.z * pow2 + this.gameObject.transform.position.z);
         StartCoroutine(PosMove(vecter2));
+        if (this.gameObject.name == "bomb(Clone)")
+        {
+            StartCoroutine(Times());
+        }
     }
 
     IEnumerator PosMove(Vector3 vec)
@@ -80,15 +78,20 @@ public class FarAttack : MonoBehaviour
             yield return null;
         }
 
-        if (gameObject.name == "bomb(Clone)")
-        {
-            //ここで爆発によるダメージが入る
-            bombDamage.ExplotionCoroutine();
+        //if (gameObject.name == "bomb(Clone)")
+        //{
+        //    //ここで爆発によるダメージが入る
+        //    //bombDamage.ExplotionCoroutine();
             
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }        
+        //}
+        //else
+        //{
+        //    Destroy(this.gameObject);
+        //}        
+    }
+    IEnumerator Times()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GetComponent<SphereCollider>().enabled = true;
     }
 }
