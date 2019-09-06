@@ -22,23 +22,23 @@ public class Shield : MonoBehaviour
     //    }
     //}
 
+    public void StunStart()
+    {
+        StartCoroutine("WaitAnimation");
+    }
+
     /// <summary>
     /// 盾に武器が当たったらプレイヤーの当たり判定を失くす
     /// </summary>
     /// <returns></returns>
-    IEnumerator WaitAnimation(int DamegUP)
+    IEnumerator WaitAnimation()
     {
         anim.SetTrigger("Stun");
 
         yield return null;
         yield return new WaitForAnimation(anim, 0);
-        DamegUP = 1;       
+
 
         Debug.LogWarning("守れた？");
     }        
-
-    public void StunStart(int DamegUP)
-    {
-        StartCoroutine(WaitAnimation(DamegUP));
-    }
 }

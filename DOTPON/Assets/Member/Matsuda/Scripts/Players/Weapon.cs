@@ -15,8 +15,13 @@ public class Weapon : MonoBehaviour
     public int _durableValue;
 
     private string tagName;
+    Shield shield;
+
+    [HideInInspector]
+    public int damegUP = 1;
 
     AudioSource audio;
+    Animator animator;
 
     void Start()
     {
@@ -61,6 +66,13 @@ public class Weapon : MonoBehaviour
                 if (this.gameObject.name == "bomb(Clone)") return;
                 transform.root.GetComponent<WeaponCreate>().DownDursble();
                 break;
+            case "Shild":
+                if (gameObject.transform.name == "Shild")
+                {
+                    StartCoroutine("WaitAnimation");
+                    other.gameObject.GetComponent<Player>().Damage(GetAttackPower(parametor.attackDamage * damegUP), (int)transform.root.GetComponent<Player>().own);
+                }
+                break;
         }
     }
 
@@ -84,5 +96,16 @@ public class Weapon : MonoBehaviour
         var particl = effect.GetComponentInChildren<ParticleSystem>();
         yield return new WaitWhile(() => particl.IsAlive(true));
         Destroy(effect);
+    }
+    IEnumerator WaitAnimation()
+    {
+        animator.SetTrigger("Stun");
+        damegUP = 2;
+
+        yield return null;
+        yield return new WaitForAnimation(animator, 0);
+        damegUP = 1;
+
+        Debug.LogWarning("守れた？");
     }
 }
