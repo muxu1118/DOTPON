@@ -16,7 +16,7 @@ MonoBehaviour:
   dropDot: 4
   attackPow: 1
   attackWait: 3
-  speed: 1.5
+  speed: 3
   rotateTime: 2
   rotateAngle: 90
   lookingAngle: 5

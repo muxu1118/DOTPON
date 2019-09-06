@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dragonBless
   m_EditorClassIdentifier: 
   attackSpeed: 0
-  attackDamage: 7
+  attackDamage: 6
   necessaryDot: 0
   durableValue: 0
   dotNum: 0
