@@ -70,6 +70,7 @@ public class Golem : Enemy
             //進む方向を自分の前に変更
             vector = transform.forward;
             isLooking = true;
+            if (isAction) return;
             //自分とプレイヤーの距離の取得
             float dis = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
             //distanceより近かったら攻撃する関数を呼ぶ
