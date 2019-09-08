@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
             if (Input.GetKeyUp("joystick " + padNum + " button 0"))
             {
                 shieldCheck = false;
-                GetComponent<MoveController>().shieldStart(false);
+                //GetComponent<MoveController>().shieldStart(false);
                 animator.SetTrigger("ShieldGuard");
                 Debug.LogError("ちゃんときた");
             }            
@@ -304,7 +304,7 @@ public class Player : MonoBehaviour
             colorScript.DamagedOn();
 
             shieldCheck = false;
-            GetComponent<MoveController>().shieldStart(false);
+            //GetComponent<MoveController>().shieldStart(false);
 
             animator.SetTrigger("Hit");
             bool getWeapon = create.nowWeapon.name == "punch";

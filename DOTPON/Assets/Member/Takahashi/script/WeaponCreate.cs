@@ -241,6 +241,7 @@ public class WeaponCreate : MonoBehaviour
         else
         {
             //作成した武器を破棄
+            animator.SetTrigger("Kowareta");
             usedWeapon[weaponNumber].SetActive(false);
             trigger = true;
         }
@@ -284,7 +285,8 @@ public class WeaponCreate : MonoBehaviour
         value--;
         if (value <= 0)
         {
-            animator.SetBool("HoldingWeapon", true);
+            //animator.SetBool("HoldingWeapon", true);
+            animator.SetTrigger("Kowareta");
             nowWeapon.SetActive(false);
             nowWeapon = Punch;
             Punch.SetActive(true);
