@@ -90,7 +90,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
 
             GameObject target = Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
             target.name = "Dot";
-            dotObj.GetComponent<Dot>().MaterialChange(num,target);
+            target.GetComponent<Dot>().MaterialChange(num,target);
             if (num < 4) playerObj[num].GetComponent<Player>().myDotObj.Add(target);
             //Debug.Log("ドット生成");
             count--;
