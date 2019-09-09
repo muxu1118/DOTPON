@@ -38,7 +38,6 @@ public class Bomb : MonoBehaviour
             Debug.Log(other.gameObject.tag + "だよ");
             chack = false;
             StartCoroutine(bomExplosion());
-
         }
     }
 
@@ -53,9 +52,9 @@ public class Bomb : MonoBehaviour
         float ko = 0;
         Destroy(obj);
         Debug.Log("きたよ");
-        while (i < 25)
+        while (i < 33)
         {
-            //ko += 0.005f;            
+            //ko += 0.005f;
             gameObject.transform.localScale += new Vector3(1, 1, 1) * Time.deltaTime * 6;
             
             Debug.LogWarning(gameObject.transform.localScale + "増えている");
@@ -63,8 +62,8 @@ public class Bomb : MonoBehaviour
             BombAttack();            
             yield return null;
         }
-        Debug.LogWarning(ko);
-        Debug.LogWarning("爆発範囲は" + gameObject.transform.localScale + "になってる");
+        //Debug.LogWarning(ko);
+        //Debug.LogWarning("爆発範囲は" + gameObject.transform.localScale + "になってる");
         sph.radius = 1f;
         chack = true;
         Destroy(gameObject);

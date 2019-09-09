@@ -3134,7 +3134,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 75d2905f3377ca14b9e4287269f58baf, type: 3}
-  m_Tag: 
+  m_Tag: NotMove
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -3615,7 +3615,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 3548c010a67d91d47b9976aa8b8819fb, type: 3}
-  m_Tag: 
+  m_Tag: NotMove
   m_SpeedParameter: Speed
   m_MirrorParameter: HoldingWeapon
   m_CycleOffsetParameter: Speed
