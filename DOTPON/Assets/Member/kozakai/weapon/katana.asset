@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571faecb276e2ca41a3a158b951de40a, type: 3}
   m_Name: katana
   m_EditorClassIdentifier: 
-  attackSpeed: 6
+  attackSpeed: 1
   attackDamage: 2
   necessaryDot: 7
   durableValue: 7

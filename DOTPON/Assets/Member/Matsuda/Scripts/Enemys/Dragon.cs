@@ -71,14 +71,14 @@ public class Dragon : Enemy
             //スタンプ攻撃0
             GetComponent<Animator>().SetTrigger("Attack");
             StartCoroutine(Stomp());
-            StartCoroutine(WaitTime(2f,false));
+            StartCoroutine(WaitTime(3f,false));
         }
         else if (dis <= parameter.distance)
         {
             //ブレス攻撃
             GetComponent<Animator>().SetTrigger("Attack2");
             StartCoroutine(Bless());
-            StartCoroutine(WaitTime(5f,false));
+            StartCoroutine(WaitTime(4f,false));
         }
     }
 
@@ -107,8 +107,12 @@ public class Dragon : Enemy
     {
         yield return new WaitForSeconds(1.5f);
         bukiObj[1].SetActive(true);
+        bukiObj[1].GetComponent<BoxCollider>().enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        bukiObj[1].GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.5f);
         bukiObj[1].SetActive(false);
+
     }
 
     private void OnCollisionEnter(Collision collision)
