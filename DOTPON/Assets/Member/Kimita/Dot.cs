@@ -93,6 +93,18 @@ public class Dot : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// プレイヤーが死んだときそのプレイヤーの色のドットを破壊する
+    /// </summary>
+    /// <param name="pn">プレイヤーの番号</param>
+    public void DeathPlayerDot(int pn)
+    {
+        if((int)ownColor == pn)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // プレイヤーに当たったどっとを破壊する
     public void DestroyObject()
     {
@@ -122,6 +134,7 @@ public class Dot : MonoBehaviour
                 obj.GetComponent<Renderer>().material.color = Color.yellow;
                 break;
             default:
+                obj.GetComponent<BoxCollider>().enabled = false;
                 obj.GetComponent<Renderer>().material.color = Color.white;
                 break;
 
