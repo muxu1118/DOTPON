@@ -14,7 +14,8 @@ public class MoveController : MonoBehaviour
     Vector3 vel;
     float i;
     bool notMove = false;
-    private int animatorHash;
+    int NotMoveHash;
+    int NotThrowHash;
 
     GameObject Player;
     Rigidbody rg;
@@ -34,7 +35,9 @@ public class MoveController : MonoBehaviour
         anim = GetComponent<Animator>();
         vel = new Vector3(Input.GetAxis("Vertical1_left") ,0f);
         */
-        animatorHash = Animator.StringToHash("NotMove");
+        NotMoveHash = Animator.StringToHash("NotMove");
+        NotThrowHash = Animator.StringToHash("NotThrow");
+
         anim = GetComponent<Animator>();
         rg = GetComponent<Rigidbody>();
         //transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -82,9 +85,15 @@ public class MoveController : MonoBehaviour
         
     if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.7)
     {                
-        if (anim.GetCurrentAnimatorStateInfo(0).tagHash == animatorHash)
+        if (anim.GetCurrentAnimatorStateInfo(0).tagHash == NotMoveHash)
         {
             run /= 2;
+            Debug.LogWarning("遅くなったよ");
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).tagHash == NotThrowHash)
+        {
+            run = 0;
+            Debug.LogWarning("動けないよ");
         }
         //走る
         //Cubeをプレイヤーに変更すれば別のシーンで使用可
@@ -95,9 +104,13 @@ public class MoveController : MonoBehaviour
     }
     else if (Input.GetAxis("Vertical" + playerNum + "_left") > 0.3)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).tagHash == animatorHash)
+        if (anim.GetCurrentAnimatorStateInfo(0).tagHash == NotMoveHash)
         {
-            walk /= 2;
+            walk /= 2;           
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).tagHash == NotThrowHash)
+        {
+            walk = 0;            
         }
         //歩き
         anim.SetFloat("Speed", 0.5f);
