@@ -53,6 +53,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
             // ドットの出現(位置はランダム)
             GameObject target =  Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
             target.name = "Dot";
+
             dotObj.GetComponent<Dot>().MaterialChange(num,target);
             count--;
         }
@@ -90,6 +91,7 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
             GameObject target = Instantiate(dotObj, new Vector3(vec3.x, 1, vec3.z), Quaternion.identity);
             target.name = "Dot";
             dotObj.GetComponent<Dot>().MaterialChange(num,target);
+            if (num < 4) playerObj[num].GetComponent<Player>().myDotObj.Add(target);
             //Debug.Log("ドット生成");
             count--;
         }
@@ -126,6 +128,15 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         }
         return true;
     }
+
+    public void DeathPlayerDot(GameObject[] objs)
+    {
+        for(int i = 0;i < objs.Length; i++)
+        {
+            Destroy(objs[i].gameObject);
+        }
+    }
+
         /*
         private int PlayerCheck(string name)
         {
