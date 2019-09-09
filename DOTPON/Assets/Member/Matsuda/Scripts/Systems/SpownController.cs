@@ -77,10 +77,9 @@ public class SpownController : MonoBehaviour
             //一つでもある場合のみループが続くようにするべき
             for (int i = 0;i < createdPos.Count; i++)
             {
-                Debug.Log(posNum + " " + createdPos[i]);
                 if (posNum != createdPos[i])
                 {
-                    Collider[] colliders = Physics.OverlapSphere(positions[posNum], 1);
+                    Collider[] colliders = Physics.OverlapSphere(positions[posNum], 3);
                     bool trigger = false;
                     for (int j = 0;j < colliders.Length;j++)
                     {
@@ -97,7 +96,8 @@ public class SpownController : MonoBehaviour
                     }
                 }else
                 {
-                    Debug.Log("2out");
+                    isCreated = true;
+                    break;
                 }
             }
         }
@@ -110,7 +110,6 @@ public class SpownController : MonoBehaviour
 
     IEnumerator CreateEnemy(int posNum)
     {
-        Debug.Log(positions[posNum]);
         yield return new WaitForSeconds(3);
         switch (Random.Range(0, 3))
         {
@@ -157,7 +156,6 @@ public class SpownController : MonoBehaviour
     {
         var particl = obj.GetComponentsInChildren<ParticleSystem>();
         yield return new WaitWhile(() => particl[1].IsAlive(true));
-        Debug.Log("END");
         Destroy(obj);
     }
 
@@ -174,6 +172,6 @@ public class SpownController : MonoBehaviour
                 log += content.val.ToString() + ", ";
         }
 
-        Debug.Log(log);
+        //Debug.Log(log);
     }
 }

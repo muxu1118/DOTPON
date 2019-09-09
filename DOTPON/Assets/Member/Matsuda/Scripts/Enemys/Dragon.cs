@@ -115,7 +115,7 @@ public class Dragon : Enemy
     {
         if(collision.gameObject.tag == "enemy")
         {
-            collision.gameObject.GetComponent<Enemy>().Damage(99,collision.gameObject);
+            Destroy(collision.gameObject);
         }else if (collision.gameObject.tag == "player")
         {
             //collision.gameObject.transform.position += Vector3.back * 5;
