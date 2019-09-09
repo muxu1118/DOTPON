@@ -12,6 +12,13 @@ public class PlayerMove : MonoBehaviour
     float inputHorizontal;
     float inputVertical;
 
+    int NotMoveHash;
+    int NotThrowHash;
+
+    float MoveDown;
+
+    Animator animator;
+
     [SerializeField]
     float moveSpeed = 3;
 
@@ -33,6 +40,9 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerNum = this.gameObject.name.Substring(6);
         anim = GetComponent<Animator>();
+
+        NotMoveHash = Animator.StringToHash("NotMove");
+        NotThrowHash = Animator.StringToHash("NotThrow");
     }
 
     // Update is called once per frame

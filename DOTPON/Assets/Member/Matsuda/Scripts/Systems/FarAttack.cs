@@ -78,16 +78,16 @@ public class FarAttack : MonoBehaviour
             yield return null;
         }
 
-        //if (gameObject.name == "bomb(Clone)")
-        //{
-        //    //ここで爆発によるダメージが入る
-        //    //bombDamage.ExplotionCoroutine();
-            
-        //}
-        //else
-        //{
-        //    Destroy(this.gameObject);
-        //}        
+        if (gameObject.name == "bomb(Clone)")
+        {
+            //ここで爆発によるダメージが入る
+            //bombDamage.ExplotionCoroutine();
+
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
     IEnumerator Times()
     {
