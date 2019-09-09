@@ -361,11 +361,20 @@ public class Player : MonoBehaviour
             yield return null;
         }
         Debug.Log(leng);
+        trig = false;
         yield return new WaitForSeconds(leng / 3);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(leng / 1.5f);
+        while (!trig)
+        {
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.loop == true)
+            {
+                trig = true;
+                leng = stateInfo.length;
+            }
+            yield return null;
+        }
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
         isAction = false;
         yield break;
     }
