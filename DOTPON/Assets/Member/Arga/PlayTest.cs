@@ -84,6 +84,7 @@ public class PlayTest : MonoBehaviour
         {
             if (MultiPlayerManager.instance.totalPlayer == 1 || tri) return;
             MultiPlayerManager.instance.totalPlayer--;
+            faces[MultiPlayerManager.instance.totalPlayer].SetActive(false);
             Debug.Log(MultiPlayerManager.instance.totalPlayer);
             tri = true;
             HandMove();
@@ -92,6 +93,7 @@ public class PlayTest : MonoBehaviour
         {
             if (MultiPlayerManager.instance.totalPlayer == 4 || tri) return;
             MultiPlayerManager.instance.totalPlayer++;
+            faces[MultiPlayerManager.instance.totalPlayer - 1].SetActive(true);
             Debug.Log(MultiPlayerManager.instance.totalPlayer);
             tri = true;
             HandMove();

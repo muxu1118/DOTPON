@@ -75,6 +75,10 @@ public class StartGame : MonoBehaviour
         int i = int.Parse(obj.name.Substring(6)) - 1;
         obj.transform.position = spownPos[i];
         PlayerEnum(i);
+        var playerScropt = obj.GetComponent<Player>();
+        playerScropt.isAction = false;
+        playerScropt.isDamage = false;
+        obj.GetComponent<ColorScript>().SetColor();
         yield return new WaitForSeconds(5.0f);
         Debug.Log("end");
         obj.SetActive(true);

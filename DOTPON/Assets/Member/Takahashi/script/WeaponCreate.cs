@@ -98,7 +98,7 @@ public class WeaponCreate : MonoBehaviour
             }
         }
         //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];
-        createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
+        createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot;
         value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
         //DotPonText.GetComponent<ChangeDOTPON>().DrubleText(weapon[0].GetComponent<Weapon>().parametor.necessaryDot);
     }
@@ -180,7 +180,7 @@ public class WeaponCreate : MonoBehaviour
                 {
                     weaponType = 0;
                 }
-                createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
+                createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot;
                 //DotPonText.GetComponent<Text>().text = "選択しているDOTPONは " + weaponName[weaponType];  
                 DotPonText.GetComponent<ChangeDOTPON>().DOTPONWheelS(weaponType,true);
                 DotPonText.GetComponent<ChangeDOTPON>().DrubleText(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
@@ -206,7 +206,7 @@ public class WeaponCreate : MonoBehaviour
                 DotPonText.GetComponent<ChangeDOTPON>().DrubleText(usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 //pizza.PizzaChange(PlayerDot(), weapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot);
                 //DotPonText.GetComponent<ChangeDOTPON>().MoveWheel(weaponType, true);
-                createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.dotNum;
+                createNum = usedWeapon[weaponType].GetComponent<Weapon>().parametor.necessaryDot;
                 break;
         }
     }
