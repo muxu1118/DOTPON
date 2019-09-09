@@ -42,6 +42,7 @@ public class StarManager : SingletonMonoBehaviour<StarManager>
     /// </summary>
     public void DeadStarDrop( Vector3 vec3,Player.PlayerKind PK)
     {
+        Debug.Log("呼ばれているのか"+PK);
         switch (PK)
         {
             case Player.PlayerKind.Player1:
@@ -52,21 +53,21 @@ public class StarManager : SingletonMonoBehaviour<StarManager>
                 else return;
                 break;
             case Player.PlayerKind.Player2:
-                if (MultiPlayerManager.instance.P1Star > 0)
+                if (MultiPlayerManager.instance.P2Star > 0)
                 {
                     MultiPlayerManager.instance.P2Star--;
                 }
                 else return;
                 break;
             case Player.PlayerKind.Player3:
-                if (MultiPlayerManager.instance.P1Star > 0)
+                if (MultiPlayerManager.instance.P3Star > 0)
                 {
                     MultiPlayerManager.instance.P3Star--;
                 }
                 else return;
                 break;
             case Player.PlayerKind.Player4:
-                if (MultiPlayerManager.instance.P1Star > 0)
+                if (MultiPlayerManager.instance.P4Star > 0)
                 {
                     MultiPlayerManager.instance.P4Star--;
                 }

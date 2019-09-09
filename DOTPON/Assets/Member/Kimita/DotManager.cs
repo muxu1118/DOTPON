@@ -129,11 +129,15 @@ public class DotManager : SingletonMonoBehaviour<DotManager>
         return true;
     }
 
-    public void DeathPlayerDot(GameObject[] objs)
+    public void DeathPlayerDot(List<GameObject> objs)
     {
-        for(int i = 0;i < objs.Length; i++)
+        Debug.Log("リストの数"+objs.Count);
+        for(int i = 0;i < objs.Count; i++)
         {
-            Destroy(objs[i].gameObject);
+            if (objs[i] != null)
+            {
+                Destroy(objs[i].gameObject);
+            }
         }
     }
 

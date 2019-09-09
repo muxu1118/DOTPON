@@ -23,6 +23,9 @@ public class Weapon : MonoBehaviour
     AudioSource audio;
     Animator animator;
 
+    //[SerializeField]
+    //GameObject shieldObject;
+
     void Start()
     {
         audio = GetComponent<AudioSource>();
@@ -68,9 +71,13 @@ public class Weapon : MonoBehaviour
                 break;
             case "shield":
                 if (gameObject.transform.root.tag == "enemy") return;
+                //相手をスタンさせたら構えている状態を解除
+                other.gameObject.transform.root.GetComponent<Animator>().SetTrigger("ShieldGuard");
                 Debug.Log("盾に" + gameObject.transform.root.name + "が攻撃した");
                 gameObject.transform.root.GetComponent<Animator>().SetTrigger("Stun");
+                gameObject.transform.root.GetComponent<Player>().stun = true;
                 StartCoroutine("WaitAnimation");
+                //shieldObject.GetComponent<Shield>().StunStart(damegUP, animator);
                 break;
         }
     }
@@ -99,11 +106,12 @@ public class Weapon : MonoBehaviour
     IEnumerator WaitAnimation()
     {
         damegUP = 2;
-
-        yield return null;
-        yield return new WaitForAnimation(animator, 0);
+        Debug.LogWarning("スタンしている");
+        yield return new WaitForSeconds(2f);
+        //yield return null;
+        //yield return new WaitForAnimation(animator, 0);
         damegUP = 1;
 
-        Debug.LogWarning("守れた？");
+        Debug.LogWarning("戻った");
     }
 }
