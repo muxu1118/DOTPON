@@ -14,6 +14,11 @@ public class Shield : MonoBehaviour
         anim = GetComponent<Animator>();        
     }
 
+    //public void Update()
+    //{
+    //    StunStart();
+    //}
+
     //public void OnTriggerEnter(Collider other)
     //{        
     //    if(other.gameObject.tag == "weapon")
@@ -21,7 +26,7 @@ public class Shield : MonoBehaviour
     //        StartCoroutine(shieldGuard());
     //    }
     //}
-
+    
     public void StunStart()
     {
         StartCoroutine("WaitAnimation");

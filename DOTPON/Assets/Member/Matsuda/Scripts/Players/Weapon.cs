@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
                 if (this.gameObject.name == "bomb(Clone)") return;
                 transform.root.GetComponent<WeaponCreate>().DownDursble();
                 break;
-            case "Shield":
+            case "shield":
                 if (gameObject.transform.root.tag == "enemy") return;
                 Debug.Log("盾に" + gameObject.transform.root.name + "が攻撃した");
                 gameObject.transform.root.GetComponent<Animator>().SetTrigger("Stun");
