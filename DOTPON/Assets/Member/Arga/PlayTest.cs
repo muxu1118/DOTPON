@@ -16,11 +16,16 @@ public class PlayTest : MonoBehaviour
     [SerializeField]
     GameObject selectObj;
     [SerializeField]
+    Sprite[] panels;
+    [SerializeField]
     GameObject back;
     [SerializeField]
     GameObject player;
     [SerializeField]
     GameObject hand;
+    [SerializeField]
+    GameObject[] faces;
+
     [SerializeField] float[] poss;
 
     [SerializeField]
@@ -144,16 +149,19 @@ public class PlayTest : MonoBehaviour
     private void HandMove()
     {
         hand.transform.localPosition = new Vector3(45,poss[MultiPlayerManager.instance.totalPlayer -1],0);
+        
     }
 
     public void PlusPl()
     {
         MultiPlayerManager.instance.totalPlayer++;
+        faces[MultiPlayerManager.instance.totalPlayer].SetActive(true);
     }
 
     public void MinusPl()
     {
         MultiPlayerManager.instance.totalPlayer--;
+        faces[MultiPlayerManager.instance.totalPlayer].SetActive(false);
     }
 
     public void singlePlayer()
@@ -253,6 +261,7 @@ public class PlayTest : MonoBehaviour
             }
             objs[i].GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
             objs[i].GetComponent<RectTransform>().localRotation = new Quaternion(0, 0, 0,0);
+            objs[i].GetComponentInChildren<DOTPONExplanation>().GetComponent<Image>().sprite = panels[i];
             selectObjs.Add(objs[i].GetComponentInChildren<ChangeDOTPON>().gameObject);
             selectObjs[i].name = "P" + i + "Select";
             objs[i].GetComponentInChildren<BUKSelect>().selectedObj = objs[i].GetComponentInChildren<SelectedUI>();
