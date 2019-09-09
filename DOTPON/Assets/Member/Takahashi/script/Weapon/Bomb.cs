@@ -15,6 +15,8 @@ public class Bomb : MonoBehaviour
     [SerializeField]
     private MeshRenderer rend;
 
+    bool chack = true;
+
     void Start()
     {
         rend = GetComponent<MeshRenderer>();
@@ -30,10 +32,13 @@ public class Bomb : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "enemy")
+        //|| other.gameObject.tag == "enemy"        
+        if (other.gameObject.tag == "Ground" && chack)
         {
             Debug.Log(other.gameObject.tag + "だよ");
+            chack = false;
             StartCoroutine(bomExplosion());
+
         }
     }
 
@@ -41,26 +46,27 @@ public class Bomb : MonoBehaviour
     /// 爆弾の爆発の処理
     /// </summary>
     IEnumerator bomExplosion()
-    {
+    {        
         rend.enabled = true;
         //爆風が出ている間ダメージが入る
         int i = 0;
         float ko = 0;
-        Destroy(obj);        
+        Destroy(obj);
+        Debug.Log("きたよ");
         while (i < 25)
         {
-            ko += 0.005f;
-            //ko += Time.deltaTime;
-            gameObject.transform.localScale += new Vector3(1, 1, 1) * ko;
+            //ko += 0.005f;            
+            gameObject.transform.localScale += new Vector3(1, 1, 1) * Time.deltaTime * 6;
             
-            //Debug.LogWarning(gameObject.transform.localScale + "増えている");
+            Debug.LogWarning(gameObject.transform.localScale + "増えている");
             i++;
             BombAttack();            
             yield return null;
         }
         Debug.LogWarning(ko);
-        //Debug.LogWarning("爆発範囲は" + gameObject.transform.localScale + "になってる");
+        Debug.LogWarning("爆発範囲は" + gameObject.transform.localScale + "になってる");
         sph.radius = 1f;
+        chack = true;
         Destroy(gameObject);
         yield return new WaitForSeconds(1.5f);
         rend.enabled = false;
@@ -81,7 +87,7 @@ public class Bomb : MonoBehaviour
             }
             else if(obj.gameObject.tag == "enemy")
             {
-                obj.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,obj.gameObject);
+                obj.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,transform.root.gameObject);
             }
         }
     }    
