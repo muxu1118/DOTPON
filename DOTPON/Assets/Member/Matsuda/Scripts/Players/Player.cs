@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
         Player4,
     }
     public PlayerKind own;
+    public bool stun;
 
     [SerializeField] int hp;
     public bool isDamage = false;
@@ -36,9 +37,12 @@ public class Player : MonoBehaviour
     // コントローラーに対応する番号
     int padNum;
 
-    Animator animator;
+    [HideInInspector]
+    public Animator animator;
     AnimatorStateInfo animInfo;
     WeaponCreate create;
+
+    public List<GameObject> myDotObj = new List<GameObject>();
 
     //colorScriptにアタッチ
     ColorScript colorScript;
@@ -86,7 +90,15 @@ public class Player : MonoBehaviour
         KeyInout();
         CrownActive();
         //Move();
-
+        if (shieldCheck == true)
+        {
+            if (Input.GetKeyUp("joystick " + padNum + " button 2"))
+            {
+                shieldCheck = false;
+                //GetComponent<MoveController>().shieldStart(false);
+                animator.SetTrigger("ShieldGuard");                
+            }
+        }
     }
     void KeyInout()
     {
@@ -110,16 +122,7 @@ public class Player : MonoBehaviour
         }
         */
         //盾を構えてい時ボタンを離したらIdlingに戻す
-        if(shieldCheck == true)
-        {
-            if (Input.GetKeyUp("joystick " + padNum + " button 0"))
-            {
-                shieldCheck = false;
-                //GetComponent<MoveController>().shieldStart(false);
-                animator.SetTrigger("ShieldGuard");
-                Debug.LogError("ちゃんときた");
-            }            
-        }        
+            
         if (Input.GetKeyUp("joystick " + padNum + " button 1"))
         {
             animator.SetTrigger("ShieldGuard");
@@ -321,7 +324,10 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         animator.SetTrigger("Down");
-        yield return new WaitForSeconds(1.5f);        
+        isDamage = true;
+        yield return new WaitForSeconds(1.5f);
+        isDamage = false;
+        DotManager.instance.DeathPlayerDot(myDotObj);
         isAction = false;
         create.ResetWeapon();
         StarManager.instance.DeadStarDrop(transform.position, own);
@@ -364,7 +370,7 @@ public class Player : MonoBehaviour
         trig = false;
         yield return new WaitForSeconds(leng / 3);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
-        while (!trig)
+        while (!trig && !stun)
         {
             stateInfo = animator.GetCurrentAnimatorStateInfo(0);
             if (stateInfo.loop == true)
@@ -376,6 +382,7 @@ public class Player : MonoBehaviour
         }
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = false;
         isAction = false;
+        stun = false;
         yield break;
     }
     /// <summary>
@@ -389,7 +396,6 @@ public class Player : MonoBehaviour
         obj.GetComponent<FarAttack>().PosMove2(farAtkDistance);
         isAction = false;
     }
-
 
     /// <summary>
     /// なにかアクションしたとき
@@ -559,5 +565,4 @@ public class Player : MonoBehaviour
         }
         crown.SetActive(true);
     }
-
 }

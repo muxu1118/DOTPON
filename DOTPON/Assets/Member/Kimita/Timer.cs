@@ -31,7 +31,8 @@ public class Timer : MonoBehaviour
     {
         for(int i = 0;i < textTime.Length;i++)
         {
-            textTime[i].text = "残り時間 " + ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
+            //textTime[i].text = "残り時間 " + ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
+            textTime[i].text = ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
         }
         
         StartCoroutine(CountDown());
@@ -48,7 +49,8 @@ public class Timer : MonoBehaviour
         {
             for (int i = 0; i < textTime.Length; i++)
             {
-                textTime[i].text = "残り時間 " + ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
+                //textTime[i].text = "残り時間 " + ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
+                textTime[i].text = ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00"); //残り時間の表記をなくた
             }
         }else if(subTime <= 10)
         {
