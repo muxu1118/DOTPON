@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     int NotMoveHash;
     int NotThrowHash;
 
-    float MoveDown;
+    float MoveDown = 1;
 
     Animator animator;
 
@@ -65,8 +65,16 @@ public class PlayerMove : MonoBehaviour
         //カメラの方向から、X-Z平面の単位ベクトルを取得
         Vector3 cameraFoward = Vector3.Scale(cmr.transform.forward, new Vector3(1, 0, 1)).normalized;
         
+        if(anim.GetCurrentAnimatorStateInfo(0).tagHash == NotMoveHash)
+        {
+            StartCoroutine("WaitMoveAnimation");
+        }
+        else if(anim.GetCurrentAnimatorStateInfo(0).tagHash == NotThrowHash)
+        {
+            StartCoroutine("WaitAnimation");
+        }
         //方向キーの入力値とカメラの向きから、移動方向を決定
-        Vector3 moveForward = cameraFoward * inputVertical + cmr.transform.right * inputHorizontal;
+        Vector3 moveForward = cameraFoward * inputVertical * MoveDown + cmr.transform.right * inputHorizontal * MoveDown;
         //
         rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
 
@@ -80,6 +88,28 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    IEnumerator WaitMoveAnimation()
+    {
+        MoveDown /= 2;
+        //Vector3 moveForward = i * inputVertical * MoveDown + cmr.transform.right * inputHorizontal * MoveDown;
+
+        yield return null;
+        yield return new WaitForAnimation(anim, 0);
+        MoveDown = 1;
+
+        Debug.LogWarning("戻った");
+    }
+
+    IEnumerator WaitAnimation()
+    {
+        MoveDown = 0;
+
+        yield return null;
+        yield return new WaitForAnimation(anim, 0);
+        MoveDown = 1;
+
+        Debug.LogWarning("戻った");
+    }
     /*
     void Move()
     {
