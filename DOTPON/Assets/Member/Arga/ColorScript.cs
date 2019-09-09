@@ -77,6 +77,17 @@ public class ColorScript : MonoBehaviour
 
     }
 
+    public void SetColor()
+    {
+        foreach (Renderer rend in allRenderer)
+        {
+            for (var j = 0; j < allRenderer.Length; j++)
+            {
+                allRenderer[j].material.DisableKeyword("_EMISSION");
+            }
+        }
+    }
+
  //   IEnumerator BlinkingColor()
  //   {
 

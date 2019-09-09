@@ -24,13 +24,13 @@ public class Golem : Enemy
             switch (i)
             {
                 case 0:
-                    lookingCollider[i].transform.localPosition = new Vector3(0, -1.5f, CantLookPos(lookingAngle) / scale);
+                    lookingCollider[i].transform.localPosition = new Vector3(0, -4f, CantLookPos(lookingAngle) / scale);
                     break;
                 case 1:
-                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle) / scale, -1.5f, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(lookingAngle) / scale, -4, 0);
                     break;
                 case 2:
-                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle) / scale, -1.5f, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(lookingAngle) / scale, -4f, 0);
                     break;
             }
         }
@@ -90,9 +90,9 @@ public class Golem : Enemy
 
     IEnumerator GolemAttack()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
         buki.SetActive(true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.6f);
         buki.SetActive(false);
     }
 }

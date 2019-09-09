@@ -152,7 +152,6 @@ public class BUKSelect : MonoBehaviour
         {
             foreach (int i in weapons)
             {
-                Debug.Log(i + " + " + (int)nowWeapon);
                 if (i == (int)nowWeapon) isChange = true;
             }
             if (isChange)
