@@ -339,13 +339,7 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     IEnumerator DamegeWait()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            yield return new WaitForSeconds(0.25f);
-            //this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1);
-            yield return new WaitForSeconds(0.25f);
-            //this.gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1);
-        }
+        yield return new WaitForSeconds(2.0f);
         isDamage = false;
     }
     /// <summary>

@@ -19,7 +19,7 @@ MonoBehaviour:
   speed: 2
   rotateTime: 5
   rotateAngle: 45
-  lookingAngle: 6
+  lookingAngle: 35
   distance: 3
   lookSpeed: 0.05
   lookAngleChangeTime: 9

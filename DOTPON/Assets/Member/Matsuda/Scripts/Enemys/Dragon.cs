@@ -13,28 +13,35 @@ public class Dragon : Enemy
     [SerializeField] GameObject headObj;
 
     [HideInInspector]public int[] damageInstance = {0,0,0,0};
+    bool isAttack;
+    [SerializeField] GameObject center;
+
+    DragonAt attack;
     void Start()
     {
         //パラメータの値を変数に格納
         vector = transform.forward;
         HP = parameter.HP;
-        lookingAngle = parameter.lookingAngle / 2;
+        float scale = transform.localScale.x * 2;
         for (int i = 0; i < 3; i++)
         {
-            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(lookingAngle, transform.localScale.x / 5, lookingAngle);
+            lookingCollider[i].GetComponent<BoxCollider>().size = new Vector3(parameter.lookingAngle, transform.localScale.x / 5, parameter.lookingAngle);
             switch (i)
             {
                 case 0:
-                    lookingCollider[i].transform.localPosition = new Vector3(0, 1, parameter.lookingAngle);
+                    lookingCollider[i].transform.localPosition = new Vector3(0, 1, CantLookPos(parameter.lookingAngle) / scale);
                     break;
                 case 1:
-                    lookingCollider[i].transform.localPosition = new Vector3(parameter.lookingAngle, 1, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(CantLookPos(parameter.lookingAngle) / scale, 1, 0);
                     break;
                 case 2:
-                    lookingCollider[i].transform.localPosition = new Vector3(-parameter.lookingAngle, 1, 0);
+                    lookingCollider[i].transform.localPosition = new Vector3(-CantLookPos(parameter.lookingAngle) / scale, 1, 0);
                     break;
             }
         }
+        center.GetComponent<BoxCollider>().size = new Vector3(10, 1, parameter.lookingAngle * 1.1f);
+        center.transform.localPosition = new Vector3(0, 1, parameter.lookingAngle / 2.6f);
+        attack = GetComponentInChildren<DragonAt>();
     }
     void Update()
     {
@@ -53,7 +60,7 @@ public class Dragon : Enemy
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "player" || isAction) return;
+        if (other.gameObject.tag != "player" || isAttack) return;
         //ターゲットの方向ベクトルを取得
         Vector3 relativePos = other.transform.position - this.gameObject.transform.position;
         //方向を回転情報に変換
@@ -63,9 +70,11 @@ public class Dragon : Enemy
         //進む方向を自分の前に変更
         vector = transform.forward;
         isLooking = true;
+        if (!attack.attackOk) return;
         //自分とプレイヤーの距離の取得
         float dis = Vector3.Distance(this.transform.position, other.gameObject.transform.position);
         isAction = true;
+        isAttack = true;
         if(dis <= parameter.distance / 2)
         {
             //スタンプ攻撃0
@@ -101,6 +110,7 @@ public class Dragon : Enemy
         var particl = bukiObj[0].GetComponent<ParticleSystem>();
         yield return new WaitWhile(() => particl.IsAlive(true));
         bukiObj[0].SetActive(false);
+        isAttack = false;
     }
 
     IEnumerator Stomp()
@@ -112,7 +122,7 @@ public class Dragon : Enemy
         bukiObj[1].GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(0.5f);
         bukiObj[1].SetActive(false);
-
+        isAttack = false;
     }
 
     private void OnCollisionEnter(Collision collision)
