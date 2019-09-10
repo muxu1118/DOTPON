@@ -48,6 +48,8 @@ public class PlayTest : MonoBehaviour
     List<GameObject> objs = new List<GameObject>();
 
     bool startTrigger;
+
+    [SerializeField] Text tex;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,9 +91,15 @@ public class PlayTest : MonoBehaviour
             {
                 if (WeaponPanel.active)
                 {
+                    MultiPlayerManager.instance.totalPlayer = 1;
+                    HandMove();
                     StartButton();
                     WeaponPanel.SetActive(false);
                     canvasPosis.Clear();
+                    for (int i = 1; i < 4; i++)
+                    {
+                        faces[i].SetActive(false);
+                    }
                     kyokaisen[0].SetActive(false); kyokaisen[1].SetActive(false);
                     foreach (GameObject obj in objs)
                     {
@@ -264,6 +272,7 @@ public class PlayTest : MonoBehaviour
 
     public void SetSelectUI()
     {
+        tex.text = MultiPlayerManager.instance.totalPlayer.ToString();
         playerNumber = MultiPlayerManager.instance.totalPlayer;
         List<GameObject> selectObjs = new List<GameObject>();
         Debug.Log(screenX+"+"+screenY);

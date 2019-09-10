@@ -3362,6 +3362,7 @@ MonoBehaviour:
   - {fileID: 1499656537}
   - {fileID: 1896809620}
   text: {fileID: 935551064}
+  tex: {fileID: 1738585433}
 --- !u!4 &1505144496
 Transform:
   m_ObjectHideFlags: 0
@@ -3627,7 +3628,6 @@ GameObject:
   - component: {fileID: 1738585431}
   - component: {fileID: 1738585434}
   - component: {fileID: 1738585433}
-  - component: {fileID: 1738585432}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3654,18 +3654,6 @@ RectTransform:
   m_AnchoredPosition: {x: -397.28, y: -222.2}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1738585432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738585430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee04c95b41701047a15e5a2b06c40ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1738585433
 MonoBehaviour:
   m_ObjectHideFlags: 0
