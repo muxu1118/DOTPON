@@ -126,6 +126,7 @@ public class WeaponCreate : MonoBehaviour
                     Instantiate(efe, transform.localPosition + new Vector3(0, 2, 0) + transform.right / 2, Quaternion.identity).transform.parent = transform;
                     //GetComponent<Animator>().SetTrigger("Create");
                     animator.SetTrigger("Create");
+                    animator.SetBool("HoldingWeapon", false);
                     nowWeapon.SetActive(false);
                     StartCoroutine(CreateWait());
                     nowWeapon = usedWeapon[weaponType];
@@ -241,7 +242,7 @@ public class WeaponCreate : MonoBehaviour
         else
         {
             //作成した武器を破棄
-            animator.SetTrigger("Kowareta");
+            animator.SetBool("HoldingWeapon", true);
             usedWeapon[weaponNumber].SetActive(false);
             trigger = true;
         }
@@ -286,7 +287,7 @@ public class WeaponCreate : MonoBehaviour
         if (value <= 0)
         {
             //animator.SetBool("HoldingWeapon", true);
-            animator.SetTrigger("Kowareta");
+            animator.SetBool("HoldingWeapon", true);
             nowWeapon.SetActive(false);
             nowWeapon = Punch;
             Punch.SetActive(true);

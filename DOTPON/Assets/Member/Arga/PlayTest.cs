@@ -290,7 +290,7 @@ public class PlayTest : MonoBehaviour
                 SetPlayerInstance(1,vec);
                 break;
             case 2:
-                Vector3[] vec2 = { new Vector3(4f, -1.2f, 1.2f), new Vector3(-4f, -1.2f, 1.2f) };
+                Vector3[] vec2 = { new Vector3(4.3f, -1.2f, 1.2f), new Vector3(-4.3f, -1.2f, 1.2f) };
                 SetPlayerInstance(2,vec2);
                 break;
             case 3:

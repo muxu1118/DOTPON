@@ -38,7 +38,6 @@ public class Bomb : MonoBehaviour
             Debug.Log(other.gameObject.tag + "だよ");
             chack = false;
             StartCoroutine(bomExplosion());
-
         }
     }
 
@@ -49,22 +48,17 @@ public class Bomb : MonoBehaviour
     {        
         rend.enabled = true;
         //爆風が出ている間ダメージが入る
-        int i = 0;
-        float ko = 0;
-        Destroy(obj);
-        Debug.Log("きたよ");
-        while (i < 25)
+        int i = 0;        
+        Destroy(obj);        
+        while (i < 33)
         {
-            //ko += 0.005f;            
+            //ko += 0.005f;
             gameObject.transform.localScale += new Vector3(1, 1, 1) * Time.deltaTime * 6;
-            
-            Debug.LogWarning(gameObject.transform.localScale + "増えている");
+                        
             i++;
             BombAttack();            
             yield return null;
         }
-        Debug.LogWarning(ko);
-        Debug.LogWarning("爆発範囲は" + gameObject.transform.localScale + "になってる");
         sph.radius = 1f;
         chack = true;
         Destroy(gameObject);
@@ -87,7 +81,9 @@ public class Bomb : MonoBehaviour
             }
             else if(obj.gameObject.tag == "enemy")
             {
-                obj.gameObject.GetComponent<Enemy>().Damage(parametor.attackDamage,transform.root.gameObject);
+                if (obj.gameObject.GetComponent<Enemy>().Damage) return;
+                Debug.Log("ここです");
+                obj.gameObject.GetComponent<Enemy>().isDamage(parametor.attackDamage,transform.root.gameObject);
             }
         }
     }    

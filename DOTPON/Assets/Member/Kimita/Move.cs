@@ -90,7 +90,7 @@ public class Move : MonoBehaviour
             defaultPos = transform.position;
             yield return null;
         }
-        if (thisObj == objKind.Dot)
+        if (thisObj == objKind.Dot && this.gameObject.GetComponent<Dot>().ownColor != Dot.DotColor.White)
         {
             collider.enabled = true;
         }

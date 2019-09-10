@@ -93,7 +93,7 @@ public class Dragon : Enemy
 
     public void PlayerAttackCount(GameObject player,int pow)
     {
-        int i = pow * 3;
+        int i = pow * 2;
         damageInstance[(int)player.GetComponent<Player>().own] += i;
         Debug.Log("1p = "+damageInstance[0]+" 2p = "+damageInstance[1]+" 3p = "+damageInstance[2]+"4p = "+damageInstance[3]);
     }

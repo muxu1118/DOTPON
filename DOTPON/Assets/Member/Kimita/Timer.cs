@@ -57,7 +57,7 @@ public class Timer : MonoBehaviour
             for (int i = 0; i < textTime.Length; i++)
             {
                 textTime[i].text = ((int)(timeCount / 60)).ToString() + ":" + ((int)(timeCount % 60)).ToString("00");
-                textTime[i].color = Color.magenta;
+                textTime[i].color = Color.red;
             }
 
         }
@@ -66,7 +66,7 @@ public class Timer : MonoBehaviour
             subTime = 0;
             for (int i = 0; i < textTime.Length; i++)
             {
-                textTime[i].color = Color.cyan;
+                textTime[i].color = Color.black;
             }
         }
         //imageTime[0].sprite = imageCount[(int)(timeCount / 60)];
