@@ -367,7 +367,7 @@ public class Player : MonoBehaviour
         }
         Debug.Log(leng);
         trig = false;
-        yield return new WaitForSeconds(leng / 3);
+        yield return new WaitForSeconds(leng / time1);
         create.nowWeapon.gameObject.GetComponent<BoxCollider>().enabled = true;
         while (!trig && !stun)
         {
@@ -446,11 +446,11 @@ public class Player : MonoBehaviour
             return;
         }else if (create.nowWeapon.name == "Hammmer" || create.nowWeapon.name == "Axe")
         {
-            StartCoroutine(AttackWait(0.8f,0.4f));
+            StartCoroutine(AttackWait(3,0.4f));
         }
         else
         {
-            StartCoroutine(AttackWait(0.5f,0.3f));
+            StartCoroutine(AttackWait(4,0.3f));
         }
     }    
 

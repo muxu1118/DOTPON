@@ -117,7 +117,7 @@ public class Dot : MonoBehaviour
     public void MaterialChange(int num,GameObject obj)
     {
         ownColor = (DotColor)num;
-        Debug.Log("color = " + ownColor);
+
         // 1赤2青3緑4黄
         switch (num)
         {

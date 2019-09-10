@@ -30,7 +30,9 @@ public class PlayTest : MonoBehaviour
 
     [SerializeField]
     GameObject cameraObj;
-    
+
+    [SerializeField]
+    GameObject selectParent;
 
     int playerNumber;
     List<Vector2> canvasPosis = new List<Vector2>();
@@ -42,6 +44,8 @@ public class PlayTest : MonoBehaviour
     BUKSelect[] select;
     [SerializeField]GameObject text;
     bool tri;
+    
+    List<GameObject> objs = new List<GameObject>();
 
     bool startTrigger;
     // Start is called before the first frame update
@@ -78,6 +82,27 @@ public class PlayTest : MonoBehaviour
             else
             {
                 backButton();
+            }
+        }else if (Input.GetKeyDown("joystick 1 button 8"))
+        {
+            if (SceneManager.GetActiveScene().name == "StartScene")
+            {
+                if (WeaponPanel.active)
+                {
+                    StartButton();
+                    WeaponPanel.SetActive(false);
+                    canvasPosis.Clear();
+                    kyokaisen[0].SetActive(false); kyokaisen[1].SetActive(false);
+                    foreach (GameObject obj in objs)
+                    {
+                        Destroy(obj.gameObject);
+                    }
+                    objs.Clear();
+                    foreach (Transform obj in selectParent.transform)
+                    {
+                        Destroy(obj.gameObject);
+                    }
+                }
             }
         }
         else if (Input.GetAxisRaw("Vertical1_left") > 0.9f || Input.GetAxisRaw("Vertical2_left") > 0.9f || Input.GetAxisRaw("Vertical3_left") > 0.9f || Input.GetAxisRaw("Vertical4_left") > 0.9f)
@@ -240,7 +265,6 @@ public class PlayTest : MonoBehaviour
     public void SetSelectUI()
     {
         playerNumber = MultiPlayerManager.instance.totalPlayer;
-        List<GameObject> objs = new List<GameObject>();
         List<GameObject> selectObjs = new List<GameObject>();
         Debug.Log(screenX+"+"+screenY);
         for (int i = 0; i < playerNumber; i++)
@@ -309,7 +333,7 @@ public class PlayTest : MonoBehaviour
         List<GameObject> playerObjs = new List<GameObject>();
         for (int i = 0; i < num; i++)
         {
-            playerObjs.Add(Instantiate(player, vec[i], Quaternion.identity));
+            playerObjs.Add(Instantiate(player, vec[i], Quaternion.identity, selectParent.transform));
             playerObjs[i].name = "Player" + (i + 1);
             if(num <= 2)
             {

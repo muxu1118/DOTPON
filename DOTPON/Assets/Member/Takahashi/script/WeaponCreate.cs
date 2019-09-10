@@ -13,7 +13,7 @@ public class WeaponCreate : MonoBehaviour
     GameObject Punch;
 
     [SerializeField]GameObject efe;
-    bool trigger = true; //武器の作成と破棄の切り替え 
+    [SerializeField] bool trigger = true; //武器の作成と破棄の切り替え 
     int weaponNumber;    //武器の種類
     int weaponType = 0;  //武器を指定するための数値
     

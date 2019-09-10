@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -553,51 +553,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8984786248916373649}
     m_Modifications:
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: ParentObjs.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: ChildObjs.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: ParentObjs.Array.data[0]
-      value: 
-      objectReference: {fileID: 4237683438596653999}
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: ParentObjs.Array.data[1]
-      value: 
-      objectReference: {fileID: 4237683439318649732}
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: ParentObjs.Array.data[2]
-      value: 
-      objectReference: {fileID: 4237683440038368513}
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: ChildObjs.Array.data[0]
-      value: 
-      objectReference: {fileID: 4237683438868020239}
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: ChildObjs.Array.data[1]
-      value: 
-      objectReference: {fileID: 4237683440170001590}
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: ChildObjs.Array.data[2]
-      value: 
-      objectReference: {fileID: 4237683439155859556}
-    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
-        type: 3}
-      propertyPath: imageObj
-      value: 
-      objectReference: {fileID: 7507767930889339906}
     - target: {fileID: 2825820881518053, guid: a2561ad93740c9b46a4a9ab6296d8650, type: 3}
       propertyPath: m_Name
       value: SelectDOTPON
@@ -686,6 +641,51 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ParentObjs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ChildObjs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ParentObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4237683438596653999}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ParentObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4237683439318649732}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ParentObjs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4237683440038368513}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ChildObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4237683438868020239}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ChildObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4237683440170001590}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: ChildObjs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4237683439155859556}
+    - target: {fileID: 3167636215917413164, guid: a2561ad93740c9b46a4a9ab6296d8650,
+        type: 3}
+      propertyPath: imageObj
+      value: 
+      objectReference: {fileID: 7507767930889339906}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2561ad93740c9b46a4a9ab6296d8650, type: 3}
 --- !u!114 &4237683439155859556 stripped
@@ -791,6 +791,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8984786248916373649}
     m_Modifications:
+    - target: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: m_Name
+      value: DOTPON
+      objectReference: {fileID: 0}
+    - target: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 289534091312231723, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -905,16 +915,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
-        type: 3}
-      propertyPath: m_Name
-      value: DOTPON
-      objectReference: {fileID: 0}
-    - target: {fileID: 289534091312231722, guid: 05ac30e7e37e86a40b893144433f14ac,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 289534090101818725, guid: 05ac30e7e37e86a40b893144433f14ac,
         type: 3}
