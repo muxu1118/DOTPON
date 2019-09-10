@@ -60,12 +60,12 @@ public class Weapon : MonoBehaviour
                 }
                 break;
             case "enemy":
-                if (gameObject.transform.root.tag == "enemy") return;
+                if (gameObject.transform.root.tag == "enemy" || other.gameObject.GetComponent<Enemy>().Damage) return;
                 //Debug.Log(other.name + "に攻撃！" + parametor.attackDamage + "ダメージ！");
                 audio.clip = parametor.clip;
                 audio.Play();
                 StartCoroutine(Effect(other.gameObject.transform));
-                other.gameObject.GetComponent<Enemy>().Damage(GetAttackPower(parametor.attackDamage), transform.root.gameObject);
+                other.gameObject.GetComponent<Enemy>().isDamage(GetAttackPower(parametor.attackDamage), transform.root.gameObject);
                 if (this.gameObject.name == "bomb(Clone)") return;
                 transform.root.GetComponent<WeaponCreate>().DownDursble();
                 break;
@@ -76,6 +76,7 @@ public class Weapon : MonoBehaviour
                 Debug.Log("盾に" + gameObject.transform.root.name + "が攻撃した");
                 gameObject.transform.root.GetComponent<Animator>().SetTrigger("Stun");
                 gameObject.transform.root.GetComponent<Player>().stun = true;
+                audio.Play();
                 StartCoroutine("WaitAnimation");
                 //shieldObject.GetComponent<Shield>().StunStart(damegUP, animator);
                 break;
