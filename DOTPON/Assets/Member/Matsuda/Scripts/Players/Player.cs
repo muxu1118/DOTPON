@@ -32,7 +32,8 @@ public class Player : MonoBehaviour
     int farAtkDistance = 3;
 
     public bool isAction;
-    bool shieldCheck = false;  //盾を構えているか構えていないかのフラグ
+
+    public bool shieldCheck = false;  //盾を構えているか構えていないかのフラグ
 
     // コントローラーに対応する番号
     int padNum;
@@ -90,13 +91,12 @@ public class Player : MonoBehaviour
         KeyInout();
         CrownActive();
         //Move();
-        if (shieldCheck == true)
+        if (shieldCheck)
         {
             if (Input.GetKeyUp("joystick " + padNum + " button 2"))
             {
                 shieldCheck = false;
-                //GetComponent<MoveController>().shieldStart(false);
-                animator.SetTrigger("ShieldGuard");                
+                animator.SetTrigger("ShieldGuard");
             }
         }
     }

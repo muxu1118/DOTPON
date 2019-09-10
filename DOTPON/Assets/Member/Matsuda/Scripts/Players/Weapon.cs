@@ -72,10 +72,11 @@ public class Weapon : MonoBehaviour
             case "shield":
                 if (gameObject.transform.root.tag == "enemy") return;
                 //相手をスタンさせたら構えている状態を解除
-                other.gameObject.transform.root.GetComponent<Animator>().SetTrigger("ShieldGuard");
-                Debug.Log("盾に" + gameObject.transform.root.name + "が攻撃した");
-                gameObject.transform.root.GetComponent<Animator>().SetTrigger("Stun");
+                other.gameObject.transform.root.GetComponent<Player>().shieldCheck = false;
+                other.gameObject.transform.root.GetComponent<Animator>().SetTrigger("ShieldGuard");                
                 gameObject.transform.root.GetComponent<Player>().stun = true;
+                gameObject.transform.root.GetComponent<Animator>().SetTrigger("Stun");
+                Debug.Log("盾に" + gameObject.transform.root.name + "が攻撃した");
                 audio.Play();
                 StartCoroutine("WaitAnimation");
                 //shieldObject.GetComponent<Shield>().StunStart(damegUP, animator);

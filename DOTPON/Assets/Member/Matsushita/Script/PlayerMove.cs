@@ -106,6 +106,7 @@ public class PlayerMove : MonoBehaviour
 
         yield return null;
         yield return new WaitForAnimation(anim, 0);
+        yield return new WaitForSeconds(0.7f);
         MoveDown = 1;
 
         //Debug.LogWarning("なんできた");
