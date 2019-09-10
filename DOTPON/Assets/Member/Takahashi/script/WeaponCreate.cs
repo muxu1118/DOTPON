@@ -134,6 +134,7 @@ public class WeaponCreate : MonoBehaviour
                         nowWeapon.GetComponent<BoxCollider>().enabled = false;
                     }
                     value = nowWeapon.GetComponent<Weapon>().parametor.durableValue;
+                    Debug.Log("残り耐久値 = " + value);
                     trigger = false;
                     player.isAction = true;
                     StartCoroutine(player.ActionWait(2.5f));

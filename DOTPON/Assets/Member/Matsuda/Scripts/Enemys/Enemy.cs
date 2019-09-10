@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected GameObject buki;
 
     public bool isAction = false;
+    public bool Damage = false;
     //プレイヤーを攻撃する関数
     protected void Attack()
     {
@@ -73,8 +74,9 @@ public class Enemy : MonoBehaviour
     /// ダメージを受けたときに呼ばれる関数
     /// </summary>
     /// <param name="At">攻撃力</param>
-    public void Damage(int At,GameObject obj)
+    public void isDamage(int At,GameObject obj)
     {
+        Damage = true;
         HP -= At;
         DropDot(this.gameObject,parameter.dropDot,obj);
         isAction = true;
@@ -147,6 +149,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(time);
         }
         isAction = false;
+        Damage = false;
         yield break;
     }
 }

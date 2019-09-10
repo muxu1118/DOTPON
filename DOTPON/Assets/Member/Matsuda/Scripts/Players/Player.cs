@@ -142,9 +142,13 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown("joystick " + padNum + " button 5"))
         {
-            create.WeaponChoice("d"); 
+            create.WeaponChoice("d");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 7")&&trigger)
+        if (Input.GetKeyDown("joystick " + padNum + " button 6"))
+        {
+            isAction = false;
+        }
+            if (Input.GetKeyDown("joystick " + padNum + " button 7")&&trigger)
         {
             // Towerでスターの生成
             switch (own)
@@ -341,6 +345,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         isDamage = false;
+        isAction = false;
     }
     /// <summary>
     /// 攻撃したときの待機時間
@@ -559,4 +564,5 @@ public class Player : MonoBehaviour
         }
         crown.SetActive(true);
     }
+    
 }

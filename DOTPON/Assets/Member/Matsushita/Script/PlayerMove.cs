@@ -90,14 +90,14 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator WaitMoveAnimation()
     {
-        MoveDown /= 2;
+        MoveDown = 0.7f;
         //Vector3 moveForward = i * inputVertical * MoveDown + cmr.transform.right * inputHorizontal * MoveDown;
 
         yield return null;
         yield return new WaitForAnimation(anim, 0);
         MoveDown = 1;
 
-        Debug.LogWarning("戻った");
+        //Debug.LogWarning("戻った");
     }
 
     IEnumerator WaitAnimation()
@@ -108,7 +108,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForAnimation(anim, 0);
         MoveDown = 1;
 
-        Debug.LogWarning("戻った");
+        //Debug.LogWarning("なんできた");
     }
     /*
     void Move()
