@@ -113,8 +113,9 @@ public class PlayTest : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetAxisRaw("Vertical1_left") > 0.9f || Input.GetAxisRaw("Vertical2_left") > 0.9f || Input.GetAxisRaw("Vertical3_left") > 0.9f || Input.GetAxisRaw("Vertical4_left") > 0.9f)
+        else if (Input.GetAxisRaw("Vertical1_left") > 0.9f || Input.GetAxisRaw("Vertical2_left") > 0.9f || Input.GetAxisRaw("Vertical3_left") > 0.9f || Input.GetAxisRaw("Vertical4_left") > 0.9f )
         {
+            if (WeaponPanel.active) return;
             if (MultiPlayerManager.instance.totalPlayer == 1 || tri) return;
             MultiPlayerManager.instance.totalPlayer--;
             faces[MultiPlayerManager.instance.totalPlayer].SetActive(false);
@@ -124,6 +125,7 @@ public class PlayTest : MonoBehaviour
         }
         else if (Input.GetAxisRaw("Vertical1_left") < -0.9f || Input.GetAxisRaw("Vertical2_left") < -0.9f || Input.GetAxisRaw("Vertical3_left") < -0.9f || Input.GetAxisRaw("Vertical4_left") < -0.9f)
         {
+            if (WeaponPanel.active) return;
             if (MultiPlayerManager.instance.totalPlayer == 4 || tri) return;
             MultiPlayerManager.instance.totalPlayer++;
             faces[MultiPlayerManager.instance.totalPlayer - 1].SetActive(true);
@@ -139,6 +141,7 @@ public class PlayTest : MonoBehaviour
         {
             List<int> trigger = new List<int>();
             bool trig = true;
+            
             for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
             {
                 List<int> list = new List<int>();
@@ -151,21 +154,6 @@ public class PlayTest : MonoBehaviour
                 if (list[0] != list[1] && list[0] != list[2] && list[1] != list[2] && trig)
                 {
                     trigger.Add(1);
-                    switch (i)
-                    {
-                        case 0:
-                            MultiPlayerManager.instance.P1Weapon = list;
-                            break;
-                        case 1:
-                            MultiPlayerManager.instance.P2Weapon = list;
-                            break;
-                        case 2:
-                            MultiPlayerManager.instance.P3Weapon = list;
-                            break;
-                        case 3:
-                            MultiPlayerManager.instance.P4Weapon = list;
-                            break;
-                    }
                 }
             }
             if (trigger.Count == MultiPlayerManager.instance.totalPlayer)
@@ -303,16 +291,22 @@ public class PlayTest : MonoBehaviour
             objs[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(canvasPosis[i].x, canvasPosis[i].y, 0);
             
             objs[i].transform.localScale = new Vector3(0.8f, 0.8f, 1);
+            if (playerNumber == 1)
+            {
+                text.transform.localPosition = new Vector3(0,-190,0);
+            }
             if (playerNumber == 2)
             {
                 objs[i].transform.localScale = new Vector3(0.4f, 0.4f, 1);
                 kyokaisen[0].SetActive(true);
+                text.transform.localPosition = Vector3.zero;
             }
             else if(playerNumber >= 3)
             {
                 objs[i].transform.localScale = new Vector3(0.4f, 0.4f, 1);
                 kyokaisen[0].SetActive(true);
                 kyokaisen[1].SetActive(true);
+                text.transform.localPosition = Vector3.zero;
             }
              
         }
@@ -323,7 +317,7 @@ public class PlayTest : MonoBehaviour
                 SetPlayerInstance(1,vec);
                 break;
             case 2:
-                Vector3[] vec2 = { new Vector3(4.3f, -1.2f, 1.2f), new Vector3(-4.3f, -1.2f, 1.2f) };
+                Vector3[] vec2 = { new Vector3(4.3f, -1.2f, 1.72f), new Vector3(-4.3f, -1.2f, 1.2f) };
                 SetPlayerInstance(2,vec2);
                 break;
             case 3:
@@ -353,8 +347,35 @@ public class PlayTest : MonoBehaviour
 
     public void GameStartButton()
     {
+        tex.text = MultiPlayerManager.instance.totalPlayer.ToString();
         if (startTrigger)
         {
+            List<int> trigger = new List<int>();
+            bool trig = true;
+            for (int i = 0; i < MultiPlayerManager.instance.totalPlayer; i++)
+            {
+                List<int> list = new List<int>();
+                for (int j = 0; j < 3; j++)
+                {
+                    list.Add(select[i].weapons[j]);
+                }
+                trigger.Add(1);
+                switch (i)
+                {
+                    case 0:
+                        MultiPlayerManager.instance.P1Weapon = list;
+                        break;
+                    case 1:
+                        MultiPlayerManager.instance.P2Weapon = list;
+                        break;
+                    case 2:
+                        MultiPlayerManager.instance.P3Weapon = list;
+                        break;
+                    case 3:
+                        MultiPlayerManager.instance.P4Weapon = list;
+                        break;
+                }
+            }
             Cursor.visible = false;
             FadeManager.Instance.LoadScene("Main", 1.0f);
         }
