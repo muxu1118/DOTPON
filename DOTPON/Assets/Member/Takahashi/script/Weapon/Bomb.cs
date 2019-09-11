@@ -50,10 +50,10 @@ public class Bomb : MonoBehaviour
         //爆風が出ている間ダメージが入る
         int i = 0;        
         Destroy(obj);        
-        while (i < 33)
+        while (i < 43)
         {
             //ko += 0.005f;
-            gameObject.transform.localScale += new Vector3(1, 1, 1) * Time.deltaTime * 6;
+            gameObject.transform.localScale += new Vector3(1, 1, 1) * Time.deltaTime * 5;
                         
             i++;
             BombAttack();            

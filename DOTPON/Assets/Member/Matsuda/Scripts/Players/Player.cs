@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     //遠距離攻撃の武器
     [SerializeField] GameObject farAtkWeapon;
     //遠距離攻撃の距離
-    int farAtkDistance = 3;
+    int farAtkDistance = 4;
 
     public bool isAction;
 
