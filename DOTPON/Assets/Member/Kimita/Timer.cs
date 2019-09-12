@@ -42,6 +42,10 @@ public class Timer : MonoBehaviour
     void Update()
     {
         if (isCountDown) return;
+        if (Input.GetKeyDown("joystick 1 button 9") || Input.GetKeyDown("joystick 2 button 9") || Input.GetKeyDown("joystick 3 button 9") || Input.GetKeyDown("joystick 4 button 9"))
+        {
+            timeCount = limitTime;
+        }
         // 毎秒数える
         timeCount -= Time.deltaTime;
         subTime += Time.deltaTime;
@@ -82,6 +86,7 @@ public class Timer : MonoBehaviour
             StartCoroutine(EndCorutine());
         }
     }
+    
 
     IEnumerator CountDown()
     {
@@ -115,7 +120,7 @@ public class Timer : MonoBehaviour
             textTime[i].text = "GameSet!!";
         }
         yield return new WaitForSeconds(3.5f);
-        FadeManager.Instance.LoadScene("ResultScene", 1.0f);
+        FadeManager.Instance.LoadScene("ResultScene", 1.0f,0);
         Cursor.visible = true;
         Destroy(this);
     }

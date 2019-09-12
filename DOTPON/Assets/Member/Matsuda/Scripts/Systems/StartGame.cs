@@ -107,16 +107,16 @@ public class StartGame : MonoBehaviour
     {
         switch (num) {
             case 0:
-                MultiPlayerManager.instance.P1Dot = 10;
+                MultiPlayerManager.instance.P1Dot = 20;
                 return Player.PlayerKind.Player1;
             case 1:
-                MultiPlayerManager.instance.P2Dot = 10;
+                MultiPlayerManager.instance.P2Dot = 20;
                 return Player.PlayerKind.Player2;
             case 2:
-                MultiPlayerManager.instance.P3Dot = 10;
+                MultiPlayerManager.instance.P3Dot = 20;
                 return Player.PlayerKind.Player3;
             case 3:
-                MultiPlayerManager.instance.P4Dot = 10;
+                MultiPlayerManager.instance.P4Dot = 20;
                 return Player.PlayerKind.Player4;
             default:
                 return Player.PlayerKind.Player1;

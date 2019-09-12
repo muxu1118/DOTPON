@@ -8,11 +8,11 @@ public class PlayTest : MonoBehaviour
 {
     public Text number;
     [SerializeField]
-    GameObject SelectPanel;
+    public GameObject SelectPanel;
     [SerializeField]
-    GameObject StartPanel;
+    public GameObject StartPanel;
     [SerializeField]
-    GameObject WeaponPanel;
+    public GameObject WeaponPanel;
     [SerializeField]
     GameObject selectObj;
     [SerializeField]
@@ -89,7 +89,18 @@ public class PlayTest : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "StartScene")
             {
-                if (WeaponPanel.active)
+                if (SelectPanel.active)
+                {
+                    MultiPlayerManager.instance.totalPlayer = 1;
+                    HandMove();
+                    for (int i = 1; i < 4; i++)
+                    {
+                        faces[i].SetActive(false);
+                    }
+                    SelectPanel.SetActive(false);
+                    StartPanel.SetActive(true);
+                }
+                else if (WeaponPanel.active)
                 {
                     MultiPlayerManager.instance.totalPlayer = 1;
                     HandMove();
@@ -377,13 +388,14 @@ public class PlayTest : MonoBehaviour
                 }
             }
             Cursor.visible = false;
-            FadeManager.Instance.LoadScene("Main", 1.0f);
+            FadeManager.Instance.LoadScene("Main", 1.0f,60);
         }
+        WeaponPanel.SetActive(false);
     }
 
     public void backButton()
     {
-        FadeManager.Instance.LoadScene("StartScene",1.0f);
+        FadeManager.Instance.LoadScene("StartScene",1.0f,0);
     }
     public void ResultButton()
     {

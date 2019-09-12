@@ -111,9 +111,10 @@ public class SpownController : MonoBehaviour
     IEnumerator CreateEnemy(int posNum)
     {
         yield return new WaitForSeconds(3);
-        switch (Random.Range(0, 3))
+        switch (Random.Range(3, 8) % 3)
         {
             case 0:
+                Debug.Log("gob");
                 GameObject parentObject = new GameObject("GoburinFlock");
                 parentObject.tag = "enemy";
                 Vector3 spownPos = parentObject.transform.position = positions[posNum];
@@ -131,11 +132,13 @@ public class SpownController : MonoBehaviour
                 parentObject.AddComponent<GoburinFlock>();
                 break;
             case 1:
+                Debug.Log("sli");
                 GameObject slime = Instantiate(obj[1], positions[posNum], Quaternion.identity);
                 slime.name = slime.name.Replace("(Clone)", "");
                 NowSpown++;
                 break;
             case 2:
+                Debug.Log("gol");
                 GameObject golem = Instantiate(obj[2], positions[posNum], Quaternion.identity);
                 golem.name = golem.name.Replace("(Clone)", "");
                 NowSpown++;

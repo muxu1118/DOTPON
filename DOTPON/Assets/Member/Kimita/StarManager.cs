@@ -20,10 +20,7 @@ public class StarManager : SingletonMonoBehaviour<StarManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StarInstance(Vector3.zero);
-        }
+        
     }
 
     // プレイヤーが死んだらスターを生成
