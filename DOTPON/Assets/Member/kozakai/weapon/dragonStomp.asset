@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dragonStomp
   m_EditorClassIdentifier: 
   attackSpeed: 0
-  attackDamage: 5
+  attackDamage: 4
   necessaryDot: 0
   durableValue: 0
   dotNum: 0

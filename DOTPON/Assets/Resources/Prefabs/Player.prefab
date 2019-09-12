@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   own: 0
+  stun: 0
   hp: 0
   isDamage: 0
   WalkSpeed: 10
@@ -144,6 +145,9 @@ MonoBehaviour:
   farAtkWeapon: {fileID: 2693526001938932166, guid: bf5352f4445c9e74198ad3b5f1284c8c,
     type: 3}
   isAction: 1
+  shieldCheck: 0
+  animator: {fileID: 0}
+  myDotObj: []
   clips:
   - {fileID: 8300000, guid: a2d5e7e46edbab348b2e9a05ce7a654b, type: 3}
   crown: {fileID: 7118223436202144607}
@@ -201,6 +205,7 @@ MonoBehaviour:
   - {fileID: 0}
   Punch: {fileID: 3431538904191380621}
   efe: {fileID: 901223875067202681, guid: 7b7965ad8ff7d7b438ddc8390779c5d0, type: 3}
+  trigger: 1
   nowWeapon: {fileID: 3431538904191380621}
   clips:
   - {fileID: 8300000, guid: d1962013c6328f149b7f534dfbcc451f, type: 3}
@@ -2338,6 +2343,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca66dd5ac9e436d41a6dba57bd189cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parametor: {fileID: 0}
+  _attackSpeed: 0
+  _attackDamage: 0
+  _necessaryDot: 0
+  _durableValue: 0
+  damegUP: 1
 --- !u!1001 &689674585153722106
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: shield
   m_EditorClassIdentifier: 
   attackSpeed: 3
-  attackDamage: 1
-  necessaryDot: 4
+  attackDamage: 2
+  necessaryDot: 2
   durableValue: 4
   dotNum: 6
   weapon: {fileID: 0}

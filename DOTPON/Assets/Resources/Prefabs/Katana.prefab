@@ -97,6 +97,7 @@ MonoBehaviour:
   _attackDamage: 0
   _necessaryDot: 0
   _durableValue: 0
+  damegUP: 1
 --- !u!65 &1189363539906525026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108,8 +109,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08399996, y: 0.5, z: 0.16682631}
-  m_Center: {x: 0.002136683, y: 0.12, z: 0.0017805956}
+  m_Size: {x: 0.08399996, y: 0.68613976, z: 0.16682631}
+  m_Center: {x: 0.002136685, y: 0.21306989, z: 0.0017805994}
 --- !u!82 &4098551576895018148
 AudioSource:
   m_ObjectHideFlags: 0

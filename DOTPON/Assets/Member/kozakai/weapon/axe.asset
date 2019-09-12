@@ -15,7 +15,7 @@ MonoBehaviour:
   attackSpeed: 2
   attackDamage: 5
   necessaryDot: 6
-  durableValue: 6
+  durableValue: 4
   dotNum: 5
   weapon: {fileID: 5713209274112605249, guid: 41b25c2da8813de47acde624b07bd409, type: 3}
   Commentary: "\u653B\u6483\u529B\u306F\u9AD8\u3044\u304C\u653B\u6483\u901F\u5EA6\u304C\u9045\u3044"

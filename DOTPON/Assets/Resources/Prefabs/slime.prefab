@@ -159,8 +159,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2, z: 1.3}
-  m_Center: {x: -0.046996713, y: 0.9, z: -0.027977884}
+  m_Size: {x: 1.5, y: 2.3, z: 1.3}
+  m_Center: {x: -0.046996713, y: 1.1, z: -0.027977884}
 --- !u!54 &1110927582050842810
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -194,6 +194,7 @@ MonoBehaviour:
   isLooking: 0
   buki: {fileID: 0}
   isAction: 0
+  Damage: 0
   lookingCollider:
   - {fileID: 3024951526878940298}
   - {fileID: 8533577444696104835}

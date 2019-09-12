@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: goburin
   m_EditorClassIdentifier: 
   attackSpeed: 0
-  attackDamage: 2
+  attackDamage: 1
   necessaryDot: 0
   durableValue: 0
   dotNum: 0

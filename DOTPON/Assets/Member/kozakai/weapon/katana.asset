@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: katana
   m_EditorClassIdentifier: 
   attackSpeed: 1
-  attackDamage: 2
-  necessaryDot: 7
+  attackDamage: 4
+  necessaryDot: 5
   durableValue: 7
-  dotNum: 7
+  dotNum: 5
   weapon: {fileID: 8874533862748424919, guid: dda1d90d873ce3b4182955aa501fa57b, type: 3}
   Commentary: "\u8010\u4E45\u5024\u304C\u591A\u304F\u653B\u6483\u901F\u5EA6\u304C\u901F\u3044"
   clip: {fileID: 8300000, guid: b36c01dab81be914086d519a4f4089ff, type: 3}

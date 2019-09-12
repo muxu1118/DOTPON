@@ -14,8 +14,8 @@ public class PlayerMove : MonoBehaviour
 
     int NotMoveHash;
     int NotThrowHash;
-
-    float MoveDown = 1;
+    [HideInInspector]
+    public float MoveDown = 1;
 
     Animator animator;
 
@@ -106,11 +106,15 @@ public class PlayerMove : MonoBehaviour
 
         yield return null;
         yield return new WaitForAnimation(anim, 0);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1.0f);
         MoveDown = 1;
 
         //Debug.LogWarning("なんできた");
     }
+    //public void PlayerWait()
+    //{
+    //    StartCoroutine("WaitAnimation");
+    //}
     /*
     void Move()
     {

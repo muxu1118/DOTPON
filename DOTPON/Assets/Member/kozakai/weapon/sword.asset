@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 3
   attackDamage: 3
-  necessaryDot: 3
-  durableValue: 6
+  necessaryDot: 1
+  durableValue: 4
   dotNum: 3
   weapon: {fileID: 4715716043184094966, guid: 4122eee347dd5f5408b9182f3dc22827, type: 3}
   Commentary: "\u79C0\u3067\u305F\u7279\u5FB4\u306F\u306A\u3044\u304C\u4F7F\u3044\u3084\u3059\u3044"
