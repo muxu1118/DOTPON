@@ -115,7 +115,7 @@ public class Timer : MonoBehaviour
             textTime[i].text = "GameSet!!";
         }
         yield return new WaitForSeconds(3.5f);
-        FadeManager.Instance.LoadScene("ResultScene", 1.0f);
+        FadeManager.Instance.LoadScene("ResultScene", 1.0f,0);
         Cursor.visible = true;
         Destroy(this);
     }

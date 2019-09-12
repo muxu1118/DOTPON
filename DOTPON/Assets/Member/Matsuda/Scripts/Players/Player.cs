@@ -123,16 +123,16 @@ public class Player : MonoBehaviour
         */
         //盾を構えてい時ボタンを離したらIdlingに戻す
             
-        if (Input.GetKeyUp("joystick " + padNum + " button 1"))
+        if (Input.GetKeyUp("joystick " + padNum + " button 3"))
         {
             animator.SetTrigger("ShieldGuard");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 1"))
         {
             AttackColliderOn();
             Debug.Log("At");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 3"))
+        if (Input.GetKeyDown("joystick " + padNum + " button 2"))
         {
             create.WeaponChoice("a");
         }
@@ -219,25 +219,25 @@ public class Player : MonoBehaviour
             switch (own)
             {
                 case PlayerKind.Player1:
-                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
                     MultiPlayerManager.instance.P1Star++;
                     //StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P1Dot);
                     break;
                 case PlayerKind.Player2:
-                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
                     MultiPlayerManager.instance.P2Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P2Dot);
                     break;
                 case PlayerKind.Player3:
-                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
                     MultiPlayerManager.instance.P3Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P3Dot);
                     break;
                 case PlayerKind.Player4:
-                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 10)) return;
+                    if (!DotManager.instance.DotPonCreate(GetComponent<Player>(), 30)) return;
                     MultiPlayerManager.instance.P4Star++;
                     StarInit();
                     //Debug.Log(MultiPlayerManager.instance.P4Dot);

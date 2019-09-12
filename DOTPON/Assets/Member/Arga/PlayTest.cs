@@ -8,11 +8,11 @@ public class PlayTest : MonoBehaviour
 {
     public Text number;
     [SerializeField]
-    GameObject SelectPanel;
+    public GameObject SelectPanel;
     [SerializeField]
-    GameObject StartPanel;
+    public GameObject StartPanel;
     [SerializeField]
-    GameObject WeaponPanel;
+    public GameObject WeaponPanel;
     [SerializeField]
     GameObject selectObj;
     [SerializeField]
@@ -377,13 +377,14 @@ public class PlayTest : MonoBehaviour
                 }
             }
             Cursor.visible = false;
-            FadeManager.Instance.LoadScene("Main", 1.0f);
+            FadeManager.Instance.LoadScene("Main", 1.0f,60);
         }
+        WeaponPanel.SetActive(false);
     }
 
     public void backButton()
     {
-        FadeManager.Instance.LoadScene("StartScene",1.0f);
+        FadeManager.Instance.LoadScene("StartScene",1.0f,0);
     }
     public void ResultButton()
     {

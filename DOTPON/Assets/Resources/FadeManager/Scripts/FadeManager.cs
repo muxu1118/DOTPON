@@ -42,10 +42,13 @@ public class FadeManager : MonoBehaviour
 	/// <summary>フェード色</summary>
 	public Color fadeColor = Color.black;
 
+    PlayTest test;
+    [SerializeField]bool next;
     [SerializeField]Texture tex;
 
 	public void Awake ()
 	{
+        test = GameObject.Find("Test").GetComponent<PlayTest>();
 		if (this != Instance) {
 			Destroy (this.gameObject);
 			return;
@@ -54,7 +57,16 @@ public class FadeManager : MonoBehaviour
 		DontDestroyOnLoad (this.gameObject);
 	}
 
-	public void OnGUI ()
+    private void Update()
+    {
+        if (Input.GetKeyDown("joystick 1 button 9") || Input.GetKeyDown("joystick 2 button 9") || Input.GetKeyDown("joystick 3 button 9") || Input.GetKeyDown("joystick 4 button 9"))        
+        {
+            if(!test.WeaponPanel.active && !test.SelectPanel.active && !test.StartPanel.active)
+            next = true;
+        }
+    }
+
+    public void OnGUI ()
 	{
 
 		// Fade .
@@ -89,7 +101,7 @@ public class FadeManager : MonoBehaviour
 				int i = 0;
 				foreach (string sceneName in scenes) {
 					if (GUI.Button (new Rect (20, 55 + i * 25, 100, 20), "Load Level")) {
-						LoadScene (sceneName, 1.0f);
+						LoadScene (sceneName, 1.0f,0);
 					}
 					GUI.Label (new Rect (125, 55 + i * 25, 1000, 20), sceneName);
 					i++;
@@ -106,9 +118,9 @@ public class FadeManager : MonoBehaviour
 	/// </summary>
 	/// <param name='scene'>シーン名</param>
 	/// <param name='interval'>暗転にかかる時間(秒)</param>
-	public void LoadScene (string scene, float interval)
+	public void LoadScene (string scene, float interval,int lestTime)
 	{
-		StartCoroutine (TransScene (scene, interval));
+		StartCoroutine (TransScene (scene, interval,lestTime));
 	}
 
 	/// <summary>
@@ -116,7 +128,7 @@ public class FadeManager : MonoBehaviour
 	/// </summary>
 	/// <param name='scene'>シーン名</param>
 	/// <param name='interval'>暗転にかかる時間(秒)</param>
-	private IEnumerator TransScene (string scene, float interval)
+	private IEnumerator TransScene (string scene, float interval,int lestTime)
 	{
 		//だんだん暗く .
 		this.isFading = true;
@@ -127,6 +139,16 @@ public class FadeManager : MonoBehaviour
 			yield return 0;
 		}
 
+        float nextTime = 0;
+        while (nextTime <= lestTime)
+        {
+            if (next)
+            {
+                nextTime = lestTime;
+            }
+            nextTime += Time.deltaTime;
+            yield return null;
+        }
 		//シーン切替 .
 		SceneManager.LoadScene (scene);
 
@@ -139,5 +161,6 @@ public class FadeManager : MonoBehaviour
 		}
 
 		this.isFading = false;
+        next = false;
 	}
 }
