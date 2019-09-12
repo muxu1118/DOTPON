@@ -89,7 +89,18 @@ public class PlayTest : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "StartScene")
             {
-                if (WeaponPanel.active)
+                if (SelectPanel.active)
+                {
+                    MultiPlayerManager.instance.totalPlayer = 1;
+                    HandMove();
+                    for (int i = 1; i < 4; i++)
+                    {
+                        faces[i].SetActive(false);
+                    }
+                    SelectPanel.SetActive(false);
+                    StartPanel.SetActive(true);
+                }
+                else if (WeaponPanel.active)
                 {
                     MultiPlayerManager.instance.totalPlayer = 1;
                     HandMove();

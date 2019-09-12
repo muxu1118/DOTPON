@@ -47,9 +47,9 @@ public class FadeManager : MonoBehaviour
     [SerializeField]Texture tex;
 
 	public void Awake ()
-	{
+    {
         test = GameObject.Find("Test").GetComponent<PlayTest>();
-		if (this != Instance) {
+        if (this != Instance) {
 			Destroy (this.gameObject);
 			return;
 		}
@@ -59,6 +59,7 @@ public class FadeManager : MonoBehaviour
 
     private void Update()
     {
+        if (test == null) return;
         if (Input.GetKeyDown("joystick 1 button 9") || Input.GetKeyDown("joystick 2 button 9") || Input.GetKeyDown("joystick 3 button 9") || Input.GetKeyDown("joystick 4 button 9"))        
         {
             if(!test.WeaponPanel.active && !test.SelectPanel.active && !test.StartPanel.active)
@@ -162,5 +163,9 @@ public class FadeManager : MonoBehaviour
 
 		this.isFading = false;
         next = false;
+        if (GameObject.Find("Test") == true)
+        {
+            test = GameObject.Find("Test").GetComponent<PlayTest>();
+        }
 	}
 }
