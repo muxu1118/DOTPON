@@ -45,6 +45,7 @@ public class FadeManager : MonoBehaviour
     PlayTest test;
     [SerializeField]bool next;
     [SerializeField]Texture tex;
+    [SerializeField] Texture tex2;
 
 	public void Awake ()
     {
@@ -75,7 +76,14 @@ public class FadeManager : MonoBehaviour
 			//色と透明度を更新して白テクスチャを描画 .
 			this.fadeColor.a = this.fadeAlpha;
 			GUI.color = this.fadeColor;
-			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), tex);
+            if (SceneManager.GetActiveScene().name == "StartScene")
+            {
+                GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), tex2);
+            }
+            else
+            {
+                GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), tex);
+            }
 		}
 
 		if (this.DebugMode) {
@@ -131,7 +139,8 @@ public class FadeManager : MonoBehaviour
 	/// <param name='interval'>暗転にかかる時間(秒)</param>
 	private IEnumerator TransScene (string scene, float interval,int lestTime)
 	{
-		//だんだん暗く .
+        //だんだん暗く .
+        
 		this.isFading = true;
 		float time = 0;
 		while (time <= interval) {
