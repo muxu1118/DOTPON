@@ -286,7 +286,6 @@ public class WeaponCreate : MonoBehaviour
         value--;
         if (value <= 0)
         {
-            //animator.SetBool("HoldingWeapon", true);
             animator.SetBool("HoldingWeapon", true);
             nowWeapon.SetActive(false);
             nowWeapon = Punch;
@@ -298,6 +297,7 @@ public class WeaponCreate : MonoBehaviour
         else
         {
             Debug.Log("残り耐久値 = " + value);
+            animator.SetBool("HoldingWeapon", false);
         }
         //DOTPONDursbleUI.GetComponent<DOTPONDursble>().DownDursbleUI();
         //pizza.PizzaUI(nowWeapon.GetComponent<Weapon>().parametor.durableValue);
@@ -306,6 +306,7 @@ public class WeaponCreate : MonoBehaviour
     //死んだときに武器を初期化
     public void ResetWeapon()
     {
+        animator.SetBool("HoldingWeapon", true);
         nowWeapon.SetActive(false);
         Punch.SetActive(true);
         nowWeapon = Punch;

@@ -3362,6 +3362,7 @@ MonoBehaviour:
   - {fileID: 1499656537}
   - {fileID: 1896809620}
   text: {fileID: 935551064}
+  startTrigger: 0
   tex: {fileID: 1738585433}
 --- !u!4 &1505144496
 Transform:
@@ -3596,6 +3597,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11460108, guid: fd9d58dbfb8f846f58b62a48334a0058, type: 3}
+      propertyPath: tex.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11460108, guid: fd9d58dbfb8f846f58b62a48334a0058, type: 3}
       propertyPath: fadeColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -3615,6 +3620,18 @@ PrefabInstance:
       propertyPath: DebugMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11460108, guid: fd9d58dbfb8f846f58b62a48334a0058, type: 3}
+      propertyPath: tex2
+      value: 
+      objectReference: {fileID: 2800000, guid: 5cb4c10a8399b004a93e839298b94159, type: 3}
+    - target: {fileID: 11460108, guid: fd9d58dbfb8f846f58b62a48334a0058, type: 3}
+      propertyPath: tex.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: 5cb4c10a8399b004a93e839298b94159, type: 3}
+    - target: {fileID: 11460108, guid: fd9d58dbfb8f846f58b62a48334a0058, type: 3}
+      propertyPath: tex.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: ad9f78a464720ce46bc0d1399ad09e96, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd9d58dbfb8f846f58b62a48334a0058, type: 3}
 --- !u!1 &1738585430

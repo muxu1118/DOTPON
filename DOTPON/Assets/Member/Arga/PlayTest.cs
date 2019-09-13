@@ -47,7 +47,7 @@ public class PlayTest : MonoBehaviour
     
     List<GameObject> objs = new List<GameObject>();
 
-    bool startTrigger;
+    public bool startTrigger;
 
     [SerializeField] Text tex;
     // Start is called before the first frame update
@@ -387,10 +387,10 @@ public class PlayTest : MonoBehaviour
                         break;
                 }
             }
+            WeaponPanel.SetActive(false);
             Cursor.visible = false;
             FadeManager.Instance.LoadScene("Main", 1.0f,60);
         }
-        WeaponPanel.SetActive(false);
     }
 
     public void backButton()
