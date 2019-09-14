@@ -99,6 +99,13 @@ public class Player : MonoBehaviour
                 animator.SetTrigger("ShieldGuard");
             }
         }
+        if (Input.GetKeyDown("joystick " + padNum + " button 6"))
+        {
+            Debug.Log("at");
+            isAction = false;
+            bool getWeapon = create.nowWeapon.name == "punch";
+            animator.SetBool("HoldingWeapon", getWeapon); //武器を持っているか持っていないかの判定
+        }
     }
     void KeyInout()
     {
@@ -146,11 +153,7 @@ public class Player : MonoBehaviour
         {
             create.WeaponChoice("d");
         }
-        if (Input.GetKeyDown("joystick " + padNum + " button 6"))
-        {
-            isAction = false;
-        }
-            if (Input.GetKeyDown("joystick " + padNum + " button 7")&&trigger)
+        if (Input.GetKeyDown("joystick " + padNum + " button 7")&&trigger)
         {
             // Towerでスターの生成
             switch (own)
